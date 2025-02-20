@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #202B46;
+}
+
+@layer components {
+    .hamburger {
+        @apply cursor-pointer flex flex-col gap-1;
+        span {
+            @apply block w-5 h-0.5 bg-white rounded transition-all duration-300;
+        }
+
+        &.open {
+            span {
+                &:nth-child(1) {
+                    @apply translate-y-1 rotate-45;
+                }
+                &:nth-child(2) {
+                    @apply opacity-0;
+                }
+                &:nth-child(3) {
+                    @apply -translate-y-2 -rotate-45;
+                }
+            }
+        }
+    }
+}
