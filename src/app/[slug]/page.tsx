@@ -5,12 +5,16 @@ import Page from "@/components/templates/Page";
 import client from "@/lib/apollo-client";
 import { gql } from "@apollo/client";
 
-export async function generateMetadata({params}: any): Promise<Metadata> {
+type Params = {
+    params: Promise<{slug: string}>;
+}
+
+export async function generateMetadata({params}: Params): Promise<Metadata> {
     const {slug} = await params;
     return await getSEOData(slug || 'home-page');
 }
 
-export default async function SinglePage({params}: any) {
+export default async function SinglePage({params}: Params) {
     const {slug} = await params;
     const pageData = await getPageData(slug);
     return <Page pageData={pageData} />
