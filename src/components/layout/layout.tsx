@@ -6,8 +6,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             <Header />
-           {/* <Header />*/}
-            <main className="container mx-auto p-6">
+            <main className="">
                 {children}
             </main>
             <Footer />

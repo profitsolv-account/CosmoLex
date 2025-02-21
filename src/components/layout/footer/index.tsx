@@ -11,8 +11,8 @@ export const Footer = async () => {
     return (<div>
         <Navigations />
          <div className="w-full relative bg-[#eef8fd] flex items-center justify-center py-5">
-            <div className="container max-w-[1266px] flex flex-col justify-between bg-[#eef8fd] gap-5 items-center lg:flex-row">
-                <div className="text-center text-[#0c193a] text-2xl font-bold font-['Inter']">
+            <div className="container max-w-[1266px] flex flex-col justify-between gap-5 items-center lg:flex-row">
+                <div className="text-center text-2xl font-bold font-['Inter']">
                     <OtherCompaniesIcon className="max-w-full" />
                 </div>
                 <div className="grid grid-cols-2 lg:flex lg:justify-center">

@@ -1,4 +1,3 @@
-import {Footer} from "@/components/layout/footer";
 import {Metadata} from "next";
 import {getSEOData} from "@/lib/queries/seo";
 import HomePage from "@/components/templates/HomePage";

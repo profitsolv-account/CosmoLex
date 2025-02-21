@@ -2,8 +2,9 @@ import Image from "next/image";
 import client from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from 'lodash';
+import heroImg from '@/assets/img/hero.png';
 
-export const Header = async () => {
+export const HomeHeader = async () => {
 
     const { data } = await client.query({
         query: gql`
@@ -20,11 +21,11 @@ export const Header = async () => {
       });
       
 
-      const title = get(data, 'page.homePageSections.headingCopy', '');
-      const description  = get(data, 'page.homePageSections.headerDescription', '');
-      const img = get(data, 'page.homePageSections.heroImage.node.sourceUrl', '');
-      const ctaTrial = get(data, 'page.homePageSections.ctaTextForFreeTrialInHeader', '');
-      const demo = get(data, 'page.homePageSections.ctaTextForDemoInHeader', '');
+      const title = get(data, 'page.homePageSections.headingCopy', 'Some title');
+      const description  = get(data, 'page.homePageSections.headerDescription', 'Some description');
+      const img = get(data, 'page.homePageSections.heroImage.node.sourceUrl', heroImg);
+      const ctaTrial = get(data, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Register');
+      const demo = get(data, 'page.homePageSections.ctaTextForDemoInHeader', 'Demo');
 
       
     return <div className="bg-primary px-5 pt-10 rounded-bl-[50px] mb-30">
