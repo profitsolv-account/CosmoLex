@@ -8,7 +8,6 @@ import {Navigation} from "../../common/navigation";
 import {Hamburger} from "../../common/hamburger";
 import {useEffect, useState} from "react";
 import { Button } from "@/components/ui/button";
-import MegaMenu from "@/components/common/mmenu";
 
 export const Header = () => {
 
@@ -32,9 +31,9 @@ export const Header = () => {
         <div className="container max-w-[1420px]">
             <div className="flex gap-0 justify-between w-full items-center">
                <div className="w-75 pt-2">
-                   <a href="/">
+                   <Link href="">
                        <Image src={logo} alt="logo"/>
-                   </a>
+                   </Link>
 
                </div>
                 <Navigation className="hidden lg:inline-flex gap-6"/>
