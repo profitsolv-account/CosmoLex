@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.13.1",
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.0.7",
     "@types/lodash": "^4.17.15",
     "classnames": "^2.5.1",

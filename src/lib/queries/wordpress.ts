@@ -16,16 +16,11 @@ export const getHomePageData = async () => {
             }
         `,
         fetchPolicy: "no-cache",
-       // context: { fetchOptions: { next: { revalidate: 10 } } }
     });
-
-    console.log(data.page.title);
-
     return get(data, 'page', {});
 }
 
 export const getPageData = async (pageSlug: string) => {
-
     const { data } = await client.query({
         query: gql`
             query GetHPage {
@@ -37,7 +32,6 @@ export const getPageData = async (pageSlug: string) => {
                 }
             }
         `,
-       // context: { fetchOptions: { next: { revalidate: 0 } } },
         fetchPolicy: "no-cache",
         variables: { pageSlug }
     });
