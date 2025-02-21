@@ -1,5 +1,6 @@
 import {FC} from "react";
 import classNames from "classnames";
+import MegaMenu from "@/components/common/mmenu";
 type Props = {
     className?: string;
 }
@@ -32,17 +33,16 @@ export const Navigation:FC<Props> = ({className}) => {
 
     return <ul className={classNames(className)}>
         <li>
-            <a className="text-right text-white text-base font-normal font-['Inter'] md:text-[15px]"
-               style={{
-                   fontFamily: 'Inter',
-                   fontSize: '16px',
-                   fontStyle: 'normal',
-                   fontWeight: '400',
-                   lineHeight: 'normal',
-                   WebkitFontSmoothing: 'antialiased',
-                   MozOsxFontSmoothing: 'grayscale'
-               }}
-               href="">Solutions</a>
+            <MegaMenu title={
+                <span className="text-right text-white text-base font-normal font-['Inter'] md:text-[15px]">Solutions</span>
+            }>
+                <ul>
+                    <li className="py-2 px-4 hover:bg-gray-100 rounded">Menu Item 1</li>
+                    <li className="py-2 px-4 hover:bg-gray-100 rounded">Menu Item 2</li>
+                    <li className="py-2 px-4 hover:bg-gray-100 rounded">Menu Item 3</li>
+                </ul>
+            </MegaMenu>
+
         </li>
         <li>
             <a className="text-right text-white text-base font-normal font-['Inter'] md:text-[15px]"
