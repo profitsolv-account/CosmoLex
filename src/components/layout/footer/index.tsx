@@ -1,4 +1,3 @@
-"use server"
 import slide1 from '@/assets/img/sliders/1.png';
 import slide2 from '@/assets/img/sliders/2.png';
 import slide3 from '@/assets/img/sliders/3.png';
