@@ -3,12 +3,9 @@ import PostTemplate from "@/components/templates/PostTemplate";
 import { getAllPostSlugs } from "@/lib/queries/blog";
 import { notFound } from "next/navigation";
 
-type Params = {
-    params: Promise<{slug: string}>;
-}
 
-export default async function SinglePost({params}: Params) {
-    const {slug} = await params;
+export default async function SinglePost({ params }: any) {
+    const { slug } = params;
     const pageData = await getPostData(slug);
 
     // Return 404 if no data is found
@@ -19,6 +16,7 @@ export default async function SinglePost({params}: Params) {
     return <PostTemplate pageData={pageData} />;
 }
 
+// Pre-render the first 50 posts
 export async function generateStaticParams() {
     const posts = await getAllPostSlugs();
     const batchSize = 50;
@@ -27,4 +25,8 @@ export async function generateStaticParams() {
     }));
 }
 
+// Enable ISR
 export const revalidate = 60;
+
+// Force static generation and ISR
+export const dynamic = "force-static";
