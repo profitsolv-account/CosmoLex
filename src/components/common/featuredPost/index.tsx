@@ -1,28 +1,18 @@
-import { getLatestPost } from "@/lib/queries/wordpress"
-import {useEffect, useState} from "react"
+import {FC} from "react"
 import {FeaturedPostType} from "@/types";
 
+type Props = {
+    post: FeaturedPostType;
+}
 
-export const FeaturedPost = () => {
-    const [post, setPost] = useState<FeaturedPostType>({
-        title: '',
-        slug: '',
-        altText: '',
-        featuredImage: ''
-    })
-    
-    useEffect(() => {
-      (async () => {
-        const postData = await getLatestPost()
-        setPost(postData);
-      })();
-    }, []);
+export const FeaturedPost:FC<Props> = ({post}) => {
 
-    if (!post.slug.length) return null;
+    console.log(post);
+    if (!post) return null;
 
     return <div className="w-full max-w-[328px] rounded-[10px] overflow-hidden bg-secondary">
         <div className="w-[328px] h-[206px] bg-[#d9d9d9] flex items-center justify-center">
-            media
+            <img src={post.featuredImage} alt={post.altText} />
         </div>
         <div className="px-5 py-7">
             <div className="relative">

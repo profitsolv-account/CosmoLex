@@ -18,25 +18,10 @@ export const getHomePageData = async () => {
         `,
         fetchPolicy: "no-cache",
     });
-    return get(data, 'page', {});
-}
-
-export const getPageData = async (pageSlug: string) => {
-    const { data } = await client.query({
-        query: gql`
-            query GetHPage {
-                page(id: "${pageSlug}", idType: URI) {
-                    id
-                    title
-                    date
-                    content
-                }
-            }
-        `,
-        fetchPolicy: "no-cache",
-        variables: { pageSlug }
-    });
-    return get(data, 'page', {});
+     return {
+        ...get(data, 'page', {}),
+        featuredPost: await getLatestPost()
+    };
 }
 
 export const getLatestPost = async (): Promise<FeaturedPostType> => {
@@ -59,7 +44,7 @@ export const getLatestPost = async (): Promise<FeaturedPostType> => {
         `,
         fetchPolicy: "no-cache"
     });
-    
+
     const postData = get(data, 'posts.nodes[0]', {featuredImage: {node: {sourceUrl: '', altText: ''}}});
     return {
         title: postData.title,
@@ -67,4 +52,26 @@ export const getLatestPost = async (): Promise<FeaturedPostType> => {
         featuredImage: postData.featuredImage.node.sourceUrl,
         altText: postData.featuredImage.node.altText
     }
+}
+
+
+export const getPageData = async (pageSlug: string) => {
+    const { data } = await client.query({
+        query: gql`
+            query GetHPage {
+                page(id: "${pageSlug}", idType: URI) {
+                    id
+                    title
+                    date
+                    content
+                }
+            }
+        `,
+        fetchPolicy: "no-cache",
+        variables: { pageSlug }
+    });
+    return {
+        ...get(data, 'page', {}),
+        featuredPost: await getLatestPost()
+    };
 }
