@@ -18,5 +18,6 @@ export async function generateStaticParams() {
 }
 
 export const revalidate = false;
-
-export const dynamic = "force-static";
+export const dynamic = "force-static";    // Keep it static
+export const dynamicParams = true;        // Allow dynamic params
+export const fetchCache = "default-cache"; // Enable default caching

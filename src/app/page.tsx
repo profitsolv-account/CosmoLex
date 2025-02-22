@@ -12,5 +12,7 @@ export default async function Home() {
     return <HomePage pageData={pageData} />
 }
 
-export const revalidate = false;
 export const dynamic = 'force-static';
+export const dynamicParams = true;        // Allow dynamic params
+export const fetchCache = "default-cache"; // Enable default caching
+

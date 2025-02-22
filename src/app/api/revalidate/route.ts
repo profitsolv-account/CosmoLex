@@ -1,10 +1,14 @@
 import { NextResponse } from 'next/server';
-import {revalidateTag} from 'next/cache';
+import {revalidatePath} from 'next/cache';
 
 
 export async function POST() {
     try {
-        revalidateTag('global-cache')
+        await revalidatePath('/');
+        revalidatePath('/');
+        revalidatePath('/blog');
+        revalidatePath('/blog/page/[page]');
+        revalidatePath('/blog/[slug]');
         return NextResponse.json({ revalidated: true, message: 'All cache cleared 2' });
 
     } catch (err) {
