@@ -24,9 +24,6 @@ export const getBlogData = async (page: number) => {
                 first: skipPosts,
             },
             fetchPolicy: "no-cache",
-            context: {
-                next: { tags: ['global-cache'] },
-            }
         });
 
         return data.posts.pageInfo.endCursor || null;
@@ -62,10 +59,7 @@ export const getBlogData = async (page: number) => {
             after: afterCursor,
             first: POSTS_PER_PAGE,
         },
-        fetchPolicy: "no-cache",
-        context: {
-            next: { tags: ['global-cache'] },
-        }
+        fetchPolicy: "no-cache"
     });
 
     const featuredPost = await getLatestPost();
@@ -103,9 +97,6 @@ export const getTotalPostsCount = async () => {
             }
         `,
         fetchPolicy: "no-cache",
-        context: {
-            next: { tags: ['global-cache'] },
-        }
     });
 
     const totalPosts = data.posts.nodes.length;

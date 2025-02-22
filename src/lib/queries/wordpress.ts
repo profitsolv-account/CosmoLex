@@ -16,9 +16,6 @@ export const getHomePageData = async () => {
             }
         `,
         fetchPolicy: "no-cache",
-       context: {
-           next: { tags: ['global-cache'] },
-       }
     });
 
      return {
@@ -45,8 +42,7 @@ export const getLatestPost = async (): Promise<FeaturedPostType> => {
                 }
             }
         `,
-        //fetchPolicy: "no-cache"
-        context: { fetchOptions: { next: {  tags: ['global-cache'] } } },
+        fetchPolicy: "no-cache",
     });
 
     const postData = get(data, 'posts.nodes[0]', {featuredImage: {node: {sourceUrl: '', altText: ''}}});
@@ -70,11 +66,8 @@ export const getPageData = async (pageSlug: string) => {
                 }
             }
         `,
-        //fetchPolicy: "no-cache",
+        fetchPolicy: "no-cache",
         variables: { pageSlug },
-        context: {
-            next: { tags: ['global-cache'] },
-        }
     });
     return {
         ...get(data, 'page', {}),
@@ -100,11 +93,8 @@ export const getPostData = async (pageSlug: string) => {
                 }
             }
         `,
-        //fetchPolicy: "no-cache",
+        fetchPolicy: "no-cache",
         variables: { pageSlug },
-        context: {
-            next: { tags: ['global-cache'] },
-        }
     });
 
     const post = get(data, 'post', {});

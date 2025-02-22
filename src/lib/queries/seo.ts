@@ -21,9 +21,6 @@ export const getSEOData = async (pageSlug: string) => {
         //context: { fetchOptions: { next: { revalidate: 10 } } },
         fetchPolicy: "no-cache",
         variables: { pageSlug },
-        context: {
-            next: { tags: ['global-cache'] },
-        }
     })
 
     const seo = data.page.seo;
@@ -55,12 +52,8 @@ export const getPostSEOData = async (pageSlug: string) => {
                 }
             }
         `,
-        //context: { fetchOptions: { next: { revalidate: 10 } } },
         fetchPolicy: "no-cache",
         variables: { pageSlug },
-        context: {
-            next: { tags: ['global-cache'] },
-        }
     })
 
     const seo = data.post.seo;

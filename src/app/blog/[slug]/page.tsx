@@ -13,9 +13,9 @@ export default async function SinglePost({ params }: any) {
     return <PostTemplate pageData={pageData} />;
 }
 
-export async function generateStaticParams() {
+/*export async function generateStaticParams() {
     return []
-}
+}*/
 
 export const revalidate = false;
 export const dynamic = "force-static";    // Keep it static

@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
 import PageTemplate from "@/components/templates/PageTemplate";
-import client from "@/lib/apollo-client";
-import { gql } from "@apollo/client";
+
 
 type Params = {
     params: Promise<{slug: string}>;
@@ -20,7 +19,7 @@ export default async function SinglePage({params}: Params) {
     return <PageTemplate pageData={pageData} />
 }
 
-
+/*
 export async function generateStaticParams() {
     const { data } = await client.query({
         query: gql`
@@ -43,7 +42,7 @@ export async function generateStaticParams() {
     return slugs.map((slug: string) => ({
         slug
     }));
-}
+}*/
 
 
 export const revalidate = false;
