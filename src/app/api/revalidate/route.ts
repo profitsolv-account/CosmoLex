@@ -11,6 +11,7 @@ export async function POST(request: any) {
 
     try {
         revalidatePath(`/blog/${slug}`);
+        revalidatePath(`/blog`);
         revalidatePath(`/blog/page/[page]`);
         revalidatePath(`/`);
         return NextResponse.json({ revalidated: true });
