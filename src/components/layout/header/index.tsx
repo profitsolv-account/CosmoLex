@@ -33,7 +33,7 @@ export const Header = () => {
            <div className="container max-w-[1420px] p-3 pt-7 pb-4">
                <div className="flex gap-0 justify-between w-full items-center">
                    <div className="w-75 pt-2">
-                       <Link href="">
+                       <Link href="/">
                            <Image src={logo} alt="logo"/>
                        </Link>
 
