@@ -2,8 +2,9 @@ import React from 'react'
 import Layout from "@/components/layout/layout";
 import {ShortPostType} from "@/types";
 import {ShortPost} from "@/components/common/shortPost";
+import Pagination from "@/components/pagination/inde";
 
-export default function BlogTemplate({ pageData }: { pageData: any }) {
+export default function BlogTemplate({ pageData, page }: { pageData: any, page: number }) {
     return (
         <Layout pageData={pageData}>
             <div>
@@ -15,6 +16,10 @@ export default function BlogTemplate({ pageData }: { pageData: any }) {
                     {pageData.posts.map((post: ShortPostType) => {
                         return <ShortPost key={post.id} post={post} />
                     })}
+                </section>
+
+                <section className="container mx-auto px-6 py-16 text-center">
+                    <Pagination pageCount={100} currentPage={page}/>
                 </section>
             </div>
         </Layout>

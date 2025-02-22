@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function BlogSinglePage({ params }: Params) {
     const {page} = await params;
     const pageData = await getBlogData(+page);
-    return <BlogTemplate pageData={pageData} />
+    return <BlogTemplate pageData={pageData} page={+page} />
 }
 
 
