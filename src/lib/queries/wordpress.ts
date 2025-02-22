@@ -42,7 +42,8 @@ export const getLatestPost = async (): Promise<FeaturedPostType> => {
                 }
             }
         `,
-        fetchPolicy: "no-cache"
+        //fetchPolicy: "no-cache"
+        context: { fetchOptions: { next: { revalidate: 10 } } },
     });
 
     const postData = get(data, 'posts.nodes[0]', {featuredImage: {node: {sourceUrl: '', altText: ''}}});
@@ -57,7 +58,7 @@ export const getLatestPost = async (): Promise<FeaturedPostType> => {
 export const getPageData = async (pageSlug: string) => {
     const { data } = await client.query({
         query: gql`
-            query GetHPage {
+            query GetPage {
                 page(id: "${pageSlug}", idType: URI) {
                     id
                     title
@@ -66,7 +67,7 @@ export const getPageData = async (pageSlug: string) => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        //fetchPolicy: "no-cache",
         variables: { pageSlug }
     });
     return {
@@ -74,3 +75,49 @@ export const getPageData = async (pageSlug: string) => {
         featuredPost: await getLatestPost()
     };
 }
+
+export const _getPostData = async (pageSlug: string) => {
+    const { data } = await client.query({
+        query: gql`
+            query GetPage {
+                post(id: "${pageSlug}", idType: URI) {
+                    id
+                    title
+                    date
+                    content
+                }
+            }
+        `,
+        //fetchPolicy: "no-cache",
+        variables: { pageSlug }
+    });
+    return {
+        ...get(data, 'post', {}),
+        featuredPost: await getLatestPost()
+    };
+}
+
+export async function getPostData(pageSlug: string) {
+    const response = await fetch(`https://cosmonew1.wpenginepowered.com/wp-json/wp/v2/posts?slug=${pageSlug}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch post data for slug: ${pageSlug}`);
+    }
+
+    const data = await response.json();
+    const post = data[0];
+
+    return {
+        id: post.id,
+        title: post.title.rendered,
+        date: post.date,
+        content: post.content.rendered,
+        featuredPost: await getLatestPost()
+    };
+}
+

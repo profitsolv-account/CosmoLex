@@ -1,0 +1,22 @@
+import { Metadata } from "next";
+import { getSEOData } from "@/lib/queries/seo";
+import BlogTemplate from "@/components/templates/BlogTemplate";
+import {getBlogData, getTotalPages} from "@/lib/queries/blog";
+
+type Params = {
+    params: Promise<{slug: string}>;
+}
+
+export async function generateMetadata({params}: Params): Promise<Metadata> {
+    const {slug} = await params;
+    return await getSEOData(slug || 'home-page');
+}
+
+export default async function BlogPage() {
+    const pageData = await getBlogData(1);
+    const pages = await getTotalPages();
+    console.log(pages);
+    return <BlogTemplate pageData={pageData} />
+}
+
+

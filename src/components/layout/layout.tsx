@@ -9,7 +9,7 @@ const Layout = ({ children, pageData }: { children: React.ReactNode, pageData: a
 
     useEffect(() => {
         setAppData(pageData);
-    }, [pageData]);
+    }, [pageData, setAppData]);
 
     return (
         <>

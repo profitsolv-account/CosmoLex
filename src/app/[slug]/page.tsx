@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
-import Page from "@/components/templates/Page";
+import PageTemplate from "@/components/templates/PageTemplate";
 import client from "@/lib/apollo-client";
 import { gql } from "@apollo/client";
 
@@ -17,7 +17,7 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 export default async function SinglePage({params}: Params) {
     const {slug} = await params;
     const pageData = await getPageData(slug);
-    return <Page pageData={pageData} />
+    return <PageTemplate pageData={pageData} />
 }
 
 

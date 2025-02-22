@@ -34,3 +34,37 @@ export const getSEOData = async (pageSlug: string) => {
         },
     }
 }
+
+export const getPostSEOData = async (pageSlug: string) => {
+
+    const { data } = await client.query({
+        query: gql`
+            query GetHomePageSEO {
+                post(id: "${pageSlug}" , idType: URI) {
+                    seo {
+                        title
+                        metaDesc
+                        metaKeywords
+                        opengraphImage {
+                            sourceUrl
+                        }
+                    }
+                }
+            }
+        `,
+        //context: { fetchOptions: { next: { revalidate: 10 } } },
+        fetchPolicy: "no-cache",
+        variables: { pageSlug }
+    })
+
+    const seo = data.post.seo
+
+    return {
+        title: seo?.title || 'Home - Default Title',
+        description: seo?.metaDesc || 'Home - Default Description',
+        keywords: seo?.metaKeywords || 'Home, Keywords',
+        openGraph: {
+            images: seo?.opengraphImage?.sourceUrl ? [{ url: seo.opengraphImage.sourceUrl }] : [],
+        },
+    }
+}

@@ -1,4 +1,5 @@
 import { useAppContext } from "@/context";
+import Image from 'next/image';
 
 export const FeaturedPost = () => {
 
@@ -7,7 +8,7 @@ export const FeaturedPost = () => {
 
     return <div className="w-full max-w-[328px] rounded-[10px] overflow-hidden bg-secondary">
         <div className="w-[328px] h-[206px] bg-[#d9d9d9] flex items-center justify-center">
-            <img src={post.featuredImage} alt={post.altText} />
+            <Image src={post.featuredImage} alt={post.altText} />
         </div>
         <div className="px-5 py-7">
             <div className="relative">
