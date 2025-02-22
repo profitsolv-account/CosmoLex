@@ -4,7 +4,6 @@ import {gql} from "@apollo/client";
 import {get} from "lodash";
 
 export const getHomePageData = async () => {
-
     const { data } = await client.query({
         query: gql`
             query GetHomePage {
@@ -18,8 +17,10 @@ export const getHomePageData = async () => {
         `,
         fetchPolicy: "no-cache",
     });
+
      return {
         ...get(data, 'page', {}),
+         featuredPost: await getLatestPost()
     };
 }
 
@@ -70,5 +71,6 @@ export const getPageData = async (pageSlug: string) => {
     });
     return {
         ...get(data, 'page', {}),
+        featuredPost: await getLatestPost()
     };
 }

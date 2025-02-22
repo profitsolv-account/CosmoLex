@@ -4,7 +4,7 @@ import Layout from "@/components/layout/layout";
 
 export default function Page({ pageData }: { pageData: any }) {
     return (
-        <Layout>
+        <Layout pageData={pageData}>
             <div>
 
                 <section className="container mx-auto px-6 py-16 text-center">

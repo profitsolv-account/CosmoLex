@@ -1,12 +1,10 @@
 import Image from "next/image";
-import client from "@/lib/apollo-client";
-import {gql} from "@apollo/client";
 import {get} from 'lodash';
 import heroImg from '@/assets/img/hero.png';
 
-export const HomeHeader = async () => {
+export const HomeHeader = () => {
 
-    const { data } = await client.query({
+   /* const { data } = await client.query({
         query: gql`
           query GetHomePage {
             page(id: "home-page", idType: URI) {
@@ -18,8 +16,8 @@ export const HomeHeader = async () => {
           }
         `,
         context: { fetchOptions: { next: { revalidate: 10 } } }
-      });
-      
+      });*/
+      const data = {}
 
       const title = get(data, 'page.homePageSections.headingCopy', 'Some title');
       const description  = get(data, 'page.homePageSections.headerDescription', 'Some description');

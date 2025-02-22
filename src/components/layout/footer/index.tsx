@@ -7,7 +7,7 @@ import OtherCompaniesIcon from '@/assets/img/other-companies.svg';
 import Image from 'next/image';
 import { Navigations } from './navigations';
 
-export const Footer = async () => {
+export const Footer = () => {
     return (<div>
         <Navigations />
          <div className="w-full relative bg-[#eef8fd] flex items-center justify-center py-5">
