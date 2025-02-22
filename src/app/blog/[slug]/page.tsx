@@ -21,7 +21,7 @@ export default async function SinglePost({params}: Params) {
 
 export async function generateStaticParams() {
     const posts = await getAllPostSlugs();
-    const batchSize = 100;
+    const batchSize = 50;
     return posts.slice(0, batchSize).map((post) => ({
         slug: post.slug,
     }));
