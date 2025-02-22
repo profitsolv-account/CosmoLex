@@ -1,14 +1,19 @@
 import { NextResponse } from 'next/server';
-import {revalidatePath} from 'next/cache';
+import { revalidatePath } from 'next/cache';
 
+export async function POST(request: any) {
+    const body = await request.json();
+    const { slug } = body;
 
-export async function POST() {
+    if (!slug) {
+        return NextResponse.json({ message: 'No slug provided' }, { status: 400 });
+    }
+
     try {
-        revalidatePath('/');
-        revalidatePath('/blog');
-        revalidatePath('/blog/page/[page]');
-        revalidatePath('/blog/[slug]');
-        return NextResponse.json({ revalidated: true, message: 'All cache cleared' });
+        revalidatePath(`/blog/${slug}`);
+        revalidatePath(`/blog/page/[page]`);
+        revalidatePath(`/`);
+        return NextResponse.json({ revalidated: true });
     } catch (err) {
         console.error(err);
         return NextResponse.json({ message: 'Error revalidating' }, { status: 500 });

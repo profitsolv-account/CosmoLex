@@ -163,6 +163,7 @@ export const getAllPosts = async () => {
 export interface PostSlug {
     slug: string;
 }
+
 let cachedSlugs: any = [];
 export const getAllPostSlugs = async (): Promise<PostSlug[]> => {
 
