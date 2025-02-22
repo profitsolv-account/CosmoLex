@@ -1,6 +1,5 @@
 import { getPostData } from "@/lib/queries/wordpress";
 import PostTemplate from "@/components/templates/PostTemplate";
-import { getAllPostSlugs } from "@/lib/queries/blog";
 import { notFound } from "next/navigation";
 
 export default async function SinglePost({ params }: any) {
@@ -15,12 +14,9 @@ export default async function SinglePost({ params }: any) {
 }
 
 export async function generateStaticParams() {
-    const posts = await getAllPostSlugs();
-    posts.length = 10;
-    return posts
+    return []
 }
 
-// Enable ISR
 export const revalidate = false;
 
 export const dynamic = "force-static";
