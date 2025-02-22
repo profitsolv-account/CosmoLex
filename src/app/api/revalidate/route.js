@@ -1,19 +1,6 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
-export async function GET(request) {
-    const { searchParams } = new URL(request.url);
-    const slug = searchParams.get('slug');
-    if (!slug) {
-        return NextResponse.json({ message: 'No slug provided' }, { status: 400 });
-    }
-    try {
-        revalidatePath(`/blog/${slug}`);
-        return NextResponse.json({ revalidated: true });
-    } catch (err) {
-        return NextResponse.json({ message: 'Error revalidating' }, { status: 500 });
-    }
-}
 
 export async function POST(request) {
     const body = await request.json();
