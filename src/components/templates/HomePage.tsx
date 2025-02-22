@@ -5,7 +5,7 @@ import {HomeHeader} from "@/components/common/homeHeader";
 
 export default function HomePage({ pageData }: { pageData: any }) {
   return (
-      <Layout pageData={pageData}>
+      <Layout>
           <HomeHeader />
           <div className="container">
               <div>

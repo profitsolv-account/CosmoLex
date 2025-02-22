@@ -20,7 +20,6 @@ export const getHomePageData = async () => {
     });
      return {
         ...get(data, 'page', {}),
-        featuredPost: await getLatestPost()
     };
 }
 
@@ -54,7 +53,6 @@ export const getLatestPost = async (): Promise<FeaturedPostType> => {
     }
 }
 
-
 export const getPageData = async (pageSlug: string) => {
     const { data } = await client.query({
         query: gql`
@@ -72,6 +70,5 @@ export const getPageData = async (pageSlug: string) => {
     });
     return {
         ...get(data, 'page', {}),
-        featuredPost: await getLatestPost()
     };
 }

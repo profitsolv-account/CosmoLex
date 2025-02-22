@@ -4,10 +4,9 @@ import MegaMenu from "@/components/ui/mmenu";
 import {FeaturedPost} from '@/components/common/featuredPost';
 type Props = {
     className?: string;
-    pageData: any
 }
 
-export const Navigation:FC<Props> = ({className, pageData}) => {
+export const Navigation:FC<Props> = ({className}) => {
 
     /* const { data } = await client.query({
          query: gql`
@@ -158,7 +157,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                                 </div>
                             </div>
 
-                            <FeaturedPost post={pageData.featuredPost} />
+                            <FeaturedPost />
 
                         </div>
                     </div>

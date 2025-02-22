@@ -1,13 +1,8 @@
-import {FC} from "react"
-import {FeaturedPostType} from "@/types";
+import { useAppContext } from "@/context";
 
-type Props = {
-    post: FeaturedPostType;
-}
+export const FeaturedPost = () => {
 
-export const FeaturedPost:FC<Props> = ({post}) => {
-
-    console.log(post);
+    const {featuredPost:post} = useAppContext() as any;
     if (!post) return null;
 
     return <div className="w-full max-w-[328px] rounded-[10px] overflow-hidden bg-secondary">

@@ -2,10 +2,10 @@ import React from 'react'
 import {Footer} from "@/components/layout/footer";
 import {Header} from "@/components/layout/header";
 
-const Layout = ({ children, pageData }: { children: React.ReactNode, pageData: any }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
-            <Header pageData={pageData} />
+            <Header />
             <main className="">
                 {children}
             </main>
