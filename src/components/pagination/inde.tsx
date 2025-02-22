@@ -58,12 +58,11 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage }) => {
             );
         });
     };
-
     return (
         <div className="flex items-center justify-center space-x-2 p-4">
             <button
                 onClick={() => handlePageChange(currentPage - 1)}
-                className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200"
+                className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 cursor-pointer"
                 disabled={currentPage === 1}
             >
                 ←
@@ -71,7 +70,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage }) => {
             {renderPageNumbers()}
             <button
                 onClick={() => handlePageChange(currentPage + 1)}
-                className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200"
+                className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 cursor-pointer"
                 disabled={currentPage === pageCount}
             >
                 →
