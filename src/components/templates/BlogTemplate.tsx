@@ -1,5 +1,7 @@
 import React from 'react'
 import Layout from "@/components/layout/layout";
+import {ShortPostType} from "@/types";
+import {ShortPost} from "@/components/common/shortPost";
 
 export default function BlogTemplate({ pageData }: { pageData: any }) {
     return (
@@ -10,7 +12,9 @@ export default function BlogTemplate({ pageData }: { pageData: any }) {
                     <p className="mt-4 text-lg text-gray-700">{pageData?.excerpt}</p>
                 </section>
                 <section className="container py-20">
-                    posts will be here
+                    {pageData.posts.map((post: ShortPostType) => {
+                        return <ShortPost key={post.id} post={post} />
+                    })}
                 </section>
             </div>
         </Layout>

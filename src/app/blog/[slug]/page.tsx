@@ -17,7 +17,6 @@ export default async function SinglePost({ params }: any) {
 export async function generateStaticParams() {
     const posts = await getAllPostSlugs();
     posts.length = 10;
-
     return posts
 }
 

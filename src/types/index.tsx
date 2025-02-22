@@ -4,3 +4,13 @@ export type FeaturedPostType = {
     featuredImage: string;
     altText: string;
 }
+
+export type ShortPostType = {
+    altText: string;
+    date: string;
+    excerpt: string;
+    featuredImage: string;
+    id: string;
+    slug: string;
+    title: string;
+}

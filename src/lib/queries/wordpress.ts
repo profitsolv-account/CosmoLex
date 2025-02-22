@@ -76,7 +76,7 @@ export const getPageData = async (pageSlug: string) => {
     };
 }
 
-export const _getPostData = async (pageSlug: string) => {
+export const getPostData = async (pageSlug: string) => {
     const { data } = await client.query({
         query: gql`
             query GetPage {
@@ -85,48 +85,25 @@ export const _getPostData = async (pageSlug: string) => {
                     title
                     date
                     content
+                    featuredImage {
+                        node {
+                            sourceUrl
+                            altText
+                        }
+                    }
                 }
             }
         `,
         //fetchPolicy: "no-cache",
         variables: { pageSlug }
     });
+
+    const post = get(data, 'post', {});
     return {
-        ...get(data, 'post', {}),
-        featuredPost: await getLatestPost()
+        ...post,
+        featuredPost: await getLatestPost(),
+        featuredImage: post.featuredImage?.node?.sourceUrl || "",
+        altText: post.featuredImage?.node?.altText || "",
     };
 }
-
-export async function getPostData(pageSlug: string) {
-    const response = await fetch(`https://cosmonew1.wpenginepowered.com/wp-json/wp/v2/posts?slug=${pageSlug}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        cache: 'no-store' // Ensure fresh data on each request
-    });
-
-    // Return null if the request fails
-    if (!response.ok) {
-        console.error(`Failed to fetch post data for slug: ${pageSlug}`);
-        return null;
-    }
-
-    const data = await response.json();
-    // Return null if no post is found
-    if (!data || data.length === 0) {
-        return null;
-    }
-
-    const post = data[0];
-
-    return {
-        id: post.id,
-        title: post.title.rendered,
-        date: post.date,
-        content: post.content.rendered,
-        featuredPost: await getLatestPost()
-    };
-}
-
 
