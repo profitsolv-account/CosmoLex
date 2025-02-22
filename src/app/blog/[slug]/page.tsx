@@ -15,9 +15,9 @@ export default async function SinglePost({ params }: any) {
 }
 
 export async function generateStaticParams() {
-    const postsSlugs = await getAllPostSlugs();
-    postsSlugs.length = 10;
-    return postsSlugs;
+   /* const postsSlugs = await getAllPostSlugs();
+    postsSlugs.length = 10;*/
+    return [];
 }
 
 export const revalidate = false;
