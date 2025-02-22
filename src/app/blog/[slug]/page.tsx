@@ -1,8 +1,7 @@
-
-import {getPostData} from "@/lib/queries/wordpress";
+import { getPostData } from "@/lib/queries/wordpress";
 import PostTemplate from "@/components/templates/PostTemplate";
-
-import {getAllPostSlugs} from "@/lib/queries/blog";
+import { getAllPostSlugs } from "@/lib/queries/blog";
+import { notFound } from "next/navigation";
 
 type Params = {
     params: Promise<{slug: string}>;
@@ -11,13 +10,14 @@ type Params = {
 export default async function SinglePost({params}: Params) {
     const {slug} = await params;
     const pageData = await getPostData(slug);
-    return <PostTemplate pageData={pageData} />
-}
 
-/*export async function generateStaticParams() {
-    const posts = await getAllPostSlugs();
-    return posts;
-}*/
+    // Return 404 if no data is found
+    if (!pageData) {
+        notFound();
+    }
+
+    return <PostTemplate pageData={pageData} />;
+}
 
 export async function generateStaticParams() {
     const posts = await getAllPostSlugs();
