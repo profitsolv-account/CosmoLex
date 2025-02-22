@@ -19,7 +19,6 @@ export default async function BlogSinglePage({ params }: Params) {
 
 
 export async function generateStaticParams() {
-    //Update hardcoded count of posts
     const TOTAL_PAGES = 2;
     return new Array(TOTAL_PAGES).fill('').map((_, index) => ({page: String(index)}));
 }
