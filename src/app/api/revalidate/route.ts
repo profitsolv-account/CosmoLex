@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import { revalidateTag } from 'next/cache';
-import {getUniversalCacheTag} from "@/lib/cache";
+import {revalidateTag} from 'next/cache';
+
 
 export async function POST(request: any) {
     const body = await request.json();
@@ -11,7 +11,7 @@ export async function POST(request: any) {
     }
 
     try {
-        revalidateTag(getUniversalCacheTag());
+        revalidateTag('global-cache')
         return NextResponse.json({ revalidated: true, message: 'All cache cleared' });
 
     } catch (err) {

@@ -4,7 +4,7 @@ import { getAllPostSlugs } from "@/lib/queries/blog";
 import { notFound } from "next/navigation";
 
 export default async function SinglePost({ params }: any) {
-    const { slug } = params;
+    const { slug } = await params;
     const pageData = await getPostData(slug);
 
     if (!pageData) {
