@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-
-//const SECRET_TOKEN = process.env.REVALIDATE_SECRET;
+import { revalidatePath } from 'next/cache';
 
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
@@ -11,7 +10,7 @@ export async function GET(request) {
     }
 
     try {
-        await res.revalidate(`/blog/${slug}`);
+        revalidatePath(`/blog/${slug}`);
         return NextResponse.json({ revalidated: true });
     } catch (err) {
         console.error(err);
