@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
+import { revalidateTag } from 'next/cache';
+import {getUniversalCacheTag} from "@/lib/cache";
 
-export async function POST(request) {
+export async function POST(request: any) {
     const body = await request.json();
     const { slug } = body;
 
@@ -10,8 +11,9 @@ export async function POST(request) {
     }
 
     try {
-        revalidatePath(`/blog/${slug}`);
-        return NextResponse.json({ revalidated: true });
+        revalidateTag(getUniversalCacheTag());
+        return NextResponse.json({ revalidated: true, message: 'All cache cleared' });
+
     } catch (err) {
         console.error(err);
         return NextResponse.json({ message: 'Error revalidating' }, { status: 500 });

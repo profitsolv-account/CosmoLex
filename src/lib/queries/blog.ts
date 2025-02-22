@@ -196,7 +196,7 @@ export const getAllPostSlugs = async (): Promise<PostSlug[]> => {
         }
     }
 
-    cachedSlugs = allSlugs
+    cachedSlugs = allSlugs;
     return allSlugs;
 };
 

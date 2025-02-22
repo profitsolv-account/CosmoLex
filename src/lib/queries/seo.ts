@@ -23,7 +23,7 @@ export const getSEOData = async (pageSlug: string) => {
         variables: { pageSlug }
     })
 
-    const seo = data.page.seo
+    const seo = data.page.seo;
 
     return {
         title: seo?.title || 'Home - Default Title',
@@ -57,7 +57,7 @@ export const getPostSEOData = async (pageSlug: string) => {
         variables: { pageSlug }
     })
 
-    const seo = data.post.seo
+    const seo = data.post.seo;
 
     return {
         title: seo?.title || 'Home - Default Title',

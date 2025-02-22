@@ -11,3 +11,6 @@ export default async function Home() {
     const pageData = await getHomePageData();
     return <HomePage pageData={pageData} />
 }
+
+export const revalidate = false;
+export const dynamic = 'force-static';
