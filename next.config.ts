@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
     },
 
     // rest settings
-    output: 'export',
+    output: 'standalone',
     trailingSlash: true, // Required for static export with dynamic routes
     reactStrictMode: true,
     images: {
