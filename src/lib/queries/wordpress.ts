@@ -103,13 +103,21 @@ export async function getPostData(pageSlug: string) {
         headers: {
             'Content-Type': 'application/json',
         },
+        cache: 'no-store' // Ensure fresh data on each request
     });
 
+    // Return null if the request fails
     if (!response.ok) {
-        throw new Error(`Failed to fetch post data for slug: ${pageSlug}`);
+        console.error(`Failed to fetch post data for slug: ${pageSlug}`);
+        return null;
     }
 
     const data = await response.json();
+    // Return null if no post is found
+    if (!data || data.length === 0) {
+        return null;
+    }
+
     const post = data[0];
 
     return {
@@ -120,4 +128,5 @@ export async function getPostData(pageSlug: string) {
         featuredPost: await getLatestPost()
     };
 }
+
 
