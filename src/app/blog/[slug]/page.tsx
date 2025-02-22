@@ -1,7 +1,6 @@
 import { getPostData } from "@/lib/queries/wordpress";
 import PostTemplate from "@/components/templates/PostTemplate";
 import { notFound } from "next/navigation";
-import {getAllPostSlugs} from "@/lib/queries/blog";
 
 export default async function SinglePost({ params }: any) {
     const { slug } = await params;
