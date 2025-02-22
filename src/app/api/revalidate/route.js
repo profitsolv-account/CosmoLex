@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request) {
     const { searchParams } = new URL(request.url);
-    const token = searchParams.get('secret');
     const slug = searchParams.get('slug');
 
     if (!slug) {
