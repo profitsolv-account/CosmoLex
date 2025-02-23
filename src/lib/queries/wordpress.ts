@@ -93,7 +93,7 @@ export const getPostData = async (pageSlug: string) => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
         variables: { pageSlug },
     });
 

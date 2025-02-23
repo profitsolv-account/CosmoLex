@@ -1,6 +1,8 @@
 import {gql} from "@apollo/client";
 import client from "@/lib/apollo-client";
 import {getLatestPost} from "@/lib/queries/wordpress";
+import fs from 'fs';
+import path from 'path';
 
 const POSTS_PER_PAGE = 10;
 
@@ -116,7 +118,7 @@ export const getTotalPages = async () => {
 };
 
 
-export const getAllPosts = async () => {
+export const getAllPostSlugs = async () => {
     const fetchAllPosts = async (after: string | null = null, accumulatedPosts: any[] = []) => {
         const { data } = await client.query({
             query: gql`
@@ -124,6 +126,16 @@ export const getAllPosts = async () => {
                     posts(first: $first, after: $after) {
                         nodes {
                             slug
+                            id
+                            title
+                            date
+                            content
+                            featuredImage {
+                                node {
+                                    sourceUrl
+                                    altText
+                                }
+                            }
                         }
                         pageInfo {
                             hasNextPage
@@ -136,10 +148,11 @@ export const getAllPosts = async () => {
                 after,
                 first: 100, // Fetch 100 posts at a time
             },
-            fetchPolicy: "no-cache",
+            fetchPolicy: 'cache-first',
         });
 
         const newPosts = data.posts.nodes.map((post: any) => ({
+            ...post,
             slug: post.slug,
         }));
 
@@ -156,6 +169,14 @@ export const getAllPosts = async () => {
     };
 
     const allPosts = await fetchAllPosts();
+
+    const filePath = path.join(process.cwd(), 'cache', 'posts.json');
+    // Створюємо директорію, якщо її не існує
+    fs.mkdirSync(path.dirname(filePath), { recursive: true });
+
+    // Зберігаємо дані у JSON-файл
+    fs.writeFileSync(filePath, JSON.stringify(allPosts));
+
     return allPosts;
 };
 
@@ -165,7 +186,7 @@ export interface PostSlug {
 }
 
 let cachedSlugs: any = [];
-export const getAllPostSlugs = async (): Promise<PostSlug[]> => {
+export const __getAllPostSlugs = async (): Promise<PostSlug[]> => {
 
     if (cachedSlugs.length > 0) return cachedSlugs;
     let allSlugs: PostSlug[] = [];
