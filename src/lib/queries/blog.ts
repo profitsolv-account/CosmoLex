@@ -119,6 +119,9 @@ export const getTotalPages = async () => {
 
 
 export const getAllPostSlugs = async () => {
+
+    const featuredPost = await getLatestPost();
+
     const fetchAllPosts = async (after: string | null = null, accumulatedPosts: any[] = []) => {
         const { data } = await client.query({
             query: gql`
@@ -156,6 +159,7 @@ export const getAllPostSlugs = async () => {
             slug: post.slug,
             featuredImage: post.featuredImage?.node?.sourceUrl || "",
             altText: post.featuredImage?.node?.altText || "",
+            featuredPost
         }));
 
         // Combine new posts with previously accumulated posts
