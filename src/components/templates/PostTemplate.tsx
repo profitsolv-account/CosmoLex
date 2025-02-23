@@ -12,13 +12,13 @@ export default function PostTemplate({ pageData }: { pageData: any }) {
                 </section>
 
                 <section className="container mx-auto px-6 py-16 text-center">
-                    {pageData.featuredImage && !!pageData.featuredImage.length && <>
+                    {pageData.featuredImage && <>
                         <div
                             className="inline-block p-1 border border-primary"
                         >
                             <img
-                                src={pageData.featuredImage || ''}
-                                alt={pageData.altText || ''}
+                                src={pageData.featuredImage}
+                                alt={pageData.altText}
                             />
                         </div>
                     </>}
