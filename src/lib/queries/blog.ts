@@ -5,84 +5,38 @@ import fs from 'fs';
 import path from 'path';
 
 const POSTS_PER_PAGE = 10;
+const BASE_URL = 'https://cosmonew1.wpenginepowered.com/wp-json/wp/v2';
 
 export const getBlogData = async (page: number) => {
-    const getCursor = async (page: number) => {
-        if (page <= 1) return null;
+    try {
+        const res = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`);
+        const data = await res.json();
 
-        const skipPosts = (page - 1) * POSTS_PER_PAGE;
+        const posts = data.map((post: any) => ({
+            id: post.id,
+            title: post.title.rendered,
+            slug: post.slug,
+            date: post.date,
+            excerpt: post.excerpt.rendered,
+            featuredImage: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "",
+            altText: post._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "",
+        }));
 
-        const { data } = await client.query({
-            query: gql`
-                query GetPreviousCursor($first: Int) {
-                    posts(first: $first) {
-                        pageInfo {
-                            endCursor
-                        }
-                    }
-                }
-            `,
-            variables: {
-                first: skipPosts,
-            },
-            fetchPolicy: "no-cache",
-        });
+        const featuredPost = await getLatestPost();
 
-        return data.posts.pageInfo.endCursor || null;
-    };
-
-    const afterCursor = await getCursor(page);
-
-    const { data } = await client.query({
-        query: gql`
-            query GetBlogPosts($after: String, $first: Int) {
-                posts(first: $first, after: $after) {
-                    nodes {
-                        id
-                        title
-                        slug
-                        date
-                        excerpt
-                        featuredImage {
-                            node {
-                                sourceUrl
-                                altText
-                            }
-                        }
-                    }
-                    pageInfo {
-                        hasNextPage
-                        endCursor
-                    }
-                }
-            }
-        `,
-        variables: {
-            after: afterCursor,
-            first: POSTS_PER_PAGE,
-        },
-        fetchPolicy: "no-cache"
-    });
-
-    const featuredPost = await getLatestPost();
-
-    const posts = data.posts.nodes.map((post: any) => ({
-        id: post.id,
-        title: post.title,
-        slug: post.slug,
-        date: post.date,
-        excerpt: post.excerpt,
-        featuredImage: post.featuredImage?.node?.sourceUrl || "",
-        altText: post.featuredImage?.node?.altText || "",
-    }));
-
-    return {
-        posts,
-        featuredPost,
-        hasNextPage: data.posts.pageInfo.hasNextPage,
-    };
+        return {
+            posts,
+            featuredPost,
+        };
+    } catch (error) {
+        console.error("Failed to fetch blog data:", error);
+        return {
+            posts: [],
+            featuredPost: null,
+            hasNextPage: false,
+        };
+    }
 };
-
 
 /**
  * Get the total number of posts

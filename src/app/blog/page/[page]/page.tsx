@@ -19,7 +19,7 @@ export default async function BlogSinglePage({ params }: Params) {
 
 export async function generateStaticParams() {
     const TOTAL_PAGES = 100;
-    return new Array(TOTAL_PAGES).fill('').map((_, index) => ({page: String(index)}));
+    return new Array(TOTAL_PAGES).fill('').map((_, index) => ({page: String(index+1)}));
 }
 
 export const revalidate = false;
