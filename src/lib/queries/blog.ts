@@ -154,6 +154,8 @@ export const getAllPostSlugs = async () => {
         const newPosts = data.posts.nodes.map((post: any) => ({
             ...post,
             slug: post.slug,
+            featuredImage: post.featuredImage?.node?.sourceUrl || "",
+            altText: post.featuredImage?.node?.altText || "",
         }));
 
         // Combine new posts with previously accumulated posts
