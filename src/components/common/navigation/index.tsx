@@ -2,14 +2,15 @@ import {FC} from "react";
 import classNames from "classnames";
 import MegaMenu from "@/components/ui/mmenu";
 import {PageMegaMenu} from "@/components/common/pageMegaMenu";
-import {useAppContext} from "@/context";
 
 type Props = {
     className?: string;
+    pageData: any;
 }
 
-export const Navigation:FC<Props> = ({className}) => {
-    const {appData: {menus}} = useAppContext();
+export const Navigation:FC<Props> = ({className, pageData}) => {
+    const {menus} = pageData;
+
     return <div>
         <ul className={classNames(className)}>
             <li>
@@ -17,6 +18,7 @@ export const Navigation:FC<Props> = ({className}) => {
                     trigger={ <span className="text-right text-white text-base font-normal font-['Inter'] md:text-[15px]">Solutions</span>}
                     content={menus['header-menu-solutions']}
                     footer={menus['header-menu-solutions-bottom']}
+                    pageData={pageData}
                 />
 
             </li>
@@ -29,6 +31,7 @@ export const Navigation:FC<Props> = ({className}) => {
                     trigger={<span className="text-right text-white text-base font-normal font-['Inter'] md:text-[15px]">Resources</span>}
                     content={menus['header-menu-resources']}
                     footer={menus['header-menu-resources-bottom']}
+                    pageData={pageData}
                 />
 
             </li>

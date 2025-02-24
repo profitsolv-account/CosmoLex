@@ -71,4 +71,14 @@ body {
     .no-scroll {
         overflow: hidden;
     }
+
+    .invisible {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .visible {
+        visibility: visible;
+        opacity: 1;
+    }
 }

@@ -73,7 +73,8 @@ export const getPageData = async (pageSlug: string) => {
     });
     return {
         ...get(data, 'page', {}),
-        featuredPost: await getLatestPost()
+        featuredPost: await getLatestPost(),
+        menus: await getAllMenus()
     };
 }
 

@@ -43,6 +43,7 @@ export const getBlogData = async (page: number) => {
 export const getAllPostSlugs = async () => {
 
     const featuredPost = await getLatestPost();
+    const menus =  await getAllMenus();
 
     const fetchAllPosts = async (after: string | null = null, accumulatedPosts: any[] = []) => {
         const { data } = await client.query({
@@ -81,7 +82,8 @@ export const getAllPostSlugs = async () => {
             slug: post.slug,
             featuredImage: post.featuredImage?.node?.sourceUrl || "",
             altText: post.featuredImage?.node?.altText || "",
-            featuredPost
+            featuredPost,
+            menus
         }));
 
         const allPosts = [...accumulatedPosts, ...newPosts];

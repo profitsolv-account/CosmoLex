@@ -1,8 +1,8 @@
 import { useAppContext } from "@/context";
 
-export const FeaturedPost = () => {
+export const FeaturedPost = ({pageData}: {pageData: any}) => {
 
-    const { appData: {featuredPost: post} } = useAppContext();
+    const  {featuredPost: post} = pageData;
     if (!post) return null;
 
     return <div className="w-full max-w-[328px] rounded-[10px] overflow-hidden bg-secondary">

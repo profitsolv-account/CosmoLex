@@ -6,18 +6,18 @@ import {Header} from "@/components/layout/header";
 import {useAppContext} from "@/context";
 
 const Layout = ({ children, pageData }: { children: React.ReactNode, pageData: any }) => {
-    const {updateData} = useAppContext();
 
+    const {updateData} = useAppContext();
     useEffect(() => {
         updateData({
             featuredPost: pageData.featuredPost,
             menus: pageData.menus || {}
         });
-    }, [pageData.featuredPost, pageData.menus, updateData]);
+    }, []);
 
     return (
         <>
-            <Header />
+            <Header pageData={pageData} />
                 <main className="">
                     {children}
                 </main>

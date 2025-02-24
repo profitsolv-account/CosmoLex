@@ -7,11 +7,13 @@ type Props = {
     trigger: ReactNode;
     content: MenuType;
     footer: MenuType;
+    pageData: any;
 }
 
-export const PageMegaMenu: FC<Props> = ({trigger, content}) => {
+export const PageMegaMenu: FC<Props> = ({trigger, content, pageData}) => {
 
     if (!content) return null;
+
     return <MegaMenu
         title={trigger}
         fullWidth
@@ -38,7 +40,7 @@ export const PageMegaMenu: FC<Props> = ({trigger, content}) => {
                     ))}
                 </div>
 
-                <FeaturedPost/>
+                <FeaturedPost pageData={pageData}/>
 
             </div>
         </div>

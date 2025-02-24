@@ -8,7 +8,7 @@ import {Hamburger} from "../../common/hamburger";
 import {useEffect, useState} from "react";
 import { Button } from "@/components/ui/button";
 
-export const Header = () => {
+export const Header = ({pageData}: {pageData: any}) => {
 
     const [openMenu, setOpenMenu] = useState(false);
 
@@ -38,7 +38,7 @@ export const Header = () => {
                        </Link>
 
                    </div>
-                   <Navigation className="hidden lg:inline-flex gap-6"/>
+                   <Navigation className="hidden lg:inline-flex gap-6" pageData={pageData}/>
 
                    <div className="flex gap-3 items-center">
                        <div className="hidden lg:flex justify-center items-center gap-4 ax-w-[353px] lg:justify-start">
@@ -57,7 +57,7 @@ export const Header = () => {
        </div>
 
         {openMenu && <>
-            <Navigation className="mt-20 flex flex-col gap-10 mb-10" />
+            <Navigation className="mt-20 flex flex-col gap-10 mb-10" pageData={pageData} />
             <div className="flex justify-center items-center gap-8 ax-w-[353px] flex-col lg:justify-start">
                 <Link href="#" className="w-12 text-right text-white text-base font-normal font-['Inter']">Login</Link>
                 <Button variant="secondary">Demo</Button>
