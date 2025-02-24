@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
     },
 
     // rest settings
-    output: 'standalone',
+    output: 'export',
     trailingSlash: true,
     reactStrictMode: true,
     images: {

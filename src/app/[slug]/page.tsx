@@ -20,8 +20,8 @@ export default async function SinglePage({params}: Params) {
     return <PageTemplate pageData={pageData} />
 }
 
-/*export async function generateStaticParams() {
-   /!* const { data } = await client.query({
+export async function generateStaticParams() {
+   /* const { data } = await client.query({
         query: gql`
             query GetAllPages {
                 pages {
@@ -38,9 +38,9 @@ export default async function SinglePage({params}: Params) {
         .map((node: {uri: string}) => node.uri)
         .map((uri: string) => uri.replace(/^\/|\/$/g, ''))
         .filter((slug: string) => slug.length > 0);
-*!/
+*/
     return [{slug: 'about-page'}];
-}*/
+}
 
 export const revalidate = false;
 export const dynamic = "force-static";

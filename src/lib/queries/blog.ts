@@ -95,7 +95,7 @@ export const getAllPostSlugs = async () => {
     };
 
     const allPosts = await fetchAllPosts();
-    saveToCache('cache', allPosts);
+    saveToCache('posts', allPosts);
 
     return allPosts;
 };

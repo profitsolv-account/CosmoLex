@@ -27,6 +27,18 @@ export const getHomePageData = async () => {
 }
 
 export const getLatestPost = async (): Promise<FeaturedPostType> => {
+    const posts = getFromCache("posts");
+
+   if (posts) {
+       const post = posts[posts.length - 1];
+       return {
+           ...post,
+           slug: post.slug,
+           featuredImage: post.featuredImage?.node?.sourceUrl || "",
+           altText: post.featuredImage?.node?.altText || "",
+       }
+   }
+
     const { data } = await client.query({
         query: gql`
             query GetLatestPost {
@@ -145,6 +157,11 @@ export const getAllMenus = async () => {
 };
 
 export const getPostData = async (pageSlug: string) => {
+
+    const posts = getFromCache("posts")
+    const pageData = posts.find((post: any) => post.slug === pageSlug);
+    if (pageData) return pageData;
+
     const { data } = await client.query({
         query: gql`
             query GetPage {
