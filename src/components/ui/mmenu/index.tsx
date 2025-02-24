@@ -9,7 +9,10 @@ interface MegaMenuProps {
 }
 
 const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
-    
+    const time = 200;
+    const timer = useRef<any>(0);
+    const enableTransparent = true;
+
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const triggerRef = useRef<HTMLDivElement>(null);
@@ -32,7 +35,9 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
     };
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
+        if (enableTransparent) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
@@ -58,10 +63,14 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
         <div className="relative" >
             <div ref={triggerRef} className="cursor-pointer"
                  onMouseOver={() => {
+                     clearTimeout(timer.current);
                      setIsOpen(() => true);
                  }}
                  onMouseLeave={() => {
-                    setIsOpen(() => false);
+                     timer.current = setTimeout(() => {
+                         if (enableTransparent)
+                             setIsOpen(() => false);
+                     }, time);
                 }}
             >
                 {title}
@@ -72,7 +81,11 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
                     <div
                         className="fixed inset-0 bg-black/50 z-40"
                         onClick={() => setIsOpen(false)}
-                        onMouseOver={() => { setIsOpen(() => false);}}
+                        onMouseOver={() => {
+                            clearTimeout(timer.current);
+                            if (enableTransparent)
+                                setIsOpen(() => false);
+                        }}
                     />
                     <div
                         ref={menuRef}
@@ -84,10 +97,14 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
                             left: `${menuPosition.left}px`
                         }}
                         onMouseOver={() => {
+                            clearTimeout(timer.current);
                             setIsOpen(() => true);
                         }}
                         onMouseLeave={() => {
-                            setIsOpen(() => false);
+                            timer.current = setTimeout(() => {
+                               if (enableTransparent)
+                                   setIsOpen(() => false);
+                           }, time);
                         }}
                     >
                         <div>

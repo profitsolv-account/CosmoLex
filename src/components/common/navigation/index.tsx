@@ -24,7 +24,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
             </li>
             <li>
                 <a className="block text-right text-white text-base font-normal font-['Inter'] md:text-[15px] py-7"
-                   href="">Pricing</a>
+                   href="/">Pricing</a>
             </li>
             <li>
                 <PageMegaMenu
@@ -39,7 +39,10 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                 <MegaMenu title={
                     <span className="block text-right text-white text-base font-normal font-['Inter'] md:text-[15px] py-7">About</span>
                 }>
-                   <div className="bg-white p-10 px-30">test</div>
+                    <div className="w-[195px] bg-white rounded-bl-[30px] rounded-br-[30px] p-6 pr-0">
+                        <a href="/" className="block text-primary-dark text-[16px] font-medium font-['Inter'] leading-9 mb-2">About CosmoLex</a>
+                        <a href="/" className="block text-primary-dark text-[16px] font-medium font-['Inter'] leading-9">Our Team</a>
+                    </div>
                 </MegaMenu>
             </li>
         </ul>
