@@ -2,7 +2,6 @@ import client from "@/lib/apollo-client";
 import {FeaturedPostType, MenusList} from "@/types";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
-import {saveToCache, getFromCache} from "../cache/index";
 
 export const getHomePageData = async () => {
     const { data } = await client.query({
@@ -27,17 +26,11 @@ export const getHomePageData = async () => {
 }
 
 export const getLatestPost = async (): Promise<FeaturedPostType> => {
-    const posts = getFromCache("posts");
-
+   /* const posts = getFromCache("posts");
    if (posts) {
        const post = posts[posts.length - 1];
-       return {
-           ...post,
-           slug: post.slug,
-           featuredImage: post.featuredImage?.node?.sourceUrl || "",
-           altText: post.featuredImage?.node?.altText || "",
-       }
-   }
+       return post.featuredPost
+   }*/
 
     const { data } = await client.query({
         query: gql`
@@ -94,11 +87,11 @@ const WORDPRESS_API_URL = 'https://cosmonew1.wpenginepowered.com';
 
 export const getAllMenus = async () => {
 
-    const menu = getFromCache('menu');
+   /* const menu = getFromCache('menu');
     if (menu) {
         console.log('load menu from cache');
         return menu;
-    }
+    }*/
 
     const menusList: MenusList = {};
     try {
@@ -147,8 +140,8 @@ export const getAllMenus = async () => {
             })
         );
 
-        saveToCache('menu', menusList);
-
+       /* saveToCache('menu', menusList);
+*/
         return menusList;
     } catch (error) {
         console.error(error);
@@ -158,9 +151,9 @@ export const getAllMenus = async () => {
 
 export const getPostData = async (pageSlug: string) => {
 
-    const posts = getFromCache("posts")
+   /* const posts = getFromCache("posts")
     const pageData = posts.find((post: any) => post.slug === pageSlug);
-    if (pageData) return pageData;
+    if (pageData) return pageData;*/
 
     const { data } = await client.query({
         query: gql`
@@ -184,6 +177,7 @@ export const getPostData = async (pageSlug: string) => {
     });
 
     const post = get(data, 'post', {});
+
     return {
         ...post,
         featuredPost: await getLatestPost(),

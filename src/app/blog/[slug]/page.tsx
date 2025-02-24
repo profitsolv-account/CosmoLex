@@ -9,15 +9,14 @@ export default async function SinglePost({ params }: any) {
     if (!pageData) {
         notFound();
     }
-
     return <PostTemplate pageData={pageData} />;
 }
 
-export async function generateStaticParams() {
+/*export async function generateStaticParams() {
     const urls = await getAllPostSlugs();
     // urls.length = 5;
     return urls;
-}
+}*/
 
 export const revalidate = false;
 export const dynamic = "force-static";
