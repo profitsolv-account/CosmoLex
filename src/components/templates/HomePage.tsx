@@ -15,7 +15,7 @@ export default function HomePage({ pageData }: { pageData: any }) {
                       <p className="mt-4 text-lg text-gray-700">{pageData?.excerpt}</p>
                   </section>
 
-                  <section className="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 mt-8 min-h-[300px]" dangerouslySetInnerHTML={{__html: pageData?.content}}></section>
+                  <section className="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 mt-8 min-h-[300px]" dangerouslySetInnerHTML={{__html: pageData ? pageData?.content : ""}}></section>
               </div>
           </div>
 

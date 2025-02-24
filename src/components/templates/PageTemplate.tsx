@@ -11,7 +11,7 @@ export default function PageTemplate({ pageData }: { pageData: any }) {
                     <h1 className="text-5xl font-bold text-primary">{pageData?.title}</h1>
                     <p className="mt-4 text-lg text-gray-700">{pageData?.excerpt}</p>
                 </section>
-                <section className="" dangerouslySetInnerHTML={{__html: pageData?.content}}>
+                <section className="" dangerouslySetInnerHTML={{__html: pageData ? pageData?.content : ""}}>
                 </section>
             </div>
         </Layout>

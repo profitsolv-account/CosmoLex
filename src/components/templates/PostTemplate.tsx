@@ -24,7 +24,7 @@ export default function PostTemplate({ pageData }: { pageData: any }) {
                     </>}
                 </section>
 
-                <section className="container py-4" dangerouslySetInnerHTML={{__html: pageData?.content || ''}}>
+                <section className="container py-4" dangerouslySetInnerHTML={{__html: pageData ? pageData?.content : ''}}>
                 </section>
             </div>
         </Layout>

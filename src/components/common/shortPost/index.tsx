@@ -25,6 +25,6 @@ export const ShortPost: FC<Props> = ({post}) => {
             </>}
         </div>
 
-        <div dangerouslySetInnerHTML={{__html: post.excerpt || ''}} className="text-xl"/>
+        <div dangerouslySetInnerHTML={{__html: post ? post.excerpt : ''}} className="text-xl"/>
     </div>
 }
