@@ -1,5 +1,6 @@
 import client from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
+import {get} from "lodash";
 
 export const getSEOData = async (pageSlug: string) => {
 
@@ -22,7 +23,7 @@ export const getSEOData = async (pageSlug: string) => {
         variables: { pageSlug },
     })
 
-    const seo = data.page.seo;
+    const seo = get(data, 'page.seo', {});
 
     return {
         title: seo?.title || 'Home - Default Title',
@@ -55,7 +56,7 @@ export const getPostSEOData = async (pageSlug: string) => {
         variables: { pageSlug },
     })
 
-    const seo = data.post.seo;
+    const seo = get(data, 'page.seo', {});
 
     return {
         title: seo?.title || 'Home - Default Title',
