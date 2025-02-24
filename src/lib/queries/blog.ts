@@ -1,7 +1,7 @@
 import {gql} from "@apollo/client";
 import client from "@/lib/apollo-client";
 import {getAllMenus, getLatestPost} from "@/lib/queries/wordpress";
-import {saveToCache} from "../cache/index";
+import {getFromCache, saveToCache} from "../cache/index";
 
 const POSTS_PER_PAGE = 10;
 const BASE_URL = 'https://cosmonew1.wpenginepowered.com/wp-json/wp/v2';
@@ -40,6 +40,10 @@ export const getBlogData = async (page: number) => {
 
 
 export const getAllPostSlugs = async () => {
+    const cachedPosts = getFromCache('posts');
+    if (cachedPosts) {
+        return cachedPosts;
+    }
 
     const featuredPost = await getLatestPost();
     const menus =  await getAllMenus();
