@@ -14,3 +14,20 @@ export type ShortPostType = {
     slug: string;
     title: string;
 }
+
+export type MenuItem = {
+    url: string;
+    title: string;
+    description: string;
+    items: MenuItem[]
+}
+
+export type MenuType = {
+    name: string;
+    slug: string;
+    items: MenuItem[]
+}
+
+export type MenusList = {
+    [index: string]: MenuType
+}

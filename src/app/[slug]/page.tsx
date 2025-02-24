@@ -5,7 +5,6 @@ import PageTemplate from "@/components/templates/PageTemplate";
 import client from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 
-
 type Params = {
     params: Promise<{slug: string}>;
 }

@@ -21,7 +21,6 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
     };
 
     const handleClickOutside = (event: MouseEvent) => {
-        // return;
         if (
             menuRef.current &&
             triggerRef.current &&

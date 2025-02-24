@@ -2,12 +2,12 @@ import { useAppContext } from "@/context";
 
 export const FeaturedPost = () => {
 
-    const {featuredPost:post} = useAppContext() as any;
+    const { appData: {featuredPost: post} } = useAppContext();
     if (!post) return null;
 
     return <div className="w-full max-w-[328px] rounded-[10px] overflow-hidden bg-secondary">
-        <div className="w-[328px] h-[206px] bg-[#d9d9d9] flex items-center justify-center">
-            <img src={post.featuredImage} alt={post.altText} />
+        <div className="bg-[#d9d9d9] flex items-center justify-center">
+            <img src={post.featuredImage} alt={post.altText} className="object-cover aspect-3/2" />
         </div>
         <div className="px-5 py-7">
             <div className="relative">
@@ -17,7 +17,7 @@ export const FeaturedPost = () => {
                 <div className="text-black text-base font-medium font-['Inter'] leading-[23px] mb-7">
                     {post.title}
                 </div>
-                <a href="#" className="block h-11 px-5 pt-2.5 pb-3 bg-primary-dark border border-primary-dark rounded-[100px] text-center text-white text-base font-normal font-['Inter'] transition duration-300 hover:bg-secondary hover:text-primary-dark">
+                <a href={`/blog/${post.slug}`} className="block h-11 px-5 pt-2.5 pb-3 bg-primary-dark border border-primary-dark rounded-[100px] text-center text-white text-base font-normal font-['Inter'] transition duration-300 hover:bg-secondary hover:text-primary-dark">
                     Get Guide
                 </a>
             </div>

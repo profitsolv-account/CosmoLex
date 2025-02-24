@@ -18,7 +18,6 @@ export const getSEOData = async (pageSlug: string) => {
                 }
             }
         `,
-        //context: { fetchOptions: { next: { revalidate: 10 } } },
         fetchPolicy: "no-cache",
         variables: { pageSlug },
     })

@@ -1,7 +1,7 @@
 import {Metadata} from "next";
 import {getSEOData} from "@/lib/queries/seo";
 import HomePage from "@/components/templates/HomePage";
-import {getHomePageData} from "@/lib/queries/wordpress";
+import { getHomePageData} from "@/lib/queries/wordpress";
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData("home-page");
@@ -12,7 +12,4 @@ export default async function Home() {
     return <HomePage pageData={pageData} />
 }
 
-export const dynamic = 'force-static';
-export const dynamicParams = true;        // Allow dynamic params
-export const fetchCache = "default-cache"; // Enable default caching
 

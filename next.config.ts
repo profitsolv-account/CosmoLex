@@ -32,10 +32,10 @@ const nextConfig: NextConfig = {
 
     // rest settings
     output: 'export',
-    trailingSlash: true, // Required for static export with dynamic routes
+    trailingSlash: true,
     reactStrictMode: true,
     images: {
-        unoptimized: true, // Required for static export with images
+        unoptimized: true,
     },
 };
 

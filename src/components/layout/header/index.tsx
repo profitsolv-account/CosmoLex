@@ -30,7 +30,7 @@ export const Header = () => {
         }
     )}>
        <div className="relative z-60 bg-primary ">
-           <div className="container max-w-[1420px] p-3 pt-7 pb-4">
+           <div className="container max-w-[1420px] p-3 pt-7 pb-6">
                <div className="flex gap-0 justify-between w-full items-center">
                    <div className="w-75 pt-2">
                        <Link href="/">
