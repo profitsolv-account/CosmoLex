@@ -1,5 +1,5 @@
 import client from "@/lib/apollo-client";
-import {FeaturedPostType, MenusList, MenuType} from "@/types";
+import {FeaturedPostType, MenusList} from "@/types";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {saveToCache, getFromCache} from "../cache/index";
