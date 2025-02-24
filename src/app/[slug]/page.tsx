@@ -21,7 +21,7 @@ export default async function SinglePage({params}: Params) {
 }
 
 export async function generateStaticParams() {
-    const { data } = await client.query({
+   /* const { data } = await client.query({
         query: gql`
             query GetAllPages {
                 pages {
@@ -38,14 +38,6 @@ export async function generateStaticParams() {
         .map((node: {uri: string}) => node.uri)
         .map((uri: string) => uri.replace(/^\/|\/$/g, ''))
         .filter((slug: string) => slug.length > 0);
-
-    return slugs.map((slug: string) => ({
-        slug
-    }));
+*/
+    return [{slug: 'about-page'}];
 }
-
-
-export const revalidate = false;
-export const dynamic = "force-static";    // Keep it static
-// export const dynamicParams = true;        // Allow dynamic params
-export const fetchCache = "default-cache"; // Enable default caching

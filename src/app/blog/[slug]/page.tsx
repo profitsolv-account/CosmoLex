@@ -15,7 +15,6 @@ export default async function SinglePost({ params }: any) {
     if (!pageData) {
         notFound();
     }
-
     return <PostTemplate pageData={pageData} />;
 }
 
