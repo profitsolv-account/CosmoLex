@@ -43,13 +43,13 @@ body {
         &.open {
             span {
                 &:nth-child(1) {
-                    @apply translate-y-1 rotate-45;
+                    @apply translate-y-0.5 rotate-45;
                 }
-                &:nth-child(2) {
+              /*  &:nth-child(2) {
                     @apply opacity-0;
-                }
-                &:nth-child(3) {
-                    @apply -translate-y-2 -rotate-45;
+                }*/
+                &:nth-child(2) {
+                    @apply -translate-y-1 -rotate-45;
                 }
             }
         }

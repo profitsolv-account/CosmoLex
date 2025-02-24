@@ -19,7 +19,6 @@ export const Hamburger:FC<Props> = ({onClick}) => {
         >
             <span></span>
             <span></span>
-            <span></span>
         </div>
     </>
 }

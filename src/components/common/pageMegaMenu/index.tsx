@@ -45,9 +45,8 @@ export const PageMegaMenu: FC<Props> = ({trigger, content, pageData, footer}) =>
             </div>
         </div>
 
-        <div className="w-full h-[174px] bg-[#b9dfc3] rounded-bl-[30px] rounded-br-[30px]">
+        <div className="w-full bg-[#b9dfc3] rounded-bl-[30px] rounded-br-[30px] pt-3.5 pb-4">
            <div className="container max-w-[1420px] px-4 py-4 flex gap-[50px] items-start">
-
 
                {footer.items.map((submenu) => (
                    <div key={submenu.title} className="">
