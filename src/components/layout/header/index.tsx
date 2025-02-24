@@ -30,7 +30,7 @@ export const Header = ({pageData}: {pageData: any}) => {
         }
     )}>
        <div className="relative z-60 bg-primary ">
-           <div className="container max-w-[1420px] p-3 pt-7 pb-6">
+           <div className="container max-w-[1420px] p-3 py-0">
                <div className="flex gap-0 justify-between w-full items-center">
                    <div className="w-75 pt-2">
                        <Link href="/">
@@ -57,7 +57,7 @@ export const Header = ({pageData}: {pageData: any}) => {
        </div>
 
         {openMenu && <>
-            <Navigation className="mt-20 flex flex-col gap-10 mb-10" pageData={pageData} />
+           {/* <Navigation className="mt-20 flex flex-col gap-10 mb-10" pageData={pageData} />*/}
             <div className="flex justify-center items-center gap-8 ax-w-[353px] flex-col lg:justify-start">
                 <Link href="#" className="w-12 text-right text-white text-base font-normal font-['Inter']">Login</Link>
                 <Button variant="secondary">Demo</Button>

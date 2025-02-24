@@ -55,8 +55,15 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
     }, [isOpen, fullWidth]);
 
     return (
-        <div className="relative">
-            <div ref={triggerRef} onClick={toggleMenu} className="cursor-pointer">
+        <div className="relative" >
+            <div ref={triggerRef} className="cursor-pointer"
+                 onMouseOver={() => {
+                     setIsOpen(() => true);
+                 }}
+                 onMouseLeave={() => {
+                    setIsOpen(() => false);
+                }}
+            >
                 {title}
             </div>
 
@@ -65,6 +72,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
                     <div
                         className="fixed inset-0 bg-black/50 z-40"
                         onClick={() => setIsOpen(false)}
+                        onMouseOver={() => { setIsOpen(() => false);}}
                     />
                     <div
                         ref={menuRef}
@@ -74,6 +82,12 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
                         })}
                         style={{
                             left: `${menuPosition.left}px`
+                        }}
+                        onMouseOver={() => {
+                            setIsOpen(() => true);
+                        }}
+                        onMouseLeave={() => {
+                            setIsOpen(() => false);
                         }}
                     >
                         <div>

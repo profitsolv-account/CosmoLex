@@ -15,7 +15,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
         <ul className={classNames(className)}>
             <li>
                 <PageMegaMenu
-                    trigger={ <span className="text-right text-white text-base font-normal font-['Inter'] md:text-[15px]">Solutions</span>}
+                    trigger={ <span className="block text-right text-white text-base font-normal font-['Inter'] md:text-[15px] py-7">Solutions</span>}
                     content={menus['header-menu-solutions']}
                     footer={menus['header-menu-solutions-bottom']}
                     pageData={pageData}
@@ -23,12 +23,12 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
 
             </li>
             <li>
-                <a className="text-right text-white text-base font-normal font-['Inter'] md:text-[15px]"
+                <a className="block text-right text-white text-base font-normal font-['Inter'] md:text-[15px] py-7"
                    href="">Pricing</a>
             </li>
             <li>
                 <PageMegaMenu
-                    trigger={<span className="text-right text-white text-base font-normal font-['Inter'] md:text-[15px]">Resources</span>}
+                    trigger={<span className="block text-right text-white text-base font-normal font-['Inter'] md:text-[15px] py-7">Resources</span>}
                     content={menus['header-menu-resources']}
                     footer={menus['header-menu-resources-bottom']}
                     pageData={pageData}
@@ -37,7 +37,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
             </li>
             <li>
                 <MegaMenu title={
-                    <span className="text-right text-white text-base font-normal font-['Inter'] md:text-[15px]">About</span>
+                    <span className="block text-right text-white text-base font-normal font-['Inter'] md:text-[15px] py-7">About</span>
                 }>
                    <div className="bg-white p-10 px-30">test</div>
                 </MegaMenu>

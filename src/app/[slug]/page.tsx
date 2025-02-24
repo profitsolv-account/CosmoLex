@@ -41,3 +41,7 @@ export async function generateStaticParams() {
 */
     return [{slug: 'about-page'}];
 }
+
+export const revalidate = false;
+export const dynamic = "force-static";
+export const fetchCache = "default-cache";

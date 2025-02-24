@@ -21,3 +21,7 @@ export async function generateStaticParams() {
     const TOTAL_PAGES = 5;
     return new Array(TOTAL_PAGES).fill('').map((_, index) => ({page: String(index+1)}));
 }
+
+export const revalidate = false;
+export const dynamic = "force-static";
+export const fetchCache = "default-cache";

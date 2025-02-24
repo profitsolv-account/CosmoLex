@@ -16,3 +16,7 @@ export default async function BlogPage() {
     const pageData = await getBlogData(1);
     return <BlogTemplate pageData={pageData} page={1} />
 }
+
+export const revalidate = false;
+export const dynamic = "force-static";
+export const fetchCache = "default-cache";
