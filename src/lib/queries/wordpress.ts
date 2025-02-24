@@ -77,7 +77,7 @@ export const getPageData = async (pageSlug: string) => {
     };
 }
 
-const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
+const WORDPRESS_API_URL = 'https://cosmonew1.wpenginepowered.com';
 
 export const getAllMenus = async () => {
     const menu = getFromCache('menu');
