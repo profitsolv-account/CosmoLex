@@ -108,7 +108,7 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
             {menuVisible && (
                 <div
                     className={classNames(
-                        "absolute bg-primary text-white overflow-y-auto transition-all duration-300 ease-in-out w-full h-[100svh]",
+                        "absolute bg-primary text-white overflow-y-auto transition-all duration-300 ease-in-out w-full h-[100svh] pb-10",
                         {
                             "opacity-0 translate-x-full": !openMenu,
                             "opacity-100 translate-x-0": openMenu,
