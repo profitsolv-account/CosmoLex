@@ -1,8 +1,7 @@
 import {gql} from "@apollo/client";
 import client from "@/lib/apollo-client";
 import {getAllMenus, getLatestPost} from "@/lib/queries/wordpress";
-import fs from 'fs';
-import path from 'path';
+import {saveToCache} from "../cache/index";
 
 const POSTS_PER_PAGE = 10;
 const BASE_URL = 'https://cosmonew1.wpenginepowered.com/wp-json/wp/v2';
@@ -96,10 +95,7 @@ export const getAllPostSlugs = async () => {
     };
 
     const allPosts = await fetchAllPosts();
-
-    const filePath = path.join(process.cwd(), 'cache', 'posts.json');
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    fs.writeFileSync(filePath, JSON.stringify(allPosts));
+    saveToCache('cache', allPosts);
 
     return allPosts;
 };
