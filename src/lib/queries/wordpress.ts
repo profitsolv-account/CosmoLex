@@ -82,8 +82,8 @@ const WORDPRESS_API_URL = 'https://cosmonew1.wpenginepowered.com';
 
 export const getAllMenus = async () => {
 
-    const menu = getFromCache('menu');
-    if (menu) return menu;
+   /* const menu = getFromCache('menu');
+    if (menu) return menu;*/
 
     const menusList: MenusList = {};
     try {
