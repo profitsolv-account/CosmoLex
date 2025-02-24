@@ -139,4 +139,35 @@ export const getAllMenus = async () => {
     }
 };
 
+export const getPostData = async (pageSlug: string) => {
+    const { data } = await client.query({
+        query: gql`
+            query GetPage {
+                post(id: "${pageSlug}", idType: URI) {
+                    id
+                    title
+                    date
+                    content
+                    featuredImage {
+                        node {
+                            sourceUrl
+                            altText
+                        }
+                    }
+                }
+            }
+        `,
+        fetchPolicy: "no-cache",
+        variables: { pageSlug },
+    });
+
+    const post = get(data, 'post', {});
+    return {
+        ...post,
+        featuredPost: await getLatestPost(),
+        featuredImage: post.featuredImage?.node?.sourceUrl || "",
+        altText: post.featuredImage?.node?.altText || "",
+        menus: await getAllMenus()
+    };
+}
 
