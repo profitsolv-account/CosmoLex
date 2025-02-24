@@ -96,7 +96,7 @@ export const getAllMenus = async () => {
     const menusList: MenusList = {};
     try {
         const time = new Date().getTime();
-        const response = await fetch(`${WORDPRESS_API_URL}/wp-json/wp-api-menus/v2/menus`, {
+        const response = await fetch(`${WORDPRESS_API_URL}/wp-json/wp-api-menus/v2/menus?cache=${time}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ export const getAllMenus = async () => {
         const menus = await response.json();
         await Promise.all(
             menus.map(async (menu: any) => {
-                const itemsResponse = await fetch(`${WORDPRESS_API_URL}/wp-json/wp-api-menus/v2/menus/${menu.ID}`, {
+                const itemsResponse = await fetch(`${WORDPRESS_API_URL}/wp-json/wp-api-menus/v2/menus/${menu.ID}?cache=${time}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
