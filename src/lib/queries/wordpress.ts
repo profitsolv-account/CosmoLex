@@ -82,13 +82,16 @@ const WORDPRESS_API_URL = 'https://cosmonew1.wpenginepowered.com';
 
 export const getAllMenus = async () => {
 
-   /* const menu = getFromCache('menu');
-    if (menu) return menu;*/
+    const menu = getFromCache('menu');
+    if (menu) {
+        console.log('load menu from cache');
+        return menu;
+    }
 
     const menusList: MenusList = {};
     try {
         const time = new Date().getTime();
-        const response = await fetch(`${WORDPRESS_API_URL}/wp-json/wp-api-menus/v2/menus?cache=${time}`, {
+        const response = await fetch(`${WORDPRESS_API_URL}/wp-json/wp-api-menus/v2/menus`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -101,7 +104,7 @@ export const getAllMenus = async () => {
         const menus = await response.json();
         await Promise.all(
             menus.map(async (menu: any) => {
-                const itemsResponse = await fetch(`${WORDPRESS_API_URL}/wp-json/wp-api-menus/v2/menus/${menu.ID}?cache=${time}`, {
+                const itemsResponse = await fetch(`${WORDPRESS_API_URL}/wp-json/wp-api-menus/v2/menus/${menu.ID}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -136,6 +139,7 @@ export const getAllMenus = async () => {
 
         return menusList;
     } catch (error) {
+        console.error(error);
         return [];
     }
 };
