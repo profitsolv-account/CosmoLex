@@ -18,6 +18,6 @@ export default async function BlogSinglePage({ params }: Params) {
 }
 
 export async function generateStaticParams() {
-    const TOTAL_PAGES = 100;
+    const TOTAL_PAGES = 10;
     return new Array(TOTAL_PAGES).fill('').map((_, index) => ({page: String(index+1)}));
 }
