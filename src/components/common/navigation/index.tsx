@@ -15,7 +15,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
         <ul className={classNames(className)}>
             <li>
                 <PageMegaMenu
-                    trigger={ <span className="block text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-100 hover:font-bold w-[72px] text-center">Solutions</span>}
+                    trigger={ <span className="block text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold w-[72px] text-center">Solutions</span>}
                     content={menus['header-menu-solutions']}
                     footer={menus['header-menu-solutions-bottom']}
                     pageData={pageData}
@@ -23,12 +23,12 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
 
             </li>
             <li>
-                <a className="block  text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-100 hover:font-bold  w-[58px] text-center"
+                <a className="block  text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold  w-[58px] text-center"
                    href="/">Pricing</a>
             </li>
             <li>
                 <PageMegaMenu
-                    trigger={<span className="block text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-300 hover:font-bold  w-[85px] text-center">Resources</span>}
+                    trigger={<span className="block text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold  w-[85px] text-center">Resources</span>}
                     content={menus['header-menu-resources']}
                     footer={menus['header-menu-resources-bottom']}
                     pageData={pageData}
@@ -37,7 +37,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
             </li>
             <li>
                 <MegaMenu title={
-                    <span className="block text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-300 hover:font-bold w-[50px] text-center">About</span>
+                    <span className="block text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold w-[50px] text-center">About</span>
                 }>
                     <div className="w-[195px] bg-white rounded-bl-[30px] rounded-br-[30px] p-6 pr-0">
                         <a href="/" className="block text-primary-dark text-[16px] font-medium font-['Inter'] leading-9 mb-2">About CosmoLex</a>
