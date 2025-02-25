@@ -1,39 +1,28 @@
 import classNames from 'classnames';
-import React, {useState, useRef, useEffect, ReactNode, useLayoutEffect} from 'react';
+import React, {useRef, useEffect, ReactNode} from 'react';
 import ReactDOM from 'react-dom';
 
 interface MegaMenuProps {
-    title: ReactNode;
     children: ReactNode;
     fullWidth?: boolean;
+    isOpen: boolean;
+    setIsOpen: (d: boolean) => void;
+    left?: number;
+    onMouseOver?: () => void;
+    onMouseLeave?: () => void;
 }
 
-const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
-    const time = 400;
-    const timer = useRef<any>(0);
-    const enableTransparent = true;
-
-    const [isOpen, setIsOpen] = useState(false);
+const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsOpen, left, onMouseLeave, onMouseOver }) => {
     const menuRef = useRef<HTMLDivElement>(null);
-    const triggerRef = useRef<HTMLDivElement>(null);
-    const [menuPosition, setMenuPosition] = useState<{ left: number; }>({ left: 0 });
-
-
-    const toggleMenu = () => {
-        setIsOpen(prev => !prev);
-    };
-
+    const enableTransparent = true;
     const handleClickOutside = (event: MouseEvent) => {
         if (
             menuRef.current &&
-            triggerRef.current &&
-            !menuRef.current.contains(event.target as Node) &&
-            !triggerRef.current.contains(event.target as Node)
+            !menuRef.current.contains(event.target as Node)
         ) {
             setIsOpen(false);
         }
     };
-
     useEffect(() => {
         if (enableTransparent) {
             document.addEventListener('mousedown', handleClickOutside);
@@ -51,41 +40,14 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
         }
     }, [isOpen]);
 
-    useLayoutEffect(() => {
-        if (menuRef.current && triggerRef.current && !fullWidth) {
-            setMenuPosition({
-                left: triggerRef.current.getBoundingClientRect().left - menuRef.current.getBoundingClientRect().width / 2 + triggerRef.current.getBoundingClientRect().width / 2
-            })
-        }
-    }, [isOpen, fullWidth]);
 
     return (
-        <div className="relative" >
-            <div ref={triggerRef} className="cursor-pointer"
-                 onMouseOver={() => {
-                     clearTimeout(timer.current);
-                     setIsOpen(() => true);
-                 }}
-                 onMouseLeave={() => {
-                     timer.current = setTimeout(() => {
-                         if (enableTransparent)
-                             setIsOpen(() => false);
-                     }, time);
-                }}
-            >
-                {title}
-            </div>
-
+        <div className="relative">
             {isOpen && ReactDOM.createPortal(
                 <div className="">
                     <div
                         className="fixed inset-0 bg-black/50 z-40"
                         onClick={() => setIsOpen(false)}
-                        onMouseOver={() => {
-                            clearTimeout(timer.current);
-                            if (enableTransparent)
-                                setIsOpen(() => false);
-                        }}
                     />
                     <div
                         ref={menuRef}
@@ -93,18 +55,16 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
                             'animate-fade-down': isOpen,
                             'w-full': fullWidth
                         })}
-                        style={{
-                            left: `${menuPosition.left}px`
-                        }}
+                        style={{left: `${left}px`}}
                         onMouseOver={() => {
-                            clearTimeout(timer.current);
-                            setIsOpen(() => true);
+                            if (onMouseOver) {
+                                onMouseOver();
+                            }
                         }}
                         onMouseLeave={() => {
-                            timer.current = setTimeout(() => {
-                               if (enableTransparent)
-                                   setIsOpen(() => false);
-                           }, time);
+                            if (onMouseLeave) {
+                                onMouseLeave();
+                            }
                         }}
                     >
                         <div>

@@ -4,19 +4,15 @@ import {FC, ReactNode} from "react";
 import {MenuType} from "@/types";
 
 type Props = {
-    trigger: ReactNode;
     content: MenuType;
     footer: MenuType;
     pageData: any;
 }
 
-export const PageMegaMenu: FC<Props> = ({trigger, content, pageData, footer}) => {
+export const PageMegaMenu: FC<Props> = ({content, pageData, footer}) => {
 
     if (!content) return null;
-    return <MegaMenu
-        title={trigger}
-        fullWidth
-    >
+    return <>
         <div className="bg-white pt-5">
             <div className="container max-w-[1420px] px-4 py-4 flex gap-[50px] items-start">
 
@@ -74,5 +70,5 @@ export const PageMegaMenu: FC<Props> = ({trigger, content, pageData, footer}) =>
 
            </div>
         </div>
-    </MegaMenu>
+        </>
 }
