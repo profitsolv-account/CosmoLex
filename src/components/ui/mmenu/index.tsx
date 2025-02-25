@@ -9,7 +9,7 @@ interface MegaMenuProps {
 }
 
 const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
-    const time = 200;
+    const time = 400;
     const timer = useRef<any>(0);
     const enableTransparent = true;
 
@@ -89,7 +89,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ title, children, fullWidth }) => {
                     />
                     <div
                         ref={menuRef}
-                        className={classNames("shadow-lg overflow-hidden animate-once animate-duration-300 absolute z-50", {
+                        className={classNames("shadow-lg overflow-hidden animate-once animate-duration-700 absolute z-50", {
                             'animate-fade-down': isOpen,
                             'w-full': fullWidth
                         })}
