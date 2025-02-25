@@ -1,0 +1,19 @@
+.testimonials-section {
+    .swiper-slide {
+        height: auto;
+    }
+    .swiper-pagination-bullet {
+        width: 14px;
+        height: 14px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        opacity: 1;
+        background: #fff;
+        border: 1px solid #d9d9d9;
+    }
+    .swiper-pagination-bullet-active {
+        border: 1px solid #d9d9d9;
+        background: #d9d9d9;
+    }
+}

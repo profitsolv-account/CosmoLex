@@ -16,6 +16,7 @@ body {
     --color-yellow: #FDF1B7;
     --color-lime: #E7D571;
     --color-white: #FFFFFF;
+    --color-green: #b9dfc3;
     --radius-main: 30px;
     --radius-bg: 100px;
 }
@@ -57,6 +58,15 @@ body {
     .container {
         @apply max-w-[1440px] mx-auto;
     }
+
+    .container-s {
+        @apply max-w-[1320px] mx-auto;
+    }
+
+    .base-btn {
+        @apply flex w-[145px] flex-none items-center justify-center h-[54px] px-4 rounded-[100px] border border-primary-dark text-primary-dark text-base font-normal font-['Inter'] transition duration-300;
+    }
+
     .ls-07 {
         letter-spacing: 0.7px!important;
     }
@@ -82,5 +92,12 @@ body {
         opacity: 1;
     }
 
-    .mg-menu {}
+    .mc-slider {
+        .swiper-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
 }
