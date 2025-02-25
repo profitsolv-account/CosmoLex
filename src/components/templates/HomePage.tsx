@@ -6,17 +6,21 @@ import {Partners} from "@/components/blocks/partners";
 import {ComplianceManagement} from "@/components/blocks/complianceManagement";
 import {MatterCentric} from "@/components/blocks/matterCentric";
 import {Testimonials} from "@/components/blocks/testimonials";
+import {VideoSlider} from "@/components/blocks/videoSlider";
 
 
 export default function HomePage({ pageData }: { pageData: any }) {
   return (
       <Layout pageData={pageData}>
+
           <HomeHeader />
           <Partners />
           <ComplianceManagement />
           <MatterCentric />
 
           <Testimonials />
+
+          <VideoSlider />
 
           <div className="container">
               <div>

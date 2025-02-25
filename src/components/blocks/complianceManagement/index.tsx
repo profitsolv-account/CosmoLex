@@ -15,7 +15,7 @@ export const ComplianceManagement = () => {
                  }}>
                 Compliance management simplified
             </div>
-            <h3 className="text-center text-primary-dark text-[46px] font-bold font-['Inter'] leading-[60px] px-24 mb-17">
+            <h3 className="text-[36px] text-center text-primary-dark font-bold font-['Inter'] leading-[60px] md:px-24 mb-17 md:text-[46px]">
                 Streamline your legal workflow with our comprehensive legal practice software.
             </h3>
             <Tabs />
