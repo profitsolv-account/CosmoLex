@@ -60,6 +60,7 @@ export const Testimonials = () => {
     return (
         <section className="testimonials-section bg-white px-7 pt-25 pb-[63px] md:pb-24 relative">
           <div className="absolute top-[-150px] left-0 w-full h-full bg-white z-0 rounded-tr-[100px]" />
+            <div className="absolute bottom-[-150px] left-0 w-full h-full bg-white z-0 rounded-bl-[100px]" />
           <div className="max-w-[1140px] mx-auto relative z-10">
               <div className="relative lg:px-1">
                   <Swiper

@@ -8,7 +8,8 @@ import Image from 'next/image';
 import { Navigations } from './navigations';
 
 export const Footer = () => {
-    return (<div>
+    return (<div className="relative">
+        <div className="absolute top-[-100px] left-0 w-full h-full bg-primary z-0 rounded-tr-[100px]" />
         <Navigations />
          <div className="w-full relative bg-[#eef8fd] flex items-center justify-center py-5">
             <div className="container max-w-[1266px] flex flex-col justify-between gap-5 items-center lg:flex-row">

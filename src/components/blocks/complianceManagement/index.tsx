@@ -60,7 +60,7 @@ const Slider = () => {
             </div>
         </div>
 
-        <div className="absolute w-full  bg-primary-dark z-0 h-[70%] bottom-0 rounded-tr-[100px]" />
+        <div className="absolute w-full  bg-primary z-0 h-[70%] bottom-0 rounded-tr-[100px]" />
     </div>
 }
 
@@ -139,7 +139,7 @@ const AccountingTools = () => {
            </div>
        </div>
 
-        <div className="absolute w-full h-full left-0 bg-primary-dark z-0 rounded-bl-[100px] top-[-20%]" />
+        <div className="absolute w-full h-full left-0 bg-primary z-0 rounded-bl-[100px] top-[-20%]" />
 
     </div>
     )}
