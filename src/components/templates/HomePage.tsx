@@ -19,7 +19,7 @@ export default function HomePage({pageData}: { pageData: PageDataType }) {
 
     return (
         <Layout pageData={pageData}>
-            <HomeHeader/>
+            <HomeHeader pageData={pageData} />
             <Partners/>
             <ComplianceManagement/>
             <MatterCentric setting={pageData.settings}/>

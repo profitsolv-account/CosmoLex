@@ -15,6 +15,16 @@ export const getHomePageData = async () => {
                     title
                     date
                     content
+                    homePageSettings {
+                        description
+                        title
+                        heroImage {
+                            node {
+                                altText
+                                sourceUrl
+                            }
+                        }
+                    }
                 }
             }
         `,
@@ -23,6 +33,10 @@ export const getHomePageData = async () => {
 
      return {
         ...get(data, 'page', {}),
+         title: get(data, 'page.homePageSettings.title', ''),
+         description: get(data, 'page.homePageSettings.description', ''),
+         hero: get(data, 'page.homePageSettings.heroImage.node.sourceUrl', ''),
+         heroAlt: get(data, 'page.homePageSettings.heroImage.node.altText', ''),
          featuredPost: await getLatestPost(),
          menus: await getAllMenus(),
          settings: await getSiteSettings(),

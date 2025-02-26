@@ -38,7 +38,6 @@ export const getTestimonialsList = async () => {
         fetchPolicy: "no-cache",
         variables: {},
     })
-console.log(data);
     const testimonials = get(data, 'testimonials.edges', []).map((testimonial: any) => ({
         ...testimonial.node.testimonialFields,
         clientPicture: get(testimonial, 'node.testimonialFields.clientPicture.node.guid', ''),

@@ -9,7 +9,6 @@ import { Navigations } from './navigations';
 import {PageDataType} from "@/types";
 
 export const Footer = ({pageData}: {pageData: PageDataType}) => {
-
     return (<div className="relative">
         <div className="absolute top-[-100px] left-0 w-full h-full bg-primary z-0 rounded-tr-[100px]" />
         <Navigations pageData={pageData} />

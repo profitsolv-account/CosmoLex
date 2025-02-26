@@ -98,4 +98,10 @@ body {
         }
     }
 
+    .home-title {
+        span {
+           color: #BADFC3
+        }
+    }
+
 }
