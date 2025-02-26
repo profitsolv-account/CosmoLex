@@ -8,11 +8,8 @@ import block1 from "@/assets/img/compliance/block-1.png";
 export const ComplianceManagement = () => {
 
     return <div>
-        <div className="container max-w-[1066px] mb-16">
-            <div className="text-center text-primary-dark text-base font-normal font-['Inter'] uppercase tracking-wider mb-5"
-                 style={{
-                     letterSpacing: '1.26px'
-                 }}>
+        <div className="container max-w-[1066px] mb-16 px-4">
+            <div className="text-[14px] text-center text-primary-dark md:text-base font-normal font-['Inter'] uppercase mb-5 tracking-[1.26px]">
                 Compliance management simplified
             </div>
             <h3 className="text-[36px] text-center text-primary-dark font-bold font-['Inter'] leading-[60px] md:px-24 mb-17 md:text-[46px]">

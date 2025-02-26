@@ -29,8 +29,8 @@ export const Partners = () => {
 
     return (
         <>
-            <div className="container-s relative pt-20 overflow-hidden mb-[121px]">
-                <div className="text-[#0c193a] text-[32px] font-semibold font-['Inter'] leading-loose mb-5">
+            <div className="container-s relative pt-20 overflow-hidden mb-[121px] px-4">
+                <div className="text-[#0c193a] text-[22px] font-semibold font-['Inter'] leading-loose mb-5 md:text-[32px]">
                     Strategic & affinity partners.
                 </div>
                 <div className="w-full overflow-hidden">
