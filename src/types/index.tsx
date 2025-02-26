@@ -44,6 +44,7 @@ export type SettingsType = {
     loginLink: string;
     logo: string;
     logoAltText: string;
+    demoLink: string;
 }
 
 export type PageDataType = {

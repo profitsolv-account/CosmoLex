@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Layout from "@/components/layout/layout";
-import {HomeHeader} from "@/components/common/homeHeader";
+import {HomeHeader} from "../blocks/homeHeader";
 import {Partners} from "@/components/blocks/partners";
 import {ComplianceManagement} from "@/components/blocks/complianceManagement";
 import {MatterCentric} from "@/components/blocks/matterCentric";
@@ -25,7 +25,7 @@ export default function HomePage({pageData}: { pageData: PageDataType }) {
             <MatterCentric/>
             <Testimonials testimonials={testimonials}/>
             <VideoTestimonials testimonials={extendedTestimonials} />
-            <SimplifyPractice/>
+            <SimplifyPractice pageData={pageData}/>
         </Layout>
 
     )

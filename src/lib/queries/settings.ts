@@ -19,6 +19,7 @@ export const getSiteSettings = async () => {
                         fieldGroupName
                         freeTrialLink
                         loginLink
+                        demoLink
                         headerLogo {
                             node {
                                 altText

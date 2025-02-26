@@ -82,6 +82,7 @@ export const Testimonials: FC<Props> = ({testimonials}) => {
                       }}
                       className="max-lg:!pb-16"
                       autoHeight={false}
+                      speed={1000}
                   >
                       {
                           testimonials.map((t, k) => (

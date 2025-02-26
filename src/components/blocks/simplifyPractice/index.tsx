@@ -1,8 +1,14 @@
 import workInTeam from '@/assets/img/simple-practice/work-in-team.webp';
 import goodExperience from '@/assets/img/simple-practice/good-experience.webp';
 import workRemotely from '@/assets/img/simple-practice/work-remotely.webp';
+import {PageDataType} from "@/types";
+import {FC} from "react";
 
-export const SimplifyPractice = () => {
+type Props = {
+    pageData: PageDataType
+}
+
+export const SimplifyPractice:FC<Props> = ({pageData}) => {
     return (
         <div className="container mt-20 md:mt-30">
            <div className="w-full max-w-[353px] mx-auto relative z-10 md:max-w-[1171px]">
@@ -18,7 +24,7 @@ export const SimplifyPractice = () => {
                               Tell us your needs, and we’ll show you how to personalize CosmoLex for them.
                           </p>
                           <div className="flex justify-center">
-                              <a href="/" className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Schedule now</a>
+                              <a href={pageData.settings['demoLink']} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Schedule now</a>
                           </div>
                       </div>
 
@@ -43,7 +49,7 @@ export const SimplifyPractice = () => {
                              No wait. No credit card. Just click to get started with CosmoLex for free.
                          </p>
                          <div className="flex justify-center">
-                             <a href="/" className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Get started</a>
+                             <a href={pageData.settings['freeTrialLink']} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Get started</a>
                          </div>
                      </div>
 

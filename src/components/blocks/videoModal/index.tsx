@@ -57,7 +57,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, videoId }) => 
                     </div>
                 </div>
                 <button
-                    className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
+                    className="absolute text-gray-600 hover:text-gray-900 rounded-4xl bg-white w-10 h-10 cursor-pointer border border-gray-300 flex items-center justify-center top-[-45px] right-[-45px]"
                     onClick={onClose}
                 >
                     ✕
