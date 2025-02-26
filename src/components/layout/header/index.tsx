@@ -1,8 +1,6 @@
 'use client'
 import classNames from "classnames";
-import Image from "next/image";
 import Link from "next/link";
-import logo from "@/assets/img/logo.png";
 import {Navigation} from "../../common/navigation";
 import { Button } from "@/components/ui/button";
 import {MobileMenu} from "@/components/common/mobileMenu";

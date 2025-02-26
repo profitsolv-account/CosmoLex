@@ -1,4 +1,4 @@
-import {FC, ReactNode, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {FC, ReactNode, useLayoutEffect, useRef, useState} from "react";
 import classNames from "classnames";
 import MegaMenu from "@/components/ui/mmenu";
 import {PageMegaMenu} from "@/components/common/pageMegaMenu";
@@ -10,12 +10,16 @@ type Props = {
 
 export const Navigation:FC<Props> = ({className, pageData}) => {
 
-    const timeClose = 400;
+    const timeClose = 300;
     const timer = useRef<any>(null);
     const {menus} = pageData;
-    const [selectedItems, setSelectedItems] = useState<string | null>(null);
     const [isFullWidth, setIsFullWidth] = useState(false);
     const [left, setLeft] = useState(0);
+
+    const [menuState, setMenuState] = useState({
+        open: false,
+        selectedMenu:""
+    });
 
     const triggerRef = useRef<HTMLDivElement>(null);
 
@@ -51,11 +55,17 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                     onMouseOver={() => {
                         setIsFullWidth(true);
                         clearTimeout(timer.current);
-                        setSelectedItems("solutions")
+                        setMenuState({
+                            open: true,
+                            selectedMenu: "solutions"
+                        });
                     }}
                     onMouseLeave={() => {
                         timer.current = setTimeout(() => {
-                            setSelectedItems(null)
+                            setMenuState(st => ({
+                                selectedMenu: "solutions",
+                                open: false,
+                            }));
                         }, timeClose)
 
                     }}
@@ -71,11 +81,17 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                     onMouseOver={() => {
                         setIsFullWidth(true);
                         clearTimeout(timer.current);
-                        setSelectedItems("resources")
+                        setMenuState({
+                            open: true,
+                            selectedMenu: "resources"
+                        });
                     }}
                     onMouseLeave={() => {
                         timer.current = setTimeout(() => {
-                            setSelectedItems(null)
+                            setMenuState(st => ({
+                                selectedMenu: "resources",
+                                open: false,
+                            }));
                         }, timeClose)
                     }}
                 >Resources</span>
@@ -87,11 +103,17 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                     onMouseOver={() => {
                         setIsFullWidth(false);
                         clearTimeout(timer.current);
-                        setSelectedItems("about")
+                        setMenuState({
+                            open: true,
+                            selectedMenu: "about"
+                        });
                     }}
                     onMouseLeave={() => {
                         timer.current = setTimeout(() => {
-                            setSelectedItems(null)
+                            setMenuState(st => ({
+                                ...st,
+                                open: false,
+                            }));
                         }, timeClose)
                     }}
                 >About</span>
@@ -99,9 +121,12 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
         </ul>
 
         <MegaMenu
-           isOpen={!!selectedItems}
+           isOpen={menuState.open}
            setIsOpen={() => {
-               setSelectedItems(null);
+               setMenuState(st => ({
+                   ...st,
+                   open: false,
+               }));
            }}
            fullWidth={isFullWidth}
            left={!isFullWidth ? left : 0}
@@ -110,11 +135,15 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
            }}
            onMouseLeave={() => {
                timer.current = setTimeout(() => {
-                   setSelectedItems(null)
+                   setMenuState(st => ({
+                       ...st,
+                       open: false,
+                   }));
                }, timeClose)
            }}
+           duration={menuState.selectedMenu !== "about" ? 600 : 200}
         >
-            {selectedItems && menuContent[selectedItems]}
+            {menuContent[menuState.selectedMenu]}
         </MegaMenu>
     </div>
 }

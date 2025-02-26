@@ -10,11 +10,35 @@ interface MegaMenuProps {
     left?: number;
     onMouseOver?: () => void;
     onMouseLeave?: () => void;
+    className?: string;
+    duration?: number;
 }
 
-const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsOpen, left, onMouseLeave, onMouseOver }) => {
+const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsOpen, left, onMouseLeave, onMouseOver, className, duration = 600 }) => {
+    const timer = useRef<any>(null);
+
     const menuRef = useRef<HTMLDivElement>(null);
     const enableTransparent = true;
+
+    const [showMenu, setShowMenu] = React.useState(false);
+    const [visible, setVisible] = React.useState(false);
+
+    useEffect(() => {
+
+        if (isOpen) {
+            clearTimeout(timer.current);
+            setVisible(true);
+            setShowMenu(true);
+        } else {
+            setVisible(false);
+            timer.current = setTimeout(() => {
+                setShowMenu(false);
+            }, duration);
+        }
+
+    }, [isOpen]);
+
+
     const handleClickOutside = (event: MouseEvent) => {
         if (
             menuRef.current &&
@@ -23,6 +47,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsO
             setIsOpen(false);
         }
     };
+
     useEffect(() => {
         if (enableTransparent) {
             document.addEventListener('mousedown', handleClickOutside);
@@ -40,19 +65,24 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsO
         }
     }, [isOpen]);
 
-
     return (
-        <div className="relative">
-            {isOpen && ReactDOM.createPortal(
+        <div className={classNames(className)}>
+            {showMenu && ReactDOM.createPortal(
                 <div className="">
                     <div
-                        className="fixed inset-0 bg-black/50 z-40"
+                        className={classNames(`fixed inset-0 bg-black z-40 opacity-10 transition-all duration-${duration}`, {
+                            "opacity-50": visible,
+                            "opacity-0": !visible,
+                        })}
                         onClick={() => setIsOpen(false)}
                     />
                     <div
                         ref={menuRef}
-                        className={classNames("shadow-lg overflow-hidden animate-once animate-duration-700 absolute z-50", {
-                            'animate-fade-down': isOpen,
+                        className={classNames(`shadow-lg overflow-hidden absolute z-50 !duration-${duration}`, {
+                            'slideDown': visible && duration !== 200,
+                            'slideUp': !visible && duration !== 200,
+                            'slideDownFast': visible && duration === 200,
+                            'slideUpFast': !visible && duration === 200,
                             'w-full': fullWidth
                         })}
                         style={{left: `${left}px`}}

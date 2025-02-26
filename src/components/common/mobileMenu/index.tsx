@@ -85,10 +85,10 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
         },
         about: {
             name: "About",
-            url: "/#",
+            url: "/about",
             items: [
                 {
-                    url: "/",
+                    url: "/about-cosmolex",
                     title: "About CosmoLex",
                 },
                 {
