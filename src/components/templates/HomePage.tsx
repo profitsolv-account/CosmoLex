@@ -8,9 +8,12 @@ import {MatterCentric} from "@/components/blocks/matterCentric";
 import {Testimonials} from "@/components/blocks/testimonials";
 import {VideoSlider} from "@/components/blocks/videoSlider";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
+import {PageDataType} from "@/types";
 
 
-export default function HomePage({ pageData }: { pageData: any }) {
+export default function HomePage({ pageData }: { pageData: PageDataType }) {
+
+    const testimonials = pageData.testimonials;
   return (
       <Layout pageData={pageData}>
 
@@ -18,7 +21,7 @@ export default function HomePage({ pageData }: { pageData: any }) {
           <Partners />
           <ComplianceManagement />
           <MatterCentric />
-          <Testimonials />
+          {testimonials && <Testimonials testimonials={testimonials} />}
           <VideoSlider />
           <SimplifyPractice />
 

@@ -1,3 +1,5 @@
+import {TestimonialType} from "@/types/testimonials";
+
 export type FeaturedPostType = {
     title: string;
     slug: string;
@@ -52,4 +54,5 @@ export type PageDataType = {
     id: string;
     menus: MenusList;
     settings: SettingsType;
+    testimonials?: TestimonialType[]
 }

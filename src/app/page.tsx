@@ -9,10 +9,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
     const pageData = await getHomePageData();
-    console.log(pageData);
     return <HomePage pageData={pageData} />
 }
 
 export const revalidate = false;
 export const dynamic = "force-static";
-export const fetchCache = "default-cache";
+

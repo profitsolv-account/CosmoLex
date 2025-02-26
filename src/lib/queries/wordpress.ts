@@ -4,6 +4,7 @@ import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {getAllMenus} from "@/lib/queries/menus";
 import {getSiteSettings} from "@/lib/queries/settings";
+import {getTestimonialsList} from "@/lib/queries/testimonials";
 
 export const getHomePageData = async () => {
     const { data } = await client.query({
@@ -24,7 +25,8 @@ export const getHomePageData = async () => {
         ...get(data, 'page', {}),
          featuredPost: await getLatestPost(),
          menus: await getAllMenus(),
-         settings: await getSiteSettings()
+         settings: await getSiteSettings(),
+         testimonials: await getTestimonialsList(),
     };
 }
 
