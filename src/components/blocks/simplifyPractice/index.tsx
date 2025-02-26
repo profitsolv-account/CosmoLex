@@ -4,9 +4,9 @@ import workRemotely from '@/assets/img/simple-practice/work-remotely.webp';
 
 export const SimplifyPractice = () => {
     return (
-        <div className="container mt-20">
+        <div className="container mt-20 md:mt-30">
            <div className="w-full max-w-[353px] mx-auto relative z-10 md:max-w-[1171px]">
-               <h3 className="text-center text-primary-dark text-4xl font-bold leading-[48px] px-10 mb-9">Simplify your practice with one tool.</h3>
+               <h3 className="text-center text-primary-dark text-4xl font-bold leading-[48px] px-10 mb-9 md:max-w-[600px] md:mx-auto md:text-[46px] md:mb-16 md:leading-[60px]">Simplify your practice with one tool.</h3>
 
               <div className="flex flex-col gap-5 md:flex-row md:gap-[37px]">
                   <div className="flex flex-col justify-between w-[353px] bg-[#badfc3] rounded-[15px] pt-10 overflow-hidden md:w-1/2 md:rounded-[30px] md:pt-18">
