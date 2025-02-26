@@ -49,14 +49,13 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
     const handleMenuToggle = () => {
         if (openMenu) {
             setOpenMenu(false);
-            setTimeout(() => setMenuVisible(false), 300); // Delay for fade-out animation
+            setTimeout(() => setMenuVisible(false), 300);
         } else {
             setMenuVisible(true);
-            setTimeout(() => setOpenMenu(true), 10); // Delay to trigger transition
+            setTimeout(() => setOpenMenu(true), 10);
         }
     };
 
-    // Combine menus with the new structure
     const combinedMenus: any = {
         solutions: {
             ...menus["header-menu-solutions"],
@@ -96,7 +95,7 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
 
     return (
         <div className="bg-primary lg:hidden relative z-50">
-            <div className="p-4 flex justify-between">
+            <div className="px-4 py-12 pb-8 flex justify-between">
                 <div>
                     <Link href="/">
                         <Image src={logo} alt="logo"/>
@@ -137,7 +136,7 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
                                         >
                                             <Link
                                                 href={menu.url || "#"}
-                                                className="hover:text-secondary transition duration-300 ease-in-out text-2xl"
+                                                className="hover:text-secondary transition duration-300 ease-in-out text-2xl font-semibold"
                                                 onClick={(e) =>
                                                     e.stopPropagation()
                                                 }

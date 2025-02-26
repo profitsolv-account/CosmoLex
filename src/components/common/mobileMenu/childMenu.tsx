@@ -23,7 +23,7 @@ export const ChildMenu: FC<ChildMenuProps> = ({items, expandedSubMenus, toggleSu
                     >
                         <Link
                             href={item.url}
-                            className="hover:text-secondary transition duration-400 text-xl"
+                            className="hover:text-secondary transition duration-400 text-xl font-medium"
                             onClick={(e) => e.stopPropagation()}
                         >
                             {item.title}
