@@ -31,3 +31,12 @@ export type MenuType = {
 export type MenusList = {
     [index: string]: MenuType
 }
+
+export type PageDataType = {
+    title: string;
+    content: string;
+    date: string;
+    featuredPost: FeaturedPostType;
+    id: string;
+    menus: MenusList
+}

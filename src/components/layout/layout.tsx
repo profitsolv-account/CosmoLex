@@ -1,19 +1,11 @@
 "use client"
 
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Footer} from "@/components/layout/footer";
 import {Header} from "@/components/layout/header";
-import {useAppContext} from "@/context";
+import {PageDataType} from "@/types";
 
-const Layout = ({ children, pageData }: { children: React.ReactNode, pageData: any }) => {
-
-    const {updateData} = useAppContext();
-    useEffect(() => {
-        updateData({
-            featuredPost: pageData.featuredPost,
-            menus: pageData.menus || {}
-        });
-    }, []);
+const Layout = ({ children, pageData }: { children: React.ReactNode, pageData: PageDataType }) => {
 
     return (
         <>
@@ -21,7 +13,7 @@ const Layout = ({ children, pageData }: { children: React.ReactNode, pageData: a
                 <main className="">
                     {children}
                 </main>
-            <Footer />
+            <Footer pageData={pageData} />
         </>
     )
 }

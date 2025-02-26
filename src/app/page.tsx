@@ -2,6 +2,7 @@ import {Metadata} from "next";
 import {getSEOData} from "@/lib/queries/seo";
 import HomePage from "@/components/templates/HomePage";
 import { getHomePageData} from "@/lib/queries/wordpress";
+import {getSiteSettings} from "@/lib/queries/settings";
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData("home-page");

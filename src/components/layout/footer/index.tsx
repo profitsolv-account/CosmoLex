@@ -6,11 +6,13 @@ import slide5 from '@/assets/img/sliders/5.png';
 import OtherCompaniesIcon from '@/assets/img/other-companies.svg';
 import Image from 'next/image';
 import { Navigations } from './navigations';
+import {PageDataType} from "@/types";
 
-export const Footer = () => {
+export const Footer = ({pageData}: {pageData: PageDataType}) => {
+
     return (<div className="relative">
         <div className="absolute top-[-100px] left-0 w-full h-full bg-primary z-0 rounded-tr-[100px]" />
-        <Navigations />
+        <Navigations pageData={pageData} />
          <div className="w-full relative bg-[#eef8fd] flex items-center justify-center py-5">
             <div className="container max-w-[1266px] flex flex-col justify-between gap-5 items-center lg:flex-row">
                 <div className="text-center text-2xl font-bold font-['Inter']">
