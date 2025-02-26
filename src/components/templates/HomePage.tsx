@@ -22,7 +22,7 @@ export default function HomePage({pageData}: { pageData: PageDataType }) {
             <HomeHeader/>
             <Partners/>
             <ComplianceManagement/>
-            <MatterCentric/>
+            <MatterCentric setting={pageData.settings}/>
             <Testimonials testimonials={testimonials}/>
             <VideoTestimonials testimonials={extendedTestimonials} />
             <SimplifyPractice pageData={pageData}/>

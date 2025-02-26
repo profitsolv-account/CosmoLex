@@ -1,14 +1,19 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import {SettingsType} from "@/types";
+import {FC} from "react";
 
 
-export const MatterCentric = () => {
+type Props = {
+    setting: SettingsType
+}
+
+export const MatterCentric: FC<Props> = ({setting}) => {
 
     const options = [{
             title: 'Cloud & Browser-Based',
@@ -39,8 +44,8 @@ export const MatterCentric = () => {
             </div>
             <div className="px-5 mb-10 md:mb-15">
                <div className="flex gap-5 md:justify-center">
-                   <a href="/" className="base-btn hover:bg-primary-dark hover:text-white">Request demo</a>
-                   <a href="/" className="base-btn bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark">Try for free</a>
+                   <a href={setting["demoLink"] || ''} className="base-btn hover:bg-primary-dark hover:text-white">Request demo</a>
+                   <a href={setting["freeTrialLink"] || ''} className="base-btn bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark">Try for free</a>
                </div>
            </div>
             <div className="md:max-w-[690px] md:mx-auto">

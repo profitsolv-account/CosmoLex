@@ -39,7 +39,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, videoId }) => 
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="relative pt-[56.25%]">
-                    <div className={`wistia_embed wistia_async_${videoId} seo=true videoFoam=true absolute inset-0 w-full h-full`}>
+                    <div className={`wistia_embed wistia_async_${videoId} seo=true videoFoam=true absolute inset-0 w-full h-full playerColor=0c193a`}>
                         <div className="wistia_swatch absolute inset-0 w-full h-full opacity-0 overflow-hidden transition-opacity duration-200">
                             <img
                                 src={`https://fast.wistia.com/embed/medias/${videoId}/swatch`}
@@ -57,7 +57,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, videoId }) => 
                     </div>
                 </div>
                 <button
-                    className="absolute text-gray-600 hover:text-gray-900 rounded-4xl bg-white w-10 h-10 cursor-pointer border border-gray-300 flex items-center justify-center top-[-45px] right-[-45px]"
+                    className="absolute text-gray-600 rounded-4xl bg-white w-10 h-10 cursor-pointer flex items-center justify-center top-[-45px] right-[-45px] transition-all duration-200 hover:bg-primary-dark hover:text-white"
                     onClick={onClose}
                 >
                     ✕
