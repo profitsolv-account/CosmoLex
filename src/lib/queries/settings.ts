@@ -15,6 +15,17 @@ export const getSiteSettings = async () => {
                         copyrightText
                         fieldGroupName
                     }
+                    clSettingsFields {
+                        fieldGroupName
+                        freeTrialLink
+                        loginLink
+                        headerLogo {
+                            node {
+                                altText
+                                guid
+                            }
+                        }
+                    }
                 }
             }
         `,
@@ -22,11 +33,13 @@ export const getSiteSettings = async () => {
         variables: {},
     })
 
-    console.log(data);
-
-    const footerData = get(data, 'page.cLSettings', {});
+    const footerData = get(data, 'cLSettings.clSettingsFooterFields', {});
+    const headerData = get(data, 'cLSettings.clSettingsFields', {});
 
     return {
-       ...footerData
+       ...footerData,
+       ...headerData,
+        logo: get(headerData, 'headerLogo.node.guid', ''),
+        logoAltText: get(headerData, 'headerLogo.node.altText', ''),
     }
 }

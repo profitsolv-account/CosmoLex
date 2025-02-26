@@ -2,7 +2,6 @@ import {Metadata} from "next";
 import {getSEOData} from "@/lib/queries/seo";
 import HomePage from "@/components/templates/HomePage";
 import { getHomePageData} from "@/lib/queries/wordpress";
-import {getSiteSettings} from "@/lib/queries/settings";
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData("home-page");
@@ -10,6 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
     const pageData = await getHomePageData();
+    console.log(pageData);
     return <HomePage pageData={pageData} />
 }
 

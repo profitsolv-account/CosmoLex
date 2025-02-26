@@ -1,8 +1,8 @@
-import slide1 from '@/assets/img/sliders/1.png';
-import slide2 from '@/assets/img/sliders/2.png';
-import slide3 from '@/assets/img/sliders/3.png';
-import slide4 from '@/assets/img/sliders/4.png';
-import slide5 from '@/assets/img/sliders/5.png';
+import slide1 from '@/assets/img/sliders/clearviewsocial.webp';
+import slide2 from '@/assets/img/sliders/orionlaw.webp';
+import slide3 from '@/assets/img/sliders/rocketmatter.webp';
+import slide4 from '@/assets/img/sliders/tabs3.webp';
+import slide5 from '@/assets/img/sliders/timesolv.webp';
 import OtherCompaniesIcon from '@/assets/img/other-companies.svg';
 import Image from 'next/image';
 import { Navigations } from './navigations';
@@ -19,20 +19,20 @@ export const Footer = ({pageData}: {pageData: PageDataType}) => {
                     <OtherCompaniesIcon className="max-w-full" />
                 </div>
                 <div className="grid grid-cols-2 lg:flex lg:justify-center">
-                    <a href="#" className="flex justify-center items-center">
-                        <Image src={slide1} alt="alt" width={151} height={82} />
+                    <a href="https://clearviewsocial.com/" className="flex justify-center items-center">
+                        <Image src={slide1} alt="clear-view-social" width={151} height={82} />
                     </a>
-                    <a href="#" className="flex justify-center items-center">
-                        <Image src={slide2} alt="alt" width={151} height={82} />
+                    <a href="https://orionlaw.com" className="flex justify-center items-center">
+                        <Image src={slide2} alt="orion-law" width={151} height={82} />
                     </a>
-                    <a href="#" className="flex justify-center items-center">
-                        <Image src={slide3} alt="alt" width={151} height={82} />
+                    <a href="https://www.rocketmatter.com" className="flex justify-center items-center">
+                        <Image src={slide3} alt="rocket-matter" width={151} height={82} />
                     </a>
-                    <a href="#" className="flex justify-center items-center">
-                        <Image src={slide4} alt="alt" width={151} height={82} />
+                    <a href="https://www.tabs3.com" className="flex justify-center items-center">
+                        <Image src={slide4} alt="tabs3" width={151} height={82} />
                     </a>
-                    <a href="#" className="flex justify-center items-center">
-                        <Image src={slide5} alt="alt" width={151} height={82} />
+                    <a href="https://www.timesolv.com" className="flex justify-center items-center">
+                        <Image src={slide5} alt="timesolv" width={151} height={82} />
                     </a>
                 </div>
             </div>

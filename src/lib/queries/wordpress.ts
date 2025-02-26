@@ -3,6 +3,7 @@ import {FeaturedPostType, MenusList} from "@/types";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {getAllMenus} from "@/lib/queries/menus";
+import {getSiteSettings} from "@/lib/queries/settings";
 
 export const getHomePageData = async () => {
     const { data } = await client.query({
@@ -22,7 +23,8 @@ export const getHomePageData = async () => {
      return {
         ...get(data, 'page', {}),
          featuredPost: await getLatestPost(),
-         menus: await getAllMenus()
+         menus: await getAllMenus(),
+         settings: await getSiteSettings()
     };
 }
 
@@ -80,7 +82,8 @@ export const getPageData = async (pageSlug: string) => {
     return {
         ...get(data, 'page', {}),
         featuredPost: await getLatestPost(),
-        menus: await getAllMenus()
+        menus: await getAllMenus(),
+        settings: await getSiteSettings()
     };
 }
 
@@ -118,7 +121,8 @@ export const getPostData = async (pageSlug: string) => {
         featuredPost: await getLatestPost(),
         featuredImage: post.featuredImage?.node?.sourceUrl || "",
         altText: post.featuredImage?.node?.altText || "",
-        menus: await getAllMenus()
+        menus: await getAllMenus(),
+        settings: await getSiteSettings()
     };
 }
 

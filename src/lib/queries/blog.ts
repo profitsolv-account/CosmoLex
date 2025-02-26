@@ -2,6 +2,7 @@ import {gql} from "@apollo/client";
 import client from "@/lib/apollo-client";
 import {getLatestPost} from "@/lib/queries/wordpress";
 import {getAllMenus} from "@/lib/queries/menus";
+import {getSiteSettings} from "@/lib/queries/settings";
 
 const POSTS_PER_PAGE = 10;
 const BASE_URL = 'https://cosmonew1.wpenginepowered.com/wp-json/wp/v2';
@@ -26,7 +27,8 @@ export const getBlogData = async (page: number) => {
         return {
             posts,
             featuredPost,
-            menus: await getAllMenus()
+            menus: await getAllMenus(),
+            settings: await getSiteSettings()
         };
     } catch (error) {
         console.error("Failed to fetch blog data:", error);
