@@ -45,7 +45,7 @@ body {
         &.open {
             span {
                 &:nth-child(1) {
-                    @apply translate-y-1 rotate-45;
+                    @apply translate-y-1.5 rotate-45;
                 }
               /*  &:nth-child(2) {
                     @apply opacity-0;

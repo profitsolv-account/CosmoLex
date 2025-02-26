@@ -2,7 +2,7 @@ import { MenusList } from "@/types";
 import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Hamburger } from "@/components/common/hamburger";
+import { Hamburger } from "./hamburger";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import classNames from "classnames";
 import {ChildMenu} from "@/components/common/mobileMenu/childMenu";
@@ -100,8 +100,8 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
     };
 
     return (
-        <div className="bg-primary lg:hidden relative z-50">
-            <div className="px-4 py-12 pb-8 flex justify-between">
+        <div className="bg-primary lg:hidden relative z-50 pb-4">
+            <div className="px-4 py-8 pb-4 flex justify-between">
                 <div>
                     <Link href="/">
                         <Image src={logo} alt="logo"/>
