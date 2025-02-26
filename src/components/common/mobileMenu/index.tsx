@@ -56,6 +56,12 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
         }
     };
 
+    useEffect(() => {
+        if (!menuVisible) {
+            setExpandedMenus({});
+        }
+    }, [menuVisible]);
+
     const combinedMenus: any = {
         solutions: {
             ...menus["header-menu-solutions"],
