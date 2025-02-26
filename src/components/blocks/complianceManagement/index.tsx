@@ -43,11 +43,10 @@ export const ComplianceManagement = () => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const swiperRef = useRef<any>(null);
 
-    // Function to handle tab click
     const handleTabClick = (index:number) => {
         setActiveIndex(index);
         if (swiperRef.current) {
-            swiperRef.current.slideTo(index);
+            swiperRef.current.slideToLoop(index);
         }
     }
 
