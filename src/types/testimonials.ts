@@ -6,5 +6,6 @@ export type TestimonialType = {
     location: string;
     videoUrl: string;
     extended: boolean;
-
+    background: string;
+    flipBackground: boolean;
 }

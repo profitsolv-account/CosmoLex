@@ -89,7 +89,5 @@ export const Navigations: FC<Props> = ({pageData}) => {
            </div>
 
         </div>
-
-
     </div>)
 }

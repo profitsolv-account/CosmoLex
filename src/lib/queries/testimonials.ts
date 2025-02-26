@@ -23,6 +23,12 @@ export const getTestimonialsList = async () => {
                                 location
                                 position
                                 videoUrl
+                                background {
+                                    node {
+                                        guid
+                                    }
+                                }
+                                flipBackground
                             }
                         }
                     }
@@ -36,6 +42,7 @@ console.log(data);
     const testimonials = get(data, 'testimonials.edges', []).map((testimonial: any) => ({
         ...testimonial.node.testimonialFields,
         clientPicture: get(testimonial, 'node.testimonialFields.clientPicture.node.guid', ''),
+        background: get(testimonial, 'node.testimonialFields.background.node.guid', ''),
     }));
 
     return [

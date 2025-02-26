@@ -1,0 +1,18 @@
+.video-slider {
+    .swiper-slide-prev, .swiper-slide-next {
+        .slide-content {
+            min-height: 552px!important;
+        }
+        .slide-content-inner {
+            display: none!important;
+        }
+    }
+
+    .swiper-slide-prev .left-overlay {
+        display: block!important;
+    }
+
+    .swiper-slide-next .right-overlay {
+        display: block!important;
+    }
+}

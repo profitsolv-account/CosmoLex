@@ -6,26 +6,27 @@ import {Partners} from "@/components/blocks/partners";
 import {ComplianceManagement} from "@/components/blocks/complianceManagement";
 import {MatterCentric} from "@/components/blocks/matterCentric";
 import {Testimonials} from "@/components/blocks/testimonials";
-import {VideoSlider} from "@/components/blocks/videoSlider";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {PageDataType} from "@/types";
+import {VideoTestimonials} from "@/components/blocks/videoTestimonials";
+import VideoModal from "@/components/blocks/videoModal";
 
 
-export default function HomePage({ pageData }: { pageData: PageDataType }) {
+export default function HomePage({pageData}: { pageData: PageDataType }) {
 
-    const testimonials = pageData.testimonials;
-  return (
-      <Layout pageData={pageData}>
+    const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
+    const extendedTestimonials = (pageData.testimonials || []).filter((testimonial) => testimonial.extended);
 
-          <HomeHeader />
-          <Partners />
-          <ComplianceManagement />
-          <MatterCentric />
-          {testimonials && <Testimonials testimonials={testimonials} />}
-          <VideoSlider />
-          <SimplifyPractice />
+    return (
+        <Layout pageData={pageData}>
+            <HomeHeader/>
+            <Partners/>
+            <ComplianceManagement/>
+            <MatterCentric/>
+            <Testimonials testimonials={testimonials}/>
+            <VideoTestimonials testimonials={extendedTestimonials} />
+            <SimplifyPractice/>
+        </Layout>
 
-      </Layout>
-
-  )
+    )
 }

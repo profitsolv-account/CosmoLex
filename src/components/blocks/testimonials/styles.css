@@ -10,10 +10,10 @@
         font-size: 12px;
         opacity: 1;
         background: #fff;
-        border: 1px solid #d9d9d9;
+        border: 1px solid #151C2D;
     }
     .swiper-pagination-bullet-active {
-        border: 1px solid #d9d9d9;
-        background: #d9d9d9;
+        border: 1px solid #151C2D;
+        background: #151C2D;
     }
 }

@@ -1,7 +1,0 @@
-.video-slider {
-    .swiper-slide-prev, .swiper-slide-next {
-        .slide-content {
-            min-height: 552px!important;
-        }
-    }
-}

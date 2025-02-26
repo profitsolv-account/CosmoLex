@@ -84,8 +84,8 @@ export const Testimonials: FC<Props> = ({testimonials}) => {
                       autoHeight={false}
                   >
                       {
-                          testimonials.map((t) => (
-                              <SwiperSlide key={t.client}>
+                          testimonials.map((t, k) => (
+                              <SwiperSlide key={`${t.client}_${k}`}>
                                   <div className="h-full min-h-[491.19px] flex flex-col bg-white text-left rounded-lg md:min-h-[407px] md:p-16 md:pt-15">
 
                                       <div className="w-[339px] italic text-[#151c2d] text-[31px] font-semibold font-['Inter'] leading-10 mb-10 md:w-full md:text-[46px] md:leading-[64px]">
