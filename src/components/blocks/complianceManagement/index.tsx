@@ -17,7 +17,7 @@ import 'swiper/css/navigation';
 
 const data = [{
     title: "Firm Management",
-    description: "Manage your firm with ease. Our legal practice management software is designed to help you manage your firm’s day-to-day operations.",
+    description: "Efficiently manage your practice. Track matters, pull reports, and keep your law firm productive. ",
     image: bg,
     link: "/"
 }, {
@@ -27,12 +27,12 @@ const data = [{
     link: "/"
 }, {
     title: "Accounting & Finance",
-    description: "Keep your firm compliant with built-in accounting tools.",
+    description: "Connect your firm to your finances. Manage your firm’s finances, stay compliant with built-in trust accounting, and generate real-time reports. ",
     image: bg,
     link: "/"
 }, {
     title: "Client Engagement",
-    description: "Improve client communication. Our client portal allows you to securely share documents and communicate with clients.",
+    description: "Grow your firm and elevate your client experience. Streamline intake, build a strong online presence, and securely manage documents.",
     image: bg,
     link: "/"
 }];

@@ -15,7 +15,7 @@ export const getHomePageData = async () => {
                     title
                     date
                     content
-                    homePageSettings {
+                    pageSettings {
                         description
                         title
                         heroImage {
@@ -33,10 +33,10 @@ export const getHomePageData = async () => {
 
      return {
         ...get(data, 'page', {}),
-         title: get(data, 'page.homePageSettings.title', ''),
-         description: get(data, 'page.homePageSettings.description', ''),
-         hero: get(data, 'page.homePageSettings.heroImage.node.sourceUrl', ''),
-         heroAlt: get(data, 'page.homePageSettings.heroImage.node.altText', ''),
+         title: get(data, 'page.pageSettings.title', ''),
+         description: get(data, 'page.pageSettings.description', ''),
+         hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
+         heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
          featuredPost: (await getLatestPosts(1))[0],
          menus: await getAllMenus(),
          settings: await getSiteSettings(),
@@ -87,18 +87,37 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
                     id
                     title
                     date
-                    content
+                    content,
+                    pageSettings {
+                        description
+                        title
+                        heroImage {
+                            node {
+                                altText
+                                sourceUrl
+                            }
+                        }
+                    }
                 }
             }
         `,
         fetchPolicy: "no-cache",
         variables: { pageSlug },
     });
+
+    const pageData = get(data, 'page', {});
+    const title = get(data, 'page.pageSettings.title', null) || get(data, 'page.title', '');
+
     return {
-        ...get(data, 'page', {}),
+        ...pageData,
         featuredPost: (await getLatestPosts(1))[0],
         menus: await getAllMenus(),
-        settings: await getSiteSettings()
+        settings: await getSiteSettings(),
+        title,
+        description: get(data, 'page.pageSettings.description', ''),
+        hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
+        heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
+
     };
 }
 

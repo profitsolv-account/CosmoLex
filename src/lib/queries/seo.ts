@@ -26,9 +26,9 @@ export const getSEOData = async (pageSlug: string) => {
     const seo = get(data, 'page.seo', {});
 
     return {
-        title: seo?.title || 'Home - Default Title',
-        description: seo?.metaDesc || 'Home - Default Description',
-        keywords: seo?.metaKeywords || 'Home, Keywords',
+        title: seo?.title || '',
+        description: seo?.metaDesc || '',
+        keywords: seo?.metaKeywords || '',
         openGraph: {
             images: seo?.opengraphImage?.sourceUrl ? [{ url: seo.opengraphImage.sourceUrl }] : [],
         },
