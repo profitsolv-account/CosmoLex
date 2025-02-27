@@ -21,7 +21,7 @@ export const DemoHeader:FC<Props> = ({pageData}) => {
                     </div>
                     <div className="w-[324px] min-h-[61px] text-white text-lg font-normal font-['Inter'] leading-loose lg:w-full" dangerouslySetInnerHTML={{__html: description}} />
                 </div>
-                <Rating />
+                <Rating className="text-center" />
             </div>
         </div>
     )

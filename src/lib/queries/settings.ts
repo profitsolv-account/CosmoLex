@@ -45,3 +45,21 @@ export const getSiteSettings = async (): Promise<SettingsType> => {
         logoAltText: get(headerData, 'headerLogo.node.altText', ''),
     }
 }
+
+export const generalSettings = async (): Promise<any> => {
+
+    const { data } = await client.query({
+        query: gql`
+            query GetGeneralSettings {
+                generalSettings {
+                    title
+                    description
+                }
+            }
+        `,
+        fetchPolicy: "no-cache",
+        variables: {},
+    });
+
+    return get(data, 'generalSettings', {});
+}

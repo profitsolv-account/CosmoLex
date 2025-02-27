@@ -2,14 +2,17 @@ import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
 import BlogTemplate from "@/components/templates/BlogTemplate";
 import {getBlogData} from "@/lib/queries/blog";
+import {generalSettings} from "@/lib/queries/settings";
 
-type Params = {
-    params: Promise<{slug: string}>;
-}
+export async function generateMetadata(): Promise<Metadata> {
+    const {title} = await generalSettings();
+    return {
+        title: `${title} Blog | ${title}`,
+        description: '',
+        keywords: '',
+    }
 
-export async function generateMetadata({params}: Params): Promise<Metadata> {
-    const {slug} = await params;
-    return await getSEOData(slug || 'home-page');
+    return await getSEOData('page');
 }
 
 export default async function BlogPage() {

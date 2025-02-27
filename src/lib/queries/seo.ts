@@ -8,6 +8,7 @@ export const getSEOData = async (pageSlug: string) => {
         query: gql`
             query GetHomePageSEO {
                 page(id: "${pageSlug}" , idType: URI) {
+                    title
                     seo {
                         title
                         metaDesc
@@ -41,6 +42,7 @@ export const getPostSEOData = async (pageSlug: string) => {
         query: gql`
             query GetHomePageSEO {
                 post(id: "${pageSlug}" , idType: URI) {
+                    title
                     seo {
                         title
                         metaDesc
@@ -56,12 +58,13 @@ export const getPostSEOData = async (pageSlug: string) => {
         variables: { pageSlug },
     })
 
-    const seo = get(data, 'page.seo', {});
+    const seo = get(data, 'post.seo', {});
+    const title = get(data, 'post.title', '');
 
     return {
-        title: seo?.title || 'Home - Default Title',
-        description: seo?.metaDesc || 'Home - Default Description',
-        keywords: seo?.metaKeywords || 'Home, Keywords',
+        title: seo?.title || title,
+        description: seo?.metaDesc || '',
+        keywords: seo?.metaKeywords || '',
         openGraph: {
             images: seo?.opengraphImage?.sourceUrl ? [{ url: seo.opengraphImage.sourceUrl }] : [],
         },

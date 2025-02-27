@@ -1,7 +1,16 @@
 import PostTemplate from "@/components/templates/PostTemplate";
 import { notFound } from "next/navigation";
 import {getPostData} from "@/lib/queries/wordpress";
-import {getAllPostSlugs} from "@/lib/queries/blog";
+import {Metadata} from "next";
+import {getPostSEOData} from "@/lib/queries/seo";
+
+type Params = {
+    params: Promise<{slug: string}>;
+}
+export async function generateMetadata({params}: any): Promise<Metadata> {
+    const {slug} = await params;
+    return await getPostSEOData(slug || 'home-page');
+}
 
 export default async function SinglePost({ params }: any) {
     const { slug } = await params;

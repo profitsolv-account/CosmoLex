@@ -33,7 +33,9 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
                     </div>
                 </div>
 
-                <Rating />
+                <div className="py-13">
+                    <Rating />
+                </div>
             </div>
 
             <div className="max-w-[353px] lg:max-w-full lg:grow lg:w-[503px] lg:flex-none xl:w-[703px] ">
