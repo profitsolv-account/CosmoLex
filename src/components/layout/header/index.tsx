@@ -31,7 +31,7 @@ export const Header = ({pageData}: {pageData: PageDataType}) => {
                            <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-base font-normal font-['Inter']">Login</Link>
                            <Button variant="secondary" onClick={() => {
                                  window.location.href = getSetting('demoLink');
-                           }}>Demo</Button>
+                           }}>Request demo</Button>
                            <Button variant="primary" onClick={() => {
                                     window.location.href = getSetting('freeTrialLink');
                            }}>Try for free</Button>
