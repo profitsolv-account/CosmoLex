@@ -8,7 +8,7 @@ import {LatestPosts} from "@/components/widgets/latestPosts";
 export default function BlogTemplate({ pageData, page }: { pageData: PageDataType, page: number }) {
     return (
         <Layout pageData={pageData}>
-            <div className="pt-20 b-32 single-entity container flex flex-col-reverse gap-10 items-start  lg:flex-row">
+            <div className="pt-20 b-32 single-entity container flex flex-col-reverse gap-10 items-start px-4 md:px-0 lg:flex-row ">
                 <div>
                    <section>
                        {pageData.posts && pageData.posts.map((post: ShortPostType) => {
