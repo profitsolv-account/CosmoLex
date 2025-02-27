@@ -6,7 +6,7 @@ import {generalSettings} from "@/lib/queries/settings";
 export async function generateMetadata(): Promise<Metadata> {
     const {title} = await generalSettings();
     return {
-        title: `${title} Blog | 404}`,
+        title: `${title} Blog | 404`,
         description: '',
         keywords: '',
     }
