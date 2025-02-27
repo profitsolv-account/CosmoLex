@@ -21,7 +21,7 @@ export const ShortPost: FC<Props> = ({post}) => {
                         <img
                             src={post.featuredImage}
                             alt={post.altText}
-                            className="max-w-[600px]"
+                           /* className="max-w-[600px]"*/
                         />
                     </a>
                 </div>
