@@ -2,7 +2,7 @@ import {MenusList} from "@/types";
 
 const WORDPRESS_API_URL = 'https://cosmonew1.wpenginepowered.com';
 
-export const getAllMenus = async () => {
+export const getAllMenus = async (): Promise<MenusList> => {
 
     /* const menu = getFromCache('menu');
      if (menu) {
@@ -21,7 +21,7 @@ export const getAllMenus = async () => {
         });
 
         if (!response.ok) {
-            return [];
+            return {};
         }
 
         const menus = await response.json();
@@ -64,6 +64,6 @@ export const getAllMenus = async () => {
         return menusList;
     } catch (error) {
         console.error(error);
-        return [];
+        return {};
     }
 };

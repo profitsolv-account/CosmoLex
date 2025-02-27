@@ -54,6 +54,9 @@ export type PageDataType = {
     featuredPost: FeaturedPostType;
     id: string;
     menus: MenusList;
-    settings: SettingsType;
-    testimonials?: TestimonialType[]
+    settings?: SettingsType;
+    testimonials?: TestimonialType[];
+    footerExtendedBg?: boolean;
+    latestPosts?: FeaturedPostType[];
+    posts?: ShortPostType[];
 }

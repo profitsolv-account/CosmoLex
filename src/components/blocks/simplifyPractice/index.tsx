@@ -24,7 +24,7 @@ export const SimplifyPractice:FC<Props> = ({pageData}) => {
                               Tell us your needs, and we’ll show you how to personalize CosmoLex for them.
                           </p>
                           <div className="flex justify-center">
-                              <a href={pageData.settings['demoLink']} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Schedule now</a>
+                              <a href={pageData.settings?.demoLink || ""} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Schedule now</a>
                           </div>
                       </div>
 
@@ -49,7 +49,7 @@ export const SimplifyPractice:FC<Props> = ({pageData}) => {
                              No wait. No credit card. Just click to get started with CosmoLex for free.
                          </p>
                          <div className="flex justify-center">
-                             <a href={pageData.settings['freeTrialLink']} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Get started</a>
+                             <a href={pageData.settings?.freeTrialLink || ""} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Get started</a>
                          </div>
                      </div>
 

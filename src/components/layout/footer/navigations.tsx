@@ -1,5 +1,3 @@
-import Image from "next/image";
-import logo from "@/assets/img/logo.svg?url";
 import {PageDataType, SettingsType} from "@/types";
 import {FC} from "react";
 
@@ -14,6 +12,7 @@ export const Navigations: FC<Props> = ({pageData}) => {
     }
 
     const getPageSettings = (name: keyof SettingsType) => {
+        if (!pageData.settings) return '';
         return pageData.settings[name] ?? '';
     }
 

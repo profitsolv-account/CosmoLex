@@ -1,17 +1,14 @@
 import React from 'react'
 import Layout from "@/components/layout/layout";
 
-
 export default function PageTemplate({ pageData }: { pageData: any }) {
     return (
         <Layout pageData={pageData}>
-            <div className="pb-32">
-
-                <section className="container mx-auto px-6 py-16 text-center">
-                    <h1 className="text-5xl font-bold text-primary">{pageData?.title}</h1>
-                    <p className="mt-4 text-lg text-gray-700">{pageData?.excerpt}</p>
+            <div className="px-4 pb-32 single-entity container">
+                <section className="mx-auto py-4 text-left md:py-16">
+                    <h2 className=" text-primary text-[34px] font-bold font-['Inter'] leading-[55px] md:text-[46px] " dangerouslySetInnerHTML={{__html: pageData?.title || ""}} />
                 </section>
-                <section className="container" dangerouslySetInnerHTML={{__html: pageData && pageData.content ? pageData.content : ""}}>
+                <section className="" dangerouslySetInnerHTML={{__html: pageData && pageData.content ? pageData.content : ""}}>
                 </section>
             </div>
         </Layout>

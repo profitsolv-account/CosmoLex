@@ -6,24 +6,26 @@ type Props = {
 }
 export const ShortPost: FC<Props> = ({post}) => {
 
-    return <div className="mb-10">
-        <h2 className="mb-5 text-primary-dark text-[46px] font-bold font-['Inter'] leading-[55px] transition duration-300 hover:text-primary-dark/70">
-            <a href={`/blog/${post.slug}`}>{post.title} </a>
+    return <div className="mb-12">
+        <h2 className="mb-5 text-primary-dark text-[34px] font-bold font-['Inter'] leading-[55px] md:text-[46px] transition duration-300 hover:text-primary">
+            <a href={`/blog/${post.slug}`} dangerouslySetInnerHTML={{__html: post.title || ""}}/>
         </h2>
 
-        <div className="flex">
-            {!!post.featuredImage.length && <>
-                <a
-                    href={`/blog/${post.slug}`}
-                    className="inline-block p-1 border border-primary"
-                >
-                    <img
-                        src={post.featuredImage}
-                        alt={post.altText}
-                    />
-                </a>
-            </>}
-        </div>
+        {!!post.featuredImage.length && <>
+            <div className="flex mb-5 text-justify">
+
+                    <a
+                        href={`/blog/${post.slug}`}
+                        className="inline-block p-1 border border-primary"
+                    >
+                        <img
+                            src={post.featuredImage}
+                            alt={post.altText}
+                            className="max-w-[600px]"
+                        />
+                    </a>
+                </div>
+        </>}
 
         <div dangerouslySetInnerHTML={{__html: post ? post.excerpt : ''}} className="text-xl"/>
     </div>

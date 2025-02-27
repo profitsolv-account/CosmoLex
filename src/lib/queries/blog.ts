@@ -1,18 +1,19 @@
 import {gql} from "@apollo/client";
 import client from "@/lib/apollo-client";
-import {getLatestPost} from "@/lib/queries/wordpress";
 import {getAllMenus} from "@/lib/queries/menus";
 import {getSiteSettings} from "@/lib/queries/settings";
+import {getLatestPosts} from "@/lib/queries/wordpress";
+import {PageDataType, ShortPostType} from "@/types";
 
 const POSTS_PER_PAGE = 10;
 const BASE_URL = 'https://cosmonew1.wpenginepowered.com/wp-json/wp/v2';
 
-export const getBlogData = async (page: number) => {
+export const getBlogData = async (page: number): Promise<PageDataType> => {
     try {
         const res = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`);
         const data = await res.json();
 
-        const posts = data.map((post: any) => ({
+        const posts:ShortPostType[] = data.map((post: any) => ({
             id: post.id,
             title: post.title.rendered,
             slug: post.slug,
@@ -22,20 +23,33 @@ export const getBlogData = async (page: number) => {
             altText: post._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "",
         }));
 
-        const featuredPost = await getLatestPost();
-
+        const latestPosts = await getLatestPosts(5);
         return {
             posts,
-            featuredPost,
+            featuredPost: latestPosts[0],
             menus: await getAllMenus(),
-            settings: await getSiteSettings()
+            settings: await getSiteSettings(),
+            latestPosts,
+            title: "Blog",
+            content: "",
+            id: "",
+            date: ""
         };
     } catch (error) {
         console.error("Failed to fetch blog data:", error);
         return {
+            title: "Blog",
+            content: "",
+            id: "",
+            date: "",
             posts: [],
-            featuredPost: null,
-            hasNextPage: false,
+            featuredPost: {
+                title: "",
+                slug: "",
+                featuredImage: "",
+                altText: "",
+            },
+            menus: {}
         };
     }
 };
@@ -47,7 +61,7 @@ export const getAllPostSlugs = async () => {
         return cachedPosts;
     }*/
 
-    const featuredPost = await getLatestPost();
+    const featuredPost = (await getLatestPosts(0))[0];
     const menus =  await getAllMenus();
 
     const fetchAllPosts = async (after: string | null = null, accumulatedPosts: any[] = []) => {

@@ -9,7 +9,6 @@ import {Testimonials} from "@/components/blocks/testimonials";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {PageDataType} from "@/types";
 import {VideoTestimonials} from "@/components/blocks/videoTestimonials";
-import VideoModal from "@/components/blocks/videoModal";
 
 
 export default function HomePage({pageData}: { pageData: PageDataType }) {
@@ -22,7 +21,7 @@ export default function HomePage({pageData}: { pageData: PageDataType }) {
             <HomeHeader pageData={pageData} />
             <Partners/>
             <ComplianceManagement/>
-            <MatterCentric setting={pageData.settings}/>
+            {pageData.settings && <MatterCentric setting={pageData.settings}/>}
             <Testimonials testimonials={testimonials}/>
             <VideoTestimonials testimonials={extendedTestimonials} />
             <SimplifyPractice pageData={pageData}/>

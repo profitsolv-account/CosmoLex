@@ -1,5 +1,5 @@
 import client from "@/lib/apollo-client";
-import {FeaturedPostType, MenusList} from "@/types";
+import {FeaturedPostType, MenusList, PageDataType} from "@/types";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {getAllMenus} from "@/lib/queries/menus";
@@ -37,14 +37,14 @@ export const getHomePageData = async () => {
          description: get(data, 'page.homePageSettings.description', ''),
          hero: get(data, 'page.homePageSettings.heroImage.node.sourceUrl', ''),
          heroAlt: get(data, 'page.homePageSettings.heroImage.node.altText', ''),
-         featuredPost: await getLatestPost(),
+         featuredPost: (await getLatestPosts(1))[0],
          menus: await getAllMenus(),
          settings: await getSiteSettings(),
          testimonials: await getTestimonialsList(),
     };
 }
 
-export const getLatestPost = async (): Promise<FeaturedPostType> => {
+export const getLatestPosts = async (postsCount = 1): Promise<FeaturedPostType[]> => {
    /* const posts = getFromCache("posts");
    if (posts) {
        const post = posts[posts.length - 1];
@@ -54,7 +54,7 @@ export const getLatestPost = async (): Promise<FeaturedPostType> => {
     const { data } = await client.query({
         query: gql`
             query GetLatestPost {
-                posts(first: 1) {
+                posts(first: ${postsCount}) {
                     nodes {
                         title
                         slug
@@ -71,16 +71,15 @@ export const getLatestPost = async (): Promise<FeaturedPostType> => {
         fetchPolicy: "no-cache",
     });
 
-    const postData = get(data, 'posts.nodes[0]', {featuredImage: {node: {sourceUrl: '', altText: ''}}});
-    return {
+    return get(data, 'posts.nodes', []).map((postData: any) => ({
         title: postData.title,
         slug: postData.slug,
         featuredImage: postData.featuredImage.node.sourceUrl,
         altText: postData.featuredImage.node.altText
-    }
+    }))
 }
 
-export const getPageData = async (pageSlug: string) => {
+export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
     const { data } = await client.query({
         query: gql`
             query GetPage {
@@ -97,7 +96,7 @@ export const getPageData = async (pageSlug: string) => {
     });
     return {
         ...get(data, 'page', {}),
-        featuredPost: await getLatestPost(),
+        featuredPost: (await getLatestPosts(1))[0],
         menus: await getAllMenus(),
         settings: await getSiteSettings()
     };
@@ -132,13 +131,15 @@ export const getPostData = async (pageSlug: string) => {
 
     const post = get(data, 'post', {});
 
+    const latestPosts = await getLatestPosts(5);
     return {
         ...post,
-        featuredPost: await getLatestPost(),
+        featuredPost: latestPosts[0],
         featuredImage: post.featuredImage?.node?.sourceUrl || "",
         altText: post.featuredImage?.node?.altText || "",
         menus: await getAllMenus(),
-        settings: await getSiteSettings()
+        settings: await getSiteSettings(),
+        latestPosts
     };
 }
 

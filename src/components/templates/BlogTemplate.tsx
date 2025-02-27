@@ -1,26 +1,27 @@
 import React from 'react'
 import Layout from "@/components/layout/layout";
-import {ShortPostType} from "@/types";
+import {PageDataType, ShortPostType} from "@/types";
 import {ShortPost} from "@/components/common/shortPost";
 import Pagination from "@/components/pagination/inde";
+import {LatestPosts} from "@/components/widgets/latestPosts";
 
-export default function BlogTemplate({ pageData, page }: { pageData: any, page: number }) {
+export default function BlogTemplate({ pageData, page }: { pageData: PageDataType, page: number }) {
     return (
         <Layout pageData={pageData}>
-            <div className="pb-32">
-                <section className="container mx-auto px-6 py-16 text-center">
-                    <h1 className="text-5xl font-bold text-primary">{pageData?.title}</h1>
-                    <p className="mt-4 text-lg text-gray-700">{pageData?.excerpt}</p>
-                </section>
-                <section className="container py-20">
-                    {pageData.posts.map((post: ShortPostType) => {
-                        return <ShortPost key={post.id} post={post} />
-                    })}
-                </section>
-
-                <section className="container mx-auto px-6 py-16 text-center">
-                    <Pagination pageCount={100} currentPage={page}/>
-                </section>
+            <div className="pt-20 b-32 single-entity container flex flex-col-reverse gap-10 items-start  lg:flex-row">
+                <div>
+                   <section>
+                       {pageData.posts && pageData.posts.map((post: ShortPostType) => {
+                           return <ShortPost key={post.id} post={post} />
+                       })}
+                   </section>
+                   <section className="mx-auto px-6 py-16 text-center">
+                       <Pagination pageCount={100} currentPage={page}/>
+                   </section>
+               </div>
+                <div className="w-full lg:flex-none lg:w-1/4 lg:sticky lg:top-22 lg:pb-10">
+                    {pageData.latestPosts && <LatestPosts posts={pageData.latestPosts}/>}
+                </div>
             </div>
         </Layout>
 

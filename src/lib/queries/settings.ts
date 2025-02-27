@@ -1,8 +1,9 @@
 import client from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
+import {SettingsType} from "@/types";
 
-export const getSiteSettings = async () => {
+export const getSiteSettings = async (): Promise<SettingsType> => {
 
     const { data } = await client.query({
         query: gql`
