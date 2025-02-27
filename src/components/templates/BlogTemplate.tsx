@@ -15,7 +15,7 @@ export default function BlogTemplate({ pageData, page }: { pageData: PageDataTyp
                            return <ShortPost key={post.id} post={post} />
                        })}
                    </section>
-                   <section className="mx-auto px-6 py-16 text-center">
+                   <section className="mx-auto py-16 text-center">
                        <Pagination pageCount={100} currentPage={page}/>
                    </section>
                </div>
