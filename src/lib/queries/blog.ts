@@ -9,49 +9,35 @@ const POSTS_PER_PAGE = 10;
 const BASE_URL = 'https://cosmonew1.wpenginepowered.com/wp-json/wp/v2';
 
 export const getBlogData = async (page: number): Promise<PageDataType> => {
-    try {
-        const res = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`);
-        const data = await res.json();
+    const res = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`);
+    const data = await res.json();
 
-        const posts:ShortPostType[] = data.map((post: any) => ({
-            id: post.id,
-            title: post.title.rendered,
-            slug: post.slug,
-            date: post.date,
-            excerpt: post.excerpt.rendered,
-            featuredImage: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "",
-            altText: post._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "",
-        }));
-
-        const latestPosts = await getLatestPosts(5);
-        return {
-            posts,
-            featuredPost: latestPosts[0],
-            menus: await getAllMenus(),
-            settings: await getSiteSettings(),
-            latestPosts,
-            title: "Blog",
-            content: "",
-            id: "",
-            date: ""
-        };
-    } catch (error) {
-        console.error("Failed to fetch blog data:", error);
-        return {
-            title: "Blog",
-            content: "",
-            id: "",
-            date: "",
-            posts: [],
-            featuredPost: {
-                title: "",
-                slug: "",
-                featuredImage: "",
-                altText: "",
-            },
-            menus: {}
-        };
+    if (!data) {
+        throw new Error("Failed to fetch blog data");
     }
+
+    const posts:ShortPostType[] = data.map((post: any) => ({
+        id: post.id,
+        title: post.title.rendered,
+        slug: post.slug,
+        date: post.date,
+        excerpt: post.excerpt.rendered,
+        featuredImage: post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "",
+        altText: post._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "",
+    }));
+
+    const latestPosts = await getLatestPosts(5);
+    return {
+        posts,
+        featuredPost: latestPosts[0],
+        menus: await getAllMenus(),
+        settings: await getSiteSettings(),
+        latestPosts,
+        title: "Blog",
+        content: "",
+        id: "",
+        date: ""
+    };
 };
 
 

@@ -3,6 +3,7 @@ import {Metadata} from "next";
 import {getSEOData} from "@/lib/queries/seo";
 import BlogTemplate from "@/components/templates/BlogTemplate";
 import {generalSettings} from "@/lib/queries/settings";
+import {notFound} from "next/navigation";
 
 type Params = {
     params: Promise<{ page: string }>
@@ -21,9 +22,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 
 export default async function BlogSinglePage({ params }: Params) {
-    const {page} = await params;
-    const pageData = await getBlogData(+page);
-    return <BlogTemplate pageData={pageData} page={+page} />
+   try {
+       const {page} = await params;
+       const pageData = await getBlogData(+page);
+       return <BlogTemplate pageData={pageData} page={+page} />
+   } catch(error) {
+       notFound();
+   }
 }
 
 /*

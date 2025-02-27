@@ -13,12 +13,17 @@ export async function generateMetadata({params}: any): Promise<Metadata> {
 }
 
 export default async function SinglePost({ params }: any) {
-    const { slug } = await params;
-    const pageData = await getPostData(slug);
-    if (!pageData) {
+   try {
+       const { slug } = await params;
+       const pageData = await getPostData(slug);
+       if (!pageData) {
+           notFound();
+       }
+       return <PostTemplate pageData={pageData} />;
+       
+   } catch(error) {
         notFound();
     }
-    return <PostTemplate pageData={pageData} />;
 }
 
 /*export async function generateStaticParams() {

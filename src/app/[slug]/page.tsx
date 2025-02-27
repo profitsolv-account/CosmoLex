@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
 import PageTemplate from "@/components/templates/PageTemplate";
-import client from "@/lib/apollo-client";
-import {gql} from "@apollo/client";
+import {notFound} from "next/navigation";
 
 type Params = {
     params: Promise<{slug: string}>;
@@ -15,35 +14,14 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 }
 
 export default async function SinglePage({params}: Params) {
-    const {slug} = await params;
-    const pageData = await getPageData(slug);
-    console.log(pageData);
-    return <PageTemplate pageData={pageData} />
+   try {
+       const {slug} = await params;
+       const pageData = await getPageData(slug);
+       return <PageTemplate pageData={pageData} />
+   } catch (error) {
+       notFound();
+   }
 }
-
-/*
-export async function generateStaticParams() {
-   /!* const { data } = await client.query({
-        query: gql`
-            query GetAllPages {
-                pages {
-                    nodes {
-                        uri
-                    }
-                }
-            }
-        `,
-        fetchPolicy: "no-cache"
-    });
-
-    const slugs = data.pages.nodes
-        .map((node: {uri: string}) => node.uri)
-        .map((uri: string) => uri.replace(/^\/|\/$/g, ''))
-        .filter((slug: string) => slug.length > 0);
-*!/
-    return [{slug: 'about-page'}];
-}
-*/
 
 export const revalidate = false;
 export const dynamic = "force-static";

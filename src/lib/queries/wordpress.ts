@@ -105,6 +105,10 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
         variables: { pageSlug },
     });
 
+    if (!data.page) {
+        throw new Error("Page not found");
+    }
+
     const pageData = get(data, 'page', {});
     const title = get(data, 'page.pageSettings.title', null) || get(data, 'page.title', '');
 
@@ -147,6 +151,10 @@ export const getPostData = async (pageSlug: string) => {
         fetchPolicy: "no-cache",
         variables: { pageSlug },
     });
+
+    if (!data.post) {
+        throw new Error("Post not found");
+    }
 
     const post = get(data, 'post', {});
 
