@@ -22,4 +22,3 @@ export default async function BlogPage() {
 
 export const revalidate = false;
 export const dynamic = "force-static";
-export const fetchCache = "default-cache";
