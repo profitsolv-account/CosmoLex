@@ -17,6 +17,7 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 export default async function SinglePage({params}: Params) {
     const {slug} = await params;
     const pageData = await getPageData(slug);
+    console.log(pageData);
     return <PageTemplate pageData={pageData} />
 }
 

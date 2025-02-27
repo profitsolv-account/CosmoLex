@@ -76,13 +76,13 @@ export const Navigations: FC<Props> = ({pageData}) => {
                    </div>
 
                    <div className="flex gap-3 mt-7 items-center">
-                       <a href="#" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Legal</a>
+                       <a href="/legal" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Legal</a>
                        <span className="block h-[17px] w-[1px] bg-white"></span>
-                       <a href="#" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Privacy Policy</a>
+                       <a href="/privacy-policy" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Privacy Policy</a>
                        <span className="block h-[17px] w-[1px] bg-white"></span>
-                       <a href="#" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">GDPR</a>
+                       <a href="/gdpr" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">GDPR</a>
                        <span className="block h-[17px] w-[1px] bg-white"></span>
-                       <a href="#" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Subscription Agreement</a>
+                       <a href="/subscription-agreement" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Subscription Agreement</a>
                    </div>
                </div>
            </div>
