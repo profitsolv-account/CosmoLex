@@ -19,7 +19,7 @@ export default function BlogTemplate({ pageData, page }: { pageData: PageDataTyp
                        <Pagination pageCount={100} currentPage={page}/>
                    </section>
                </div>
-                <div className="w-full lg:flex-none lg:w-1/4 lg:sticky lg:top-22 lg:pb-10">
+                <div className="hidden md:block w-full lg:flex-none lg:w-1/4 lg:sticky lg:top-22 lg:pb-10">
                     {pageData.latestPosts && <LatestPosts posts={pageData.latestPosts}/>}
                 </div>
             </div>
