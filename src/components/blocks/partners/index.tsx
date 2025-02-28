@@ -30,8 +30,8 @@ export const Partners = () => {
     return (
         <>
             <div className="container-s relative pt-20 overflow-hidden mb-[121px] px-4">
-                <div className="text-[#0c193a] text-[22px] font-semibold font-['Inter'] leading-loose mb-5 md:text-[32px]">
-                    Strategic & affinity partners.
+                <div className="text-primary-dark text-center  text-[22px] font-semibold font-['Inter'] leading-loose mb-5 md:text-[32px]">
+                    Trusted by These Industry Leaders
                 </div>
                 <div className="w-full overflow-hidden">
                     <Swiper

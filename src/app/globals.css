@@ -61,7 +61,7 @@ body {
     }
 
     .base-btn {
-        @apply flex w-[145px] flex-none items-center justify-center h-[54px] px-4 rounded-[100px] border border-primary-dark text-primary-dark text-base font-normal font-['Inter'] transition duration-300;
+        @apply flex w-[145px] flex-none items-center justify-center h-[54px] px-2 rounded-[100px] border border-primary-dark text-primary-dark text-base font-normal font-['Inter'] transition duration-300 md:px-4;
     }
 
     .ls-07 {

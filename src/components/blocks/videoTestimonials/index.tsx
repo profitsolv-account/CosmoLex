@@ -48,7 +48,7 @@ export const VideoTestimonials:FC<TestimonialsProps> = ({testimonials}) => {
             speed={800}
         >
             {[...testimonials, ...testimonials].map((testimonial, index) => (
-                <SwiperSlide key={index} className={"!w-[353px] md:!w-[1064px] !flex items-center min-h-[632px]"}>
+                <SwiperSlide key={index} className={"!w-[310px] md:!w-[1064px] !flex items-center min-h-[632px]"}>
                     <SingleSlide key={index} slide={testimonial} onPlay={() => {
                         setVideoPlayer({
                             open: true,
@@ -84,7 +84,7 @@ type Props = {
 
 const SingleSlide:FC<Props> = ({slide, onPlay}) => {
 
-    return <div className={`flex-none w-[353px] px-[22px] pt-[89px] pb-[30px] min-h-[632px] origin-top-left rounded-[30px]  slide-content transition-all duration-200 mx-auto relative overflow-hidden md:max-w-[500px] md:w-full lg:max-w-[1064px] lg:pt-38 lg:px-15 `}>
+    return <div className={`flex-none w-[300px] px-[22px] pt-[89px] pb-[30px] min-h-[632px] origin-top-left rounded-[30px]  slide-content transition-all duration-200 mx-auto relative overflow-hidden md:max-w-[500px] md:w-full lg:max-w-[1064px] lg:pt-38 lg:px-15 `}>
             <div className="relative z-10 slide-content-inner">
                 <div className="text-white text-base font-medium tracking-wider mb-4">{slide.position}</div>
                 <div className=" text-white text-3xl font-medium mb-2 md:max-w-[460px] lg:text-[40px]">

@@ -16,6 +16,11 @@ import 'swiper/css/navigation';
 
 
 const data = [{
+    title: "Client Engagement",
+    description: "Grow your firm and elevate your client experience. Streamline intake, build a strong online presence, and securely manage documents.",
+    image: bg,
+    link: "/"
+}, {
     title: "Firm Management",
     description: "Efficiently manage your practice. Track matters, pull reports, and keep your law firm productive. ",
     image: bg,
@@ -28,11 +33,6 @@ const data = [{
 }, {
     title: "Accounting & Finance",
     description: "Connect your firm to your finances. Manage your firm’s finances, stay compliant with built-in trust accounting, and generate real-time reports.",
-    image: bg,
-    link: "/"
-}, {
-    title: "Client Engagement",
-    description: "Grow your firm and elevate your client experience. Streamline intake, build a strong online presence, and securely manage documents.",
     image: bg,
     link: "/"
 }];
@@ -131,10 +131,8 @@ const Slider = ({activeIndex, setActiveIndex, swiperRef}: SliderProps) => {
                         ))
                     }
                 </Swiper>
-
             </div>
         </div>
-
         <div className="absolute w-full  bg-primary z-0 h-[70%] bottom-0 rounded-tr-[100px]" />
     </div>
 }
@@ -147,10 +145,10 @@ type TabsProps = {
 const Tabs = ({activeIndex, onTabClick}:TabsProps) => {
 
     const tabs = [
+        {title: "Client Engagement", id: "client-engagement"},
         {title: "Firm Management", id: "firm-management"},
         {title: "Billing & Payments", id: "billing-payments"},
         {title: "Accounting & Finance", id: "accounting-finance"},
-        {title: "Client Engagement", id: "client-engagement"}
     ]
 
     return <div className="overflow-auto w-full pb-5">
@@ -180,7 +178,7 @@ const AccountingTools = () => {
 
          <div className="md:grow md:w-[402px] md:flex-none md:pb-18">
              <div className="text-yellow text-[15px] tracking-[1.2px] font-normal font-['Inter'] uppercase mb-3 md:text-base md:tracking-[1.26px] md:mb-4">Compliance management simplified</div>
-             <h3 className="w-[332px] text-white text-4xl font-bold font-['Inter'] leading-[50px] mb-5 md:text-[46px] md:leading-[55px] md:w-full md:mb-8">Keep your firm compliant with built-in accounting tools.</h3>
+             <h3 className="text-white text-4xl font-bold font-['Inter'] leading-[50px] mb-5 md:text-[46px] md:leading-[55px] md:w-full md:mb-8">Keep your firm compliant with built-in accounting tools.</h3>
              <a
                  href="/"
                  className="flex items-center justify-center text-center h-[54px] px-[30px] bg-white rounded-[100px] border text-primary-dark text-base font-normal font-['Inter'] transition duration-300 hover:bg-primary-dark hover:text-white md:inline-flex">
@@ -193,11 +191,11 @@ const AccountingTools = () => {
                    <img src={block2.src} alt="" className="md:aspect-square md:w-full"/>
                </div>
                <div>
-                   <div className="w-[167px] h-[167px] bg-[#b9dfc3] rounded-[15px] md:aspect-square md:rounded-[30px] md:w-full md:h-full">
+                   <div className="w-[135px] h-[135px] sm:w-[155px] sm:h-[155px] bg-[#b9dfc3] rounded-[15px] md:aspect-square md:rounded-[30px] md:w-full md:h-full">
                    </div>
                </div>
                <div>
-                   <div className="w-[167px] h-[167px] bg-[#fdf1b7] rounded-[15px] md:aspect-square md:rounded-[30px] md:w-full md:object-cover md:h-full"></div>
+                   <div className="w-[135px] h-[135px] sm:w-[155px] sm:h-[155px] bg-[#fdf1b7] rounded-[15px] md:aspect-square md:rounded-[30px] md:w-full md:object-cover md:h-full"></div>
                </div>
                <div>
                    <img src={block1.src} alt="" className="md:aspect-square md:w-full"/>

@@ -11,11 +11,11 @@ type Props = {
 export const SimplifyPractice:FC<Props> = ({pageData}) => {
     return (
         <div className="container mt-20 md:mt-30">
-           <div className="w-full max-w-[353px] mx-auto relative z-10 md:max-w-[1171px]">
+           <div className="w-full max-w-[320px] mx-auto relative z-10 md:max-w-[1171px]">
                <h3 className="text-center text-primary-dark text-4xl font-bold leading-[48px] px-10 mb-9 md:max-w-[600px] md:mx-auto md:text-[46px] md:mb-16 md:leading-[60px]">Simplify your practice with one tool.</h3>
 
               <div className="flex flex-col gap-5 md:flex-row md:gap-[37px]">
-                  <div className="flex flex-col justify-between w-[353px] bg-[#badfc3] rounded-[15px] pt-10 overflow-hidden md:w-1/2 md:rounded-[30px] md:pt-18">
+                  <div className="flex flex-col justify-between w-full bg-[#badfc3] rounded-[15px] pt-10 overflow-hidden md:w-1/2 md:rounded-[30px] md:pt-18">
 
                       <div className="px-9 mb-10">
 
@@ -42,7 +42,7 @@ export const SimplifyPractice:FC<Props> = ({pageData}) => {
                       </div>
                   </div>
 
-                  <div className="w-[353px] bg-[#fd937a] rounded-[15px] px-5 pt-10 overflow-hidden md:w-1/2 md:rounded-[30px] md:pt-18">
+                  <div className="w-[320px] bg-[#fd937a] rounded-[15px] px-5 pt-10 overflow-hidden md:w-1/2 md:rounded-[30px] md:pt-18">
                      <div className="px-4 mb-10">
                          <h4 className="text-center text-primary-dark text-3xl font-bold leading-[50px] tracking-[-1px] mb-3 md:text-[40px] md:mb-7">Try for free.</h4>
                          <p className="text-center text-primary-dark text-base font-medium leading-[25px] mb-6 md:max-w-[380px] md:mx-auto md:text-lg md:mb-8">
