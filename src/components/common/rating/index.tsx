@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const Rating:FC<Props> = ({className}) => {
-    return <div className={classNames("hidden md:block relative", className)}>
+    return <div className={classNames("relative", className)}>
         <div className="flex gap-2 items-center">
             <div className="left-0 top-0">
                 <svg width="200" height="33" viewBox="0 0 200 33" fill="none" xmlns="http://www.w3.org/2000/svg">

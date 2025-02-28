@@ -22,12 +22,12 @@ const data = [{
     link: "/"
 }, {
     title: "Billing & Payments",
-    description: "Improve your firm’s cash flow. Use our custom invoices to get paid faster in just a few clicks",
+    description: "Improve your firm’s cash flow. Use our custom invoices to get paid faster in just a few clicks.",
     image: bg,
     link: "/"
 }, {
     title: "Accounting & Finance",
-    description: "Connect your firm to your finances. Manage your firm’s finances, stay compliant with built-in trust accounting, and generate real-time reports. ",
+    description: "Connect your firm to your finances. Manage your firm’s finances, stay compliant with built-in trust accounting, and generate real-time reports.",
     image: bg,
     link: "/"
 }, {
@@ -75,7 +75,7 @@ type SliderProps = {
 };
 const Slider = ({activeIndex, setActiveIndex, swiperRef}: SliderProps) => {
 
-    return <div className="relative pb-32">
+    return <div className="relative pb-8 md:pb-32">
 
         <div className="px-2">
             <div className="max-w-[542px] flex mx-auto lg:max-w-[1066px] relative">
@@ -132,8 +132,6 @@ const Slider = ({activeIndex, setActiveIndex, swiperRef}: SliderProps) => {
                     }
                 </Swiper>
 
-
-
             </div>
         </div>
 
@@ -177,7 +175,7 @@ const Tabs = ({activeIndex, onTabClick}:TabsProps) => {
 
 const AccountingTools = () => {
 
-    return (<div className="flex justify-center items-center py-20 relative">
+    return (<div className="flex justify-center items-center pb-20 md:py-20 relative">
        <div className="flex-none w-full px-2 flex flex-col max-w-[350px] md:flex-row md:max-w-[1138px] md:items-center relative z-20">
 
          <div className="md:grow md:w-[402px] md:flex-none md:pb-18">

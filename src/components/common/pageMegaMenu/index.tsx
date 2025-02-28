@@ -19,12 +19,12 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer}) => {
                 <div className="justify-start items-start gap-[50px] grid grid-cols-4">
                     {content.items.map((submenu) => (
                         <div key={submenu.title} className="">
-                            <a href={submenu.url} className="block text-[#0c193a] text-lg font-semibold font-['Inter'] leading-7 mb-3">
+                            <a href={submenu.url} className="block text-[#0c193a] text-lg font-semibold font-['Inter'] leading-7 mb-3 transition duration-300 hover:text-green">
                                 {submenu.title}
                             </a>
                             {submenu.items.map((item) => (
                                 <div key={item.title} className="mb-3">
-                                    <a href={item.url} className="text-[#0c193a] text-base font-medium font-['Inter'] leading-normal">
+                                    <a href={item.url} className="text-[#0c193a] text-base font-medium font-['Inter'] leading-normal transition duration-300 hover:text-green">
                                         {item.title}
                                     </a>
                                     <div className="text-[#0c193a] text-base font-light font-['Inter'] leading-normal">
@@ -46,7 +46,7 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer}) => {
 
                {footer.items.map((submenu) => (
                    <div key={submenu.title} className="">
-                       <a href={submenu.url} className="block text-[#0c193a] text-lg font-semibold font-['Inter'] leading-7 mb-3">
+                       <a href={submenu.url} className="block text-[#0c193a] text-lg font-semibold font-['Inter'] leading-7 mb-3 transition duration-300 hover:text-green">
                            {submenu.title}
                        </a>
 
@@ -54,7 +54,7 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer}) => {
                            <div className="justify-start items-start gap-[50px] grid grid-cols-4">
                                {submenu.items.map((item) => (
                                    <div key={item.title} className="mb-3">
-                                       <a href={item.url} className="text-[#0c193a] text-base font-medium font-['Inter'] leading-normal">
+                                       <a href={item.url} className="text-[#0c193a] text-base font-medium font-['Inter'] leading-normal transition duration-300 hover:text-green">
                                            {item.title}
                                        </a>
                                        <div className="text-[#0c193a] text-base font-light font-['Inter'] leading-normal">

@@ -122,7 +122,7 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
                 >
                     <nav className="flex flex-col gap-4 w-full px-6 py-4">
                         <div className="flex justify-start gap-4 mb-4">
-                            <Button variant="secondary">Demo</Button>
+                            <Button variant="secondary">Request Demo</Button>
                             <Button variant="primary">Try for free</Button>
                         </div>
 
