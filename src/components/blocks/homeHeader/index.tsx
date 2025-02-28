@@ -39,7 +39,7 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
             </div>
 
             <div className="max-w-[353px] lg:max-w-full lg:grow lg:w-[503px] lg:flex-none xl:w-[703px] ">
-                <Image src={img} alt="alt" width={100} height={100} className="w-full relative top-30" />
+                <Image src={img} alt="alt" width={700} height={600} className="w-full relative top-30" />
             </div>
         </div>
     </div>

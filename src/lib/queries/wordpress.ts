@@ -21,7 +21,7 @@ export const getHomePageData = async () => {
                         heroImage {
                             node {
                                 altText
-                                sourceUrl
+                                sourceUrl(size: LARGE)
                             }
                         }
                     }

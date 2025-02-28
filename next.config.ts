@@ -35,8 +35,18 @@ const nextConfig: NextConfig = {
     trailingSlash: true,
     reactStrictMode: true,
     images: {
-        unoptimized: true,
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'cosmonew1.wpenginepowered.com',
+                port: '',
+                pathname: '/wp-content/uploads/**',
+            },
+        ],
     },
+    /*images: {
+        unoptimized: true,
+    },*/
 };
 
 export default nextConfig;
