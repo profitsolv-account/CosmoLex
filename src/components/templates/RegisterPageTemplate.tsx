@@ -18,6 +18,17 @@ export default function RegisterPageTemplate({ pageData }: { pageData: PageDataT
             <div className="relative">
                 <div className="max-w-[437px] min-h-[500px] mx-auto relative z-1 bg-white rounded-[30px] p-[50px]">
 
+                    <iframe
+                        src="https://profitsolv-billingplatform.azurewebsites.net/subscription-management/subscription-management.html?businessUnit=cosmolex&amp;productCatalog=CosmoLex&amp;showOnlyMainProducts=true&amp;showPreselectedSignUpForm=true&amp;overrideHost=https://law.cosmolex.com"
+                        data-gtm-yt-inspected-10="true"
+                        style={{
+                            width: '100%',
+                            height: '1442px',
+                            border: 'none',
+                            background: 'transparent'
+                        }}
+                    >
+                    </iframe>
                 </div>
                 <div className="bg-primary absolute z-0 w-full h-[190px] left-0 rounded-bl-[100px] top-0" />
             </div>
