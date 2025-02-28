@@ -15,7 +15,12 @@ export default function RegisterPageTemplate({ pageData }: { pageData: PageDataT
         <Layout pageData={pageData}>
             <DemoHeader pageData={pageData} />
            {/* <DemoForm />*/}
-            <HubSpotForm />
+            <div className="relative">
+                <div className="max-w-[437px] min-h-[500px] mx-auto relative z-1 bg-white rounded-[30px] p-[50px]">
+
+                </div>
+                <div className="bg-primary absolute z-0 w-full h-[190px] left-0 rounded-bl-[100px] top-0" />
+            </div>
             <Partners/>
             <Testimonials
                 testimonials={testimonials}
