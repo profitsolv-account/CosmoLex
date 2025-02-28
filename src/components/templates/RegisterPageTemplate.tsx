@@ -9,11 +9,10 @@ import {Leaders} from "@/components/blocks/leaders";
 import {Features} from "../blocks/features";
 import HubSpotForm from "@/components/blocks/hubspotForm";
 
-export default function DemoPageTemplate({ pageData }: { pageData: PageDataType }) {
+export default function RegisterPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     return (
         <Layout pageData={pageData}>
-
             <DemoHeader pageData={pageData} />
            {/* <DemoForm />*/}
             <HubSpotForm />
