@@ -128,12 +128,8 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                 >
                     <nav className="flex flex-col gap-4 w-full px-6 py-4">
                         <div className="flex justify-start gap-4 mb-4">
-                            <Button variant="secondary" onClick={() => {
-                                window.location.href = getSetting('demoLink');
-                            }}>Request Demo</Button>
-                            <Button variant="primary" onClick={() => {
-                                window.location.href = getSetting('freeTrialLink');
-                            }}>Try for free</Button>
+                            <Button variant="secondary" href={getSetting('demoLink')}>Request Demo</Button>
+                            <Button variant="primary" href={getSetting('freeTrialLink')}>Try for free</Button>
                         </div>
 
                         <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-[22px] font-normal font-['Inter']">Login</Link>

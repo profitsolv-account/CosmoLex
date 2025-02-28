@@ -1,26 +1,24 @@
 import classNames from 'classnames';
-import {FC, ReactNode} from 'react';
+import {FC, MouseEventHandler, ReactNode} from 'react';
 
 type Props = {
     children: ReactNode;
     className?: string;
     onClick?: () => void;
     variant?: 'primary' | 'secondary';
+    type?: 'button' | 'link';
+    href?: string;
 }
 export const Button: FC<Props> = ({
    children,
    className,
    onClick,
+    href,
    variant = 'primary',
 }) => {
 
-    const onClickHandler = () => {
-        if (onClick) {
-            onClick();
-        }
-    }
-
-    return <div className={
+    return <a href={href || "#"}
+        className={
         classNames(
             "h-[44px] px-5 pt-[10px] pb-3 rounded-[100px] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group",
             {
@@ -29,7 +27,12 @@ export const Button: FC<Props> = ({
             },
             className
         )}
-                onClick={onClickHandler}
+                onClick={(e) => {
+                    if (onClick) {
+                        e.preventDefault();
+                        onClick();
+                    }
+                }}
     >
         <div className={classNames(
             "text-center text-base font-normal font-['Inter'] transition-all duration-300",
@@ -40,5 +43,5 @@ export const Button: FC<Props> = ({
         )}>
             {children}
         </div>
-    </div>
+    </a>
 }

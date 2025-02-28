@@ -8,13 +8,17 @@ import {Partners} from "@/components/blocks/partners";
 import {Testimonials} from "@/components/blocks/testimonials";
 import {Leaders} from "@/components/blocks/leaders";
 import {Features} from "../blocks/features";
+import dynamic from 'next/dynamic';
+import HubSpotForm from "@/components/blocks/hubspotForm";
 
 export default function DemoPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     return (
         <Layout pageData={pageData}>
+
             <DemoHeader pageData={pageData} />
-            <DemoForm />
+           {/* <DemoForm />*/}
+            <HubSpotForm />
             <Partners/>
             <Testimonials
                 testimonials={testimonials}

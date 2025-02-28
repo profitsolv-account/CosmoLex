@@ -29,12 +29,8 @@ export const Header = ({pageData}: {pageData: PageDataType}) => {
                    <div className="flex gap-3 items-center">
                        <div className="hidden lg:flex justify-center items-center gap-4 ax-w-[353px] lg:justify-start">
                            <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-base font-normal font-['Inter']">Login</Link>
-                           <Button variant="secondary" onClick={() => {
-                                 window.location.href = getSetting('demoLink');
-                           }}>Request demo</Button>
-                           <Button variant="primary" onClick={() => {
-                                    window.location.href = getSetting('freeTrialLink');
-                           }}>Try for free</Button>
+                           <Button variant="secondary" href={getSetting('demoLink')}>Request demo</Button>
+                           <Button variant="primary" href={getSetting('freeTrialLink')}>Try for free</Button>
                        </div>
                    </div>
                </div>
