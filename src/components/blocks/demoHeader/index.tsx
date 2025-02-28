@@ -13,15 +13,15 @@ export const DemoHeader:FC<Props> = ({pageData}) => {
     const description  = get(pageData, 'description', 'nee');
 
     return (
-        <div className="p-4 bg-primary min-h-[400px] mb-[200px]">
-            <div className="container flex flex-col justify-center items-center">
-                <div className="text-center max-w-[800px]">
-                    <div className="pt-6">
-                        <div className="home-title text-white text-[46px] font-medium font-['Inter'] leading-[54px] lg:text-[54px] xl:text-[74px] xl:leading-[80px] xl:font-normal lg:block" dangerouslySetInnerHTML={{__html: title}} />
+        <div className="p-4 bg-primary pb-[57px] md:pt-14">
+            <div className="container flex flex-col justify-center items-center gap-4">
+                <div className="text-center max-w-[700px]">
+                    <div className="pt-6 mb-3">
+                        <h1 className="home-title text-white text-[46px] font-medium font-['Inter'] leading-[54px] lg:text-[54px] xl:text-[60px] xl:leading-[60px] xl:font-normal lg:block" dangerouslySetInnerHTML={{__html: title}} />
                     </div>
-                    <div className="w-[324px] min-h-[61px] text-white text-lg font-normal font-['Inter'] leading-loose lg:w-full" dangerouslySetInnerHTML={{__html: description}} />
+                    <div className="min-h-[61px] text-center text-white text-xl font-normal font-['Inter'] leading-loose lg:w-full" dangerouslySetInnerHTML={{__html: description}} />
                 </div>
-                <Rating className="text-center" />
+                <Rating className="text-center hidden md:block" />
             </div>
         </div>
     )

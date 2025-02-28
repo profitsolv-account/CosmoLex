@@ -1,4 +1,5 @@
 import {TestimonialType} from "@/types/testimonials";
+import {LeaderLogos} from "@/types/logos";
 
 export type FeaturedPostType = {
     title: string;
@@ -59,4 +60,5 @@ export type PageDataType = {
     footerExtendedBg?: boolean;
     latestPosts?: FeaturedPostType[];
     posts?: ShortPostType[];
+    leaderLogos?: LeaderLogos[];
 }

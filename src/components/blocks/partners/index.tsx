@@ -42,7 +42,7 @@ export const Partners = () => {
                         allowTouchMove={true}
                         modules={[Autoplay]}
                         autoplay={{
-                            delay: 1000,
+                            delay: 0,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: false,
                         }}

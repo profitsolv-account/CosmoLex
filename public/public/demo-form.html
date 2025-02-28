@@ -1,0 +1,116 @@
+<div style="display: flex; justify-content: center;" class="form-res">
+    <!-----HubSpot Form Embed code------------->
+    <!--[if lte IE 8]>
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+    <![endif]-->
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+    <script>
+        //checking if cookies exists
+        let cross_sell_routing;
+        cross_sell_routing = typeof ppcUrlCookiePart2 !== 'undefined' ? ppcUrlCookiePart2('cross_sell_routing') : null;
+        if(cross_sell_routing != null && cross_sell_routing != "" && cross_sell_routing != "undefined"){
+            console.log(cross_sell_routing);
+        }else{
+            cross_sell_routing = null;
+        }
+        hbspt.forms.create({
+            region: "na1",
+            portalId: "20899921",
+            formId: "92f180f1-c843-43a1-8ab2-48ffd8302e8f",
+            inlineMessage: 'Thanks for scheduling a demo!',
+            translations: {
+                en: {
+                    submitText: "Request a Demo",
+                }
+            },
+            onFormReady: function($form) {
+                $form.find('input[name="cross_sell_routing"]').val(cross_sell_routing);
+            },
+            onFormSubmit: function($form){
+                let firstName = encodeURIComponent($form.find('input[name="firstname"]').val());
+                let lastName = encodeURIComponent($form.find('input[name="lastname"]').val());
+                let companyName = encodeURIComponent($form.find('input[name="company"]').val());
+                let emailId = encodeURIComponent($form.find('input[name="email"]').val());
+                let phoneNo = encodeURIComponent($form.find('input[name="phone"]').val());
+                let selectedCountry = encodeURIComponent($form.find('select[name="country_list"]').val());
+                let firmSize = encodeURIComponent($form.find('select[name="total_firm_size"]').val());
+                setTimeout( function() {
+                    window.location = "https://www.cosmolex.com/demo/?email="+emailId+'&firstname='+firstName+'&lastname='+lastName+'&company='+companyName+'&phone='+phoneNo+'&selectedCountry='+selectedCountry+'&total_firm_size='+firmSize;
+                },250);
+            }
+        });
+    </script>
+</div>
+<!-----Chilli Piper Popup Embed code------------->
+<script src="https://js.chilipiper.com/marketing.js" type="text/javascript"></script>
+<script>
+    const tenantDomain = "profitsolv"; // replace
+    var routerName;
+    var leadValues = {};
+    var uri = decodeURIComponent(
+        window.location.href.split("?").length > 1 ? window.location.href.split("?")[1].replace(/\+/g, " ") : ""
+    );
+    var urlParams = new URLSearchParams(uri);
+    var entries = urlParams.entries();
+    var valid = false;
+    for (pair of entries) {
+        if (pair[0].toLowerCase().includes("email")) {
+            valid = true;
+        }
+        leadValues[pair[0]] = pair[1];
+    }
+    if (valid) {
+        //checking cross sell routing cookie
+        if(cross_sell_routing != null && cross_sell_routing != "" && cross_sell_routing != "undefined"){
+            if(cross_sell_routing == "CL Pay"){
+                routerName = "cosmolexpay";
+            }else if(cross_sell_routing == "CL CRM"){
+                routerName = "cosmolex-crm";
+            }else if(cross_sell_routing == "CL LS"){
+                routerName = "cosmolex-lex-share";
+            }else if(cross_sell_routing == "CL Website"){
+                routerName = "cosmolex-websites";
+            }else{
+                //console.log(leadValues['selectedCountry']);
+                routerName = "lcs-cl-us-consultation-call";
+            }
+
+        }else{
+            //setting router name  based on country
+            if(leadValues['selectedCountry'] == "United States"){
+                //checking firm size here
+                if(leadValues['total_firm_size'] != "1-20 employees"){
+                    routerName = "lcs-cl-enterprise-consultation-call";
+                }else{
+                    routerName = "lcs-cl-us-consultation-call";
+                }
+
+
+            }else if(leadValues['selectedCountry'] == "Canada") {
+                //checking firm size here
+                if(leadValues['total_firm_size'] != "1-20 employees"){
+                    routerName = "lcs-cl-enterprise-consultation-call";
+                }else{
+                    routerName = "lcs-cl-ca-consultation-call";
+                }
+
+
+            }else{
+                //checking firm size here
+                if(leadValues['total_firm_size'] != "1-20 employees"){
+                    routerName = "lcs-cl-enterprise-consultation-call";
+
+                }else{
+                    routerName = "lcs-cl-us-consultation-call";
+                }
+
+            }
+        }
+        console.log(routerName);
+        ChiliPiper.submit(tenantDomain, routerName, {
+            map: true,
+            lead: leadValues,
+        });
+        console.log(leadValues);
+    }
+</script>

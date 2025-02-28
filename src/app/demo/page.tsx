@@ -2,10 +2,8 @@ import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
 import DemoPageTemplate from "@/components/templates/DemoPageTemplate";
-
-type Params = {
-    params: Promise<{slug: string}>;
-}
+import {getTestimonialsList} from "@/lib/queries/testimonials";
+import {getLeadersLogos} from "@/lib/queries/logos";
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData('demo');
@@ -13,7 +11,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function SinglePage() {
     const pageData = await getPageData("demo");
-    return <DemoPageTemplate pageData={pageData} />
+    const testimonials = await getTestimonialsList();
+    const logos = await getLeadersLogos();
+
+    return <DemoPageTemplate pageData={{
+        ...pageData,
+        testimonials,
+        footerExtendedBg: true,
+        leaderLogos: logos
+    }} />
 }
 
 export const revalidate = false;

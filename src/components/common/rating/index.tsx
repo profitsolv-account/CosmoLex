@@ -26,6 +26,6 @@ export const Rating:FC<Props> = ({className}) => {
             </div>
             <div className="text-white text-sm font-light font-['Inter']">4.7 from 330 reviews</div>
         </div>
-        <div className={classNames("text-white text-base font-medium font-['Inter'] mt-4")}>Trusted by thousands of users</div>
+        <div className={classNames("text-white text-base font-medium font-['Inter'] mt-2")}>Trusted by thousands of users</div>
     </div>
 }
