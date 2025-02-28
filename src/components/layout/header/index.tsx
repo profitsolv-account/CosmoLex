@@ -40,6 +40,6 @@ export const Header = ({pageData}: {pageData: PageDataType}) => {
                </div>
            </div>
        </div>
-       <MobileMenu menus={pageData.menus} />
+       <MobileMenu menus={pageData.menus} pageData={pageData} />
     </div>
 }

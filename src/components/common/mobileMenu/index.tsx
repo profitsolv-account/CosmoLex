@@ -1,4 +1,4 @@
-import { MenusList } from "@/types";
+import {MenusList, PageDataType, SettingsType} from "@/types";
 import { FC, useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -11,9 +11,10 @@ import logo from "@/assets/img/logo.png";
 
 type Props = {
     menus: MenusList;
+    pageData: PageDataType;
 };
 
-export const MobileMenu: FC<Props> = ({ menus }) => {
+export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
     const [openMenu, setOpenMenu] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
     const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>(
@@ -99,6 +100,11 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
         },
     };
 
+    const getSetting = (name: keyof SettingsType) => {
+        if (!pageData.settings) return "";
+        return pageData.settings[name] ?? "";
+    }
+
     return (
         <div className="bg-primary lg:hidden relative z-50 pb-4">
             <div className="px-4 py-8 pb-4 flex justify-between">
@@ -122,9 +128,15 @@ export const MobileMenu: FC<Props> = ({ menus }) => {
                 >
                     <nav className="flex flex-col gap-4 w-full px-6 py-4">
                         <div className="flex justify-start gap-4 mb-4">
-                            <Button variant="secondary">Request Demo</Button>
-                            <Button variant="primary">Try for free</Button>
+                            <Button variant="secondary" onClick={() => {
+                                window.location.href = getSetting('demoLink');
+                            }}>Request Demo</Button>
+                            <Button variant="primary" onClick={() => {
+                                window.location.href = getSetting('freeTrialLink');
+                            }}>Try for free</Button>
                         </div>
+
+                        <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-[22px] font-normal font-['Inter']">Login</Link>
 
                         <ul className="w-full mt-4">
                             {Object.entries(combinedMenus).map(
