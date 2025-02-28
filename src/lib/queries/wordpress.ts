@@ -97,6 +97,10 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
                                 sourceUrl
                             }
                         }
+                        features {
+                            description
+                            title
+                        }
                     }
                 }
             }
@@ -111,6 +115,7 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
 
     const pageData = get(data, 'page', {});
     const title = get(data, 'page.pageSettings.title', null) || get(data, 'page.title', '');
+    const features = get(data, 'page.pageSettings.features', []);
 
     return {
         ...pageData,
@@ -121,7 +126,7 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
         description: get(data, 'page.pageSettings.description', ''),
         hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
         heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
-
+        features
     };
 }
 

@@ -1,30 +1,14 @@
 import Check from "@/assets/img/icons/check.svg";
-import {SettingsType} from "@/types";
-
-const tools = [
-    {
-        title: 'Legal Time & Billing',
-        description: 'Access on-the-go time capture and easy legal billing software.',
-    },
-    {
-        title: 'Integrations',
-        description: 'Work with tools you already use like Office 365 and Dropbox.',
-    },
-    {
-        title: 'Secure Client Portal',
-        description: 'Collaborate with your clients including file sharing and eSignature.',
-    },
-    {
-        title: 'Calendaring & Task Management',
-        description: 'Automate workflows and prioritize your tasks.',
-    },
-];
+import {PageDataType, SettingsType} from "@/types";
+import {get} from "lodash";
 
 type Props = {
-    settings: SettingsType
+    pageData: PageDataType
 }
 
-export const EndToEndSolution = ({settings}: Props) => {
+export const Features = ({pageData}: Props) => {
+    const settings = get(pageData, "settings", {}) as SettingsType;
+    const features = get(pageData, "features", []);
 
     return <div className="px-2 relative z-10 pt-10 md:pt-22">
         <div className="max-w-[1352px] mx-auto bg-salmon rounded-[30px] px-[34px] py-[71px]">
@@ -43,7 +27,7 @@ export const EndToEndSolution = ({settings}: Props) => {
             </div>
             <div className="gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 
-                {tools.map((tool, index) => (
+                {features.map((tool, index) => (
                     <div key={index} className=" relative bg-white rounded-[20px] p-[25px]">
                         <div className="mb-2">
                             <Check />

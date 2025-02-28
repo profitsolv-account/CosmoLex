@@ -7,7 +7,7 @@ import {DemoForm} from "@/components/blocks/demoForm";
 import {Partners} from "@/components/blocks/partners";
 import {Testimonials} from "@/components/blocks/testimonials";
 import {Leaders} from "@/components/blocks/leaders";
-import {EndToEndSolution} from "@/components/blocks/endToEndSolution";
+import {Features} from "../blocks/features";
 
 export default function DemoPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
@@ -23,7 +23,7 @@ export default function DemoPageTemplate({ pageData }: { pageData: PageDataType 
                 showNavigation
             />
             {pageData.leaderLogos && <Leaders logos={pageData.leaderLogos} />}
-            {pageData.settings && <EndToEndSolution settings={pageData.settings} />}
+            {pageData.settings && <Features pageData={pageData} />}
         </Layout>
 
     )

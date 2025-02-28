@@ -35,6 +35,11 @@ export type MenusList = {
     [index: string]: MenuType
 }
 
+export type Feature = {
+    title: string;
+    description: string;
+};
+
 export type SettingsType = {
     companyAddress: string;
     companyPhone: string;
@@ -61,4 +66,5 @@ export type PageDataType = {
     latestPosts?: FeaturedPostType[];
     posts?: ShortPostType[];
     leaderLogos?: LeaderLogos[];
+    features?: Feature[]
 }
