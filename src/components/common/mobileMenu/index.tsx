@@ -74,7 +74,7 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
         },
         pricing: {
             name: "Pricing",
-            url: "/#",
+            url: "/pricing",
         },
         resources: {
             ...menus["header-menu-resources"],
