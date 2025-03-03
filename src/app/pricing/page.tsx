@@ -1,26 +1,23 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
-import DemoPageTemplate from "@/components/templates/DemoPageTemplate";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
-import {getLeadersLogos} from "@/lib/queries/logos";
 import {notFound} from "next/navigation";
+import PricingPageTemplate from "@/components/templates/PricingPageTemplate";
 
 export async function generateMetadata(): Promise<Metadata> {
-    return await getSEOData('demo');
+    return await getSEOData('pricing');
 }
 
-export default async function DemoPage() {
+export default async function PricingPage() {
     try {
-        const pageData = await getPageData("demo");
+        const pageData = await getPageData("pricing");
         const testimonials = await getTestimonialsList();
-        const logos = await getLeadersLogos();
 
-        return <DemoPageTemplate pageData={{
+        return <PricingPageTemplate pageData={{
             ...pageData,
             testimonials,
-            footerExtendedBg: true,
-            leaderLogos: logos
+            footerExtendedBg: true
         }} />
     } catch (error) {
         notFound();

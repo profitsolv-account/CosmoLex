@@ -1,19 +1,20 @@
 "use client"
 import React from 'react'
 import Layout from "@/components/layout/layout";
-import {DemoHeader} from "@/components/blocks/demoHeader";
+import {PageHeader} from "../blocks/pageHeader";
 import {PageDataType} from "@/types";
 import {Partners} from "@/components/blocks/partners";
 import {Testimonials} from "@/components/blocks/testimonials";
 import {Leaders} from "@/components/blocks/leaders";
 import {Features} from "../blocks/features";
-import HubSpotForm from "@/components/blocks/hubspotForm";
+import {RatingBlock} from "@/components/blocks/ratingBlock";
 
 export default function RegisterPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     return (
         <Layout pageData={pageData}>
-            <DemoHeader pageData={pageData} />
+            <PageHeader pageData={pageData} />
+            <RatingBlock className="bg-primary pb-[57px]" />
            {/* <DemoForm />*/}
             <div className="relative">
                 <div className="max-w-[437px] min-h-[500px] mx-auto relative z-1 bg-white rounded-[30px] p-[50px]">

@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.13.1",
-    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/postcss": "^4.0.7",
     "@types/lodash": "^4.17.15",
@@ -28,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -1,19 +1,18 @@
 import {get} from "lodash";
 import {PageDataType} from "@/types";
 import {FC} from "react";
-import {Rating} from "@/components/common/rating";
 
 type Props = {
     pageData: PageDataType;
 }
 
-export const DemoHeader:FC<Props> = ({pageData}) => {
+export const PageHeader:FC<Props> = ({pageData}) => {
 
     const title = get(pageData, 'title', 'eee');
     const description  = get(pageData, 'description', 'nee');
 
     return (
-        <div className="p-4 bg-primary pb-[57px] md:pt-14">
+        <div className="p-4 bg-primary md:pt-14">
             <div className="container flex flex-col justify-center items-center gap-4">
                 <div className="text-center max-w-[700px]">
                     <div className="pt-6 mb-3">
@@ -21,7 +20,6 @@ export const DemoHeader:FC<Props> = ({pageData}) => {
                     </div>
                     <div className="min-h-[61px] text-center text-white text-xl font-normal font-['Inter'] leading-loose lg:w-full" dangerouslySetInnerHTML={{__html: description}} />
                 </div>
-                <Rating className="text-center hidden md:block" />
             </div>
         </div>
     )
