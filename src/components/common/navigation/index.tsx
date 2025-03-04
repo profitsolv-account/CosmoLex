@@ -37,11 +37,23 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
             content={menus['header-menu-solutions']}
             footer={menus['header-menu-solutions-bottom']}
             pageData={pageData}
+            onClose={() => {
+                setMenuState(st => ({
+                    selectedMenu: "solutions",
+                    open: false,
+                }));
+            }}
         />,
         "resources": <PageMegaMenu
             content={menus['header-menu-resources']}
             footer={menus['header-menu-resources-bottom']}
             pageData={pageData}
+            onClose={() => {
+                setMenuState(st => ({
+                    selectedMenu: "resources",
+                    open: false,
+                }));
+            }}
         />,
         "about": <div className="w-[195px] bg-white rounded-bl-[30px] rounded-br-[30px] p-6 pr-0">
             <a href="/about-cosmolex" className="block text-primary-dark text-[16px] font-medium font-['Inter'] leading-9 mb-2">About CosmoLex</a>

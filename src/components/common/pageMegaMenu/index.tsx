@@ -1,15 +1,16 @@
-import MegaMenu from "@/components/ui/mmenu";
 import {FeaturedPost} from "@/components/common/featuredPost";
-import {FC, ReactNode} from "react";
+import {FC} from "react";
 import {MenuType} from "@/types";
+import {X} from "lucide-react";
 
 type Props = {
     content: MenuType;
     footer: MenuType;
     pageData: any;
+    onClose?: () => void;
 }
 
-export const PageMegaMenu: FC<Props> = ({content, pageData, footer}) => {
+export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) => {
 
     if (!content) return null;
     return <>
@@ -40,7 +41,17 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer}) => {
                     ))}
                 </div>
 
-                <FeaturedPost pageData={pageData}/>
+              <div className="w-full max-w-[328px]">
+                  <FeaturedPost pageData={pageData}/>
+
+                  <div className="flex justify-end mt-10">
+                      <X className="cursor-pointer" onClick={() => {
+                          if (onClose) {
+                              onClose()
+                          }
+                      }} />
+                  </div>
+              </div>
 
             </div>
         </div>
