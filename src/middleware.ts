@@ -20,6 +20,7 @@ const getRedirections = async () => {
 }
 
 export async function middleware(req: NextRequest) {
+    return NextResponse.next();
     const pathname = req.nextUrl.pathname;
     const redirections = await getRedirections();
     const redirectRule = redirections.find((r: any) => r.source === pathname);
