@@ -203,6 +203,10 @@ body {
             padding-right: 1em
         }
 
+        table {
+            max-width: 100% !important;
+            width: 100%;
+        }
     }
 
 }
