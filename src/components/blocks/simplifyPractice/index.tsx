@@ -51,7 +51,7 @@ export const SimplifyPractice:FC<Props> = ({pageData, className}) => {
                             <div className="px-4 mb-10">
                                 <h4 className="text-center text-primary-dark text-3xl font-bold leading-[50px] tracking-[-1px] mb-3 md:text-[40px] md:mb-7">Try for free.</h4>
                                 <p className="text-center text-primary-dark text-base font-medium leading-[25px] mb-6 md:max-w-[380px] md:mx-auto md:text-lg md:mb-8">
-                                    No wait. No credit card. Just click to get started with CosmoLex for free.
+                                    No wait. No credit card. Just click to try CosmoLex for 10 days.
                                 </p>
                                 <div className="flex justify-center">
                                     <a href={pageData.settings?.freeTrialLink || ""} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Get started</a>
