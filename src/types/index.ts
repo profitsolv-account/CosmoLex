@@ -58,6 +58,16 @@ export type FaqType = {
     answer: string;
 };
 
+export type PricingFeature = {
+    type: string;
+    content: string;
+}
+
+export type PricingPlan = {
+    groupName: string;
+    content: string;
+}
+
 export type PageDataType = {
     title: string;
     content: string;
@@ -73,4 +83,6 @@ export type PageDataType = {
     leaderLogos?: LeaderLogos[];
     features?: Feature[];
     faq?: FaqType[];
+    pricingFeatures?: PricingFeature[];
+    pricingPlans?: PricingPlan[];
 }

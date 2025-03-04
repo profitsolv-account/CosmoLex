@@ -102,6 +102,14 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
                             question
                             answer
                         }
+                        pricingFeatures {
+                            type
+                            content
+                        }
+                        pricingPlans {
+                            groupName
+                            content
+                        }
                     }
                 }
             }
@@ -118,6 +126,11 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
     const title = get(data, 'page.pageSettings.title', null) || get(data, 'page.title', '');
     const features = get(data, 'page.pageSettings.features', []);
     const faq = get(data, 'page.pageSettings.faq', []);
+    const pricingFeatures = (get(data, 'page.pageSettings.pricingFeatures', []) || []).map((feature: {type: string[], content: string}) => ({
+        type: feature.type[0],
+        content: feature.content
+    }));
+    const pricingPlans = get(data, 'page.pageSettings.pricingPlans', []);
 
     return {
         ...pageData,
@@ -129,7 +142,9 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
         hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
         heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
         features,
-        faq
+        faq,
+        pricingFeatures,
+        pricingPlans
     };
 }
 

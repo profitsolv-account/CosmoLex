@@ -1,10 +1,15 @@
 import {Heading} from "@/components/ui/heading";
 import {CollapsedSection} from "@/components/ui/collapsedSection";
 import "./styles.css";
+import {PricingPlan, SettingsType} from "@/types";
+import {FC} from "react";
 
-export const PriceComparison = () => {
+type Props = {
+    settings: SettingsType;
+    plans: PricingPlan[];
+}
 
-    const settings = {"demoLink": "#", "freeTrialLink": "#"};
+export const PriceComparison: FC<Props> = ({settings, plans}) => {
 
     return <div className="pt-20 px-2 relative pb-10">
         <div className="max-w-[1124px] mx-auto relative z-10">
@@ -34,172 +39,23 @@ export const PriceComparison = () => {
                 </div>
 
                 <div className="pt-10">
-                    <CollapsedSection
-                        title={
-                            <div className="text-primary-dark text-[22px] font-bold py-4 md:text-2xl">
-                                Firm Management
-                            </div>
-                        }
-                        className="px-[30px] py-[9px] bg-[#EDF9F0] rounded-[10px] mb-8"
-                        open
-                    >
-                        <table className="w-full border-collapse">
-                            <tbody>
-                            <tr className="rounded-b-2xl highlighted-row">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">Conflict Check</div>
-                                </td>
-                                <td className="p-4 text-center ">
-                                   <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center ">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Calendaring and Task Management
-                                    </div>
-                                    </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="highlighted-row">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Matter Custom Fields and Templates
-                                    </div>
-                                    </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Matter Status Board
-                                    </div>
-                                    </td>
-                                <td className="p-4 text-center"></td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="highlighted-row">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Matter Workflows with Status Automation
-                                    </div>
-                                    </td>
-                                <td className="p-4 text-center"></td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Dependent Task and Event Logic
-                                    </div>
-                                </td>
-                                <td className="p-4 text-center"></td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="highlighted-row">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Matter Budgets
-                                    </div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Customized Data Views
-                                    </div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="highlighted-row">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Mobile App
-                                    </div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Document Management
-                                    </div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="highlighted-row">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="ttext-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Secure Document Sharing & eSignatures*
-                                        <span className="text-[#323d42] text-sm font-normal block">*Additional Fees May Apply</span>
-                                    </div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            <tr className="">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">
-                                        Integrate with Outlook, O365, Google Calendar
-                                        <span className="text-[#323d42] text-sm font-normal block">Includes OneDrive, iCal, Zapier, NetDocs, and more</span>
-                                    </div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </CollapsedSection>
+                    {plans.map(({groupName, content}) => (
+                        <CollapsedSection
+                            key={groupName}
+                            title={
+                                <div className="text-primary-dark text-[22px] font-bold py-4 md:text-2xl">
+                                    {groupName}
+                                </div>
+                            }
+                            className="px-[30px] py-[9px] bg-[#EDF9F0] rounded-[10px] mb-8"
+                            open
+                        >
+                            <div className="w-full" dangerouslySetInnerHTML={{__html: content || ""}}/>
+                        </CollapsedSection>
 
-                    <CollapsedSection title={
+                    ))}
+
+                   {/* <CollapsedSection title={
                         <div className="text-primary-dark text-2xl font-bold py-4">
                             Time & Billing
                         </div>
@@ -220,7 +76,7 @@ export const PriceComparison = () => {
                             </tr>
                             </tbody>
                         </table>
-                    </CollapsedSection>
+                    </CollapsedSection>*/}
                 </div>
 
                 <div className="pt-5">

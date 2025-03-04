@@ -1,0 +1,9 @@
+.price-addons-list {
+    li {
+        display: block;
+        padding: 10px 0;
+        padding-left: 40px;
+        background: url('../../../assets/img/icons/price-check.svg') no-repeat 0 0;
+        background-position: left center;
+    }
+}

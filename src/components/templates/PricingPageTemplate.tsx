@@ -13,12 +13,13 @@ import {Faq} from "@/components/blocks/faq";
 export default function PricingPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     const faqs = pageData.faq || [];
+    const features = pageData.pricingFeatures || [];
     return (
         <Layout pageData={pageData}>
             <PageHeader pageData={pageData} />
             <PricingBlocks />
-            <PriceComparison />
-            <AddonsBlock />
+            {pageData.settings && <PriceComparison settings={pageData.settings} plans={pageData.pricingPlans || []}/>}
+            {pageData.settings && <AddonsBlock features={features} settings={pageData.settings} />}
             <Testimonials
                 testimonials={testimonials}
                 className="!bg-transparent !pt-0"
