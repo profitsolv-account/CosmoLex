@@ -2,10 +2,12 @@ import {FC, ReactNode, useLayoutEffect, useRef, useState} from "react";
 import classNames from "classnames";
 import MegaMenu from "@/components/ui/mmenu";
 import {PageMegaMenu} from "@/components/common/pageMegaMenu";
+import {PageDataType} from "@/types";
+import ChevroneIcon from "@/assets/img/icons/chevrone-down.svg"
 
 type Props = {
     className?: string;
-    pageData: any;
+    pageData: PageDataType;
 }
 
 export const Navigation:FC<Props> = ({className, pageData}) => {
@@ -51,8 +53,10 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
         <ul className={classNames(className)}>
             <li className="cursor-pointer">
                 <span
-                    className="block text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold w-[72px] text-center"
-                    onMouseOver={() => {
+                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold w-[82px] text-center flex items-center justify-center", {
+                        "!font-bold": menuState.selectedMenu === 'solutions' && menuState.open
+                    })}
+                    onClick={() => {
                         setIsFullWidth(true);
                         clearTimeout(timer.current);
                         setMenuState({
@@ -60,7 +64,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             selectedMenu: "solutions"
                         });
                     }}
-                    onMouseLeave={() => {
+                   /* onMouseLeave={() => {
                         timer.current = setTimeout(() => {
                             setMenuState(st => ({
                                 selectedMenu: "solutions",
@@ -68,8 +72,11 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             }));
                         }, timeClose)
 
-                    }}
-                >Solutions</span>
+                    }}*/
+                >
+                    Solutions
+                    <ChevroneIcon className="w-[24px] flex-none" />
+                </span>
             </li>
             <li className="cursor-pointer">
                 <a className="block  text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold  w-[58px] text-center"
@@ -77,8 +84,10 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
             </li>
             <li className="cursor-pointer">
                 <span
-                    className="block text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold  w-[85px] text-center"
-                    onMouseOver={() => {
+                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold  w-[85px] text-center flex items-center justify-center", {
+                        "!font-bold": menuState.selectedMenu === 'resources' && menuState.open
+                    })}
+                    onClick={() => {
                         setIsFullWidth(true);
                         clearTimeout(timer.current);
                         setMenuState({
@@ -86,21 +95,23 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             selectedMenu: "resources"
                         });
                     }}
-                    onMouseLeave={() => {
+                    /*onMouseLeave={() => {
                         timer.current = setTimeout(() => {
                             setMenuState(st => ({
                                 selectedMenu: "resources",
                                 open: false,
                             }));
                         }, timeClose)
-                    }}
-                >Resources</span>
+                    }}*/
+                >Resources <ChevroneIcon className="w-[24px] flex-none" /></span>
             </li>
             <li className="cursor-pointer">
                 <span
                     ref={triggerRef}
-                    className="block text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold w-[50px] text-center"
-                    onMouseOver={() => {
+                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold w-[50px] text-center flex items-center justify-center", {
+                        "!font-bold": menuState.selectedMenu === 'about' && menuState.open
+                    })}
+                    onClick={() => {
                         setIsFullWidth(false);
                         clearTimeout(timer.current);
                         setMenuState({
@@ -108,15 +119,15 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             selectedMenu: "about"
                         });
                     }}
-                    onMouseLeave={() => {
+                   /* onMouseLeave={() => {
                         timer.current = setTimeout(() => {
                             setMenuState(st => ({
                                 ...st,
                                 open: false,
                             }));
                         }, timeClose)
-                    }}
-                >About</span>
+                    }}*/
+                >About <ChevroneIcon className="w-[24px] flex-none" /></span>
             </li>
         </ul>
 
@@ -133,14 +144,14 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
            onMouseOver={() => {
                clearTimeout(timer.current);
            }}
-           onMouseLeave={() => {
+           /*onMouseLeave={() => {
                timer.current = setTimeout(() => {
                    setMenuState(st => ({
                        ...st,
                        open: false,
                    }));
                }, timeClose)
-           }}
+           }}*/
            duration={menuState.selectedMenu !== "about" ? 600 : 200}
         >
             {menuContent[menuState.selectedMenu]}

@@ -5,7 +5,6 @@ import WebsiteIcon from "@/assets/img/websites.svg";
 import {FC, ReactNode} from "react";
 import {Heading} from "@/components/ui/heading";
 
-
 type AddonType = {
     type: 'crm' | 'website';
     description: string;

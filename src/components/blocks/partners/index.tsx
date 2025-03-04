@@ -13,8 +13,14 @@ import ls from '@/assets/img/partners/sliders/LawSites.webp';
 import ly from '@/assets/img/partners/sliders/Lawyerist.webp';
 import ltt from '@/assets/img/partners/sliders/LTT.webp';
 import canadian from '@/assets/img/partners/sliders/The-canadian-bar-association-optimized-768x432 1.webp';
+import {FC} from "react";
+import classNames from "classnames";
 
-export const Partners = () => {
+type Props = {
+    className?: string;
+}
+
+export const Partners: FC<Props> = ({className}) => {
     const items = [
         aba.src,
         atl.src,
@@ -29,9 +35,9 @@ export const Partners = () => {
 
     return (
         <>
-            <div className="container-s relative pt-20 overflow-hidden mb-[121px] px-4">
-                <div className="text-primary-dark text-center  text-[22px] font-semibold font-['Inter'] leading-loose mb-5 md:text-[32px]">
-                    Trusted by These Industry Leaders
+            <div className={classNames("container-s relative pt-20 overflow-hidden mb-[121px] px-4", className)}>
+                <div className="text-primary-dark  text-[22px] font-semibold font-['Inter'] leading-loose mb-5 md:text-[32px]">
+                    Trusted Industry Partners
                 </div>
                 <div className="w-full overflow-hidden">
                     <Swiper

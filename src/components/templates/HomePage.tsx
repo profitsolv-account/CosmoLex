@@ -19,12 +19,12 @@ export default function HomePage({pageData}: { pageData: PageDataType }) {
     return (
         <Layout pageData={pageData}>
             <HomeHeader pageData={pageData} />
-            <Partners/>
             <ComplianceManagement/>
             {pageData.settings && <MatterCentric setting={pageData.settings}/>}
             <Testimonials testimonials={testimonials}/>
             <VideoTestimonials testimonials={extendedTestimonials} />
             <SimplifyPractice pageData={pageData}/>
+            <Partners className="pb-10"/>
         </Layout>
 
     )
