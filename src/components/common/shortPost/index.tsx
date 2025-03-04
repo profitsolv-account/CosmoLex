@@ -13,7 +13,6 @@ export const ShortPost: FC<Props> = ({post}) => {
 
         {!!post.featuredImage.length && <>
             <div className="flex mb-5 text-justify">
-
                     <a
                         href={`/blog/${post.slug}`}
                         className="inline-block p-1 border border-primary"
@@ -26,7 +25,6 @@ export const ShortPost: FC<Props> = ({post}) => {
                     </a>
                 </div>
         </>}
-
         <div dangerouslySetInnerHTML={{__html: post ? post.excerpt : ''}} className="text-xl"/>
     </div>
 }
