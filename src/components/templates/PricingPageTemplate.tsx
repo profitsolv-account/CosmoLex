@@ -12,6 +12,7 @@ import {Faq} from "@/components/blocks/faq";
 
 export default function PricingPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
+    const faqs = pageData.faq || [];
     return (
         <Layout pageData={pageData}>
             <PageHeader pageData={pageData} />
@@ -24,7 +25,7 @@ export default function PricingPageTemplate({ pageData }: { pageData: PageDataTy
                 bgOverlay={false}
                 showNavigation
             />
-            <Faq />
+            <Faq faqs={faqs} />
             <SimplifyPractice pageData={pageData} className="bg-white"/>
         </Layout>
 

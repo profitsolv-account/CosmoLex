@@ -53,6 +53,11 @@ export type SettingsType = {
     demoLink: string;
 }
 
+export type FaqType = {
+    question: string;
+    answer: string;
+};
+
 export type PageDataType = {
     title: string;
     content: string;
@@ -66,5 +71,6 @@ export type PageDataType = {
     latestPosts?: FeaturedPostType[];
     posts?: ShortPostType[];
     leaderLogos?: LeaderLogos[];
-    features?: Feature[]
+    features?: Feature[];
+    faq?: FaqType[];
 }

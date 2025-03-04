@@ -13,7 +13,6 @@ export default async function PricingPage() {
     try {
         const pageData = await getPageData("pricing");
         const testimonials = await getTestimonialsList();
-
         return <PricingPageTemplate pageData={{
             ...pageData,
             testimonials,
