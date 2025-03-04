@@ -9,6 +9,7 @@ const getRedirections = async () => {
                 redirections {
                     source
                     target
+                    status
                 }
             }
         `,
@@ -20,12 +21,12 @@ const getRedirections = async () => {
 }
 
 export async function middleware(req: NextRequest) {
-    return NextResponse.next();
+
     const pathname = req.nextUrl.pathname;
     const redirections = await getRedirections();
     const redirectRule = redirections.find((r: any) => r.source === pathname);
 
-    if (redirectRule && pathname !== '/') {
+    if (redirectRule && redirectRule.status === 'enabled' && pathname !== '/') {
         return NextResponse.redirect(new URL(redirectRule.target, req.url));
     }
 
