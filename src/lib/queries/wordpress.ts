@@ -30,7 +30,6 @@ export const getHomePageData = async () => {
         `,
         fetchPolicy: "no-cache",
     });
-
      return {
         ...get(data, 'page', {}),
          title: get(data, 'page.title', ''),
