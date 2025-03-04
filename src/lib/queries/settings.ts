@@ -63,3 +63,20 @@ export const generalSettings = async (): Promise<any> => {
 
     return get(data, 'generalSettings', {});
 }
+
+export const getRedirections = async () => {
+    const { data } = await client.query({
+        query: gql`
+            query GetRedirections {
+                redirections {
+                    source
+                    target
+                }
+            }
+        `,
+        fetchPolicy: "no-cache",
+        variables: {},
+    });
+
+    return get(data, 'redirections', []);
+}
