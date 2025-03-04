@@ -73,8 +73,8 @@ export const Addon: FC<AddonProps> = ({addon}) => {
             {media[addon.type]}
             <div className="pt-9">
                 <div className="text-primary-dark text-[46px] font-bold leading-[48px] mb-1">${addon.price}</div>
-                <div className="text-primary-dark text-[8.80px] font-normal font-['Poppins'] mb-0">{addon.info}</div>
-                <div className="text-primary-dark text-[11.20px] font-semibold font-['Poppins']">${addon.mPrice} USD month-to-month</div>
+                <div className="text-primary-dark text-[8.80px] font-normal mb-0">{addon.info}</div>
+                <div className="text-primary-dark text-[11.20px] font-semibold">${addon.mPrice} USD month-to-month</div>
             </div>
         </div>
         <div className="grow">

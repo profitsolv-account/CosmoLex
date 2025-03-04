@@ -33,8 +33,8 @@ export const getHomePageData = async () => {
 
      return {
         ...get(data, 'page', {}),
-         title: get(data, 'page.pageSettings.title', ''),
-         description: get(data, 'page.pageSettings.description', ''),
+         title: get(data, 'page.title', ''),
+         description: get(data, 'page.content', ''),
          hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
          heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
          featuredPost: (await getLatestPosts(1))[0],
@@ -123,7 +123,7 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
         menus: await getAllMenus(),
         settings: await getSiteSettings(),
         title,
-        description: get(data, 'page.pageSettings.description', ''),
+        description: get(data, 'page.content', ''),
         hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
         heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
         features
