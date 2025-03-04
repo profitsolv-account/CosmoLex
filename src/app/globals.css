@@ -60,6 +60,10 @@ body {
         @apply max-w-[1320px] mx-auto;
     }
 
+    .container-blog {
+        @apply max-w-[1110px] mx-auto;
+    }
+
     .base-btn {
         @apply flex flex-none items-center justify-center px-4 rounded-[100px] py-3.5 border border-primary-dark text-primary-dark text-base font-normal font-['Inter'] transition duration-300 md:px-7;
     }

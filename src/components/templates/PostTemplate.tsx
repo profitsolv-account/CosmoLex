@@ -6,7 +6,7 @@ export default function PostTemplate({pageData}: { pageData: any }) {
     return (
 
         <Layout pageData={pageData}>
-            <div className="pt-20 b-32 single-entity container flex flex-col-reverse gap-10 items-start lg:flex-row px-4 md:px-0">
+            <div className="pt-20 b-32 single-entity container-blog flex flex-col-reverse gap-10 items-start lg:flex-row px-4 md:px-0">
                 <div>
                     <section>
                         <section className="mx-auto py-4 text-left md:py-16">
