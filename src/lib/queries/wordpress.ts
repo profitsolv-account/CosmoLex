@@ -31,7 +31,7 @@ export const getHomePageData = async () => {
     });
      return {
         ...get(data, 'page', {}),
-         title: get(data, 'page.title', ''),
+         title: get(data, 'page.pageSettings.title', ''),
          description: get(data, 'page.content', ''),
          hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
          heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
