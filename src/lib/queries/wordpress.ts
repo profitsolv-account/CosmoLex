@@ -16,7 +16,6 @@ export const getHomePageData = async () => {
                     date
                     content
                     pageSettings {
-                        description
                         title
                         heroImage {
                             node {
@@ -88,7 +87,6 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
                     date
                     content,
                     pageSettings {
-                        description
                         title
                         heroImage {
                             node {
