@@ -1,5 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
-import {getRedirections} from "@/lib/queries/settings";
+import client from "@/lib/apollo-client";
+import {gql} from "@apollo/client";
+
+const getRedirections = async () => {
+    const {data} = await client.query({
+        query: gql`
+            query GetRedirections {
+                redirections {
+                    source
+                    target
+                }
+            }
+        `,
+        fetchPolicy: "no-cache",
+        variables: {},
+    });
+
+    return data?.redirections || [];
+}
 
 export async function middleware(req: NextRequest) {
     const pathname = req.nextUrl.pathname;

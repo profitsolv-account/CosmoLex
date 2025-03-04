@@ -78,5 +78,5 @@ export const getRedirections = async () => {
         variables: {},
     });
 
-    return get(data, 'redirections', []);
+    return data?.redirections || [];
 }
