@@ -11,7 +11,7 @@ export default async function Home() {
     const pageData = await getHomePageData();
     return <HomePage pageData={{
         ...pageData,
-        footerExtendedBg: true,
+        footerExtendedBg: false,
     }} />
 }
 
