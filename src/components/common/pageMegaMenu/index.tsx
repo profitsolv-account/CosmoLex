@@ -14,7 +14,7 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
 
     if (!content) return null;
     return <>
-        <div className="bg-white pt-5 shadow-lg ">
+        <div className="bg-white pt-5 shadow-lg px-5">
             <div className="container px-4 py-4 flex gap-[50px] items-start">
 
                 <div className="justify-start items-start gap-[50px] grid grid-cols-4">
