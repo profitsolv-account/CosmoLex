@@ -21,7 +21,7 @@ export default function HomePage({pageData}: { pageData: PageDataType }) {
             <HomeHeader pageData={pageData} />
             <ComplianceManagement/>
             {pageData.settings && <MatterCentric setting={pageData.settings}/>}
-            <Testimonials testimonials={testimonials}/>
+            <Testimonials testimonials={testimonials} showNavigation/>
             <VideoTestimonials testimonials={extendedTestimonials} />
             <SimplifyPractice pageData={pageData}/>
             <Partners className="pb-10"/>

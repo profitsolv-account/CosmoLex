@@ -26,11 +26,19 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
     const triggerRef = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
-        if (triggerRef.current) {
-            const offset = triggerRef.current.getBoundingClientRect().left + triggerRef.current.getBoundingClientRect().width / 2 - (195 / 2);
-            setLeft(offset);
-        }
+        const updatePosition = () => {
+            if (triggerRef.current) {
+                const offset = triggerRef.current.getBoundingClientRect().left + triggerRef.current.getBoundingClientRect().width / 2 - (195 / 2);
+                setLeft(offset);
+            }
+        };
+
+        updatePosition();
+
+        window.addEventListener('resize', updatePosition);
+        return () => window.removeEventListener('resize', updatePosition); // Cleanup on unmount
     }, []);
+
 
     const menuContent: {[index: string]: ReactNode} = {
         "solutions": <PageMegaMenu

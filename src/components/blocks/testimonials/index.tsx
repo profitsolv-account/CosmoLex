@@ -54,8 +54,8 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
               <div className="relative lg:px-1">
 
                   {showNavigation && <div className="hidden absolute z-11  right-[34px] top-[26px] gap-5 lg:flex">
-                      <IconRLeft className="button-prev w-[47px] cursor-pointer" />
-                      <IconRLeft className="button-next w-[47px] rotate-180 cursor-pointer" />
+                      <IconRLeft className="button-prev-t w-[47px] cursor-pointer" />
+                      <IconRLeft className="button-next-t w-[47px] rotate-180 cursor-pointer" />
                   </div>}
 
                   <Swiper
@@ -76,8 +76,8 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                       speed={1000}
                       navigation={{
                           enabled: showNavigation,
-                          nextEl: '.button-next',
-                          prevEl: '.button-prev',
+                          nextEl: '.button-next-t',
+                          prevEl: '.button-prev-t',
                   }}
                   >
                       {
