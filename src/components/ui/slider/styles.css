@@ -1,5 +1,5 @@
 .blocks-slider {
-    .swiper-slide-prev, .swiper-slide-next {
+    .swiper-slide {
         .slide-content {
             position: relative;
             @media (min-width: 1024px) {
@@ -7,6 +7,19 @@
             }
             &:after {
                 opacity: .4;
+                z-index: 10;
+            }
+        }
+    }
+
+    .swiper-slide-active {
+        .slide-content {
+            position: relative;
+            @media (min-width: 1024px) {
+                height: 100%!important;
+            }
+            &:after {
+                opacity: 0;
                 z-index: 10;
             }
         }

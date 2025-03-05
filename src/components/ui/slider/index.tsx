@@ -32,7 +32,7 @@ export const Slider: FC<Props> = ({ items, ref, setActiveIndex, height, classNam
 
     return (
         <div>
-            <div className={classNames("max-w-[542px] flex mx-auto lg:max-w-[2500px] relative blocks-slider min-h-[550px]", className)}>
+            <div className={classNames("max-w-[542px] flex mx-auto lg:max-w-[3250px] relative blocks-slider min-h-[550px]", className)}>
                 <Swiper
                     onSwiper={(swiper) => {
                         if (ref) {
