@@ -14,8 +14,8 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
 
     if (!content) return null;
     return <>
-        <div className="bg-white pt-5">
-            <div className="container max-w-[1420px] px-4 py-4 flex gap-[50px] items-start">
+        <div className="bg-white pt-5 shadow-lg ">
+            <div className="container px-4 py-4 flex gap-[50px] items-start">
 
                 <div className="justify-start items-start gap-[50px] grid grid-cols-4">
                     {content.items.map((submenu) => (
@@ -56,11 +56,11 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
             </div>
         </div>
 
-        <div className="w-full bg-[#b9dfc3] rounded-bl-[30px] rounded-br-[30px] pt-3.5 pb-4">
-           <div className="container max-w-[1420px] px-4 py-4 flex gap-[50px] items-start">
+        <div className="w-full bg-[#b9dfc3] rounded-bl-[30px] rounded-br-[30px] pt-3.5 pb-2">
+           <div className="container max-w-[1420px] px-4 py-1 flex gap-[50px] items-start">
                {footer.items.map((submenu) => (
                    <div key={submenu.title} className="">
-                       <div className="block text-[#0c193a] text-lg font-semibold font-['Inter'] leading-7 mb-3 transition duration-300 ">
+                       <div className="block text-[#0c193a] text-lg font-semibold font-['Inter'] leading-7 mb-1 transition duration-300 ">
                            {submenu.title}
                        </div>
                        <div className="flex">

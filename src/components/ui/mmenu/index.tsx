@@ -78,14 +78,14 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsO
                     />
                     <div
                         ref={menuRef}
-                        className={classNames(`shadow-lg overflow-hidden absolute z-50 !duration-${duration}`, {
-                            'slideDown': visible && duration !== 200,
+                        className={classNames(`overflow-hidden absolute z-50 container !duration-${duration}`, {
+                           /* 'slideDown': visible && duration !== 200,
                             'slideUp': !visible && duration !== 200,
                             'slideDownFast': visible && duration === 200,
-                            'slideUpFast': !visible && duration === 200,
-                            'w-full': fullWidth
+                            'slideUpFast': !visible && duration === 200,*/
+                            'w-full translate-x-[-50%]': fullWidth
                         })}
-                        style={{left: `${left}px`}}
+                        style={{left: fullWidth ? `50%` : `${left}px`}}
                         onMouseOver={() => {
                             if (onMouseOver) {
                                 onMouseOver();

@@ -1,9 +1,12 @@
-import {useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import classNames from "classnames";
-import bg from "@/assets/img/compliance/working-process.webp";
+import bg from "@/assets/img/compliance/legal_billing_&_payments.webp";
+import bg2 from "@/assets/img/compliance/firm_management.webp";
+import bg4 from "@/assets/img/compliance/accounting_&_finance.webp";
+import bg3 from "@/assets/img/compliance/client_engagement.webp";
+
 import block2 from "@/assets/img/compliance/block-2.png";
 import block1 from "@/assets/img/compliance/block-1.png";
-import IconRLeft from "@/assets/img/icons/left-rounded-icon.svg";
 
 // Import Swiper React components
 import {Swiper, SwiperRef, SwiperSlide} from 'swiper/react';
@@ -13,28 +16,36 @@ import {Autoplay, Pagination, Navigation} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import LeftIcon from "@/assets/img/icons/left-arrow-icon.svg";
+import RightIcon from "@/assets/img/icons/right-arrow-icon.svg";
+
+import "./styles.css";
 
 
-const data = [{
+const dataSliders = [{
     title: "Client Engagement",
     description: "Grow your firm and elevate your client experience. Streamline intake, build a strong online presence, and securely manage documents.",
-    image: bg,
-    link: "/"
+    image: bg3,
+    link: "/",
+    className: "bg-blue",
 }, {
     title: "Firm Management",
     description: "Efficiently manage your practice. Track matters, pull reports, and keep your law firm productive. ",
-    image: bg,
-    link: "/"
+    image: bg2,
+    link: "/",
+    className: "bg-yellow",
 }, {
     title: "Billing & Payments",
     description: "Improve your firm’s cash flow. Use our custom invoices to get paid faster in just a few clicks.",
     image: bg,
-    link: "/"
+    link: "/",
+    className: "bg-salmon",
 }, {
     title: "Accounting & Finance",
     description: "Connect your firm to your finances. Manage your firm’s finances, stay compliant with built-in trust accounting, and generate real-time reports.",
-    image: bg,
-    link: "/"
+    image: bg4,
+    link: "/",
+    className: "bg-green",
 }];
 
 
@@ -60,9 +71,7 @@ export const ComplianceManagement = () => {
             </h3>
             <Tabs activeIndex={activeIndex} onTabClick={handleTabClick} />
         </div>
-
         <Slider activeIndex={activeIndex} setActiveIndex={setActiveIndex} swiperRef={swiperRef} />
-
         <AccountingTools />
 
     </div>
@@ -78,47 +87,46 @@ const Slider = ({activeIndex, setActiveIndex, swiperRef}: SliderProps) => {
     return <div className="relative pb-8 md:pb-32">
 
         <div className="px-2">
-            <div className="max-w-[542px] flex mx-auto lg:max-w-[1066px] relative">
-
-                <div className="hidden absolute z-11  right-[34px] top-[26px] gap-5 lg:flex">
-                    <IconRLeft className="button-prev w-[47px] cursor-pointer" />
-                    <IconRLeft className="button-next w-[47px] rotate-180 cursor-pointer" />
-                </div>
-
+            <div className="max-w-[542px] flex mx-auto lg:max-w-[1512px] relative blocks-slider min-h-[550px]">
 
                 <Swiper
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
                     onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                     slidesPerView={1}
-                    spaceBetween={30}
+
                     loop={true}
                     modules={[Autoplay, Pagination, Navigation]}
                     navigation={{
                         enabled: true,
-                        nextEl: '.button-next',
-                        prevEl: '.button-prev',
+                        nextEl: '.button-next-slide',
+                        prevEl: '.button-prev-slide',
                     }}
-                    autoplay={{
+                    /*autoplay={{
                         delay: 4500,
-                    }}
+                    }}*/
                     className="max-lg:!pb-12"
+                    centeredSlides={true}
+                    spaceBetween={20}
                     autoHeight={false}
                     speed={1200}
+                    breakpoints={{
+                        1024: {
+                            slidesPerView: "auto",
+                            spaceBetween: 20,
+                        }
+                    }}
                 >
                     {
-                        data.map((t) => (
-                            <SwiperSlide key={t.title}>
-                                <div className=" flex flex-col-reverse mx-auto lg:max-w-[1066px] relative z-10 lg:grid lg:grid-cols-2">
-                                    <div className="rounded-br-[15px] rounded-bl-[15px] relative min-h-[550px] bg-cover bg-center lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center" style={{
-                                        backgroundImage: 'url(' + t.image.src + ')',
-                                    }}>
+                        dataSliders.map((t, index) => (
+                            <SwiperSlide key={`${t.title}_${index}`} className={"w-full lg:!w-[1066px] !flex items-center h-full"}>
+                                <div className="h-full flex flex-col-reverse mx-auto  relative z-10 lg:grid slide-content overflow-hidden  transition-all duration-1200 lg:h-[550px] lg:grid-cols-2 lg:max-w-[1066px]">
 
-                                        <div className="bg-[#d9d9d9] rounded-[10px] absolute z-20 right-5 bottom-5 w-[300px] h-[180px] lg:static lg:bottom-[-60px] lg:left-[-60px] lg:w-[222px] lg:h-[124px]" />
+                                    <div className="rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center max-md:aspect-square">
+                                        <img src={t.image.src} alt="" className="object-cover w-full h-full  aspect-square"/>
                                     </div>
-
-                                    <div className="rounded-tl-[15px] rounded-tr-[15px] bg-salmon relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[30px] lg:rounded-tr-[30px] lg:rounded-tl-[0px]">
-                                        <div className="w-[442px] flex-col justify-start items-start gap-5 inline-flex">
-                                            <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter']  max-w-[300px] lg:leading-[55px] lg:text-[46px]">{t.title}</div>
+                                    <div className={classNames("rounded-tl-[15px] rounded-tr-[15px] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[30px] lg:rounded-tr-[30px] lg:rounded-tl-[0px]", t.className)}>
+                                        <div className="lg:w-[442px] flex-col justify-start items-start gap-5 inline-flex">
+                                            <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[55px] lg:text-[46px]">{t.title}</div>
                                             <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[30px] max-w-[350px] lg:mb-7">{t.description}</div>
                                             <a href={t.link}
                                                className="w-full block text-center lg:inline-block rounded-[100px] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[30px] py-[15px] lg:w-auto">
@@ -126,11 +134,20 @@ const Slider = ({activeIndex, setActiveIndex, swiperRef}: SliderProps) => {
                                             </a>
                                         </div>
                                     </div>
+
                                 </div>
                             </SwiperSlide>
                         ))
                     }
                 </Swiper>
+
+                <div className="button-prev-slide absolute left-16 top-[50%] translate-y-[-60%] hidden cursor-pointer lg:block z-12">
+                    <LeftIcon />
+                </div>
+                <div className="button-next-slide absolute z-5 right-16 top-[50%] translate-y-[-60%] hidden cursor-pointer lg:block ">
+                    <RightIcon />
+                </div>
+
             </div>
         </div>
         <div className="absolute w-full  bg-primary z-0 h-[70%] bottom-0 rounded-tr-[100px]" />

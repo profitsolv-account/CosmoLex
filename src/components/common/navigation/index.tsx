@@ -156,15 +156,15 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
            onMouseOver={() => {
                clearTimeout(timer.current);
            }}
-           /*onMouseLeave={() => {
+           onMouseLeave={() => {
                timer.current = setTimeout(() => {
                    setMenuState(st => ({
                        ...st,
                        open: false,
                    }));
                }, timeClose)
-           }}*/
-           duration={menuState.selectedMenu !== "about" ? 600 : 200}
+           }}
+           duration={1}
         >
             {menuContent[menuState.selectedMenu]}
         </MegaMenu>
