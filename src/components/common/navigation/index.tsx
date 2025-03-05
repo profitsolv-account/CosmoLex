@@ -95,7 +95,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                     }}*/
                 >
                     Solutions
-                    <ChevroneIcon className="w-[24px] flex-none" />
+                    <ChevroneIcon className="w-[24px] flex-none stroke-green" />
                 </span>
             </li>
             <li className="cursor-pointer">
@@ -123,7 +123,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             }));
                         }, timeClose)
                     }}*/
-                >Resources <ChevroneIcon className="w-[24px] flex-none" /></span>
+                >Resources <ChevroneIcon className="w-[24px] flex-none stroke-green" /></span>
             </li>
             <li className="cursor-pointer">
                 <span
@@ -147,7 +147,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             }));
                         }, timeClose)
                     }}*/
-                >About <ChevroneIcon className="w-[24px] flex-none" /></span>
+                >About <ChevroneIcon className="w-[24px] flex-none stroke-green" /></span>
             </li>
         </ul>
 
