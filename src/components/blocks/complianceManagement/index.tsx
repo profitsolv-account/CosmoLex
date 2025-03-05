@@ -43,7 +43,6 @@ export const ComplianceManagement = () => {
 
     const handleTabClick = (index:number) => {
         setActiveIndex(index);
-        console.log(swiperRef.current);
         if (swiperRef.current) {
             swiperRef.current.slideToLoop(index);
         }
@@ -71,7 +70,7 @@ type SliderProps = {
 };
 const SliderComp = ({setActiveIndex, swiperRef}: SliderProps) => {
 
-    const items = dataSliders.map((t, index) => (
+    const items = [...dataSliders, ...dataSliders].map((t, index) => (
            <Fragment key={index}>
                <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
                    <div className="grow max-h-[280px] rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center">
@@ -113,19 +112,21 @@ const Tabs = ({activeIndex, onTabClick}:TabsProps) => {
         {title: "Accounting & Finance", id: "accounting-finance"},
     ]
 
+   const aIndex = activeIndex > 3 ? activeIndex - 4 : activeIndex;
+
     return <div className="overflow-auto w-full pb-5">
         <div className="flex gap-2.5 justify-center min-w-[890px]">
             {tabs.map((tab, index) => (
                 <div
                     className={classNames("h-10 px-[30px] pt-5 pb-[22px] rounded-[100px] justify-center items-center gap-2.5 inline-flex transition duration-300 group  hover:bg-primary-dark", {
-                        "bg-primary-dark": activeIndex === index,
-                        "bg-white ": activeIndex !== index,
+                        "bg-primary-dark": aIndex === index,
+                        "bg-white ": aIndex !== index,
                     })}
                     onClick={() => onTabClick(index)}
                     key={index} style={{cursor: 'pointer'}}
                 >
                     <div className={classNames("text-center text-primary-dark text-base font-normal font-['Inter'] transition duration-300 group-hover:text-white", {
-                        "text-white": activeIndex === index
+                        "text-white": aIndex === index
                     })}>{tab.title}</div>
                 </div>
             ))}
