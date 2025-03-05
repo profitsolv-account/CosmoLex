@@ -1,12 +1,35 @@
 .blocks-slider {
     .swiper-slide-prev, .swiper-slide-next {
         .slide-content {
+            position: relative;
             @media (min-width: 1024px) {
-                height: 452px!important;
+                height: 366px!important;
+               /* filter: blur(1px);*/
+            }
+            &:after {
+                opacity: .4;
+                z-index: 10;
             }
         }
         .slide-content-inner {
             display: none!important;
+        }
+    }
+
+    .slide-content {
+
+        @media (min-width: 1024px) {
+            &:after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: #FFFFFF;
+                z-index: -1;
+                opacity: 0;
+                transition: all 1.2s;
+                border-radius: 30px;
+            }
         }
     }
 
