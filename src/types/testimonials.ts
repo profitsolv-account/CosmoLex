@@ -8,4 +8,6 @@ export type TestimonialType = {
     extended: boolean;
     background: string;
     flipBackground: boolean;
+    link: string;
+    title: string;
 }

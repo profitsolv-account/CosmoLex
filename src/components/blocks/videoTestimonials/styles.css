@@ -1,18 +1,11 @@
 .video-slider {
+    .slide-content-inner {
+        opacity: 1;
+        transition: all .5s;
+    }
     .swiper-slide-prev, .swiper-slide-next {
-        .slide-content {
-            min-height: 552px!important;
-        }
         .slide-content-inner {
-            display: none!important;
+            opacity: 0;
         }
-    }
-
-    .swiper-slide-prev .left-overlay {
-        display: block!important;
-    }
-
-    .swiper-slide-next .right-overlay {
-        display: block!important;
     }
 }

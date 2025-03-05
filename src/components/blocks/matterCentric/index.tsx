@@ -1,5 +1,6 @@
 import {SettingsType} from "@/types";
 import {FC} from "react";
+import Img from '@/assets/img/matter-centric.webp';
 
 type Props = {
     setting: SettingsType
@@ -43,7 +44,7 @@ export const MatterCentric: FC<Props> = ({setting}) => {
             <div className="md:max-w-[690px] md:mx-auto flex flex-col gap-8 md:flex-row md:gap-8 md:justify-center">
                 {options.map((option, index) => {
                     return <div className="flex flex-col items-center gap-4 md:gap-2" key={index}>
-                        <div className="w-[177.69px] h-[177.69px] bg-white rounded-[100px] shadow-[0px_17px_60px_-20px_rgba(0,0,0,0.25)] flex items-center justify-center md:w-[100px] md:h-[100px]">
+                        <div className="w-[177.69px] h-[177.69px] bg-white/30 rounded-[100px] shadow-[0px_17px_60px_-20px_rgba(0,0,0,0.25)] flex items-center justify-center md:w-[120px] md:h-[120px]">
                             <div className="text-center text-primary-dark text-[64px] font-bold font-['Inter'] leading-[10px] flex items-center justify-center gap-0.5 md:text-[34px] md:leading-[10px]">
                                 <span>{option.value}</span>
                                 <span className="text-primary text-3xl font-medium font-['Inter'] md:text-[17px]">{option.type}</span>
@@ -54,7 +55,9 @@ export const MatterCentric: FC<Props> = ({setting}) => {
                 }
             </div>
             <div className="pl-7 pt-12 md:px-19 md:pt-12">
-                <div className="w-full h-[394px] bg-[#ebebeb] rounded-tl-[10px] rounded-tr-[10px]" />
+                <div className="w-full h-[394px] rounded-tl-[10px] rounded-tr-[10px] overflow-hidden flex items-end">
+                    <img src={Img.src} alt="matter centric" className="w-full h-full object-cover md:object-contain relative top-0.5"/>
+                </div>
             </div>
         </div>
     </div>

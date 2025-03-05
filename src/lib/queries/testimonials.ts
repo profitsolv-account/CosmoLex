@@ -29,6 +29,8 @@ export const getTestimonialsList = async () => {
                                     }
                                 }
                                 flipBackground
+                                link
+                                title
                             }
                         }
                     }

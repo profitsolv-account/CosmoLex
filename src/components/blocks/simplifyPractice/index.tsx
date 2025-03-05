@@ -1,6 +1,8 @@
 import workInTeam from '@/assets/img/simple-practice/work-in-team.webp';
 import goodExperience from '@/assets/img/simple-practice/good-experience.webp';
 import workRemotely from '@/assets/img/simple-practice/work-remotely.webp';
+import DemoScreen from '@/assets/img/simple-practice/demo-screen.webp';
+
 import {PageDataType} from "@/types";
 import {FC} from "react";
 import {Heading} from "@/components/ui/heading";
@@ -58,7 +60,9 @@ export const SimplifyPractice:FC<Props> = ({pageData, className}) => {
                                 </div>
                             </div>
 
-                            <div className="h-[162px] bg-[#838080] rounded-tl-[10px] rounded-tr-[10px] md:h-[245px]" />
+                            <div className="h-[162px] rounded-tl-[10px] rounded-tr-[10px] md:h-[245px] flex items-end justify-center">
+                                <img src={DemoScreen.src} alt="demo-screen" className="relative top-0.5"/>
+                            </div>
                         </div>
                     </div>
 
