@@ -1,11 +1,13 @@
 .video-slider {
-    .slide-content-inner {
-        opacity: 1;
-        transition: all .5s;
-    }
-    .swiper-slide-prev, .swiper-slide-next {
+    @media (min-width: 1024px) {
         .slide-content-inner {
-            opacity: 0;
+            opacity: 1;
+            transition: all .5s;
+        }
+        .swiper-slide-prev, .swiper-slide-next {
+            .slide-content-inner {
+                opacity: 0;
+            }
         }
     }
 }
