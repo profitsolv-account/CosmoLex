@@ -57,13 +57,13 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsO
         };
     }, []);
 
-    useEffect(() => {
+/*    useEffect(() => {
         if (isOpen) {
             document.body.classList.add('no-scroll');
         } else {
             document.body.classList.remove('no-scroll');
         }
-    }, [isOpen]);
+    }, [isOpen]);*/
 
     return (
         <div className={classNames(className)}>
