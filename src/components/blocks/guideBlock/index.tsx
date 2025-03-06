@@ -11,7 +11,7 @@ export const GuideBlock: FC<Props> = ({className}) => {
     return <div className={classNames("px-2 pt-10", className)}>
         <div className="max-w-[1124px] relative mx-auto">
             <h4 className="relative text-center justify-start text-primary text-base font-normal uppercase tracking-[1.28px] mb-6">LEGAL PRACTICE MANAGEMENT RESOURCES</h4>
-            <h3 className="relative text-center justify-start text-primary text-[46px] font-bold leading-[60px] md:max-w-[983px] mx-auto mb-15">Access CosmoLex's free materials on how to elevate your legal practice management.</h3>
+            <h3 className="relative text-center justify-start text-primary text-[46px] font-bold leading-[60px] md:max-w-[983px] mx-auto mb-15">Access CosmoLex&lsquo;s free materials on how to elevate your legal practice management.</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="min-h-[200px] bg-primary rounded-tl-[15px] rounded-tr-[15px] md:rounded-tr-[0px] md:rounded-bl-[30px] md:rounded-tl-[30px] overflow-hidden flex flex-col justify-between">
