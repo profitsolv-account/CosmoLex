@@ -12,9 +12,10 @@ type Props = {
     tabs: TabType[];
     subheading?: string;
     heading?: string;
+    description?: ReactNode;
 }
 
-export const TabbedSlider: FC<Props> = ({items, tabs, subheading, heading}) => {
+export const TabbedSlider: FC<Props> = ({items, tabs, subheading, heading, description}) => {
 
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const swiperRef = useRef<any>(null);
@@ -36,6 +37,7 @@ export const TabbedSlider: FC<Props> = ({items, tabs, subheading, heading}) => {
                 {heading}
             </h3>
             }
+            {description && <div className="text-[14px] text-center text-primary-dark md:text-base font-normal uppercase mb-5 tracking-[1.26px] md:mb-20">{description}</div>}
             <Tabs tabs={tabs} activeIndex={activeIndex} onTabClick={handleTabClick} />
         </div>
 
@@ -43,7 +45,6 @@ export const TabbedSlider: FC<Props> = ({items, tabs, subheading, heading}) => {
             <div className="px-2">
                 <Slider items={items} ref={swiperRef} setActiveIndex={setActiveIndex} />
             </div>
-            <div className="absolute w-full  bg-primary z-0 h-[70%] bottom-0 rounded-tr-[50px] md:rounded-tr-[100px]" />
         </div>
 
     </div>

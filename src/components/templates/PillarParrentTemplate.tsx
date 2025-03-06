@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, {Fragment} from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
@@ -8,15 +8,91 @@ import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {Features} from "@/components/blocks/features";
 import {GuideBlock} from "@/components/blocks/guideBlock";
 import {ColumnsSection} from "@/components/blocks/columnsSection";
+import bg3 from "@/assets/img/compliance/client_engagement.webp";
+import bg2 from "@/assets/img/compliance/firm_management.webp";
+import bg from "@/assets/img/compliance/legal_billing_&_payments.webp";
+import bg4 from "@/assets/img/compliance/accounting_&_finance.webp";
+import classNames from "classnames";
+import {TabbedSlider} from "@/components/ui/tabbedSlider";
+
+
+const dataSliders = [{
+    title: "Calendars & Tasks",
+    description: "The lifeblood of your firm–efficiently manage tasks, events, and meetings so you can provide the most value to your clients.",
+    image: bg3,
+    link: "/",
+    className: "bg-blue",
+},{
+    title: "Workflow Automation",
+    description: "Days of repetitive, manual work are over with practice area-specific workflows for task management and events. Tools that level up to your skills.",
+    image: bg3,
+    link: "/",
+    className: "bg-blue",
+},{
+    title: "Reporting",
+    description: <>You decide what data is most important to you and your firm. <br/>
+        Customize reports to maximize time analyzing firm health and status of matters.</>,
+    image: bg3,
+    link: "/",
+    className: "bg-blue",
+},{
+    title: "Integrations",
+    description: "We play nice with the tools you already use so you’re only entering and managing data one time.",
+    image: bg3,
+    link: "/",
+    className: "bg-blue",
+}];
+
+
 
 export default function PillarParentTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     const faqs = pageData.faq || [];
     const features = pageData.pricingFeatures || [];
 
+
+    const items = [...dataSliders, ...dataSliders].map((t, index) => (
+        <Fragment key={index}>
+            <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
+                <div className="grow max-h-[280px] rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center">
+                    <img src={t.image.src} alt="" className="object-cover w-full h-full  aspect-square"/>
+                </div>
+                <div className={classNames("grow rounded-tl-[15px] rounded-tr-[15px] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[30px] lg:rounded-tr-[30px] lg:rounded-tl-[0px] overflow-hidden", t.className)}>
+                    <div className="lg:w-[442px] flex-col justify-start items-start gap-5 inline-flex">
+                        <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[55px] lg:text-[46px]">{t.title}</div>
+                        <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[30px] max-w-[350px] lg:mb-7">{t.description}</div>
+                        <a href={t.link}
+                           className="w-full block text-center lg:inline-block rounded-[100px] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[30px] py-[15px] lg:w-auto">
+                            Explore features
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </Fragment>
+    ))
+
+    const tabs = [
+        {title: "Calendars & Tasks", id: "calendars-tasks"},
+        {title: "Workflow Automation", id: "workflow-automation"},
+        {title: "reporting", id: "reporting"},
+        {title: "integrations", id: "integrations"},
+    ]
+
+
     return (
         <Layout pageData={pageData}>
             <PageHeader pageData={pageData} />
+
+            <div className="pt-10">
+                <TabbedSlider
+                    subheading="TOOLS TO DELIGHT YOUR LEGAL CLIENTS"
+                    heading="Managing the full lifecycle of client work."
+                    description="Your passion is practicing law, not running the business. Let us help."
+                    tabs={tabs}
+                    items={items}
+                />
+            </div>
+
 
             <ColumnsSection
                 subheading="FINANCIAL REPORTING FOR LAW FIRMS"

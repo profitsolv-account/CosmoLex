@@ -64,12 +64,15 @@ export const ComplianceManagement = () => {
     ]
 
     return <>
-        <TabbedSlider
-            subheading="Compliance management simplified"
-            heading="Streamline your legal workflow with our comprehensive legal practice software."
-            tabs={tabs}
-            items={items}
-        />
+        <div className="relative">
+            <TabbedSlider
+                subheading="Compliance management simplified"
+                heading="Streamline your legal workflow with our comprehensive legal practice software."
+                tabs={tabs}
+                items={items}
+            />
+            <div className="absolute w-full  bg-primary z-0 h-[400px] bottom-0 rounded-tr-[50px] md:rounded-tr-[100px]" />
+        </div>
 
         <AccountingTools />
     </>
