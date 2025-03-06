@@ -16,4 +16,15 @@
         border: 1px solid #151C2D;
         background: #151C2D;
     }
+
+    &.theme-light {
+        .swiper-pagination-bullet {
+            border-color: #fff;
+            background: transparent;
+        }
+        .swiper-pagination-bullet-active {
+            border: 1px solid #fff;
+            background: #fff;
+        }
+    }
 }
