@@ -43,14 +43,6 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
 
               <div className="w-full max-w-[328px]">
                   <FeaturedPost pageData={pageData}/>
-
-                  <div className="flex justify-end mt-10">
-                      <X className="cursor-pointer" onClick={() => {
-                          if (onClose) {
-                              onClose()
-                          }
-                      }} />
-                  </div>
               </div>
 
             </div>
