@@ -9,9 +9,6 @@ import {Features} from "@/components/blocks/features";
 import {GuideBlock} from "@/components/blocks/guideBlock";
 import {ColumnsSection} from "@/components/blocks/columnsSection";
 import bg3 from "@/assets/img/compliance/client_engagement.webp";
-import bg2 from "@/assets/img/compliance/firm_management.webp";
-import bg from "@/assets/img/compliance/legal_billing_&_payments.webp";
-import bg4 from "@/assets/img/compliance/accounting_&_finance.webp";
 import classNames from "classnames";
 import {TabbedSlider} from "@/components/ui/tabbedSlider";
 
@@ -43,13 +40,10 @@ const dataSliders = [{
     className: "bg-blue",
 }];
 
-
-
 export default function PillarParentTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     const faqs = pageData.faq || [];
     const features = pageData.pricingFeatures || [];
-
 
     const items = [...dataSliders, ...dataSliders].map((t, index) => (
         <Fragment key={index}>
@@ -77,7 +71,6 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
         {title: "reporting", id: "reporting"},
         {title: "integrations", id: "integrations"},
     ]
-
 
     return (
         <Layout pageData={pageData}>
@@ -150,6 +143,5 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
 
             <SimplifyPractice pageData={pageData} className="bg-white"/>
         </Layout>
-
     )
 }

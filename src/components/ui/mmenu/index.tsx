@@ -68,13 +68,14 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsO
     return (
         <div className={classNames(className)}>
             {showMenu && ReactDOM.createPortal(
-                <div className="">
+                <div className="bg-red-300">
                     <div
                         className={classNames(`fixed inset-0 bg-black z-40 opacity-10 transition-all duration-${duration}`, {
                             "opacity-50": visible,
                             "opacity-0": !visible,
                         })}
                         onClick={() => setIsOpen(false)}
+                       /* onMouseLeave={onMouseLeave}*/
                     />
                     <div
                         ref={menuRef}
@@ -83,7 +84,8 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsO
                             'slideUp': !visible && duration !== 200,
                             'slideDownFast': visible && duration === 200,
                             'slideUpFast': !visible && duration === 200,*/
-                            'w-full translate-x-[-50%]': fullWidth
+                            'w-full translate-x-[-50%]': fullWidth,
+                            'w-[200px]': !fullWidth,
                         })}
                         style={{left: fullWidth ? `50%` : `${left}px`}}
                         onMouseOver={() => {
