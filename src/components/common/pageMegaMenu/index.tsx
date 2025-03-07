@@ -1,7 +1,6 @@
 import {FeaturedPost} from "@/components/common/featuredPost";
 import {FC} from "react";
 import {MenuType} from "@/types";
-import {X} from "lucide-react";
 
 type Props = {
     content: MenuType;
@@ -20,15 +19,15 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
                 <div className="justify-start items-start gap-[50px] grid grid-cols-4">
                     {content.items.map((submenu) => (
                         <div key={submenu.title} className="">
-                            <div className="block text-[#0c193a] text-lg font-semibold font-['Inter'] leading-7 mb-3 transition duration-300">
+                            <div className="block text-primary-dark text-lg font-semibold leading-7 mb-3 transition duration-300">
                                 {submenu.title}
                             </div>
                             {submenu.items.map((item) => (
                                 <div key={item.title} className="mb-3">
-                                    <a href={item.url} className="relative block text-[#0c193a] text-base font-medium font-['Inter'] leading-normal transition duration-300 group">
+                                    <a href={item.url} className="relative block text-primary-dark text-base font-medium leading-normal transition duration-300 group">
                                         <div className="relative z-2">
                                             {item.title}
-                                            <div className="text-[#0c193a] text-base font-light font-['Inter'] leading-normal">
+                                            <div className="text-primary-dark text-base font-light leading-normal">
                                                 {item.description}
                                             </div>
                                         </div>
@@ -44,25 +43,23 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
               <div className="w-full max-w-[328px]">
                   <FeaturedPost pageData={pageData}/>
               </div>
-
             </div>
         </div>
-
-        <div className="w-full bg-[#b9dfc3] rounded-bl-[30px] rounded-br-[30px] pt-3.5 pb-2">
+        <div className="w-full bg-green rounded-bl-[30px] rounded-br-[30px] pt-3.5 pb-2">
            <div className="container max-w-[1420px] px-4 py-1 flex gap-[50px] items-start">
                {footer.items.map((submenu) => (
                    <div key={submenu.title} className="">
-                       <div className="block text-[#0c193a] text-lg font-semibold font-['Inter'] leading-7 mb-1 transition duration-300 ">
+                       <div className="block text-primary-dark text-lg font-semibold leading-7 mb-1 transition duration-300 ">
                            {submenu.title}
                        </div>
                        <div className="flex">
                            <div className="justify-start items-start gap-[50px] grid grid-cols-4">
                                {submenu.items.map((item) => (
                                    <div key={item.title} className="mb-3">
-                                       <a href={item.url} className="text-[#0c193a] text-base font-medium font-['Inter'] leading-normal transition duration-300 group relative block ">
+                                       <a href={item.url} className="text-primary-dark text-base font-medium leading-normal transition duration-300 group relative block ">
                                            <div className="relative z-3">
                                                {item.title}
-                                               <div className="text-[#0c193a] text-base font-light font-['Inter'] leading-normal">
+                                               <div className="text-primary-dark text-base font-light leading-normal">
                                                    {item.description}
                                                </div>
                                            </div>
@@ -75,7 +72,6 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
                        </div>
                    </div>
                ))}
-
            </div>
         </div>
         </>

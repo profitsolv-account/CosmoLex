@@ -84,15 +84,6 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             selectedMenu: "solutions"
                         });
                     }}
-                   /* onMouseLeave={() => {
-                        timer.current = setTimeout(() => {
-                            setMenuState(st => ({
-                                selectedMenu: "solutions",
-                                open: false,
-                            }));
-                        }, timeClose)
-
-                    }}*/
                 >
                     Solutions
                     <ChevroneIcon className="w-[24px] flex-none stroke-green" />
@@ -115,14 +106,6 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             selectedMenu: "resources"
                         });
                     }}
-                    /*onMouseLeave={() => {
-                        timer.current = setTimeout(() => {
-                            setMenuState(st => ({
-                                selectedMenu: "resources",
-                                open: false,
-                            }));
-                        }, timeClose)
-                    }}*/
                 >Resources <ChevroneIcon className="w-[24px] flex-none stroke-green" /></span>
             </li>
             <li className="cursor-pointer">
@@ -139,14 +122,6 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             selectedMenu: "about"
                         });
                     }}
-                   /* onMouseLeave={() => {
-                        timer.current = setTimeout(() => {
-                            setMenuState(st => ({
-                                ...st,
-                                open: false,
-                            }));
-                        }, timeClose)
-                    }}*/
                 >About <ChevroneIcon className="w-[24px] flex-none stroke-green" /></span>
             </li>
         </ul>

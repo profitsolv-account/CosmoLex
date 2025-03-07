@@ -12,7 +12,6 @@ import bg3 from "@/assets/img/compliance/client_engagement.webp";
 import classNames from "classnames";
 import {TabbedSlider} from "@/components/ui/tabbedSlider";
 
-
 const dataSliders = [{
     title: "Calendars & Tasks",
     description: "The lifeblood of your firm–efficiently manage tasks, events, and meetings so you can provide the most value to your clients.",
