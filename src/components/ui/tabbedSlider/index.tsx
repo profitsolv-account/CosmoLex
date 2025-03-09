@@ -2,7 +2,7 @@ import React, {FC, ReactNode, useRef, useState} from "react";
 import classNames from "classnames";
 import {Slider} from "@/components/ui/slider";
 
-type TabType = {
+export type TabType = {
     title: string;
     id: string;
 }

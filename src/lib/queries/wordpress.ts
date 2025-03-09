@@ -16,6 +16,7 @@ export const getHomePageData = async () => {
                     date
                     content
                     pageSettings {
+                        subheading
                         title
                         heroImage {
                             node {
@@ -32,6 +33,7 @@ export const getHomePageData = async () => {
      return {
         ...get(data, 'page', {}),
          title: get(data, 'page.pageSettings.title', ''),
+         subheading: get(data, 'page.pageSettings.subheading', ''),
          description: get(data, 'page.content', ''),
          hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
          heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
@@ -87,6 +89,7 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
                     date
                     content,
                     pageSettings {
+                        subheading
                         title
                         heroImage {
                             node {
@@ -111,6 +114,29 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
                             content
                         }
                     }
+                    tools {
+                        toolsTitle
+                        toolsDescription
+                        subtitle
+                        items {
+                            classname
+                            description
+                            mediaClassname
+                            title
+                            image {
+                                node {
+                                    altText
+                                    sourceUrl
+                                }
+                            }
+                            icon {
+                                node {
+                                    altText
+                                    sourceUrl
+                                }
+                            }
+                        }
+                    }
                 }
             }
         `,
@@ -124,6 +150,7 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
 
     const pageData = get(data, 'page', {});
     const title = get(data, 'page.pageSettings.title', null) || get(data, 'page.title', '');
+    const subheading = get(data, 'page.pageSettings.subheading', '');
     const features = get(data, 'page.pageSettings.features', []);
     const faq = get(data, 'page.pageSettings.faq', []);
     const pricingFeatures = (get(data, 'page.pageSettings.pricingFeatures', []) || []).map((feature: {type: string[], content: string}) => ({
@@ -131,6 +158,7 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
         content: feature.content
     }));
     const pricingPlans = get(data, 'page.pageSettings.pricingPlans', []);
+    const tools = data.page.tools;
 
     return {
         ...pageData,
@@ -144,7 +172,9 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
         features,
         faq,
         pricingFeatures,
-        pricingPlans
+        pricingPlans,
+        subheading,
+        tools,
     };
 }
 

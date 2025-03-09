@@ -1,5 +1,6 @@
 import {TestimonialType} from "@/types/testimonials";
 import {LeaderLogos} from "@/types/logos";
+import {ToolsType} from "@/types/tools";
 
 export type FeaturedPostType = {
     title: string;
@@ -68,8 +69,10 @@ export type PricingPlan = {
     content: string;
 }
 
+
 export type PageDataType = {
     title: string;
+    subheading?: string;
     content: string;
     date: string;
     featuredPost: FeaturedPostType;
@@ -85,4 +88,8 @@ export type PageDataType = {
     faq?: FaqType[];
     pricingFeatures?: PricingFeature[];
     pricingPlans?: PricingPlan[];
+    hero?: string;
+    heroAlt?: string;
+    tools?: ToolsType;
+    showToolsSection?: boolean;
 }

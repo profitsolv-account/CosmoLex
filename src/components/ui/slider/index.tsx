@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import LeftIcon from "@/assets/img/icons/left-arrow-icon.svg";
 import RightIcon from "@/assets/img/icons/right-arrow-icon.svg";
-import React, { FC, ReactNode, useEffect, useState } from "react";
+import React, { FC, ReactNode } from "react";
 import classNames from "classnames";
 import "./styles.css";
 
@@ -18,18 +18,6 @@ type Props = {
 };
 
 export const Slider: FC<Props> = ({ items, ref, setActiveIndex, height, className }) => {
-    const [isLoaded, setIsLoaded] = useState(false);
-
-    useEffect(() => {
-        if (items.length > 0) {
-            setTimeout(() => {
-                setIsLoaded(true);
-            }, 500);
-        }
-    }, [items]);
-
-    if (!isLoaded) return <div className="min-h-[550px] w-full" />;
-
     return (
         <div>
             <div className={classNames("max-w-[542px] flex mx-auto lg:max-w-[3250px] relative blocks-slider min-h-[550px]", className)}>
