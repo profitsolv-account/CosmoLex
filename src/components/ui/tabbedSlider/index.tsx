@@ -58,7 +58,8 @@ type TabsProps = {
 
 const Tabs = ({tabs, activeIndex, onTabClick}:TabsProps) => {
 
-    const aIndex = activeIndex > 3 ? activeIndex - 4 : activeIndex;
+    const totalItems = tabs.length;
+    const aIndex = activeIndex > (totalItems - 1) ? activeIndex - totalItems : activeIndex;
 
     return <div className="overflow-auto w-full pb-5">
         <div className="flex gap-2.5 justify-center min-w-[890px]">
