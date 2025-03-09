@@ -97,7 +97,8 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
         <Fragment key={index}>
             <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
                 <div className={classNames("grow max-h-[280px] rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center", t.classname)}>
-                    <img src={t.image.node.sourceUrl} alt={t.image.node.altText} className={classNames(t.mediaClassname)}/>
+                    <img src={t.image.node.sourceUrl} alt={t.image.node.altText} className={classNames("relative z-4", t.mediaClassname)}/>
+                    <div className="absolute z-0 top-0 left-0 w-full h-full bg-white/30"/>
                 </div>
                 <div className={classNames("grow rounded-tl-[15px] rounded-tr-[15px] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[30px] lg:rounded-tr-[30px] lg:rounded-tl-[0px] overflow-hidden", t.classname)}>
                     <div className="lg:w-[442px] flex-col justify-start items-start gap-5 inline-flex">
