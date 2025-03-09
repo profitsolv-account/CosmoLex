@@ -1,11 +1,11 @@
 import {FeaturedPost} from "@/components/common/featuredPost";
 import {FC} from "react";
-import {MenuType} from "@/types";
+import {MenuType, PageDataType} from "@/types";
 
 type Props = {
     content: MenuType;
     footer: MenuType;
-    pageData: any;
+    pageData: PageDataType;
     onClose?: () => void;
 }
 

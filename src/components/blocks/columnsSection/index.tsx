@@ -1,5 +1,5 @@
 import {BlockColumn} from "@/components/ui/blockColumn";
-import React, {FC, ReactNode} from "react";
+import React, {FC, Fragment, ReactNode} from "react";
 import classNames from "classnames";
 
 type ColumnItem = {
@@ -14,10 +14,16 @@ type Props = {
     subheading?: string;
     heading?: string;
     description?: ReactNode;
-    items: ColumnItem[];
+    items?: ColumnItem[];
+    rows?: {
+        leftContent: ReactNode;
+        rightContent: ReactNode;
+        position?: 'left' | 'right';
+        className?: string;
+    }[]
 }
 
-export const ColumnsSection: FC<Props> = ({subheading, heading, description, items}) => {
+export const ColumnsSection: FC<Props> = ({subheading, heading, description, items, rows}) => {
 
     const hasSubheading = !!subheading || !!heading && !!description;
 
@@ -33,7 +39,7 @@ export const ColumnsSection: FC<Props> = ({subheading, heading, description, ite
            </div>
        </div>
 
-        {items.map((item) => (
+        {items && items.map((item) => (
             <BlockColumn
                 position={item.position}
                 key={item.title}
@@ -47,5 +53,15 @@ export const ColumnsSection: FC<Props> = ({subheading, heading, description, ite
                media={item.media}
             />
         ))}
+
+        {rows && rows.length > 0 && (rows.map((row, index) => (<Fragment key={index}>
+            <BlockColumn
+                position={row.position}
+                className={row.className}
+                content={row.leftContent}
+                media={row.rightContent}
+                contentCLassName="!pt-0"
+            />
+        </Fragment>)))}
     </div>
 }

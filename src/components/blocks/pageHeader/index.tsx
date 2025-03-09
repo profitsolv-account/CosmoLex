@@ -8,9 +8,10 @@ type Props = {
     showCta?: boolean;
     showFeatureImage?: boolean;
     className?: string;
+    bgClassName?: string;
 }
 
-export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className}) => {
+export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className, bgClassName}) => {
 
     const title = get(pageData, 'title', '');
     const description  = get(pageData, 'description', '');
@@ -48,7 +49,7 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
                 <div className="flex justify-center relative z-10 px-2">
                     <img src={img} alt={pageData.heroAlt} />
                 </div>
-                <div className="absolute h-1/2 top-0 left-0 w-full bg-primary rounded-bl-[50px] md:rounded-bl-[100px] z-0"/>
+                <div className={classNames("absolute h-1/2 top-0 left-0 w-full bg-primary rounded-bl-[50px] md:rounded-bl-[100px] z-0", bgClassName)}/>
             </div>}
         </div>
 
