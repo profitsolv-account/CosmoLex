@@ -19,9 +19,9 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
                 <div className="justify-start items-start gap-[50px] grid grid-cols-4">
                     {content.items.map((submenu) => (
                         <div key={submenu.title} className="">
-                            <div className="block text-primary-dark text-lg font-semibold leading-7 mb-3 transition duration-300">
+                            <a href={submenu.url} className="block text-primary-dark text-lg font-semibold leading-7 mb-3 transition duration-300">
                                 {submenu.title}
-                            </div>
+                            </a>
                             {submenu.items.map((item) => (
                                 <div key={item.title} className="mb-3">
                                     <a href={item.url} className="relative block text-primary-dark text-base font-medium leading-normal transition duration-300 group">
@@ -49,9 +49,9 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
            <div className="container max-w-[1420px] px-4 py-1 flex gap-[50px] items-start">
                {footer.items.map((submenu) => (
                    <div key={submenu.title} className="">
-                       <div className="block text-primary-dark text-lg font-semibold leading-7 mb-1 transition duration-300 ">
+                       <a href={submenu.title} className="block text-primary-dark text-lg font-semibold leading-7 mb-1 transition duration-300 ">
                            {submenu.title}
-                       </div>
+                       </a>
                        <div className="flex">
                            <div className="justify-start items-start gap-[50px] grid grid-cols-4">
                                {submenu.items.map((item) => (
