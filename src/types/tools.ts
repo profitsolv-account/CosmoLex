@@ -28,3 +28,22 @@ export type ToolsType = {
     subtitle: string;
     items: ToolItemType[];
 }
+
+export type PageBlockItemType = {
+    title: string;
+    description: string;
+    reverse: boolean;
+    image: {
+        node: {
+            altText: string;
+            sourceUrl: string;
+        }
+    }
+}
+
+export type PageBlocksType = {
+    pageBlocksTitle?: string;
+    pageBlocksDescription?: string;
+    pageBlocksSubtitle?: string;
+    pageBlocksItems: PageBlockItemType[];
+}

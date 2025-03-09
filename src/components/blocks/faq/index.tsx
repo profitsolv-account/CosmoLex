@@ -24,9 +24,7 @@ export const Faq: FC<Props> = ({className, faqs}) => {
                                 className="py-[9px] mb-8 border-b border-b-[#202b46]/20 pb-8"
                                 open={index === 0}
                             >
-                                <div className="opacity-80 text-primary-dark text-base font-normal leading-7 pt-5">
-                                    {faq.answer}
-                                </div>
+                                <div className="opacity-80 text-primary-dark text-base font-normal leading-7 pt-5" dangerouslySetInnerHTML={{__html: faq.answer || ''}}/>
                             </CollapsedSection>
                         ))}
                     </div>

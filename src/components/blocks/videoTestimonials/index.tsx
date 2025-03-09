@@ -18,7 +18,7 @@ export const VideoTestimonials: FC<TestimonialsProps> = ({testimonials}) => {
     ));
 
     return <div className="relative video-slider px-2">
-        <Slider items={items} height="770px"/>
+        <Slider items={items} height="632px"/>
     </div>
 }
 

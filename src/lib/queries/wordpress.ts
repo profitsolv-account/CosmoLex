@@ -137,6 +137,23 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
                             }
                         }
                     }
+                    pageBlocks {
+                        showBlocksSection
+                        pageBlocksTitle
+                        pageBlocksDescription
+                        pageBlocksSubtitle
+                        pageBlocksItems {
+                            title
+                            description
+                            reverse
+                            image {
+                                node {
+                                    altText
+                                    sourceUrl
+                                }
+                            }
+                        }
+                    }
                 }
             }
         `,
@@ -159,6 +176,7 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
     }));
     const pricingPlans = get(data, 'page.pageSettings.pricingPlans', []);
     const tools = data.page.tools;
+    const pageBlocks = data.page.pageBlocks;
 
     return {
         ...pageData,
@@ -175,6 +193,7 @@ export const getPageData = async (pageSlug: string): Promise<PageDataType> => {
         pricingPlans,
         subheading,
         tools,
+        pageBlocks
     };
 }
 

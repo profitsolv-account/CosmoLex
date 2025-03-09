@@ -17,10 +17,12 @@ type Props = {
     className?: string;
 };
 
-export const Slider: FC<Props> = ({ items, ref, setActiveIndex, height, className }) => {
+export const Slider: FC<Props> = ({ items, ref, setActiveIndex, className, height = '550px' }) => {
     return (
         <div>
-            <div className={classNames("max-w-[542px] flex mx-auto lg:max-w-[3250px] relative blocks-slider min-h-[550px]", className)}>
+            <div className={classNames(`max-w-[542px] flex mx-auto lg:max-w-[3250px] relative blocks-slider`, className)} style={{
+                height: height,
+            }}>
                 <Swiper
                     onSwiper={(swiper) => {
                         if (ref) {
@@ -55,7 +57,7 @@ export const Slider: FC<Props> = ({ items, ref, setActiveIndex, height, classNam
                     {items.map((t, index) => (
                         <SwiperSlide key={index} className={"w-full lg:!w-[1066px] !flex items-center h-full"}>
                             <div
-                                className={`test h-full w-full mx-auto relative z-10 slide-content overflow-hidden transition-all duration-1200 lg:h-[${height || '550px'}] lg:max-w-[1066px']`}
+                                className={`test h-full w-full mx-auto relative z-10 slide-content overflow-hidden transition-all duration-1200 lg:h-[${height}] lg:max-w-[1066px']`}
                             >
                                 {t}
                             </div>

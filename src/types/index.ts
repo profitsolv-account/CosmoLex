@@ -1,6 +1,6 @@
 import {TestimonialType} from "@/types/testimonials";
 import {LeaderLogos} from "@/types/logos";
-import {ToolsType} from "@/types/tools";
+import {PageBlocksType, ToolsType} from "@/types/tools";
 
 export type FeaturedPostType = {
     title: string;
@@ -92,4 +92,6 @@ export type PageDataType = {
     heroAlt?: string;
     tools?: ToolsType;
     showToolsSection?: boolean;
+    showBlocksSection?: boolean;
+    pageBlocks?: PageBlocksType;
 }

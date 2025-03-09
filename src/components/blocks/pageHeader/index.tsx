@@ -24,7 +24,7 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
         <div className={classNames(className)}>
             <div className="p-4 bg-primary md:pt-14">
                 <div className="container flex flex-col justify-center items-center gap-4">
-                    <div className="text-center max-w-[700px]">
+                    <div className="text-center max-w-[900px]">
                         {subheading &&
                             <div className="relative text-center justify-start text-green text-base font-normal uppercase tracking-wider">{subheading}</div>
                         }
