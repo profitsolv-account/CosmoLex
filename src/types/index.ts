@@ -93,4 +93,14 @@ export type PageDataType = {
     tools?: ToolsType;
     showToolsSection?: boolean;
     pageBlocks?: PageBlocksType;
+    heroImage?: {
+        node: {
+            altText: string;
+            sourceUrl: string;
+            mediaDetails: {
+                width: number;
+                height:number;
+            }
+        }
+    }
 }

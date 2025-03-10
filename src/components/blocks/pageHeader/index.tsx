@@ -2,6 +2,7 @@ import {get} from "lodash";
 import {PageDataType} from "@/types";
 import {FC} from "react";
 import classNames from "classnames";
+import Image from 'next/image';
 
 type Props = {
     pageData: PageDataType;
@@ -19,7 +20,7 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
 
     const ctaTrial = get(pageData, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Try for Free');
     const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request Demo');
-    const img = get(pageData, 'hero', null);
+    const heroImage = get(pageData, 'heroImage', null);
 
     return (
         <div className={classNames(className)}>
@@ -45,9 +46,14 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
                     </div>
                 </div>
             </div>
-            {showFeatureImage && img && <div className="relative pt-10">
+            {showFeatureImage && heroImage && <div className="relative pt-10">
                 <div className="flex justify-center relative z-10 px-2">
-                    <img src={img} alt={pageData.heroAlt} />
+                    <Image
+                        src={heroImage?.node.sourceUrl}
+                        alt={heroImage?.node.altText}
+                        width={heroImage?.node.mediaDetails.width}
+                        height={heroImage?.node.mediaDetails.height}
+                    />
                 </div>
                 <div className={classNames("absolute h-1/2 top-0 left-0 w-full bg-primary rounded-bl-[50px] md:rounded-bl-[100px] z-0", bgClassName)}/>
             </div>}

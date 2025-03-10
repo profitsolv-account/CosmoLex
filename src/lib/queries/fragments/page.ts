@@ -8,6 +8,10 @@ export const PAGE_SETTINGS_FRAGMENT = gql`
             node {
                 altText
                 sourceUrl
+                mediaDetails {
+                    width
+                    height
+                }
             }
         }
         features {
@@ -53,6 +57,10 @@ export const TOOLS_FRAGMENT = gql`
                 node {
                     altText
                     sourceUrl
+                    mediaDetails {
+                        width
+                        height
+                    }
                 }
             }
             tabName
@@ -78,6 +86,10 @@ export const PAGE_BLOCKS_FRAGMENT = gql`
                 node {
                     altText
                     sourceUrl
+                    mediaDetails {
+                        width
+                        height
+                    }
                 }
             }
         }

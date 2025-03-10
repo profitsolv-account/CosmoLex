@@ -17,6 +17,10 @@ export type ToolItemType = {
         node: {
             altText: string;
             sourceUrl: string;
+            mediaDetails: {
+                width: number;
+                height: number;
+            }
         }
     };
     link?: {
@@ -41,6 +45,10 @@ export type PageBlockItemType = {
         node: {
             altText: string;
             sourceUrl: string;
+            mediaDetails: {
+                width: number;
+                height: number;
+            }
         }
     }
 }

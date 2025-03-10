@@ -258,7 +258,7 @@ export const getPageData = async (
         title,
         description: get(data, 'page.content', ''),
         hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
-        heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
+        heroImage: get(data, 'page.pageSettings.heroImage', null),
         features,
         faq,
         pricingFeatures,

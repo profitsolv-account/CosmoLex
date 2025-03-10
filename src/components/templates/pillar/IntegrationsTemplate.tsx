@@ -10,6 +10,7 @@ import {GuideBlock} from "@/components/blocks/guideBlock";
 import {ColumnsSection} from "@/components/blocks/columnsSection";
 import {PageBlocksType} from "@/types/tools";
 import {Faq} from "@/components/blocks/faq";
+import Image from 'next/image';
 
 export default function IntegrationsTemplate({ pageData }: { pageData: PageDataType }) {
 
@@ -43,8 +44,13 @@ export default function IntegrationsTemplate({ pageData }: { pageData: PageDataT
                         </div>
                     </div>,
                     rightContent: <div className="w-full relative flex justify-center items-center h-[350px] md:h-[463px] bg-white">
-                        <img src={item.image?.node?.sourceUrl || ''} alt={item.image?.node?.altText || ''}
-                             className="w-auto max-h-full max-w-full"/>
+                        <Image
+                            src={item.image?.node?.sourceUrl || ''}
+                            alt={item.image?.node?.altText || ''}
+                            className="w-auto max-h-full max-w-full"
+                            width={item.image?.node?.mediaDetails?.width || 0}
+                            height={item.image?.node?.mediaDetails?.height || 0}
+                        />
                     </div>,
                     position: !item.reverse ? "right" : "left",
                 }))}
