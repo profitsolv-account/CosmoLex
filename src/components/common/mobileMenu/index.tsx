@@ -63,43 +63,50 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
         }
     }, [menuVisible]);
 
-    const combinedMenus: any = {
-        solutions: {
-            ...menus["header-menu-solutions"],
-            items: [
-                ...menus["header-menu-solutions"].items,
-                ...menus["header-menu-solutions-bottom"].items,
-            ],
-            name: "Solutions",
-        },
-        pricing: {
-            name: "Pricing",
-            url: "/pricing",
-        },
-        resources: {
-            ...menus["header-menu-resources"],
-            items: [
-                ...menus["header-menu-resources"].items,
-                ...menus["header-menu-resources-bottom"].items,
-            ],
-            name: "Resources",
-        },
-        about: {
-            name: "About",
-            url: "/about",
-            items: [
-                {
-                    url: "/about-cosmolex",
-                    title: "About CosmoLex",
+    const combinedMenus: any = () => {
+        try {
+            return {
+                solutions: {
+                    ...menus["header-menu-solutions"],
+                    items: [
+                        ...menus["header-menu-solutions"].items,
+                        ...menus["header-menu-solutions-bottom"].items,
+                    ],
+                    name: "Solutions",
                 },
-                {
-                    url: "/",
-                    title: "Our Team",
+                pricing: {
+                    name: "Pricing",
+                    url: "/pricing",
                 },
-            ],
-        },
-    };
+                resources: {
+                    ...menus["header-menu-resources"],
+                    items: [
+                        ...menus["header-menu-resources"].items,
+                        ...menus["header-menu-resources-bottom"].items,
+                    ],
+                    name: "Resources",
+                },
+                about: {
+                    name: "About",
+                    url: "/about",
+                    items: [
+                        {
+                            url: "/about-cosmolex",
+                            title: "About CosmoLex",
+                        },
+                        {
+                            url: "/",
+                            title: "Our Team",
+                        },
+                    ],
+                },
+            };
 
+        } catch(e) {
+            console.log(e);
+            return {}
+        }
+    }
     const getSetting = (name: keyof SettingsType) => {
         if (!pageData.settings) return "";
         return pageData.settings[name] ?? "";
@@ -135,7 +142,7 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                         <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-[22px] font-normal font-['Inter']">Login</Link>
 
                         <ul className="w-full mt-4">
-                            {Object.entries(combinedMenus).map(
+                            {Object.entries(combinedMenus()).map(
                                 ([key, menu]: any) => (
                                     <li
                                         key={key}
