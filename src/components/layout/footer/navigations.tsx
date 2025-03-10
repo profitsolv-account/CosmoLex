@@ -1,4 +1,5 @@
 import {PageDataType, SettingsType} from "@/types";
+import Image from "next/image";
 import {FC} from "react";
 
 type Props = {
@@ -22,7 +23,13 @@ export const Navigations: FC<Props> = ({pageData}) => {
 
             <div className="flex flex-col gap-6 lg:w-1/2">
                 <div className="left-0">
-                    <img src={getPageSettings('logo')} alt={getPageSettings('logoAltText')} className="min-w-[164px]"/>
+                    <Image
+                        src={getPageSettings('logo')}
+                        alt={getPageSettings('logoAltText')}
+                        className="min-w-[164px]"
+                        width={163}
+                        height={40}
+                    />
                 </div>
 
                 <div className="max-w-[409px] text-white text-base font-normal font-['Inter'] leading-snug" dangerouslySetInnerHTML={{__html: getPageSettings('companySummary')}} / >

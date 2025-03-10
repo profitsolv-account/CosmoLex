@@ -40,7 +40,11 @@ export const ComplianceManagement = () => {
         <Fragment key={index}>
             <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
                 <div className="grow max-h-[280px] rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center">
-                    <img src={t.image.src} alt="" className="object-cover w-full h-full  aspect-square"/>
+                    <img
+                        src={t.image.src}
+                        alt={t.title}
+                        className="object-cover w-full h-full aspect-square"
+                    />
                 </div>
                 <div className={classNames("grow rounded-tl-[15px] rounded-tr-[15px] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[30px] lg:rounded-tr-[30px] lg:rounded-tl-[0px] overflow-hidden", t.className)}>
                     <div className="lg:w-[442px] flex-col justify-start items-start gap-5 inline-flex">

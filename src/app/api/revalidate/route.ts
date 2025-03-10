@@ -3,6 +3,7 @@ import { revalidatePath } from 'next/cache';
 
 export async function POST() {
     try {
+        //TODO:Rewrite to handle real revalidation
         revalidatePath(`/blog/[slug]`, "page");
         revalidatePath(`/blog`);
         revalidatePath(`/blog/page/[page]`, "page");

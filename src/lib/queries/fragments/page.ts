@@ -43,6 +43,10 @@ export const TOOLS_FRAGMENT = gql`
                 node {
                     altText
                     sourceUrl
+                    mediaDetails {
+                        width
+                        height
+                    }
                 }
             }
             icon {

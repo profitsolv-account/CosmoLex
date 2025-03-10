@@ -7,6 +7,10 @@ export type ToolItemType = {
         node: {
             altText: string;
             sourceUrl: string;
+            mediaDetails: {
+                width: number;
+                height: number;
+            }
         }
     };
     icon: {
