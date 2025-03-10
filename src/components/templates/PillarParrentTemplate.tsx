@@ -7,16 +7,12 @@ import {PageHeader} from "@/components/blocks/pageHeader";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {Features} from "@/components/blocks/features";
 import {GuideBlock} from "@/components/blocks/guideBlock";
-import {ColumnsSection} from "@/components/blocks/columnsSection";
 import classNames from "classnames";
 import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
 import {ToolsType} from "@/types/tools";
 
 export default function PillarParentTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
-    const faqs = pageData.faq || [];
-    const features = pageData.pricingFeatures || [];
-
     return (
         <Layout pageData={pageData}>
 
@@ -27,42 +23,11 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
                 showFeatureImage
             />
 
-            {pageData.tools && pageData.tools.items && <ToolsSection tools={pageData.tools} />}
-
-           {/* <ColumnsSection
-                subheading="FINANCIAL REPORTING FOR LAW FIRMS"
-                heading="View your financial fitness at a glance."
-                description="CosmoLex provides the critical reports on the state of your firm’s finances."
-                items={[{
-                    title: "The true value of built-in accounting is in reporting.",
-                    description: <>
-                        CosmoLex has worked with firms for well over a decade in establishing the right financial reports firms want and need.
-                        <div>The most critical information on cash flow, balances, ledger reports, and more is easily and accurately at your fingertips so you can make the right financial decisions for your firm.</div>
-                    </>,
-                    media: <div className="w-full h-[435px] relative bg-[#d9d9d9] rounded-[30px]" />,
-                    position: "right"
-                },
-                    {
-                        title: "Trust accounting reports made easy.",
-                        description: <>
-                            Nearly a dozen trust specific reports gives a 360 degree view on the status of all your trust transactions and reconciliation.
-                        </>,
-                        media: <div className="w-full h-[435px] relative bg-[#d9d9d9] rounded-[30px]" />,
-                    },
-                    {
-                        title: "Keep your firm compliant.",
-                        description: <>
-                            Create and customize your reports for a full analysis of earnings and costs. <br/>
-                            Develop practice area-specific reports to understand which parts of your practice are most profitable. <br/>
-                            Report on all the details of time and expenses and collection rates to solve problems for your firm
-                        </>,
-                        media: <div className="w-full h-[435px] relative bg-[#d9d9d9] rounded-[30px]" />,
-                        position: "right"
-                    }
-                ]}
-            />*/}
-
-            <div className="relative pt-20">
+            <div className="relative">
+                {pageData.tools && pageData.tools.items && <ToolsSection tools={pageData.tools} />}
+                <div className="absolute bottom-0 w-full h-[300px] rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>
+            </div>
+            <div className="relative bg-primary">
                 <Testimonials
                     testimonials={testimonials}
                     className="!bg-transparent !pt-0 relative z-10"
@@ -70,7 +35,6 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
                     showNavigation
                     theme="light"
                 />
-                <div className="absolute top-0 w-full h-full rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>
             </div>
 
             {pageData.settings && <div className="relative">
@@ -96,7 +60,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
     const items = [...tools.items, ...tools.items].map((t, index) => (
         <Fragment key={index}>
             <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
-                <div className={classNames("grow max-h-[280px] rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center", t.classname)}>
+                <div className={classNames("grow rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center", t.classname)}>
                     <img src={t.image.node.sourceUrl} alt={t.image.node.altText} className={classNames("relative z-4", t.mediaClassname)}/>
                     <div className="absolute z-0 top-0 left-0 w-full h-full bg-white/30"/>
                 </div>

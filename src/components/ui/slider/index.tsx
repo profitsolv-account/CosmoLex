@@ -20,7 +20,7 @@ type Props = {
 export const Slider: FC<Props> = ({ items, ref, setActiveIndex, className, height = '550px' }) => {
     return (
         <div>
-            <div className={classNames(`max-w-[542px] flex mx-auto lg:max-w-[3250px] relative blocks-slider`, className)} style={{
+            <div className={classNames(`slider-wrapper max-w-[542px] flex mx-auto lg:max-w-[3250px] relative blocks-slider`, className)} style={{
                 height: height,
             }}>
                 <Swiper
