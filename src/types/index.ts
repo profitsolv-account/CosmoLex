@@ -5,8 +5,14 @@ import {PageBlocksType, ToolsType} from "@/types/tools";
 export type FeaturedPostType = {
     title: string;
     slug: string;
-    featuredImage: string;
-    altText: string;
+    featuredImage: {
+        altText: string;
+        sourceUrl: string;
+        mediaDetails: {
+            width: number;
+            height: number;
+        }
+    }
 }
 
 export type ShortPostType = {

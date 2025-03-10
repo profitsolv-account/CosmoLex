@@ -6,6 +6,7 @@ import {getAllMenus} from "@/lib/queries/menus";
 import {getSiteSettings} from "@/lib/queries/settings";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {PAGE_BLOCKS_FRAGMENT, PAGE_SETTINGS_FRAGMENT, TOOLS_FRAGMENT} from "@/lib/queries/fragments/page";
+import {PostDataType} from "@/types/post";
 
 export const getHomePageData = async () => {
     const { data } = await client.query({
@@ -23,6 +24,10 @@ export const getHomePageData = async () => {
                             node {
                                 altText
                                 sourceUrl(size: LARGE)
+                                mediaDetails {
+                                    width
+                                    height
+                                }
                             }
                         }
                     }
@@ -61,8 +66,12 @@ export const getLatestPosts = async (postsCount = 1): Promise<FeaturedPostType[]
                         slug
                         featuredImage {
                             node {
-                                sourceUrl
                                 altText
+                                sourceUrl(size: MEDIUM)
+                                mediaDetails {
+                                    width
+                                    height
+                                }
                             }
                         }
                     }
@@ -75,130 +84,10 @@ export const getLatestPosts = async (postsCount = 1): Promise<FeaturedPostType[]
     return get(data, 'posts.nodes', []).map((postData: any) => ({
         title: postData.title,
         slug: postData.slug,
-        featuredImage: postData.featuredImage.node.sourceUrl,
-        altText: postData.featuredImage.node.altText
+        featuredImage: postData.featuredImage.node,
     }))
 }
 
-
-
-export const _getPageData = async (pageSlug: string): Promise<PageDataType> => {
-    const { data } = await client.query({
-        query: gql`
-            query GetPage {
-                page(id: "${pageSlug}", idType: URI) {
-                    id
-                    title
-                    date
-                    content,
-                    pageSettings {
-                        subheading
-                        title
-                        heroImage {
-                            node {
-                                altText
-                                sourceUrl
-                            }
-                        }
-                        features {
-                            description
-                            title
-                        }
-                        faq {
-                            question
-                            answer
-                        }
-                        pricingFeatures {
-                            type
-                            content
-                        }
-                        pricingPlans {
-                            groupName
-                            content
-                        }
-                    }
-                    tools {
-                        toolsTitle
-                        toolsDescription
-                        subtitle
-                        items {
-                            classname
-                            description
-                            mediaClassname
-                            title
-                            image {
-                                node {
-                                    altText
-                                    sourceUrl
-                                }
-                            }
-                            icon {
-                                node {
-                                    altText
-                                    sourceUrl
-                                }
-                            }
-                        }
-                    }
-                    pageBlocks {
-                        showBlocksSection
-                        pageBlocksTitle
-                        pageBlocksDescription
-                        pageBlocksSubtitle
-                        pageBlocksItems {
-                            title
-                            description
-                            reverse
-                            image {
-                                node {
-                                    altText
-                                    sourceUrl
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        `,
-        fetchPolicy: "no-cache",
-        variables: { pageSlug },
-    });
-
-    if (!data.page) {
-        throw new Error("Page not found");
-    }
-
-    const pageData = get(data, 'page', {});
-    const title = get(data, 'page.pageSettings.title', null) || get(data, 'page.title', '');
-    const subheading = get(data, 'page.pageSettings.subheading', '');
-    const features = get(data, 'page.pageSettings.features', []);
-    const faq = get(data, 'page.pageSettings.faq', []);
-    const pricingFeatures = (get(data, 'page.pageSettings.pricingFeatures', []) || []).map((feature: {type: string[], content: string}) => ({
-        type: feature.type[0],
-        content: feature.content
-    }));
-    const pricingPlans = get(data, 'page.pageSettings.pricingPlans', []);
-    const tools = data.page.tools;
-    const pageBlocks = data.page.pageBlocks;
-
-    return {
-        ...pageData,
-        featuredPost: (await getLatestPosts(1))[0],
-        menus: await getAllMenus(),
-        settings: await getSiteSettings(),
-        title,
-        description: get(data, 'page.content', ''),
-        hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
-        heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
-        features,
-        faq,
-        pricingFeatures,
-        pricingPlans,
-        subheading,
-        tools,
-        pageBlocks
-    };
-}
 
 export const getPageData = async (
     pageSlug: string,
@@ -270,7 +159,7 @@ export const getPageData = async (
 };
 
 
-export const getPostData = async (pageSlug: string) => {
+export const getPostData = async (pageSlug: string): Promise<PostDataType> => {
 
    /* const posts = getFromCache("posts")
     const pageData = posts.find((post: any) => post.slug === pageSlug);
@@ -288,6 +177,10 @@ export const getPostData = async (pageSlug: string) => {
                         node {
                             sourceUrl
                             altText
+                            mediaDetails {
+                                width
+                                height
+                            }
                         }
                     }
                 }
@@ -307,8 +200,6 @@ export const getPostData = async (pageSlug: string) => {
     return {
         ...post,
         featuredPost: latestPosts[0],
-        featuredImage: post.featuredImage?.node?.sourceUrl || "",
-        altText: post.featuredImage?.node?.altText || "",
         menus: await getAllMenus(),
         settings: await getSiteSettings(),
         latestPosts

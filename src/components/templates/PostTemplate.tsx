@@ -1,8 +1,10 @@
 import React from 'react'
 import Layout from "@/components/layout/layout";
 import {LatestPosts} from "@/components/widgets/latestPosts";
+import Image from 'next/image';
+import {PostDataType} from "@/types/post";
 
-export default function PostTemplate({pageData}: { pageData: any }) {
+export default function PostTemplate({pageData}: { pageData: PostDataType }) {
     return (
 
         <Layout pageData={pageData}>
@@ -16,9 +18,11 @@ export default function PostTemplate({pageData}: { pageData: any }) {
                         {pageData.featuredImage && <>
                             <section className="container text-center">
                                 <div className="inline-block p-1 border border-primary">
-                                    <img
-                                        src={pageData.featuredImage}
-                                        alt={pageData.altText}
+                                    <Image
+                                        src={pageData.featuredImage?.node.sourceUrl}
+                                        alt={pageData.featuredImage?.node.altText}
+                                        width={pageData.featuredImage?.node.mediaDetails.width}
+                                        height={pageData.featuredImage?.node.mediaDetails.height}
                                     />
                                 </div>
                             </section>

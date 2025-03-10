@@ -65,6 +65,10 @@ export const getAllPostSlugs = async () => {
                                 node {
                                     sourceUrl
                                     altText
+                                    mediaDetails {
+                                        width
+                                        height
+                                    }
                                 }
                             }
                         }

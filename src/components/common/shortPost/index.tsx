@@ -1,5 +1,6 @@
 import {FC} from "react";
 import {ShortPostType} from "@/types";
+import Image from 'next/image';
 
 type Props = {
     post: ShortPostType
@@ -17,9 +18,11 @@ export const ShortPost: FC<Props> = ({post}) => {
                         href={`/blog/${post.slug}`}
                         className="inline-block p-1 border border-primary"
                     >
-                        <img
+                        <Image
                             src={post.featuredImage}
                             alt={post.altText}
+                            width={800}
+                            height={400}
                            /* className="max-w-[600px]"*/
                         />
                     </a>

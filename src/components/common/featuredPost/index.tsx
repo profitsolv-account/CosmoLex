@@ -1,13 +1,20 @@
-import { useAppContext } from "@/context";
+import Image from "next/image"
+import {FeaturedPostType} from "@/types";
 
 export const FeaturedPost = ({pageData}: {pageData: any}) => {
 
-    const  {featuredPost: post} = pageData;
+    const post: FeaturedPostType = pageData.featuredPost;
     if (!post) return null;
 
     return <div className="w-full max-w-[328px] rounded-[10px] overflow-hidden bg-secondary">
         <div className="bg-[#d9d9d9] flex items-center justify-center">
-            <img src={post.featuredImage} alt={post.altText} className="object-cover aspect-3/2" />
+            <Image
+                src={post.featuredImage.sourceUrl}
+                alt={post.featuredImage.altText}
+                className="object-cover aspect-3/2"
+                width={400}
+                height={400}
+            />
         </div>
         <div className="px-5 py-7">
             <div className="relative">
