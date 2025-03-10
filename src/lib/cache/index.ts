@@ -4,6 +4,10 @@ import fs from "fs";
 export const saveToCache = (cacheName: string, data: any) => {
    try {
        console.log(`Saving to cache ${cacheName}`);
+       if (!fs.existsSync(process.cwd())) {
+           return;
+       }
+
        const filePath = path.join(process.cwd(), 'cache', `${cacheName}.json`);
        fs.mkdirSync(path.dirname(filePath), { recursive: true });
        fs.writeFileSync(filePath, JSON.stringify(data));
