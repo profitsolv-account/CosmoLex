@@ -9,6 +9,7 @@ export async function POST() {
         revalidatePath(`/[slug]`, "page");
         revalidatePath(`/`);
         revalidatePath(`/pricing`);
+        revalidatePath(`/features/[page]`, "page");
         return NextResponse.json({ revalidated: true });
     } catch (err) {
         console.error(err);
