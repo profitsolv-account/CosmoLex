@@ -56,7 +56,6 @@ type ToolsSectionProps = {
     tools: ToolsType
 }
 const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
-
     const items = [...tools.items, ...tools.items].map((t, index) => (
         <Fragment key={index}>
             <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
