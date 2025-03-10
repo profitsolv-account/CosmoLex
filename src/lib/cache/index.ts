@@ -2,10 +2,14 @@ import path from "path";
 import fs from "fs";
 
 export const saveToCache = (cacheName: string, data: any) => {
-    console.log(`Saving to cache ${cacheName}`);
-    const filePath = path.join(process.cwd(), 'cache', `${cacheName}.json`);
-    fs.mkdirSync(path.dirname(filePath), { recursive: true });
-    fs.writeFileSync(filePath, JSON.stringify(data));
+   try {
+       console.log(`Saving to cache ${cacheName}`);
+       const filePath = path.join(process.cwd(), 'cache', `${cacheName}.json`);
+       fs.mkdirSync(path.dirname(filePath), { recursive: true });
+       fs.writeFileSync(filePath, JSON.stringify(data));
+   } catch(e) {
+         console.error(e);
+   }
 }
 
 export const getFromCache = (cacheName: string) => {
