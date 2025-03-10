@@ -24,7 +24,7 @@ export const GuideBlock: FC<Props> = ({className}) => {
                             <div className="relative justify-start text-white text-[28px] font-medium leading-10 mb-12">The Legal Firm’s Blueprint: Building a Strong Foundation for Success</div>
                         </div>
 
-                        <a href="/#" className="base-btn text-white border-white hover:bg-white hover:text-primary-dark">Read more</a>
+                        <a href="/blog" className="base-btn text-white border-white hover:bg-white hover:text-primary-dark">Read more</a>
                     </div>
                 </div>
                 <div className="min-h-[200px] bg-green rounded-bl-[15px] rounded-br-[15px] md:rounded-bl-[0px] md:rounded-br-[30px] md:rounded-tr-[30px] overflow-hidden">
@@ -32,22 +32,22 @@ export const GuideBlock: FC<Props> = ({className}) => {
                         <div className="relative justify-start text-primary-dark text-[28px] font-semibold font-['Inter'] leading-10 mb-10">Educational Blogs</div>
                         <ul className="md:pr-[85px] mb-10">
                             <li className="relative justify-start mb-10">
-                                <a href="/#" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">Integrated Accounting Software for Law Firms: Features, Benefits & More</a>
+                                <a href="/blog/integrated-accounting-software/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">Integrated Accounting Software for Law Firms: Features, Benefits & More</a>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/#" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">5 Reasons Law Firms are Switching to CosmoLex</a>
+                                <a href="/blog/5-reasons-law-firms-are-switching-to-cosmolex/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">5 Reasons Law Firms are Switching to CosmoLex</a>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/#" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">Optimizing Law Firm Operations: 5 Strategies for Modern Practices</a>
+                                <a href="/blog/optimizing-law-firm-operations-strategies-for-modern-practices/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">Optimizing Law Firm Operations: 5 Strategies for Modern Practices</a>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/#" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">The ROI of Switching to CosmoLexPay: Cost Savings and Efficiency Gains</a>
+                                <a href="/blog/roi-of-switching-to-cosmolexpay/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">The ROI of Switching to CosmoLexPay: Cost Savings and Efficiency Gains</a>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/#" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">6 Best Practices for Creating a High-Converting Law Firm Website</a>
+                                <a href="/blog/high-converting-law-firm-website/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[32px]">6 Best Practices for Creating a High-Converting Law Firm Website</a>
                             </li>
                         </ul>
-                        <a href="/#" className="base-btn text-white border-primary-dark bg-primary-dark hover:bg-white hover:text-primary-dark hover:border-white">Read all articles</a>
+                        <a href="/blog" className="base-btn text-white border-primary-dark bg-primary-dark hover:bg-white hover:text-primary-dark hover:border-white">Read all articles</a>
                     </div>
                 </div>
             </div>
