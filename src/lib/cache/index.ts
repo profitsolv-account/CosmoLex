@@ -7,12 +7,12 @@ export const saveToCache = (cacheName: string, data: any) => {
        if (!fs.existsSync(process.cwd())) {
            return;
        }
-
        const filePath = path.join(process.cwd(), 'cache', `${cacheName}.json`);
        fs.mkdirSync(path.dirname(filePath), { recursive: true });
        fs.writeFileSync(filePath, JSON.stringify(data));
    } catch(e) {
-         console.error(e);
+       console.error(e);
+       return false;
    }
 }
 
