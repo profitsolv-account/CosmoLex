@@ -92,6 +92,5 @@ export type PageDataType = {
     heroAlt?: string;
     tools?: ToolsType;
     showToolsSection?: boolean;
-    showBlocksSection?: boolean;
     pageBlocks?: PageBlocksType;
 }

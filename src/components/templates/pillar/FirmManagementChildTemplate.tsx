@@ -13,7 +13,7 @@ import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
 import {PageBlocksType, ToolsType} from "@/types/tools";
 import {Faq} from "@/components/blocks/faq";
 
-export default function CalendarTasksTemplate({ pageData }: { pageData: PageDataType }) {
+export default function FirmManagementChildTemplate({ pageData }: { pageData: PageDataType }) {
 
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     const faqs = pageData.faq || [];
@@ -33,20 +33,11 @@ export default function CalendarTasksTemplate({ pageData }: { pageData: PageData
                 showFeatureImage
             />
 
-            {pageData.tools && pageData.tools.items && <ToolsSection tools={pageData.tools} />}
-
-            {pageBlocks && <ColumnsSection
-                items={pageBlocks.pageBlocksItems.map((item) => ({
-                    title: item.title,
-                    description: item.description,
-                    media: <div className="w-full relative">
-                        <img src={item.image.node.sourceUrl} alt={item.image.node.altText} className="w-full"/>
-                    </div>,
-                    position: !item.reverse ? "right" : "left",
-                }))}
-            />}
-
-            <div className="relative pt-20">
+            <div className="relative">
+                {pageData.tools && pageData.tools.items && <ToolsSection tools={pageData.tools} />}
+                <div className="absolute bottom-0 w-full h-[300px] rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>
+            </div>
+            <div className="relative bg-primary">
                 <Testimonials
                     testimonials={testimonials}
                     className="!bg-transparent !pt-0 relative z-10"
@@ -54,7 +45,6 @@ export default function CalendarTasksTemplate({ pageData }: { pageData: PageData
                     showNavigation
                     theme="light"
                 />
-                <div className="absolute top-0 w-full h-full rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>
             </div>
 
             {pageData.settings && <div className="relative">
@@ -91,10 +81,6 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                         </div>
                         <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[38px] lg:text-[30px]">{t.title}</div>
                         <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[30px] max-w-[350px] lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
-                        <a href={'/#'}
-                           className="w-full block text-center lg:inline-block rounded-[100px] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[30px] py-[15px] lg:w-auto">
-                            Explore features
-                        </a>
                     </div>
                 </div>
             </div>
@@ -103,7 +89,8 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
 
     const tabs: TabType[] = tools.items.map((t, index) => (
         {
-            title: t.title,
+            title: t.tabName || t.title,
+            id: t.title
         }
     ));
 
@@ -114,7 +101,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
             description={tools.toolsDescription}
             tabs={tabs}
             items={items}
-            height="500px"
+            height="463px"
         />
     </div>
 }

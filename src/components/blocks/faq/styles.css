@@ -1,0 +1,9 @@
+.FAQ-section {
+  ul {
+    list-style: disc;
+    padding-left: 22px;
+  }
+  a {
+    text-decoration: underline;
+  }
+}

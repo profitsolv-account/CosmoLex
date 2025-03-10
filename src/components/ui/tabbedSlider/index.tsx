@@ -4,7 +4,6 @@ import {Slider} from "@/components/ui/slider";
 
 export type TabType = {
     title: string;
-    id: string;
 }
 
 type Props = {

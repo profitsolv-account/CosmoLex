@@ -19,7 +19,8 @@ export type ToolItemType = {
         nodes: {
             link: string;
         }[]
-    }
+    },
+    tabName: string;
 }
 
 export type ToolsType = {
@@ -46,4 +47,5 @@ export type PageBlocksType = {
     pageBlocksDescription?: string;
     pageBlocksSubtitle?: string;
     pageBlocksItems: PageBlockItemType[];
+    showBlocksSection?: boolean;
 }
