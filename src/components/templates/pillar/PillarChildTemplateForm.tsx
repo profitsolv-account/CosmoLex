@@ -9,10 +9,18 @@ import {Features} from "@/components/blocks/features";
 import {GuideBlock} from "@/components/blocks/guideBlock";
 import classNames from "classnames";
 import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
-import {ToolsType} from "@/types/tools";
+import {PageBlocksType, ToolsType} from "@/types/tools";
+import {Faq} from "@/components/blocks/faq";
+import {ColumnsSection} from "@/components/blocks/columnsSection";
 
-export default function PillarParentTemplate({ pageData }: { pageData: PageDataType }) {
+export default function PillarChildTemplateForm({ pageData }: { pageData: PageDataType }) {
+
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
+    const faqs = pageData.faq || [];
+    const pageBlocks: PageBlocksType = pageData.pageBlocks || {
+        pageBlocksItems: []
+    };
+
     return (
         <Layout pageData={pageData}>
 
@@ -23,10 +31,22 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
                 showFeatureImage
             />
 
-            <div className="relative">
+            {pageData.tools &&pageData.tools.showTools && <div className="relative">
                 {pageData.tools && pageData.tools.items && <ToolsSection tools={pageData.tools} />}
-                <div className="absolute bottom-0 w-full h-[300px] rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>
-            </div>
+                {pageBlocks && !pageBlocks.showBlocksSection && <div className="absolute bottom-0 w-full h-[300px] rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>}
+            </div>}
+
+            {pageBlocks && pageBlocks.showBlocksSection && <ColumnsSection
+                items={pageBlocks.pageBlocksItems.map((item) => ({
+                    title: item.title,
+                    description: item.description,
+                    media: <div className="w-full relative">
+                        <img src={item.image?.node?.sourceUrl || '#'} alt={item?.image?.node?.altText || ''} className="w-full"/>
+                    </div>,
+                    position: !item.reverse ? "right" : "left",
+                }))}
+            />}
+
             <div className="relative bg-primary">
                 <Testimonials
                     testimonials={testimonials}
@@ -46,7 +66,7 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
                 <GuideBlock className="relative z-10"/>
                 <div className="absolute bottom-0 w-full h-[100px] rounded-tr-[50px] md:rounded-tr-[100px] bg-white"/>
             </div>
-
+            <Faq faqs={faqs} />
             <SimplifyPractice pageData={pageData} className="bg-white"/>
         </Layout>
     )
@@ -55,11 +75,13 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
 type ToolsSectionProps = {
     tools: ToolsType
 }
+
 const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
+
     const items = [...tools.items, ...tools.items].map((t, index) => (
         <Fragment key={index}>
             <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
-                <div className={classNames("grow rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center", t.classname)}>
+                <div className={classNames("grow max-h-[280px] rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center", t.classname)}>
                     <img src={t.image.node.sourceUrl} alt={t.image.node.altText} className={classNames("relative z-4", t.mediaClassname)}/>
                     <div className="absolute z-0 top-0 left-0 w-full h-full bg-white/30"/>
                 </div>
@@ -68,12 +90,8 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                         <div>
                             <img src={t.icon.node.sourceUrl} alt={t.icon.node.altText} className="w-[30px] h-[30px]"/>
                         </div>
-                        <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[55px] lg:text-[46px]">{t.title}</div>
+                        <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[38px] lg:text-[30px]">{t.title}</div>
                         <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[30px] max-w-[350px] lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
-                        <a href={t.link?.url || '/#'}
-                           className="w-full block text-center lg:inline-block rounded-[100px] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[30px] py-[15px] lg:w-auto">
-                            Explore features
-                        </a>
                     </div>
                 </div>
             </div>
@@ -83,6 +101,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
     const tabs: TabType[] = tools.items.map((t) => (
         {
             title: t.tabName || t.title,
+            id: t.title
         }
     ));
 
@@ -93,6 +112,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
             description={tools.toolsDescription}
             tabs={tabs}
             items={items}
+            height="463px"
         />
     </div>
 }

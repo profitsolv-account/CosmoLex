@@ -52,6 +52,9 @@ export const TOOLS_FRAGMENT = gql`
                 }
             }
             tabName
+            link {
+                url
+            }
         }
         showTools
     }

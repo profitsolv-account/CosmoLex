@@ -15,10 +15,8 @@ export type ToolItemType = {
             sourceUrl: string;
         }
     };
-    link: {
-        nodes: {
-            link: string;
-        }[]
+    link?: {
+        url: string;
     },
     tabName: string;
 }

@@ -98,7 +98,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
         </Fragment>
     ))
 
-    const tabs: TabType[] = tools.items.map((t, index) => (
+    const tabs: TabType[] = tools.items.map((t) => (
         {
             title: t.tabName || t.title,
             id: t.title
