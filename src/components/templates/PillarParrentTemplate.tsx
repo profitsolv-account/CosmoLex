@@ -79,7 +79,6 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
             </div>
         </Fragment>
     ))
-
     const tabs: TabType[] = tools.items.map((t) => (
         {
             title: t.tabName || t.title,
