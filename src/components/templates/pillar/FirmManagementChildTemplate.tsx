@@ -7,21 +7,15 @@ import {PageHeader} from "@/components/blocks/pageHeader";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {Features} from "@/components/blocks/features";
 import {GuideBlock} from "@/components/blocks/guideBlock";
-import {ColumnsSection} from "@/components/blocks/columnsSection";
 import classNames from "classnames";
 import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
-import {PageBlocksType, ToolsType} from "@/types/tools";
+import {ToolsType} from "@/types/tools";
 import {Faq} from "@/components/blocks/faq";
 
 export default function FirmManagementChildTemplate({ pageData }: { pageData: PageDataType }) {
 
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     const faqs = pageData.faq || [];
-    const features = pageData.pricingFeatures || [];
-
-    const pageBlocks: PageBlocksType = pageData.pageBlocks || {
-        pageBlocksItems: []
-    };
 
     return (
         <Layout pageData={pageData}>
@@ -65,6 +59,7 @@ export default function FirmManagementChildTemplate({ pageData }: { pageData: Pa
 type ToolsSectionProps = {
     tools: ToolsType
 }
+
 const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
 
     const items = [...tools.items, ...tools.items].map((t, index) => (

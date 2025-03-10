@@ -1,14 +1,15 @@
 import {MenusList} from "@/types";
+import {getFromCache, saveToCache} from "../cache/index";
 
 const WORDPRESS_API_URL = 'https://cosmonew1.wpenginepowered.com';
 
 export const getAllMenus = async (): Promise<MenusList> => {
 
-    /* const menu = getFromCache('menu');
+     const menu = getFromCache('menu');
      if (menu) {
          console.log('load menu from cache');
          return menu;
-     }*/
+     }
 
     const menusList: MenusList = {};
     try {
@@ -59,8 +60,8 @@ export const getAllMenus = async (): Promise<MenusList> => {
             })
         );
 
-        /* saveToCache('menu', menusList);
- */
+         saveToCache('menu', menusList);
+
         return menusList;
     } catch (error) {
         console.error(error);
