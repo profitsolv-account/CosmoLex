@@ -39,11 +39,11 @@ export default function IntegrationsTemplate({ pageData }: { pageData: PageDataT
                     leftContent: <div className="bg-[#D7EFFA] flex flex-col items-center justify-center w-full h-[350px] md:h-full">
                         <div className="px-5 py-5 md:px-[92px]">
                             <div className="text-primary-dark text-3xl font-semibold leading-[38px] mb-3">{item.title}</div>
-                            <div className="text-primary-dark text-[22px] font-normal leading-9">{item.description}</div>
+                            <div className="text-primary-dark text-[22px] font-normal leading-9" dangerouslySetInnerHTML={{ __html: item.description || '' }} />
                         </div>
                     </div>,
                     rightContent: <div className="w-full relative flex justify-center items-center h-[350px] md:h-[463px] bg-white">
-                        <img src={item.image.node.sourceUrl} alt={item.image.node.altText}
+                        <img src={item.image?.node?.sourceUrl || ''} alt={item.image?.node?.altText || ''}
                              className="w-auto max-h-full max-w-full"/>
                     </div>,
                     position: !item.reverse ? "right" : "left",

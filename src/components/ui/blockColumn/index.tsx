@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 type Props = {
     className?: string;
-    position?: 'left' | 'right';
+    position?: string;
     content: ReactNode;
     media: ReactNode;
     contentCLassName?: string;

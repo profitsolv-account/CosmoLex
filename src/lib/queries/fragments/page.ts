@@ -53,6 +53,7 @@ export const TOOLS_FRAGMENT = gql`
             }
             tabName
         }
+        showTools
     }
 `;
 

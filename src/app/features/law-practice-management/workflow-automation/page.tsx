@@ -3,7 +3,7 @@ import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
-import FirmManagementChildTemplate from "@/components/templates/pillar/FirmManagementChildTemplate";
+import PillarChildTemplate from "@/components/templates/pillar/PillarChildTemplate";
 
 const pageSlug = 'workflow-automation'
 
@@ -15,7 +15,7 @@ export default async function PillarPage() {
     try {
         const pageData = await getPageData(pageSlug);
         const testimonials = await getTestimonialsList();
-        return <FirmManagementChildTemplate pageData={{
+        return <PillarChildTemplate pageData={{
             ...pageData,
             testimonials,
             footerExtendedBg: true

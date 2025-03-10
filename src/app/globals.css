@@ -210,4 +210,11 @@ body {
         }
     }
 
+    .dynamic-html-content {
+        ul {
+            list-style: disc;
+            padding-left: 16px;
+        }
+    }
+
 }

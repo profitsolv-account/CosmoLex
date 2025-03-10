@@ -28,6 +28,7 @@ export type ToolsType = {
     toolsDescription: string;
     subtitle: string;
     items: ToolItemType[];
+    showTools: boolean;
 }
 
 export type PageBlockItemType = {

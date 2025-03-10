@@ -3,7 +3,6 @@ import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
-import CalendarTasksTemplate from "@/components/templates/pillar/CalendarTasksTemplate";
 import IntegrationsTemplate from "@/components/templates/pillar/IntegrationsTemplate";
 
 const pageSlug = 'integrations'

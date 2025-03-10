@@ -9,13 +9,17 @@ import {Features} from "@/components/blocks/features";
 import {GuideBlock} from "@/components/blocks/guideBlock";
 import classNames from "classnames";
 import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
-import {ToolsType} from "@/types/tools";
+import {PageBlocksType, ToolsType} from "@/types/tools";
 import {Faq} from "@/components/blocks/faq";
+import {ColumnsSection} from "@/components/blocks/columnsSection";
 
-export default function FirmManagementChildTemplate({ pageData }: { pageData: PageDataType }) {
+export default function PillarChildTemplate({ pageData }: { pageData: PageDataType }) {
 
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     const faqs = pageData.faq || [];
+    const pageBlocks: PageBlocksType = pageData.pageBlocks || {
+        pageBlocksItems: []
+    };
 
     return (
         <Layout pageData={pageData}>
@@ -27,10 +31,22 @@ export default function FirmManagementChildTemplate({ pageData }: { pageData: Pa
                 showFeatureImage
             />
 
-            <div className="relative">
+            {pageData.tools &&pageData.tools.showTools && <div className="relative">
                 {pageData.tools && pageData.tools.items && <ToolsSection tools={pageData.tools} />}
-                <div className="absolute bottom-0 w-full h-[300px] rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>
-            </div>
+                {pageBlocks && !pageBlocks.showBlocksSection && <div className="absolute bottom-0 w-full h-[300px] rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>}
+            </div>}
+
+            {pageBlocks && pageBlocks.showBlocksSection && <ColumnsSection
+                items={pageBlocks.pageBlocksItems.map((item) => ({
+                    title: item.title,
+                    description: item.description,
+                    media: <div className="w-full relative">
+                        <img src={item.image?.node?.sourceUrl || '#'} alt={item?.image?.node?.altText || ''} className="w-full"/>
+                    </div>,
+                    position: !item.reverse ? "right" : "left",
+                }))}
+            />}
+
             <div className="relative bg-primary">
                 <Testimonials
                     testimonials={testimonials}
