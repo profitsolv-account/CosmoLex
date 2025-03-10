@@ -82,7 +82,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
 
     const tabs: TabType[] = tools.items.map((t) => (
         {
-            title: t.title,
+            title: t.tabName || t.title,
         }
     ));
 
