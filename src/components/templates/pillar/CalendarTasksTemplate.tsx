@@ -17,7 +17,6 @@ export default function CalendarTasksTemplate({ pageData }: { pageData: PageData
 
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     const faqs = pageData.faq || [];
-    const features = pageData.pricingFeatures || [];
 
     const pageBlocks: PageBlocksType = pageData.pageBlocks || {
         pageBlocksItems: []
