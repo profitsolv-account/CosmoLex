@@ -14,22 +14,6 @@ export const PAGE_SETTINGS_FRAGMENT = gql`
                 }
             }
         }
-        features {
-            description
-            title
-        }
-        faq {
-            question
-            answer
-        }
-        pricingFeatures {
-            type
-            content
-        }
-        pricingPlans {
-            groupName
-            content
-        }
     }
 `;
 

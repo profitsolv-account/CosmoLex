@@ -109,6 +109,31 @@ export const getPageData = async (
                 pageBlocks {
                     ...PageBlocksFragment
                 }
+                faq {
+                    faq {
+                        answer
+                        fieldGroupName
+                        question
+                    }
+                }
+                pricingSection {
+                    pricingOption
+                    pricingFeatures {
+                        type
+                        content
+                    }
+                    pricingPlans {
+                        groupName
+                        content
+                    }
+                }
+
+                featuresSection {
+                    features {
+                        title
+                        description
+                    }
+                }
             }
         }
         ${PAGE_SETTINGS_FRAGMENT}
@@ -129,13 +154,13 @@ export const getPageData = async (
     const pageData = get(data, 'page', {});
     const title = get(data, 'page.pageSettings.title', null) || get(data, 'page.title', '');
     const subheading = get(data, 'page.pageSettings.subheading', '');
-    const features = get(data, 'page.pageSettings.features', []);
-    const faq = get(data, 'page.pageSettings.faq', []);
-    const pricingFeatures = (get(data, 'page.pageSettings.pricingFeatures', []) || []).map((feature: {type: string[], content: string}) => ({
+    const features = get(data, 'page.featuresSection.features', []);
+    const faq = get(data, 'page.faq.faq', []);
+    const pricingFeatures = (get(data, 'page.pricingSection.pricingFeatures', []) || []).map((feature: {type: string[], content: string}) => ({
         type: feature.type[0],
         content: feature.content
     }));
-    const pricingPlans = get(data, 'page.pageSettings.pricingPlans', []);
+    const pricingPlans = get(data, 'page.pricingSection.pricingPlans', []);
     const tools = data.page.tools;
     const pageBlocks = data.page.pageBlocks;
 
