@@ -57,14 +57,6 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsO
         };
     }, []);
 
-/*    useEffect(() => {
-        if (isOpen) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
-    }, [isOpen]);*/
-
     return (
         <div className={classNames(className)}>
             {showMenu && ReactDOM.createPortal(
@@ -80,10 +72,6 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsO
                     <div
                         ref={menuRef}
                         className={classNames(`overflow-hidden absolute z-50 container !duration-${duration}`, {
-                           /* 'slideDown': visible && duration !== 200,
-                            'slideUp': !visible && duration !== 200,
-                            'slideDownFast': visible && duration === 200,
-                            'slideUpFast': !visible && duration === 200,*/
                             'w-full translate-x-[-50%]': fullWidth,
                             'w-[200px]': !fullWidth,
                         })}

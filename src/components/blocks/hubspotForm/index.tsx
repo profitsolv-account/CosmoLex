@@ -1,5 +1,8 @@
+"use client"
+
 import { useEffect, useState } from 'react';
 import Script from 'next/script';
+import classNames from "classnames";
 
 declare global {
     interface Window {
@@ -71,7 +74,11 @@ const FormContent = () => {
     return <div id="hubspotFormContainer"></div>;
 };
 
-const HubSpotForm = () => {
+type Props = {
+    className?: string;
+}
+
+const HubSpotForm = ({className}: Props) => {
     const [chiliPiperLoaded, setChiliPiperLoaded] = useState(false);
 
     useEffect(() => {
@@ -176,7 +183,7 @@ const HubSpotForm = () => {
                 }}
             />
             <div className="relative">
-                <div className="max-w-[437px] min-h-[500px] mx-auto relative z-1 bg-white rounded-[30px] p-[50px]">
+                <div className={classNames("max-w-[437px] min-h-[500px] mx-auto relative z-1 bg-white rounded-[30px] p-[50px]", className)}>
                     <FormContent />
                 </div>
                 <div className="bg-primary absolute z-0 w-full h-[190px] left-0 rounded-bl-[100px] top-0" />

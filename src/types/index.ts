@@ -1,6 +1,7 @@
 import {TestimonialType} from "@/types/testimonials";
 import {LeaderLogos} from "@/types/logos";
 import {PageBlocksType, ToolsType} from "@/types/tools";
+import {CompareSelectorType} from "@/types/compare";
 
 export type FeaturedPostType = {
     title: string;
@@ -108,5 +109,6 @@ export type PageDataType = {
                 height:number;
             }
         }
-    }
+    };
+    compareSelector?: CompareSelectorType;
 }
