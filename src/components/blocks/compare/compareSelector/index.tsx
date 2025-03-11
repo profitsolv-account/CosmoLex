@@ -23,13 +23,13 @@ export const CompareSelector:FC<Props> = ({className, compareSelector}) => {
                 <div className="grid gap-5 md:grid-cols-2">
                     <div className="flex items-center flex-col gap-5 md:pt-25">
                         {leftItems.map((item) => (
-                            <CompareBlock compareWith={item.title} link={item.link.url} />
+                            <CompareBlock key={item.title} compareWith={item.title} link={item.link.url} />
                         ))}
 
                     </div>
                     <div className="flex items-center flex-col gap-5">
                         {rightItems.map((item) => (
-                            <CompareBlock compareWith={item.title} link={item.link.url} />
+                            <CompareBlock key={item.title} compareWith={item.title} link={item.link.url} />
                         ))}
                     </div>
                 </div>
