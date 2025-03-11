@@ -73,7 +73,7 @@ export const Features = ({pageData, className}: Props) => {
                                 <div className="">
                                     <div className="">
                                         <div className="text-primary-dark text-xl font-bold font-['Inter'] leading-normal">{tool.title}</div>
-                                        <div className="text-primary-dark text-base font-normal font-['Inter'] leading-normal">{tool.description}</div>
+                                        <div className="text-primary-dark text-base font-normal font-['Inter'] leading-normal"  dangerouslySetInnerHTML={{__html: tool.description || ''}}/>
                                     </div>
                                 </div>
                             </div>

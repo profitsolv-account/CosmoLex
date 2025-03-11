@@ -3,22 +3,32 @@ import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
-import PillarParentTemplate from "@/components/templates/PillarParrentTemplate";
+import CompareChildTemplate from "@/components/templates/CompareChildTemplate";
 
-export async function generateMetadata(): Promise<Metadata> {
-    return await getSEOData('pricing');
+type Params = {
+    params: Promise<{slug: string}>;
 }
 
-export default async function PillarPage() {
+export async function generateMetadata({params}: Params): Promise<Metadata> {
+    const {slug} = await params;
+
+    return await getSEOData(slug);
+}
+
+export default async function PillarPage({params}: Params) {
     try {
-        const pageData = await getPageData("pricing");
+        const {slug} = await params;
+        const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
-        return <PillarParentTemplate pageData={{
+
+        return <CompareChildTemplate pageData={{
             ...pageData,
             testimonials,
             footerExtendedBg: true
         }} />
+
     } catch (error) {
+        console.error(error);
         notFound();
     }
 }
