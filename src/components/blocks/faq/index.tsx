@@ -11,7 +11,7 @@ type Props = {
 
 export const Faq: FC<Props> = ({className, faqs}) => {
     return (
-        <div className={classNames("FAQ-section bg-white px-2 relative pt-[115px] rounded-tr-[50px] md:rounded-tr-[100px]", className)}>
+        <div className={classNames("FAQ-section bg-white px-2 relative pt-[115px] ", className)}>
             <div className="max-w-[1165px] mx-auto relative z-10 flex flex-col gap-5 px-2 md:flex-row md:gap-[72px]">
                 <div className="text-primary-dark text-[46px] font-bold leading-[60px] md:flex-none md:w-[308px] ">Frequently asked questions.</div>
                 <div className="grow">
