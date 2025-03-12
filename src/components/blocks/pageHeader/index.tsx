@@ -10,9 +10,10 @@ type Props = {
     showFeatureImage?: boolean;
     className?: string;
     bgClassName?: string;
+    containerClassName?: string;
 }
 
-export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className, bgClassName}) => {
+export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className, bgClassName, containerClassName}) => {
 
     const title = get(pageData, 'title', '');
     const description  = get(pageData, 'description', '');
@@ -26,7 +27,7 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
         <div className={classNames(className)}>
             <div className="p-4 bg-primary md:pt-14">
                 <div className="container flex flex-col justify-center items-center gap-4">
-                    <div className="text-center max-w-[900px]">
+                    <div className={classNames("text-center max-w-[900px]", containerClassName)}>
                         {subheading &&
                             <div className="relative text-center justify-start text-green text-base font-normal uppercase tracking-wider">{subheading}</div>
                         }

@@ -3,6 +3,17 @@ import {LeaderLogos} from "@/types/logos";
 import {PageBlocksType, ToolsType} from "@/types/tools";
 import {CompareSectionType, CompareSelectorType} from "@/types/compare";
 
+export type ImageType = {
+    node: {
+        altText: string;
+        sourceUrl: string;
+        mediaDetails: {
+            width: number;
+            height:number;
+        }
+    }
+}
+
 export type FeaturedPostType = {
     title: string;
     slug: string;
@@ -76,6 +87,13 @@ export type PricingPlan = {
     content: string;
 }
 
+export type Member = {
+    name: string;
+    position: string;
+    description: string;
+    image: ImageType;
+    linkedin: string;
+}
 
 export type PageDataType = {
     title: string;
@@ -100,16 +118,8 @@ export type PageDataType = {
     tools?: ToolsType;
     showToolsSection?: boolean;
     pageBlocks?: PageBlocksType;
-    heroImage?: {
-        node: {
-            altText: string;
-            sourceUrl: string;
-            mediaDetails: {
-                width: number;
-                height:number;
-            }
-        }
-    };
+    heroImage?: ImageType;
     compareSelector?: CompareSelectorType;
     compareSection?: CompareSectionType;
+    members?: Member[];
 }
