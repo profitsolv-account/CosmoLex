@@ -47,7 +47,7 @@ export default function IntegrationsTemplate({ pageData }: { pageData: PageDataT
                         <Image
                             src={item.image?.node?.sourceUrl || ''}
                             alt={item.image?.node?.altText || ''}
-                            className="w-auto max-h-full max-w-full"
+                            className=""
                             width={item.image?.node?.mediaDetails?.width || 0}
                             height={item.image?.node?.mediaDetails?.height || 0}
                         />
