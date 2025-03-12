@@ -12,7 +12,7 @@ type Props = {
 
 export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
 
-    return <div className="pt-20 px-2 relative pb-10">
+    return <div className="price-comparison pt-20 px-2 relative pb-10">
         <div className="max-w-[1124px] mx-auto relative z-10">
             <Heading>{title}</Heading>
 
@@ -55,29 +55,6 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                         </CollapsedSection>
 
                     ))}
-
-                   {/* <CollapsedSection title={
-                        <div className="text-primary-dark text-2xl font-bold py-4">
-                            Time & Billing
-                        </div>
-                    } className="px-[30px] py-[9px] bg-[#EDF9F0] rounded-[10px]">
-
-                        <table className="w-full border-collapse">
-                            <tbody>
-                            <tr className="rounded-b-2xl highlighted-row">
-                                <td className="p-1 w-[40%] md:w-[60%] md:p-4">
-                                    <div className="text-[#323d42] text-[14px] font-normal pl-2 md:text-xl">Conflict Check</div>
-                                </td>
-                                <td className="p-4 text-center ">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                                <td className="p-4 text-center ">
-                                    <div className="available-option md:!w-10 md:!h-10"></div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </CollapsedSection>*/}
                 </div>
 
                 <div className="pt-5">
