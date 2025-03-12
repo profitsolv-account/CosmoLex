@@ -64,7 +64,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
         />,
         "about": <div className="w-[195px] bg-white rounded-bl-[30px] rounded-br-[30px] p-6 pr-0">
             <a href="/about-cosmolex" className="block text-primary-dark text-[16px] font-medium font-['Inter'] leading-9 mb-2">About CosmoLex</a>
-            <a href="/" className="block text-primary-dark text-[16px] font-medium font-['Inter'] leading-9">Our Team</a>
+            <a href="/about-us" className="block text-primary-dark text-[16px] font-medium font-['Inter'] leading-9">Our Team</a>
         </div>
     }
 

@@ -95,7 +95,7 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                             title: "About CosmoLex",
                         },
                         {
-                            url: "/",
+                            url: "/about-us",
                             title: "Our Team",
                         },
                     ],
