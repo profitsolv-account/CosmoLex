@@ -11,9 +11,10 @@ type Props = {
     className?: string;
     bgClassName?: string;
     containerClassName?: string;
+    hideContent?: boolean;
 }
 
-export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className, bgClassName, containerClassName}) => {
+export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className, bgClassName, containerClassName, hideContent}) => {
 
     const title = get(pageData, 'title', '');
     const description  = get(pageData, 'description', '');
@@ -34,7 +35,7 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
                         <div className="pt-6 mb-3">
                             <h1 className="home-title text-white text-[46px] font-medium leading-[54px] lg:text-[54px] xl:text-[60px] xl:leading-[60px] xl:font-normal lg:block" dangerouslySetInnerHTML={{__html: title}} />
                         </div>
-                        <div className="min-h-[61px] text-center text-white text-xl font-normal leading-loose lg:w-full" dangerouslySetInnerHTML={{__html: description}} />
+                        {!hideContent && <div className="min-h-[61px] text-center text-white text-xl font-normal leading-loose lg:w-full" dangerouslySetInnerHTML={{__html: description}} />}
 
                         {showCta && <div className="flex justify-center items-center gap-4 pb-10">
                             <div className="h-[54px] px-[15px] md:px-[30px] pt-5 pb-[22px] rounded-[100px] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">

@@ -1,17 +1,21 @@
 import {Autoplay} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {LeaderLogos} from "@/types/logos";
-import "./styles.css";
 import {FC} from "react";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import "./styles.css";
+import classNames from "classnames";
 
 type Props = {
     logos: LeaderLogos[];
+    className?: string;
 }
 
-export const Leaders:FC<Props> = ({logos}) => {
+export const Leaders:FC<Props> = ({logos, className}) => {
     return <div className="my-10 mb-14">
-        <div className="max-w-[1066px] mx-auto">
-
+        <div className={classNames('max-w-[1066px] mx-auto', className)}>
             <Swiper
                 slidesPerView={'auto'}
                 spaceBetween={10}
