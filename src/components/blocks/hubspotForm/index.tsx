@@ -186,7 +186,6 @@ const HubSpotForm = ({className}: Props) => {
                 <div className={classNames("max-w-[437px] min-h-[500px] mx-auto relative z-1 bg-white rounded-[30px] p-[50px]", className)}>
                     <FormContent />
                 </div>
-                <div className="bg-primary absolute z-0 w-full h-[190px] left-0 rounded-bl-[100px] top-0" />
             </div>
         </div>
     );

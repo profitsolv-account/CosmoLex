@@ -16,22 +16,22 @@ export const CompareHeader = ({pageData}:Props) => {
     const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request Demo');
     const heroImage = get(pageData, 'heroImage', null);
 
-    return <div className="pt-10 mb-10 relative pb-25">
-        <div className="px-5 mx-auto max-w-[1100px] justify-center items-center grid md:grid-cols-2 gap-10 relative z-2 md:items-start md:flex-row md:gap-10">
+    return <div className="pt-10 mb-10 relative pb-15">
+        <div className="px-5 mx-auto max-w-[1100px] justify-center items-center grid md:grid-cols-2 gap-10 relative z-2 md:items-start md:flex-row md:gap-14">
             <div className="">
 
                 {subheading &&
                     <div className="relative text-left justify-start text-green text-base font-normal uppercase tracking-wider">{subheading}</div>
                 }
-                <div className="pt-6 mb-3">
+                <div className="pt-6 mb-6">
                     <h1 className="text-left home-title text-white text-[46px] font-medium leading-[46px] md:text-[52px] md:leading-[52px] md:font-normal lg:block"
                         dangerouslySetInnerHTML={{__html: title}}
                     />
                 </div>
-                <div className="min-h-[61px] text-left text-white text-base font-semibold leading-relaxed"
+                <div className="min-h-[61px] text-left text-white text-base font-normal leading-relaxed mb-10"
                      dangerouslySetInnerHTML={{__html: description}}
                 />
-                <div className="flex justify-center items-center gap-4 pb-10">
+                <div className="flex justify-start items-center gap-4 pb-10">
                     <div
                         className="h-[54px] px-[15px] md:px-[30px] pt-5 pb-[22px] rounded-[100px] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">
                         <a href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</a>
@@ -42,7 +42,7 @@ export const CompareHeader = ({pageData}:Props) => {
                 </div>
 
             </div>
-            <div className="flex justify-center md:pl-10 md:pt-10">
+            <div className="flex justify-center md:pl-10 md:pt-13">
                 {heroImage && <Image src={heroImage.node.sourceUrl} alt={heroImage.node.altText} width={heroImage?.node.mediaDetails.width} height={heroImage?.node.mediaDetails.height} />}
             </div>
         </div>

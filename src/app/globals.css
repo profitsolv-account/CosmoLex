@@ -217,4 +217,14 @@ body {
         }
     }
 
+    strong {
+        font-weight: 600;
+    }
+
+    .min-height-block {
+        @media (min-width: 1024px) {
+            min-height: 265px;
+        }
+    }
+
 }

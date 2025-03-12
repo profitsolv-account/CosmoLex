@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
-import {getComparePageData, getPageData} from "@/lib/queries/wordpress";
+import {getPageData} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import CompareParentTemplate from "@/components/templates/CompareParrentTemplate";
+import {getComparePageData} from "@/lib/queries/compare";
 
 const pageSlug = "compare";
 

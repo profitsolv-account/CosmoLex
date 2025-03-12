@@ -4,6 +4,7 @@ import { getPageData } from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import CompareChildTemplate from "@/components/templates/CompareChildTemplate";
+import {getCompareChildPageData} from "@/lib/queries/compare";
 
 type Params = {
     params: Promise<{slug: string}>;
@@ -20,11 +21,12 @@ export default async function PillarPage({params}: Params) {
         const {slug} = await params;
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
-
+        const compareSection = await getCompareChildPageData(slug)
         return <CompareChildTemplate pageData={{
             ...pageData,
             testimonials,
-            footerExtendedBg: true
+            footerExtendedBg: true,
+            compareSection
         }} />
 
     } catch (error) {

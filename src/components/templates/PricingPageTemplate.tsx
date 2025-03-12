@@ -18,7 +18,16 @@ export default function PricingPageTemplate({ pageData }: { pageData: PageDataTy
         <Layout pageData={pageData}>
             <PageHeader pageData={pageData} />
             <PricingBlocks />
-            {pageData.settings && <PriceComparison settings={pageData.settings} plans={pageData.pricingPlans || []}/>}
+
+            <div className="relative">
+                <PriceComparison
+                    settings={pageData.settings}
+                    plans={pageData.pricingPlans || []}
+                    title='Get the right plan for your firm’s needs.'
+                />
+                <div className="bg-primary absolute w-full h-[50%] left-0 bottom-0 rounded-tr-[50px] md:rounded-tr-[100px]" />
+            </div>
+
             {pageData.settings && <AddonsBlock features={features} settings={pageData.settings} />}
             <Testimonials
                 testimonials={testimonials}

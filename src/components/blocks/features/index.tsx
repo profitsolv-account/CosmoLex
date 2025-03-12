@@ -64,7 +64,7 @@ export const Features = ({pageData, className}: Props) => {
                         },
                     }}
                 >
-                    {features.map((tool, index) => (
+                    {[...features, ...features].map((tool, index) => (
                         <SwiperSlide key={index} className="">
                             <div key={index} className="relative bg-white rounded-[20px] p-[25px] h-full">
                                 <div className="mb-2">

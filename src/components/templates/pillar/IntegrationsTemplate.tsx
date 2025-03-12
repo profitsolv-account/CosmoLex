@@ -37,13 +37,13 @@ export default function IntegrationsTemplate({ pageData }: { pageData: PageDataT
                 heading={pageBlocks.pageBlocksTitle}
                 rows={pageBlocks.pageBlocksItems.map((item) => ({
                     className: "rounded-[15px] md:rounded-[30px] overflow-hidden bg-[#D7EFFA] md:!gap-0",
-                    leftContent: <div className="bg-[#D7EFFA] flex flex-col items-center justify-center w-full h-[350px] md:h-full">
+                    leftContent: <div className="bg-[#D7EFFA] flex flex-col items-center justify-center w-full md:h-full">
                         <div className="px-5 py-5 md:px-[92px]">
                             <div className="text-primary-dark text-3xl font-semibold leading-[38px] mb-3">{item.title}</div>
                             <div className="text-primary-dark text-[22px] font-normal leading-9" dangerouslySetInnerHTML={{ __html: item.description || '' }} />
                         </div>
                     </div>,
-                    rightContent: <div className="w-full relative flex justify-center items-center h-[350px] md:h-[463px] bg-white">
+                    rightContent: <div className="w-full relative flex justify-center items-center md:h-[363px] p-2 bg-white">
                         <Image
                             src={item.image?.node?.sourceUrl || ''}
                             alt={item.image?.node?.altText || ''}

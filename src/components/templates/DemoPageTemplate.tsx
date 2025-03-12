@@ -18,7 +18,11 @@ export default function DemoPageTemplate({ pageData }: { pageData: PageDataType 
             <PageHeader pageData={pageData} />
             <RatingBlock className="bg-primary pb-[57px]" />
            {/* <DemoForm />*/}
-            <HubSpotForm />
+            <div className="relative">
+                <HubSpotForm />
+                <div className="bg-primary absolute z-0 w-full h-[190px] left-0 rounded-bl-[100px] top-0" />
+            </div>
+
             <Partners/>
             <Testimonials
                 testimonials={testimonials}
