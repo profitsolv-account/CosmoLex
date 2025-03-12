@@ -40,7 +40,7 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                 </div>
 
                 <div className="pt-10">
-                    {plans.map(({groupName, content}) => (
+                    {plans.map(({groupName, content}, index) => (
                         <CollapsedSection
                             key={groupName}
                             title={
@@ -49,7 +49,7 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                                 </div>
                             }
                             className="px-[30px] py-[9px] bg-[#EDF9F0] rounded-[10px] mb-8"
-                            open
+                            open={index === 0}
                         >
                             <div className="w-full" dangerouslySetInnerHTML={{__html: content || ""}}/>
                         </CollapsedSection>
