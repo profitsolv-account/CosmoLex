@@ -6,11 +6,6 @@ import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {Features} from "@/components/blocks/features";
-import {GuideBlock} from "@/components/blocks/guideBlock";
-import classNames from "classnames";
-import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
-import {ToolsType} from "@/types/tools";
-import Image from 'next/image';
 import {CompareHeader} from "@/components/blocks/compare/compareHeader";
 import {CompareSection} from "../blocks/compare/compareSection";
 import HubSpotForm from "@/components/blocks/hubspotForm";
@@ -21,7 +16,7 @@ export default function CompareChildTemplate({ pageData }: { pageData: PageDataT
     return (
         <Layout pageData={pageData}>
 
-            <CompareHeader pageData={pageData} />
+            <CompareHeader pageData={pageData} className="mb-22" />
 
             <div className="min-h-100">
                 <CompareSection compareSection={pageData.compareSection} />

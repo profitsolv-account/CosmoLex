@@ -1,12 +1,14 @@
 import {PageDataType} from "@/types";
 import {get} from "lodash";
 import Image from "next/image";
+import classNames from "classnames";
 
 type Props = {
-    pageData: PageDataType
+    pageData: PageDataType;
+    className?: string;
 }
 
-export const CompareHeader = ({pageData}:Props) => {
+export const CompareHeader = ({pageData, className}:Props) => {
 
     const title = get(pageData, 'title', '');
     const description  = get(pageData, 'description', '');
@@ -16,7 +18,7 @@ export const CompareHeader = ({pageData}:Props) => {
     const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request Demo');
     const heroImage = get(pageData, 'heroImage', null);
 
-    return <div className="pt-10 mb-10 relative pb-15">
+    return <div className={classNames("pt-10 mb-10 relative pb-15", className)}>
         <div className="px-5 mx-auto max-w-[1100px] justify-center items-center grid md:grid-cols-2 gap-10 relative z-2 md:items-start md:flex-row md:gap-14">
             <div className="">
 

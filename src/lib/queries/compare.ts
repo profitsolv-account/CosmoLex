@@ -2,6 +2,7 @@ import {CompareSectionType, CompareSelectorType} from "@/types/compare";
 import {gql} from "@apollo/client";
 import client from "@/lib/apollo-client";
 import {get} from "lodash";
+import {Feature} from "@/types";
 
 export const getComparePageData = async (): Promise<CompareSelectorType> => {
 
@@ -68,4 +69,33 @@ export const getCompareChildPageData = async (slug: string): Promise<CompareSect
     }
 
     return get(data, 'page.compareSection', {});
+}
+
+
+export const getFeatureData = async (slug: string): Promise<Feature[]> => {
+
+    const query = gql`
+        query GetPage($id: ID!) {
+            page(id: $id, idType: URI) {
+                featuresSection {
+                    features {
+                        title
+                        description
+                    }
+                }
+            }
+        }
+    `;
+
+    const { data } = await client.query({
+        query,
+        variables: { id: slug },
+        fetchPolicy: "no-cache",
+    });
+
+    if (!data.page) {
+        throw new Error("Page not found");
+    }
+
+    return get(data, 'page.featuresSection.features', []);
 }
