@@ -19,11 +19,9 @@ export async function POST(req: Request) {
             revalidatePath('/feature/accounting-finance/[slug]', "page");
             return NextResponse.json({ revalidated: true});
         }*/
-        revalidatePath('/feature', "layout");
-        revalidatePath('/feature/', "layout");
+
         revalidatePath(getPagePath(body.post_url), 'page');
         revalidatePath(getPagePath(body.post_url));
-        revalidateTag(`slug-${body.slug}`);
 
 
         return NextResponse.json({ revalidated: true});
