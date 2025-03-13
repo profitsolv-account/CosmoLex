@@ -16,8 +16,8 @@ export const PillarHeader = ({pageData, className, rightSideContent}:Props) => {
     const subheading = get(pageData, 'subheading', '');
 
     return <div className={classNames("pt-10 relative mb-25", className)}>
-        <div className="px-5 mx-auto max-w-[1218px] justify-center items-center grid md:grid-cols-2 gap-2 relative z-2 lg:flex-row lg:gap-14">
-            <div className="">
+        <div className="px-5 mx-auto max-w-[1218px] justify-center items-center grid md:grid-cols-2 gap-2 lg:items-start relative z-2 lg:flex-row lg:gap-14">
+            <div className="lg:pt-[200px]">
 
                 {subheading &&
                     <div className="relative text-left justify-start text-green text-base font-normal uppercase tracking-wider">{subheading}</div>
