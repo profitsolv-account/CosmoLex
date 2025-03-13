@@ -22,6 +22,8 @@ export default function PillarChildTemplate({ pageData }: { pageData: PageDataTy
         pageBlocksItems: []
     };
 
+    console.log(pageBlocks);
+
     return (
         <Layout pageData={pageData}>
 
@@ -52,6 +54,9 @@ export default function PillarChildTemplate({ pageData }: { pageData: PageDataTy
                     </div>,
                     position: !item.reverse ? "right" : "left",
                 }))}
+                subheading={pageBlocks.pageBlocksSubtitle}
+                heading={pageBlocks.pageBlocksTitle}
+                description={pageBlocks.pageBlocksDescription}
             />}
 
             <div className={classNames("relative", {
