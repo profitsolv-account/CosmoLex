@@ -104,6 +104,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
             description={tools.toolsDescription}
             tabs={tabs}
             items={items}
+            height={"500px"}
         />
     </div>
 }
