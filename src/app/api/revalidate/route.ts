@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
+import {revalidatePath, revalidateTag} from 'next/cache';
 
 const baseUrl = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com/';
 const getPagePath = (url: string) => {
@@ -14,12 +14,16 @@ export async function POST(req: Request) {
         console.log(body);
         console.log(getPagePath(body.post_url));
 
-        const url = getPagePath(body.post_url);
+       /* const url = getPagePath(body.post_url);
         if (url.includes("accounting-finance")) {
             revalidatePath('/feature/accounting-finance/[slug]', "page");
             return NextResponse.json({ revalidated: true});
-        }
+        }*/
+        revalidatePath(getPagePath(body.post_url), 'page');
         revalidatePath(getPagePath(body.post_url));
+        revalidateTag(`slug-${body.slug}`);
+
+
         return NextResponse.json({ revalidated: true});
 
       /*  if (body.post_type === 'page') {
