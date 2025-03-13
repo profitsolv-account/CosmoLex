@@ -22,8 +22,6 @@ export default function PillarChildTemplate({ pageData }: { pageData: PageDataTy
         pageBlocksItems: []
     };
 
-    console.log(pageBlocks);
-
     return (
         <Layout pageData={pageData}>
 

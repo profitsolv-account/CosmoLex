@@ -1,5 +1,5 @@
 import client from "@/lib/apollo-client";
-import {FeaturedPostType, PageDataType} from "@/types";
+import {FeaturedPostType, PageDataType, PricingPlan} from "@/types";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {getAllMenus} from "@/lib/queries/menus";
@@ -123,10 +123,6 @@ export const getPageData = async (
                         type
                         content
                     }
-                    pricingPlans {
-                        groupName
-                        content
-                    }
                 }
                 featuresSection {
                     features {
@@ -160,7 +156,6 @@ export const getPageData = async (
         type: feature.type[0],
         content: feature.content
     }));
-    const pricingPlans = get(data, 'page.pricingSection.pricingPlans', []);
     const tools = data.page.tools;
     const pageBlocks = data.page.pageBlocks;
 
@@ -176,13 +171,42 @@ export const getPageData = async (
         features,
         faq,
         pricingFeatures,
-        pricingPlans,
         subheading,
         tools,
         pageBlocks
     };
 };
 
+
+export const getPricingPlans = async (pageSlug: string): Promise<PricingPlan[]> => {
+    const query = gql`
+        query GetPage($id: ID!) {
+            page(id: $id, idType: URI) {
+                pricingSection {
+                    pricingOption
+                    pricingFeatures {
+                        type
+                        content
+                    }
+                    pricingPlans {
+                        groupName
+                        content
+                    }
+                }
+                
+            }
+        }
+    `;
+
+    const { data } = await client.query({
+        query,
+        variables: { id: pageSlug },
+        fetchPolicy: "no-cache",
+    });
+
+    return get(data, 'page.pricingSection.pricingPlans', []);
+
+}
 
 export const getPostData = async (pageSlug: string): Promise<PostDataType> => {
 

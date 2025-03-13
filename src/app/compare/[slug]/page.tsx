@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
-import { getPageData } from "@/lib/queries/wordpress";
+import {getPageData, getPricingPlans} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import CompareChildTemplate from "@/components/templates/CompareChildTemplate";
@@ -23,12 +23,14 @@ export default async function PillarPage({params}: Params) {
         const testimonials = await getTestimonialsList();
         const compareSection = await getCompareChildPageData(slug);
         const features = await getFeatureData('cosmolex-vs-pclaw');
+        const pricingPlans = await getPricingPlans('pricing');
         return <CompareChildTemplate pageData={{
             ...pageData,
             testimonials,
             footerExtendedBg: true,
             compareSection,
-            features
+            features,
+            pricingPlans
         }} />
 
     } catch (error) {
