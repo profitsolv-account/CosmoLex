@@ -76,9 +76,8 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                         <Image
                             src={t.icon.node.sourceUrl}
                             alt={t.icon.node.altText}
-                            className="w-[30px] h-[30px]"
-                            width={30}
-                            height={30}
+                            width={t.icon.node.mediaDetails.width}
+                            height={t.icon.node.mediaDetails.height}
                         />
                     </div>
                     <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[38px] lg:text-[30px]">{t.title}</div>
