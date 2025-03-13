@@ -70,7 +70,7 @@ export const ComplianceManagement = () => {
     return <>
         <div className="relative">
             <TabbedSlider
-                subheading="Compliance management simplified"
+                subheading="COMPREHENSIVE LEGAL PRACTICE SOFTWARE"
                 heading="Streamline your legal workflow with our comprehensive legal practice software."
                 tabs={tabs}
                 items={items}
