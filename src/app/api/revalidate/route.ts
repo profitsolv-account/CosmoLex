@@ -14,6 +14,11 @@ export async function POST(req: Request) {
         console.log(body);
         console.log(getPagePath(body.post_url));
 
+        const url = getPagePath(body.post_url);
+        if (url.includes("accounting-finance")) {
+            revalidatePath('/feature/accounting-finance', "layout");
+            return NextResponse.json({ revalidated: true});
+        }
         revalidatePath(getPagePath(body.post_url));
         return NextResponse.json({ revalidated: true});
 
