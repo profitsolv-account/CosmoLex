@@ -14,7 +14,7 @@ export async function POST(req: Request) {
         console.log(body);
         console.log(getPagePath(body.post_url));
 
-        revalidatePath(getPagePath(body.post_url), "page");
+        revalidatePath(getPagePath(body.post_url));
         return NextResponse.json({ revalidated: true});
 
       /*  if (body.post_type === 'page') {
