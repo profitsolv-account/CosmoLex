@@ -3,7 +3,7 @@ import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
-import PillarChildTemplate from "@/components/templates/pillar/PillarChildTemplate";
+import PillarChildWithFormTemplate from "@/components/templates/pillar/PillarChildWithFormTemplate";
 
 const slug = 'law-firm-website-builder';
 
@@ -15,11 +15,15 @@ export default async function PillarPage() {
     try {
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
-        return <PillarChildTemplate pageData={{
-            ...pageData,
-            testimonials,
-            footerExtendedBg: true
-        }} />
+        return <PillarChildWithFormTemplate
+            pageData={{
+                ...pageData,
+                testimonials,
+                footerExtendedBg: true,
+            }}
+            formId='02586e92-0cc0-43b6-a937-7a42c176de06'
+            routerName='cosmolex-websites'
+        />
     } catch (error) {
         console.error(error);
         notFound();
