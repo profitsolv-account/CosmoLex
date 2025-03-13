@@ -228,7 +228,7 @@ body {
     }
 
     .abs-bottom {
-        position: absolute;
+        position: absolute!important;
         bottom: 0;
     }
 
