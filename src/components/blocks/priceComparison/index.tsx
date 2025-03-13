@@ -66,7 +66,7 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                 </div>
 
             </div>
-
+            <span className="md:!w-10 md:!h-10"></span>
         </div>
     </div>
 }
