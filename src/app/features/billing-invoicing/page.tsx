@@ -11,7 +11,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
     return await getSEOData(slug);
 }
-
 export default async function PillarPage() {
     try {
         const pageData = await getPageData(slug);
