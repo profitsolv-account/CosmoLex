@@ -1,13 +1,18 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
+const baseUrl = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com/';
+const getPagePath = (url: string) => {
+    return new URL(url, baseUrl).pathname;
+}
+
 export async function POST(req: Request) {
     try {
 
-        const body = await req.json(); // Parse JSON body
-        //console.log('Received data:', body);
+        const body = await req.json();
+
         if (body.post_type === 'page') {
-            revalidatePath(`/${body.slug}`, "page");
+            revalidatePath(getPagePath(body.post_url), "page");
             return NextResponse.json({ revalidated: true});
         } else {
             //TODO:Rewrite to handle real revalidation
