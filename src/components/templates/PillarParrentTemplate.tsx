@@ -82,7 +82,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                     </div>
                     <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[38px] lg:text-[30px]">{t.title}</div>
                     <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[30px] max-w-[350px] lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
-                    <a href={t.link?.url || '/#'}
+                    <a href={'/'}
                        className="w-full block text-center lg:inline-block rounded-[100px] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[30px] py-[15px] lg:w-auto">
                         Explore features
                     </a>
