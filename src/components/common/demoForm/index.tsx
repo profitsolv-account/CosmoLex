@@ -42,8 +42,6 @@ export const DemoForm: FC<Props> = ({formId, routerName}) => {
         document.body.appendChild(script);
     }, []);
 
-    console.log(pathname);
-
     return <div className="w-full min-h-[549px] bg-white rounded-[30px] shadow-[0px_21px_30px_0px_rgba(0,0,0,0.05)] p-10" >
         <div className="text-center justify-start text-primary-dark text-[32px] font-semibold leading-loose mb-10">Schedule a Demo</div>
         <div id="hubspotFormContainer"></div>
@@ -69,7 +67,6 @@ const ChiliPiperForm = ({routerName}: {routerName: string;}) => {
         let routerName: string | undefined;
         const leadValues: Record<string, string> = {};
 
-        // Parse URL parameters
         const uri = decodeURIComponent(
             window.location.href.split("?").length > 1
                 ? window.location.href.split("?")[1].replace(/\+/g, " ")
@@ -86,7 +83,6 @@ const ChiliPiperForm = ({routerName}: {routerName: string;}) => {
         });
 
         if (valid) {
-            // Determine router name based on conditions
             if (leadValues["are_you_an_existing_cosmolex_client_"] === "Yes") {
                 routerName = "cosmolex-websites";
             } else {

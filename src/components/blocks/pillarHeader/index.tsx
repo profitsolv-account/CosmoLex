@@ -12,7 +12,6 @@ type Props = {
 export const PillarHeader = ({pageData, className, rightSideContent}:Props) => {
 
     const title = get(pageData, 'title', '');
-    const description  = get(pageData, 'description', '');
     const subheading = get(pageData, 'subheading', '');
 
     return <div className={classNames("pt-10 relative mb-25", className)}>
