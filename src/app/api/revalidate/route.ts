@@ -22,6 +22,7 @@ export async function POST(req: Request) {
 
         revalidatePath(getPagePath(body.post_url), 'page');
         revalidatePath(getPagePath(body.post_url));
+        revalidatePath(`/compare/[slug]`, "page")
 
 
         return NextResponse.json({ revalidated: true});
