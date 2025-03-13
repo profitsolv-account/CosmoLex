@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
         const url = getPagePath(body.post_url);
         if (url.includes("accounting-finance")) {
-            revalidatePath('/feature/accounting-finance', "layout");
+            revalidatePath('/feature/accounting-finance/[slug]', "page");
             return NextResponse.json({ revalidated: true});
         }
         revalidatePath(getPagePath(body.post_url));
