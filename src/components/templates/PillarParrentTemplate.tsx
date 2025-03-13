@@ -96,7 +96,6 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
             title: t.tabName || t.title,
         }
     ));
-
     return <div className="pt-10">
         <TabbedSlider
             subheading={tools.subtitle}
