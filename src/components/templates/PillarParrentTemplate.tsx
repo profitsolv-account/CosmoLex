@@ -73,12 +73,12 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
             <div className={classNames("grow rounded-tl-[15px] rounded-tr-[15px] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[30px] lg:rounded-tr-[30px] lg:rounded-tl-[0px] overflow-hidden", t.classname)}>
                 <div className="lg:w-[442px] flex-col justify-start items-start gap-5 inline-flex">
                     <div>
-                        <Image
+                        {t.icon?.node && <Image
                             src={t.icon.node.sourceUrl}
                             alt={t.icon.node.altText}
                             width={t.icon.node.mediaDetails.width}
                             height={t.icon.node.mediaDetails.height}
-                        />
+                        />}
                     </div>
                     <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[38px] lg:text-[30px]">{t.title}</div>
                     <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[30px] max-w-[350px] lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
