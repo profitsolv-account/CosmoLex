@@ -5,15 +5,16 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PillarChildTemplate from "@/components/templates/pillar/PillarChildTemplate";
 
-const pageSlug = 'reporting'
+const slug = "time-tracking";
 
 export async function generateMetadata(): Promise<Metadata> {
-    return await getSEOData(pageSlug);
+
+    return await getSEOData(slug);
 }
 
 export default async function PillarPage() {
     try {
-        const pageData = await getPageData(pageSlug);
+        const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
         return <PillarChildTemplate pageData={{
             ...pageData,
