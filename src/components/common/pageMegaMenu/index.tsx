@@ -7,9 +7,10 @@ type Props = {
     footer: MenuType;
     pageData: PageDataType;
     onClose?: () => void;
+    noFooterLinks?: boolean;
 }
 
-export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) => {
+export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLinks, onClose}) => {
 
     if (!content) return null;
     return <>
@@ -46,33 +47,60 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, onClose}) =>
             </div>
         </div>
         <div className="w-full bg-green rounded-bl-[30px] rounded-br-[30px] pt-3.5 pb-2">
-           <div className="container max-w-[1420px] px-4 py-1 flex gap-[50px] items-start">
-               {footer.items.map((submenu) => (
-                   <div key={submenu.title} className="">
-                       <a href={submenu.title} className="block text-primary-dark text-lg font-semibold leading-7 mb-1 transition duration-300 ">
-                           {submenu.title}
-                       </a>
-                       <div className="flex">
-                           <div className="justify-start items-start gap-[50px] grid grid-cols-4">
-                               {submenu.items.map((item) => (
-                                   <div key={item.title} className="mb-3">
-                                       <a href={item.url} className="text-primary-dark text-base font-medium leading-normal transition duration-300 group relative block ">
-                                           <div className="relative z-3">
-                                               {item.title}
-                                               <div className="text-primary-dark text-base font-light leading-normal">
-                                                   {item.description}
-                                               </div>
-                                           </div>
-                                           <div className="p-[14px] rounded-[10px] bg-[#eef8fd] absolute w-full h-full z-0 top-[-14px] left-[-14px] box-content transition-all opacity-0 duration-300 group-hover:opacity-50"/>
-                                       </a>
-                                   </div>
-                               ))}
-                           </div>
-                           <div className="w-full max-w-[328px] rounded-[10px] overflow-hidden ">&nbsp;</div>
-                       </div>
-                   </div>
-               ))}
-           </div>
+            {!noFooterLinks &&  <div className="container max-w-[1420px] px-4 py-1 flex gap-[50px] items-start">
+                {footer.items.map((submenu) => (
+                    <div key={submenu.title} className="">
+                        <a href={submenu.title} className="block text-primary-dark text-lg font-semibold leading-7 mb-2.5 transition duration-300 ">
+                            {submenu.title}
+                        </a>
+                        <div className="flex">
+                            <div className="justify-start items-start gap-[50px] grid grid-cols-4">
+                                {submenu.items.map((item) => (
+                                    <div key={item.title} className="mb-3">
+                                        <a href={item.url} className="text-primary-dark text-base font-medium leading-normal transition duration-300 group relative block ">
+                                            <div className="relative z-3">
+                                                {item.title}
+                                                <div className="text-primary-dark text-base font-light leading-normal">
+                                                    {item.description}
+                                                </div>
+                                            </div>
+                                            <div className="p-[14px] rounded-[10px] bg-[#eef8fd] absolute w-full h-full z-0 top-[-14px] left-[-14px] box-content transition-all opacity-0 duration-300 group-hover:opacity-50"/>
+                                        </a>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="w-full max-w-[328px] rounded-[10px] overflow-hidden ">&nbsp;</div>
+                        </div>
+                    </div>
+                ))}
+            </div>}
+            {noFooterLinks &&  <div className="container max-w-[1420px] px-4 py-1 flex gap-[50px] items-start">
+                {footer.items.map((submenu) => (
+                    <div key={submenu.title} className="">
+                        <div className="block text-primary-dark text-lg font-semibold leading-7 mb-2.5 transition duration-300 ">
+                            {submenu.title}
+                        </div>
+                        <div className="flex">
+                            <div className="justify-start items-start gap-[50px] grid grid-cols-4">
+                                {submenu.items.map((item) => (
+                                    <div key={item.title} className="mb-3">
+                                        <div className="text-primary-dark text-base font-medium leading-normal transition duration-300 {/*group*/} relative block ">
+                                            <div className="relative z-3">
+                                                {item.title}
+                                                <div className="text-primary-dark text-base font-light leading-normal">
+                                                    {item.description}
+                                                </div>
+                                            </div>
+                                            <div className="p-[14px] rounded-[10px] bg-[#eef8fd] absolute w-full h-full z-0 top-[-14px] left-[-14px] box-content transition-all opacity-0 duration-300 group-hover:opacity-50"/>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="w-full max-w-[328px] rounded-[10px] overflow-hidden ">&nbsp;</div>
+                        </div>
+                    </div>
+                ))}
+            </div>}
         </div>
         </>
 }

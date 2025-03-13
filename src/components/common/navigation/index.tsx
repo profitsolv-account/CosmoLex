@@ -50,6 +50,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                     open: false,
                 }));
             }}
+            noFooterLinks
         />,
         "resources": <PageMegaMenu
             content={menus['header-menu-resources']}

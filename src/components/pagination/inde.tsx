@@ -37,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage }) => {
         return pages.map((page, index) => {
             if (page === '...') {
                 return (
-                    <span key={index} className="px-3 py-1 text-gray-500">
+                    <span key={index} className="px-3 py-1 text-gray-500 cursor-pointer">
             {page}
           </span>
                 );
@@ -47,7 +47,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage }) => {
                 <button
                     key={index}
                     onClick={() => handlePageChange(Number(page))}
-                    className={`mx-1 px-3 py-1 rounded-full ${
+                    className={`mx-1 px-3 py-1 rounded-full cursor-pointer ${
                         currentPage === page
                             ? 'bg-black text-white'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
