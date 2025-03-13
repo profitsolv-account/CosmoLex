@@ -24,7 +24,7 @@ const addons:{[key: string]: AddonType} = {"crm": {
     content: '',
 }, "websites":{
     type: 'websites',
-    description: 'Grow Grow your business with a powerful and professional mobile-friendly website.',
+    description: 'Grow your business with a powerful and professional mobile-friendly website.',
     info: 'USD per month billed annually',
     price: 149,
     mPrice: 159,

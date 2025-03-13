@@ -58,7 +58,7 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                 </div>
 
                 <div className="pt-5">
-                    <div className="text-center text-primary-dark text-[28px] font-bold">Ready to dive deeper? Talk to our sales team</div>
+                    <div className="text-center text-primary-dark text-[28px] font-bold">Ready to dive deeper?</div>
                 </div>
                 <div className="flex gap-5  items-center flex-col sm:flex-row md:justify-center pt-10 mb-2">
                     <a href={settings?.demoLink || ''} className="base-btn w-full md:px-7 hover:bg-primary-dark hover:text-white md:w-auto">Request demo</a>
