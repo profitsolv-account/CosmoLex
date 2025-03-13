@@ -9,9 +9,15 @@ const getPagePath = (url: string) => {
 export async function POST(req: Request) {
     try {
 
-        const body = await req.json();
 
-        if (body.post_type === 'page') {
+        const body = await req.json();
+        console.log(body);
+        console.log(getPagePath(body.post_url));
+
+        revalidatePath(getPagePath(body.post_url), "page");
+        return NextResponse.json({ revalidated: true});
+
+      /*  if (body.post_type === 'page') {
             revalidatePath(getPagePath(body.post_url), "page");
             return NextResponse.json({ revalidated: true});
         } else {
@@ -26,7 +32,7 @@ export async function POST(req: Request) {
             revalidatePath(`/[page]`, "page");
             return NextResponse.json({ revalidated: true, body});
         }
-
+*/
 
     } catch (err) {
         console.error(err);
