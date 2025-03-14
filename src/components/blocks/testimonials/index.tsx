@@ -75,9 +75,9 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                       spaceBetween={30}
                       loop={true}
                       modules={[Autoplay, Pagination, Navigation]}
-                     /* autoplay={{
+                      autoplay={{
                           delay: 4500,
-                      }}*/
+                      }}
                       pagination={{
                           clickable: !isNavigationEnabled,
                           enabled: true
