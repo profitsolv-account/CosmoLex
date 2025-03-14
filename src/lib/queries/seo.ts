@@ -8,6 +8,7 @@ export const getSEOData = async (pageSlug: string) => {
         query: gql`
             query GetHomePageSEO {
                 page(id: "${pageSlug}" , idType: URI) {
+                    id
                     title
                     seo {
                         title
@@ -42,6 +43,7 @@ export const getPostSEOData = async (pageSlug: string) => {
         query: gql`
             query GetHomePageSEO {
                 post(id: "${pageSlug}" , idType: URI) {
+                    id
                     title
                     seo {
                         title
