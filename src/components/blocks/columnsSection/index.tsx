@@ -32,7 +32,7 @@ export const ColumnsSection: FC<Props> = ({subheading, heading, description, ite
        <div className={classNames("flex justify-center", {
            "mb-20": hasSubheading
        })}>
-           <div className="max-w-[54.1875rem] inline-flex flex-col justify-start items-center gap-[1.6875rem] mx-auto">
+           <div className="max-w-[52.1875rem] inline-flex flex-col justify-start items-center gap-[1.6875rem] mx-auto">
                {subheading && <div className="relative text-center justify-start text-primary text-base font-normal uppercase tracking-wider">{subheading}</div>}
                {heading && <div className="relative text-center justify-start text-primary text-[2.875rem] font-bold leading-[3.75rem]">{heading}</div>}
                {description && <div className="relative text-center justify-start text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{ __html: description || '' }} />}
