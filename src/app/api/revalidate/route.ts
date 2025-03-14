@@ -11,38 +11,16 @@ export async function POST(req: Request) {
 
 
         const body = await req.json();
-        console.log(body);
-        console.log(getPagePath(body.post_url));
-
-       /* const url = getPagePath(body.post_url);
-        if (url.includes("accounting-finance")) {
-            revalidatePath('/feature/accounting-finance/[slug]', "page");
-            return NextResponse.json({ revalidated: true});
-        }*/
 
         revalidatePath(getPagePath(body.post_url), 'page');
         revalidatePath(getPagePath(body.post_url));
-        revalidatePath(`/compare/[slug]`, "page")
+        revalidatePath(`/compare/[slug]`, "page");
+
+        revalidateTag('graphql');
 
 
         return NextResponse.json({ revalidated: true});
 
-      /*  if (body.post_type === 'page') {
-            revalidatePath(getPagePath(body.post_url), "page");
-            return NextResponse.json({ revalidated: true});
-        } else {
-            //TODO:Rewrite to handle real revalidation
-            revalidatePath(`/blog/[slug]`, "page");
-            revalidatePath(`/blog`);
-            revalidatePath(`/blog/page/[page]`, "page");
-            revalidatePath(`/[slug]`, "page");
-            revalidatePath(`/`);
-            revalidatePath(`/pricing`);
-            revalidatePath(`/features/[page]`, "page");
-            revalidatePath(`/[page]`, "page");
-            return NextResponse.json({ revalidated: true, body});
-        }
-*/
 
     } catch (err) {
         console.error(err);

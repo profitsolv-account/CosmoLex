@@ -15,9 +15,17 @@ const retryLink = new RetryLink({
     attempts: { max: 3 },
 });
 
+const customFetch = (uri: RequestInfo | URL, options: RequestInit = {}) => {
+    return fetch(uri.toString(), {
+        ...options,
+        next: { tags: ['graphql'] },
+        cache: 'force-cache',
+    });
+};
+
 const httpLink = new HttpLink({
     uri: 'https://cosmonew1.wpenginepowered.com/graphql',
-    fetchOptions: { cache: 'force-cache' },
+    fetch: customFetch,
 });
 
 const client = new ApolloClient({
