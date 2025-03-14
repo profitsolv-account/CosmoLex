@@ -7,7 +7,7 @@ export const data = {
                 </div>
                 <div class="w-full md:w-2/3 p-2">
                     <div class=" text-[#91dea4] font-semibold mb-4">eBook</div>
-                    <h2 class="text-primary-dark text-[24px] font-bold leading-[35px] md:text-[30px]">The Five Obstacles of Legal Accounting</h2>
+                    <h2 class="text-primary-dark text-[24px] font-bold leading-[25px] md:text-[25px]">The Five Obstacles of Legal Accounting</h2>
                     <div class="py-4 text-[16px]">
                         <p>Download this eBook to learn the five most common legal accounting challenges and how to avoid making costly mistakes. Topics covered in this resource, include:</p>
                         <ul>
@@ -34,7 +34,7 @@ export const data = {
                 </div>
                 <div class="w-full md:w-2/3 p-2">
                     <div class=" text-[#91dea4] font-semibold mb-4">Checklist</div>
-                    <h2 class="text-primary-dark text-[24px] font-bold leading-[35px] md:text-[30px]">Year-end Accounting Checklist for Law Firms</h2>
+                    <h2 class="text-primary-dark text-[24px] font-bold leading-[25px] md:text-[25px]">Year-end Accounting Checklist for Law Firms</h2>
                     <div class="py-4 text-[16px]">
                         <p>
                             It’s important to regularly review and have a deep understanding of your financial health to ensure
@@ -57,7 +57,7 @@ export const data = {
                 </div>
                 <div class="w-full md:w-2/3 p-2">
                     <div class=" text-[#91dea4] font-semibold mb-4">Guide</div>
-                    <h2 class="text-primary-dark text-[24px] font-bold leading-[35px] md:text-[30px]">9 Tips to Boost Law Practice Success by Getting Back to Basics</h2>
+                    <h2 class="text-primary-dark text-[24px] font-bold leading-[25px] md:text-[25px]">9 Tips to Boost Law Practice Success by Getting Back to Basics</h2>
                     <div class="py-4 text-[16px]">
                         <p>
                             When was the last time you thought about how your law firm conducts its daily operations? Or examined all the little “must-do” tasks to see what could be done more efficiently?
@@ -80,7 +80,7 @@ export const data = {
                 </div>
                 <div class="w-full md:w-2/3 p-2">
                     <div class=" text-[#91dea4] font-semibold mb-4">Infographic</div>
-                    <h2 class="text-primary-dark text-[24px] font-bold leading-[35px] md:text-[30px]">Six Essential Features in Your Legal CRM (and How to Use Them)</h2>
+                    <h2 class="text-primary-dark text-[24px] font-bold leading-[25px] md:text-[25px]">Six Essential Features in Your Legal CRM (and How to Use Them)</h2>
                     <div class="py-4 text-[16px]">
                         <p>
                             While your legal practice management software keeps the daily work of a law firm moving, legal CRM
