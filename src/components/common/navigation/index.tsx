@@ -140,12 +140,12 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                clearTimeout(timer.current);
            }}
            onMouseLeave={() => {
-               timer.current = setTimeout(() => {
+              /* timer.current = setTimeout(() => {
                    setMenuState(st => ({
                        ...st,
                        open: false,
                    }));
-               }, timeClose)
+               }, timeClose)*/
            }}
            duration={1}
         >

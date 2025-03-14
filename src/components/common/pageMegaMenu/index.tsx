@@ -46,14 +46,16 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
               </div>
             </div>
         </div>
+
+
         <div className="w-full bg-green rounded-bl-[1.875rem] rounded-br-[1.875rem] pt-3.5 pb-2">
-            {!noFooterLinks &&  <div className="container max-w-[88.75rem] px-4 py-1 flex gap-[3.125rem] items-start">
+            {!noFooterLinks &&  <div className="container px-4 py-1 flex gap-[3.125rem] items-start">
                 {footer.items.map((submenu) => (
                     <div key={submenu.title} className="">
                         <a href={submenu.title} className="block text-primary-dark text-lg font-semibold leading-7 mb-2.5 transition duration-300 ">
                             {submenu.title}
                         </a>
-                        <div className="flex">
+                        <div className="flex gap-[3.125rem]">
                             <div className="justify-start items-start gap-[3.125rem] grid grid-cols-4">
                                 {submenu.items.map((item) => (
                                     <div key={item.title} className="mb-3">
@@ -74,13 +76,14 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
                     </div>
                 ))}
             </div>}
-            {noFooterLinks &&  <div className="container max-w-[88.75rem] px-4 py-1 flex gap-[3.125rem] items-start">
+
+            {noFooterLinks && <div className="container px-4 py-1 flex gap-[3.125rem] items-start">
                 {footer.items.map((submenu) => (
                     <div key={submenu.title} className="">
                         <div className="block text-primary-dark text-lg font-semibold leading-7 mb-2.5 transition duration-300 ">
                             {submenu.title}
                         </div>
-                        <div className="flex">
+                        <div className="flex gap-[3.125rem]">
                             <div className="justify-start items-start gap-[3.125rem] grid grid-cols-4">
                                 {submenu.items.map((item) => (
                                     <div key={item.title} className="mb-3">
@@ -96,7 +99,7 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
                                     </div>
                                 ))}
                             </div>
-                            <div className="w-full max-w-[20.5rem] rounded-[0.625rem] overflow-hidden ">&nbsp;</div>
+                            <div className="w-full max-w-[21.5rem] rounded-[0.625rem] overflow-hidden ">&nbsp;</div>
                         </div>
                     </div>
                 ))}
