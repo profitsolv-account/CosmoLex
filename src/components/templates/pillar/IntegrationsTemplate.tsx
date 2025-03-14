@@ -9,13 +9,11 @@ import {Features} from "@/components/blocks/features";
 import {GuideBlock} from "@/components/blocks/guideBlock";
 import {ColumnsSection} from "@/components/blocks/columnsSection";
 import {PageBlocksType} from "@/types/tools";
-import {Faq} from "@/components/blocks/faq";
 import Image from 'next/image';
 
 export default function IntegrationsTemplate({ pageData }: { pageData: PageDataType }) {
 
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
-    const faqs = pageData.faq || [];
 
     const pageBlocks: PageBlocksType = pageData.pageBlocks || {
         pageBlocksItems: []
@@ -77,7 +75,7 @@ export default function IntegrationsTemplate({ pageData }: { pageData: PageDataT
                 <GuideBlock className="relative z-10"/>
                 <div className="absolute bottom-0 w-full h-[6.25rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] bg-white"/>
             </div>
-            <Faq faqs={faqs} />
+
             <SimplifyPractice pageData={pageData} className="bg-white"/>
         </Layout>
     )
