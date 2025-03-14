@@ -75,9 +75,9 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                       spaceBetween={30}
                       loop={true}
                       modules={[Autoplay, Pagination, Navigation]}
-                      autoplay={{
+                     /* autoplay={{
                           delay: 4500,
-                      }}
+                      }}*/
                       pagination={{
                           clickable: !isNavigationEnabled,
                           enabled: true
@@ -96,11 +96,11 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                               <SwiperSlide key={`${t.client}_${k}`}>
                                   <div className="h-full min-h-[30.6994rem] flex flex-col text-left rounded-lg md:min-h-[25.4375rem] md:p-16 md:pt-15">
 
-                                      <div className={classNames("w-[21.1875rem] italic  text-[1.9375rem] font-semibold font-['Inter'] leading-10 mb-10 md:w-full md:text-[2.875rem] md:leading-[4rem]", {
+                                      <div className={classNames("w-full italic text-[1.9375rem] font-semibold font-['Inter'] leading-10 mb-10 md:w-full md:text-[2.875rem] md:leading-[4rem]", {
                                             "text-white": theme === 'light',
                                             "text-primary-dark": theme === 'dark'
                                       })}>
-                                          <Quote className="mb-6 md:w-[3.75rem] md:h-[3.75rem]" />
+                                          <Quote className="mb-6 w-[3.75rem] h-[3.75rem]  md:w-[3.75rem] md:h-[3.75rem]" />
                                           {t.content}
                                       </div>
                                       <div className="flex gap-5 items-end md:items-center md:gap-10">
