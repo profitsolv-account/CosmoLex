@@ -13,7 +13,7 @@ const getRedirections = async () => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
         variables: {},
     });
 
