@@ -37,7 +37,7 @@ export const TabbedSlider: FC<Props> = ({items, tabs, subheading, heading, descr
                 {heading}
             </h3>
             }
-            {description && <div className="text-[0.875rem] text-center text-primary-dark md:text-base font-normal uppercase mb-5 tracking-[0.0788rem] md:mb-20">{description}</div>}
+            {description && <div className="text-[0.875rem] text-center text-primary-dark md:text-base font-normal mb-5 tracking-[0.0788rem] md:mb-20">{description}</div>}
             <Tabs tabs={tabs} activeIndex={activeIndex} onTabClick={handleTabClick} />
         </div>
 

@@ -32,6 +32,7 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
                         {subheading &&
                             <div className="relative text-center justify-start text-green text-base font-normal uppercase tracking-wider">{subheading}</div>
                         }
+
                         <div className="pt-6 mb-3">
                             <h1 className="home-title text-white text-[2.875rem] font-medium leading-[3.375rem] lg:text-[3.375rem] xl:text-[3.75rem] xl:leading-[3.75rem] xl:font-normal lg:block" dangerouslySetInnerHTML={{__html: title}} />
                         </div>
