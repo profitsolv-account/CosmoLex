@@ -46,7 +46,7 @@ export const ColumnsSection: FC<Props> = ({subheading, heading, description, ite
                 className={item.className}
                 content={<>
                     <div className="relative justify-start">
-                        <div className="text-primary-dark text-[2.875rem] font-bold leading-[3.4375rem] mb-2">{item.title}</div>
+                        <div className="text-primary-dark text-[2.3rem] font-bold leading-[3.4375rem] mb-2">{item.title}</div>
                         <div className="text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{ __html: item.description || '' }} />
                     </div>
                 </>}
