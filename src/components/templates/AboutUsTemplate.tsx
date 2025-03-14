@@ -20,7 +20,7 @@ export default function AboutUsTemplate({pageData}: { pageData: PageDataType }) 
             <PageHeader
                 pageData={pageData}
                 className="mb-0 pb-10 bg-primary"
-                containerClassName="!max-w-[400px]"
+                containerClassName="!max-w-[25rem]"
             />
 
             <AboutCards />
@@ -29,9 +29,9 @@ export default function AboutUsTemplate({pageData}: { pageData: PageDataType }) 
                 <PersonCard member={firstMember} className={classNames("mb-10 relative z-10", {
                     'lg:!flex-row-reverse': true
                 })} />
-                <div className="absolute w-full z-0 bg-white h-[70%] lg:h-[100px] bottom-0 left-0 rounded-tr-[50px]  md:rounded-tr-[100px]"/>
+                <div className="absolute w-full z-0 bg-white h-[70%] lg:h-[6.25rem] bottom-0 left-0 rounded-tr-[3.125rem]  md:rounded-tr-[6.25rem]"/>
             </div>
-            <div className="relative z-10 bg-white rounded-bl-[50px] md:rounded-bl-[100px] pb-12 mb-15">
+            <div className="relative z-10 bg-white rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] pb-12 mb-15">
                 {restMembers.map((member, index) => (
                     <PersonCard key={index} member={member} className={classNames("mb-10 relative z-10", {
                         'lg:!flex-row-reverse': index % 2 !== 0

@@ -43,7 +43,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, videoId }) => 
                         <div className="wistia_swatch absolute inset-0 w-full h-full opacity-0 overflow-hidden transition-opacity duration-200">
                             <img
                                 src={`https://fast.wistia.com/embed/medias/${videoId}/swatch`}
-                                style={{ filter: 'blur(5px)', objectFit: 'contain' }}
+                                style={{ filter: 'blur(0.3125rem)', objectFit: 'contain' }}
                                 alt=""
                                 aria-hidden="true"
                                 onLoad={(e) => {
@@ -57,7 +57,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose, videoId }) => 
                     </div>
                 </div>
                 <button
-                    className="absolute text-gray-600 rounded-4xl bg-white w-10 h-10 cursor-pointer flex items-center justify-center top-[-45px] right-[-45px] transition-all duration-200 hover:bg-primary-dark hover:text-white"
+                    className="absolute text-gray-600 rounded-4xl bg-white w-10 h-10 cursor-pointer flex items-center justify-center top-[-2.8125rem] right-[-2.8125rem] transition-all duration-200 hover:bg-primary-dark hover:text-white"
                     onClick={onClose}
                 >
                     ✕

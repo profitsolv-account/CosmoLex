@@ -19,6 +19,6 @@ export const AboutCards = () => {
                 className="bg-yellow"
             />
         </div>
-        <div className="absolute h-[30%] top-0 left-0 w-full bg-primary rounded-bl-[50px] md:rounded-bl-[100px] z-0" />
+        <div className="absolute h-[30%] top-0 left-0 w-full bg-primary rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] z-0" />
     </div>
 }

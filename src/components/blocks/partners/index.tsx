@@ -35,8 +35,8 @@ export const Partners: FC<Props> = ({className}) => {
 
     return (
         <>
-            <div className={classNames("container-s relative pt-20 overflow-hidden mb-[121px] px-4", className)}>
-                <div className="text-primary-dark  text-[22px] font-semibold font-['Inter'] leading-loose mb-5 md:text-[32px]">
+            <div className={classNames("container-s relative pt-20 overflow-hidden mb-[7.5625rem] px-4", className)}>
+                <div className="text-primary-dark  text-[1.375rem] font-semibold font-['Inter'] leading-loose mb-5 md:text-[2rem]">
                     Trusted Industry Partners
                 </div>
                 <div className="w-full overflow-hidden">
@@ -54,8 +54,8 @@ export const Partners: FC<Props> = ({className}) => {
                         }}
                     >
                         {slides.map((src, index) => (
-                            <SwiperSlide key={index} style={{ width: '203px' }}>
-                                <div className="bg-white rounded-[10px] flex justify-center items-center overflow-hidden w-[203px] h-[121px]">
+                            <SwiperSlide key={index} style={{ width: '12.6875rem' }}>
+                                <div className="bg-white rounded-[0.625rem] flex justify-center items-center overflow-hidden w-[12.6875rem] h-[7.5625rem]">
                                     <img className="object-contain" src={src} alt={`Slide ${index}`} />
                                 </div>
                             </SwiperSlide>

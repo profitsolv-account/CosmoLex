@@ -73,7 +73,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ children, fullWidth, isOpen, setIsO
                         ref={menuRef}
                         className={classNames(`overflow-hidden absolute z-50 container !duration-${duration}`, {
                             'w-full translate-x-[-50%]': fullWidth,
-                            'w-[200px]': !fullWidth,
+                            'w-[12.5rem]': !fullWidth,
                         })}
                         style={{left: fullWidth ? `50%` : `${left}px`}}
                         onMouseOver={() => {

@@ -1,5 +1,5 @@
 .video-slider {
-    @media (min-width: 1024px) {
+    @media (min-width: 64rem) {
         .slide-content-inner {
             opacity: 1;
             transition: all .5s;

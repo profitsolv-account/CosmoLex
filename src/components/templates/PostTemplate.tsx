@@ -12,7 +12,7 @@ export default function PostTemplate({pageData}: { pageData: PostDataType }) {
                 <div>
                     <section>
                         <section className="mx-auto py-4 text-left md:py-16">
-                            <h2 className=" text-primary text-[34px] font-bold font-['Inter'] leading-[55px] md:text-[46px]"
+                            <h2 className=" text-primary text-[2.125rem] font-bold font-['Inter'] leading-[3.4375rem] md:text-[2.875rem]"
                                 dangerouslySetInnerHTML={{__html: pageData?.title || ""}}/>
                         </section>
                         {pageData.featuredImage && <>

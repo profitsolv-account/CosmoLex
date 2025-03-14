@@ -12,13 +12,13 @@ import classNames from "classnames";
 export const Footer = ({pageData}: {pageData: PageDataType}) => {
 //footerExtendedBg
     return (<div className="relative">
-        <div className={classNames("absolute top-[-10px] left-0 w-full h-full bg-primary z-0 rounded-tr-[20px] md:rounded-tr-[100px]", {
-            "top-[-100px]": pageData.footerExtendedBg
+        <div className={classNames("absolute top-[-0.625rem] left-0 w-full h-full bg-primary z-0 rounded-tr-[1.25rem] md:rounded-tr-[6.25rem]", {
+            "top-[-6.25rem]": pageData.footerExtendedBg
         })} />
 
         <Navigations pageData={pageData} />
          <div className="w-full relative bg-[#eef8fd] flex items-center justify-center py-5">
-            <div className="container max-w-[1266px] flex flex-col justify-between gap-5 items-center lg:flex-row">
+            <div className="container max-w-[79.125rem] flex flex-col justify-between gap-5 items-center lg:flex-row">
                 <div className="text-center text-2xl font-bold font-['Inter']">
                     <OtherCompaniesIcon className="max-w-full" />
                 </div>

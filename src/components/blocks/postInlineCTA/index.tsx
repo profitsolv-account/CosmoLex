@@ -101,14 +101,14 @@ export const PostInlineCTA = async ({shortcode}: Props) => {
             </div>
             <div className="w-full md:w-2/3 p-2">
                 <div className=" text-[#91dea4] font-semibold mb-4">{ctaData.type}</div>
-                <h2 className="text-primary-dark text-[24px] font-bold leading-[35px] md:text-[30px]">{ctaData.title}</h2>
-                <div className="py-4 text-[16px]">
+                <h2 className="text-primary-dark text-[1.5rem] font-bold leading-[2.1875rem] md:text-[1.875rem]">{ctaData.title}</h2>
+                <div className="py-4 text-[1rem]">
                     {ctaData.content}
                 </div>
                 <a
                     href={ctaData.ctaLink}
                     target="_blank"
-                    className="no-underline inline-block h-11 px-5 pt-2.5 pb-3 bg-primary-dark border border-primary-dark rounded-[100px] text-center text-white text-base font-normal transition duration-300 hover:bg-transparent hover:text-primary-dark">
+                    className="no-underline inline-block h-11 px-5 pt-2.5 pb-3 bg-primary-dark border border-primary-dark rounded-[6.25rem] text-center text-white text-base font-normal transition duration-300 hover:bg-transparent hover:text-primary-dark">
                     {ctaData.ctaText}
                 </a>
             </div>

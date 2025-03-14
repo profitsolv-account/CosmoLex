@@ -25,11 +25,11 @@ export const Features = ({pageData, className}: Props) => {
     const features = get(pageData, "features", []) || [];
 
     return <div id="features" className={classNames("px-2 relative z-10 pt-10 md:pt-22 features-block", className)}>
-        <div className="max-w-[1352px] mx-auto bg-salmon rounded-[30px] px-[34px] py-[71px]">
-            <div className="text-center max-w-[750px] mx-auto">
+        <div className="max-w-[84.5rem] mx-auto bg-salmon rounded-[1.875rem] px-[2.125rem] py-[4.4375rem]">
+            <div className="text-center max-w-[46.875rem] mx-auto">
                 <div className="text-center text-primary text-base font-normal font-['Inter'] uppercase tracking-wider mb-5">ONE END-TO-END solution</div>
-                <h3 className="leading-[42px] text-[36px] text-center text-primary-dark  font-bold font-['Inter'] md:leading-[52px] md:text-[46px] mb-7">All the tools your firm needs to run your business. </h3>
-                <p className="text-center text-primary-dark text-base font-normal font-['Inter'] leading-[30px]">
+                <h3 className="leading-[2.625rem] text-[2.25rem] text-center text-primary-dark  font-bold font-['Inter'] md:leading-[3.25rem] md:text-[2.875rem] mb-7">All the tools your firm needs to run your business. </h3>
+                <p className="text-center text-primary-dark text-base font-normal font-['Inter'] leading-[1.875rem]">
                     Built with the needs of modern small and mid-sized law firms in mind, CosmoLex’s legal practice management software increases efficiency and profitability.
                 </p>
 
@@ -41,9 +41,9 @@ export const Features = ({pageData, className}: Props) => {
 
             <div className="relative pt-20">
 
-                <div className="hidden absolute z-11 right-[34px] top-[-5px] gap-5 lg:flex">
-                    <IconRLeft className="button-prev-features w-[47px] cursor-pointer" />
-                    <IconRLeft className="button-next-features w-[47px] rotate-180 cursor-pointer" />
+                <div className="hidden absolute z-11 right-[2.125rem] top-[-0.3125rem] gap-5 lg:flex">
+                    <IconRLeft className="button-prev-features w-[2.9375rem] cursor-pointer" />
+                    <IconRLeft className="button-next-features w-[2.9375rem] rotate-180 cursor-pointer" />
                 </div>
 
                 <Swiper
@@ -66,7 +66,7 @@ export const Features = ({pageData, className}: Props) => {
                 >
                     {[...features, ...features].map((tool, index) => (
                         <SwiperSlide key={index} className="">
-                            <div key={index} className="relative bg-white rounded-[20px] p-[25px] h-full">
+                            <div key={index} className="relative bg-white rounded-[1.25rem] p-[1.5625rem] h-full">
                                 <div className="mb-2">
                                     <Check />
                                 </div>

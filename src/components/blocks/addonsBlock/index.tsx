@@ -44,11 +44,11 @@ export const AddonsBlock: FC<Props> = ({features, settings}) => {
     } as AddonType));
 
     return <div className="relative pb-10 pt-10">
-        <div className="max-w-[1085px] mx-auto relative z-10 flex flex-col gap-5 px-2">
-            <Heading className="md:max-w-[845px] text-white">Game-changing add-ons to accelerate your law firms growth.</Heading>
+        <div className="max-w-[67.8125rem] mx-auto relative z-10 flex flex-col gap-5 px-2">
+            <Heading className="md:max-w-[52.8125rem] text-white">Game-changing add-ons to accelerate your law firms growth.</Heading>
             {priceAddons.map((data) => ( <Addon addon={data} key={data.type} settings={settings} />))}
         </div>
-        <div className="bg-primary h-[400px] rounded-bl-[50px] md:rounded-bl-[100px] absolute top-0 left-0 w-full" />
+        <div className="bg-primary h-[25rem] rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] absolute top-0 left-0 w-full" />
     </div>
 }
 
@@ -59,26 +59,26 @@ type AddonProps = {
 
 export const Addon: FC<AddonProps> = ({addon, settings}) => {
     const media: {[index: string]: ReactNode} = {
-        'crm': <div className="bg-green rounded-[20px] p-10 w-full h-[200px] flex items-center justify-center">
-            <LogoDark className="max-w-[145px]" />
-            <Crm className="max-w-[50px]"/>
+        'crm': <div className="bg-green rounded-[1.25rem] p-10 w-full h-[12.5rem] flex items-center justify-center">
+            <LogoDark className="max-w-[9.0625rem]" />
+            <Crm className="max-w-[3.125rem]"/>
         </div>,
-        'websites': <div className="bg-salmon rounded-[20px] p-10 w-full h-[200px] flex items-center justify-center">
-            <LogoDark className="max-w-[145px]" />
-            <WebsiteIcon className="max-w-[85px]"/>
+        'websites': <div className="bg-salmon rounded-[1.25rem] p-10 w-full h-[12.5rem] flex items-center justify-center">
+            <LogoDark className="max-w-[9.0625rem]" />
+            <WebsiteIcon className="max-w-[5.3125rem]"/>
         </div>
     }
-    return <div className="rounded-[15px] px-[33px] py-[31px] flex flex-col items-start gap-[27px] justify-center w-full bg-white md:flex-row md:justify-start md:rounded-[30px]">
-        <div className="w-full md:w-[305px] md:flex-none">
+    return <div className="rounded-[0.9375rem] px-[2.0625rem] py-[1.9375rem] flex flex-col items-start gap-[1.6875rem] justify-center w-full bg-white md:flex-row md:justify-start md:rounded-[1.875rem]">
+        <div className="w-full md:w-[19.0625rem] md:flex-none">
             {media[addon.type]}
             <div className="pt-9">
-                <div className="text-primary-dark text-[46px] font-bold leading-[48px] mb-1">${addon.price}</div>
-                <div className="text-primary-dark text-[8.80px] font-normal mb-0">{addon.info}</div>
-                <div className="text-primary-dark text-[11.20px] font-semibold">${addon.mPrice} USD month-to-month</div>
+                <div className="text-primary-dark text-[2.875rem] font-bold leading-[3rem] mb-1">${addon.price}</div>
+                <div className="text-primary-dark text-[0.55rem] font-normal mb-0">{addon.info}</div>
+                <div className="text-primary-dark text-[0.7rem] font-semibold">${addon.mPrice} USD month-to-month</div>
             </div>
         </div>
         <div className="grow" dangerouslySetInnerHTML={{__html: addon.content}} />
-        <div className="w-[200px] flex-none">
+        <div className="w-[12.5rem] flex-none">
             <a href={settings.demoLink} className="base-btn w-full md:px-7 bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark md:w-auto">Request a demo</a>
         </div>
     </div>

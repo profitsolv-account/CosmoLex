@@ -63,9 +63,9 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                 }));
             }}
         />,
-        "about": <div className="w-[195px] bg-white rounded-bl-[30px] rounded-br-[30px] p-6 pr-0">
-            <a href="/about-cosmolex" className="block text-primary-dark text-[16px] font-medium font-['Inter'] leading-9 mb-2">About CosmoLex</a>
-            <a href="/about-us" className="block text-primary-dark text-[16px] font-medium font-['Inter'] leading-9">Our Team</a>
+        "about": <div className="w-[12.1875rem] bg-white rounded-bl-[1.875rem] rounded-br-[1.875rem] p-6 pr-0">
+            <a href="/about-cosmolex" className="block text-primary-dark text-[1rem] font-medium font-['Inter'] leading-9 mb-2">About CosmoLex</a>
+            <a href="/about-us" className="block text-primary-dark text-[1rem] font-medium font-['Inter'] leading-9">Our Team</a>
         </div>
     }
 
@@ -73,7 +73,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
         <ul className={classNames(className)}>
             <li className="cursor-pointer">
                 <span
-                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold w-[82px] text-center flex items-center justify-center", {
+                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold w-[5.125rem] text-center flex items-center justify-center", {
                         "!font-bold": menuState.selectedMenu === 'solutions' && menuState.open
                     })}
                     onClick={() => {
@@ -86,16 +86,16 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                     }}
                 >
                     Solutions
-                    <ChevroneIcon className="w-[24px] flex-none stroke-green" />
+                    <ChevroneIcon className="w-[1.5rem] flex-none stroke-green" />
                 </span>
             </li>
             <li className="cursor-pointer">
-                <a className="block  text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold  w-[58px] text-center"
+                <a className="block  text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold  w-[3.625rem] text-center"
                    href="/pricing">Pricing</a>
             </li>
             <li className="cursor-pointer">
                 <span
-                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold  w-[85px] text-center flex items-center justify-center", {
+                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold  w-[5.3125rem] text-center flex items-center justify-center", {
                         "!font-bold": menuState.selectedMenu === 'resources' && menuState.open
                     })}
                     onClick={() => {
@@ -106,12 +106,12 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             selectedMenu: "resources"
                         });
                     }}
-                >Resources <ChevroneIcon className="w-[24px] flex-none stroke-green" /></span>
+                >Resources <ChevroneIcon className="w-[1.5rem] flex-none stroke-green" /></span>
             </li>
             <li className="cursor-pointer">
                 <span
                     ref={triggerRef}
-                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[15px] py-7 transition-all duration-200 hover:font-bold w-[50px] text-center flex items-center justify-center", {
+                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold w-[3.125rem] text-center flex items-center justify-center", {
                         "!font-bold": menuState.selectedMenu === 'about' && menuState.open
                     })}
                     onClick={() => {
@@ -122,7 +122,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                             selectedMenu: "about"
                         });
                     }}
-                >About <ChevroneIcon className="w-[24px] flex-none stroke-green" /></span>
+                >About <ChevroneIcon className="w-[1.5rem] flex-none stroke-green" /></span>
             </li>
         </ul>
 

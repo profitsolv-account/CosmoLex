@@ -139,7 +139,7 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                             <Button variant="primary" href={getSetting('freeTrialLink')}>Try for free</Button>
                         </div>
 
-                        <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-[22px] font-normal font-['Inter']">Login</Link>
+                        <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-[1.375rem] font-normal font-['Inter']">Login</Link>
 
                         <ul className="w-full mt-4">
                             {Object.entries(combinedMenus()).map(

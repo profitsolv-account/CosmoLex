@@ -46,24 +46,24 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
     }, []);
 
     return (
-        <section className={classNames("testimonials-section bg-white px-7 pt-25 pb-[63px] md:pb-24 relative", className, {
+        <section className={classNames("testimonials-section bg-white px-7 pt-25 pb-[3.9375rem] md:pb-24 relative", className, {
             "theme-light": theme === 'light',
         })}>
             {bgOverlay && <>
-                <div className="absolute top-[-150px] left-0 w-full h-full bg-white z-0 rounded-tr-[100px]" />
-                <div className="absolute bottom-[-150px] left-0 w-full h-full bg-white z-0 rounded-bl-[100px]" />
+                <div className="absolute top-[-9.375rem] left-0 w-full h-full bg-white z-0 rounded-tr-[6.25rem]" />
+                <div className="absolute bottom-[-9.375rem] left-0 w-full h-full bg-white z-0 rounded-bl-[6.25rem]" />
             </>}
-          <div className="max-w-[1140px] mx-auto relative z-10">
+          <div className="max-w-[71.25rem] mx-auto relative z-10">
               <div className="relative lg:px-1">
 
-                  {showNavigation && <div className="hidden absolute z-11  right-[34px] top-[26px] gap-5 lg:flex">
+                  {showNavigation && <div className="hidden absolute z-11  right-[2.125rem] top-[1.625rem] gap-5 lg:flex">
                       <IconRLeft
-                          className={classNames("button-prev-t w-[47px] cursor-pointer", {
+                          className={classNames("button-prev-t w-[2.9375rem] cursor-pointer", {
                               'stroke-white': theme === 'light'
                           })}
                       />
                       <IconRLeft
-                          className={classNames("button-next-t w-[47px] rotate-180 cursor-pointer", {
+                          className={classNames("button-next-t w-[2.9375rem] rotate-180 cursor-pointer", {
                               'stroke-white': theme === 'light'
                           })}
                       />
@@ -94,30 +94,30 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                       {
                           testimonials.map((t, k) => (
                               <SwiperSlide key={`${t.client}_${k}`}>
-                                  <div className="h-full min-h-[491.19px] flex flex-col text-left rounded-lg md:min-h-[407px] md:p-16 md:pt-15">
+                                  <div className="h-full min-h-[30.6994rem] flex flex-col text-left rounded-lg md:min-h-[25.4375rem] md:p-16 md:pt-15">
 
-                                      <div className={classNames("w-[339px] italic  text-[31px] font-semibold font-['Inter'] leading-10 mb-10 md:w-full md:text-[46px] md:leading-[64px]", {
+                                      <div className={classNames("w-[21.1875rem] italic  text-[1.9375rem] font-semibold font-['Inter'] leading-10 mb-10 md:w-full md:text-[2.875rem] md:leading-[4rem]", {
                                             "text-white": theme === 'light',
                                             "text-primary-dark": theme === 'dark'
                                       })}>
-                                          <Quote className="mb-6 md:w-[60px] md:h-[60px]" />
+                                          <Quote className="mb-6 md:w-[3.75rem] md:h-[3.75rem]" />
                                           {t.content}
                                       </div>
                                       <div className="flex gap-5 items-end md:items-center md:gap-10">
                                           <div>
-                                              <img src={userPic.src} alt="user-pic" className="w-[94px] h-[94px] md:w-[112px] md:h-[112px]" />
+                                              <img src={userPic.src} alt="user-pic" className="w-[5.875rem] h-[5.875rem] md:w-[7rem] md:h-[7rem]" />
                                           </div>
                                           <div>
-                                              <div className={classNames("text-primary-dark text-xl font-semibold font-['Inter'] leading-[14px] mb-3", {
+                                              <div className={classNames("text-primary-dark text-xl font-semibold font-['Inter'] leading-[0.875rem] mb-3", {
                                                   "text-white": theme === 'light',
                                                   "text-primary-dark": theme === 'dark'
                                               })}>{t.client}</div>
-                                              <div className={classNames("text-primary-dark text-base font-light font-['Inter'] leading-[14px] mb-3", {
+                                              <div className={classNames("text-primary-dark text-base font-light font-['Inter'] leading-[0.875rem] mb-3", {
                                                   "text-white": theme === 'light',
                                                   "text-primary-dark": theme === 'dark'
                                               })}>{t.position}</div>
                                               <div
-                                                  className={classNames("w-[87px] h-6 px-[37px] py-[11px] bg-[#eef8fd] rounded-[20px] justify-center items-center gap-2.5 inline-flex", {
+                                                  className={classNames("w-[5.4375rem] h-6 px-[2.3125rem] py-[0.6875rem] bg-[#eef8fd] rounded-[1.25rem] justify-center items-center gap-2.5 inline-flex", {
                                                       "!bg-white" : !bgOverlay
                                                   })}>
                                                   <div

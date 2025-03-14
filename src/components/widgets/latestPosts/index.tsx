@@ -12,7 +12,7 @@ export const LatestPosts:FC<Props> = ({posts}) => {
             <div className="">
                 {posts.map((post, index) => (
                     <a href={`/blog/${post.slug}`} key={index} className="overflow-hidden flex gap-4 mb-4">
-                        <div className="w-[80px] h-[80px] rounded-[10px] overflow-hidden bg-gray-100 flex-none items-start">
+                        <div className="w-[5rem] h-[5rem] rounded-[0.625rem] overflow-hidden bg-gray-100 flex-none items-start">
                             {post.featuredImage && <Image
                                 src={post.featuredImage.sourceUrl}
                                 alt={post.featuredImage.altText}

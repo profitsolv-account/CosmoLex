@@ -17,17 +17,17 @@ export const SimplifyPractice:FC<Props> = ({pageData, className}) => {
     return (
         <div className={classNames("pt-20 md:pt-30" ,className)}>
             <div className="container">
-                <div className="w-full max-w-[320px] mx-auto relative z-10 md:max-w-[1171px]">
+                <div className="w-full max-w-[20rem] mx-auto relative z-10 md:max-w-[73.1875rem]">
                     <Heading>
                         Simplify your practice with one tool.
                     </Heading>
-                    <div className="flex flex-col gap-5 md:flex-row md:gap-[37px]">
-                        <div className="flex flex-col justify-between w-full bg-[#badfc3] rounded-[15px] pt-10 overflow-hidden md:w-1/2 md:rounded-[30px] md:pt-18">
+                    <div className="flex flex-col gap-5 md:flex-row md:gap-[2.3125rem]">
+                        <div className="flex flex-col justify-between w-full bg-[#badfc3] rounded-[0.9375rem] pt-10 overflow-hidden md:w-1/2 md:rounded-[1.875rem] md:pt-18">
 
                             <div className="px-9 mb-10">
 
-                                <h4 className="text-center text-primary-dark text-3xl font-bold leading-[50px] tracking-[-1px] mb-3 md:text-[40px] md:mb-7">Book a demo.</h4>
-                                <p className="text-center text-primary-dark text-base font-medium leading-[25px] mb-6 md:max-w-[380px] md:mx-auto md:text-lg md:mb-8">
+                                <h4 className="text-center text-primary-dark text-3xl font-bold leading-[3.125rem] tracking-[-0.0625rem] mb-3 md:text-[2.5rem] md:mb-7">Book a demo.</h4>
+                                <p className="text-center text-primary-dark text-base font-medium leading-[1.5625rem] mb-6 md:max-w-[23.75rem] md:mx-auto md:text-lg md:mb-8">
                                     Tell us your needs, and we’ll show you how to personalize CosmoLex for them.
                                 </p>
                                 <div className="flex justify-center">
@@ -35,24 +35,24 @@ export const SimplifyPractice:FC<Props> = ({pageData, className}) => {
                                 </div>
                             </div>
 
-                            <div className="w-full h-[207px] relative flex justify-between gap-2.5">
+                            <div className="w-full h-[12.9375rem] relative flex justify-between gap-2.5">
 
-                                <div className="h-[207px] left-0 top-0 relative rounded-tr-[5px] rounded-bl-[15px]  bg-cover bg-[-160px_center] bg-no-repeat w-[30%]" style={{
+                                <div className="h-[12.9375rem] left-0 top-0 relative rounded-tr-[0.3125rem] rounded-bl-[0.9375rem]  bg-cover bg-[-10rem_center] bg-no-repeat w-[30%]" style={{
                                     backgroundImage: "url("+workInTeam.src+")",
                                 }} />
-                                <div className="h-[178px] top-[29px] relative rounded-tl-[5px] rounded-tr-[5px] bg-cover bg-[-60px_center] bg-no-repeat w-[40%]" style={{
+                                <div className="h-[11.125rem] top-[1.8125rem] relative rounded-tl-[0.3125rem] rounded-tr-[0.3125rem] bg-cover bg-[-3.75rem_center] bg-no-repeat w-[40%]" style={{
                                     backgroundImage: "url("+goodExperience.src+")",
                                 }}/>
-                                <div className="h-[207px] top-0 relative rounded-tl-[5px] rounded-br-[15px] bg-cover bg-[-120px_center] bg-no-repea w-[30%]" style={{
+                                <div className="h-[12.9375rem] top-0 relative rounded-tl-[0.3125rem] rounded-br-[0.9375rem] bg-cover bg-[-7.5rem_center] bg-no-repea w-[30%]" style={{
                                     backgroundImage: "url("+workRemotely.src+")",
                                 }}/>
                             </div>
                         </div>
 
-                        <div className="w-[320px] bg-[#fd937a] rounded-[15px] px-5 pt-10 overflow-hidden md:w-1/2 md:rounded-[30px] md:pt-18">
+                        <div className="w-[20rem] bg-[#fd937a] rounded-[0.9375rem] px-5 pt-10 overflow-hidden md:w-1/2 md:rounded-[1.875rem] md:pt-18">
                             <div className="px-4 mb-10">
-                                <h4 className="text-center text-primary-dark text-3xl font-bold leading-[50px] tracking-[-1px] mb-3 md:text-[40px] md:mb-7">Try for free.</h4>
-                                <p className="text-center text-primary-dark text-base font-medium leading-[25px] mb-6 md:max-w-[380px] md:mx-auto md:text-lg md:mb-8">
+                                <h4 className="text-center text-primary-dark text-3xl font-bold leading-[3.125rem] tracking-[-0.0625rem] mb-3 md:text-[2.5rem] md:mb-7">Try for free.</h4>
+                                <p className="text-center text-primary-dark text-base font-medium leading-[1.5625rem] mb-6 md:max-w-[23.75rem] md:mx-auto md:text-lg md:mb-8">
                                     No wait. No credit card. Just click to try CosmoLex for 10 days.
                                 </p>
                                 <div className="flex justify-center">
@@ -60,7 +60,7 @@ export const SimplifyPractice:FC<Props> = ({pageData, className}) => {
                                 </div>
                             </div>
 
-                            <div className="h-[162px] rounded-tl-[10px] rounded-tr-[10px] md:h-[245px] flex items-end justify-center">
+                            <div className="h-[10.125rem] rounded-tl-[0.625rem] rounded-tr-[0.625rem] md:h-[15.3125rem] flex items-end justify-center">
                                 <img src={DemoScreen.src} alt="demo-screen" className="relative top-0.5"/>
                             </div>
                         </div>

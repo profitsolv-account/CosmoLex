@@ -26,12 +26,12 @@ export const MatterCentric: FC<Props> = ({setting}) => {
     ];
 
     return <div className="px-4">
-        <div className="max-w-[351px] mx-auto bg-green rounded-[30px] pt-[43px] md:max-w-[1064px] md:pt-[75px] relative z-10">
-            <div className="px-10 mb-4 md:max-w-[680px] md:mx-auto md:mb-10">
-                <h3 className="text-center text-primary-dark text-4xl font-bold font-['Inter'] leading-[48px] mb-4 md:text-[46px] md:leading-[56px]">
+        <div className="max-w-[21.9375rem] mx-auto bg-green rounded-[1.875rem] pt-[2.6875rem] md:max-w-[66.5rem] md:pt-[4.6875rem] relative z-10">
+            <div className="px-10 mb-4 md:max-w-[42.5rem] md:mx-auto md:mb-10">
+                <h3 className="text-center text-primary-dark text-4xl font-bold font-['Inter'] leading-[3rem] mb-4 md:text-[2.875rem] md:leading-[3.5rem]">
                     Matter-centric by design.
                 </h3>
-                <p className="text-center text-primary-dark text-base font-normal font-['Inter'] leading-[30px]">
+                <p className="text-center text-primary-dark text-base font-normal font-['Inter'] leading-[1.875rem]">
                     The only fully built-in matter management and firm accounting solution for small and mid-sized law firms.
                 </p>
             </div>
@@ -41,13 +41,13 @@ export const MatterCentric: FC<Props> = ({setting}) => {
                    <a href={setting["freeTrialLink"] || ''} className="base-btn bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark">Try for free</a>
                </div>
            </div>
-            <div className="md:max-w-[690px] md:mx-auto flex flex-col gap-8 md:flex-row md:gap-8 md:justify-center">
+            <div className="md:max-w-[43.125rem] md:mx-auto flex flex-col gap-8 md:flex-row md:gap-8 md:justify-center">
                 {options.map((option, index) => {
                     return <div className="flex flex-col items-center gap-4 md:gap-2" key={index}>
-                        <div className="w-[177.69px] h-[177.69px] bg-white/30 rounded-[100px] shadow-[0px_17px_60px_-20px_rgba(0,0,0,0.25)] flex items-center justify-center md:w-[120px] md:h-[120px]">
-                            <div className="text-center text-primary-dark text-[64px] font-bold font-['Inter'] leading-[10px] flex items-center justify-center gap-0.5 md:text-[34px] md:leading-[10px]">
+                        <div className="w-[11.1056rem] h-[11.1056rem] bg-white/30 rounded-[6.25rem] shadow-[0rem_1.0625rem_3.75rem_-1.25rem_rgba(0,0,0,0.25)] flex items-center justify-center md:w-[7.5rem] md:h-[7.5rem]">
+                            <div className="text-center text-primary-dark text-[4rem] font-bold font-['Inter'] leading-[0.625rem] flex items-center justify-center gap-0.5 md:text-[2.125rem] md:leading-[0.625rem]">
                                 <span>{option.value}</span>
-                                <span className="text-primary text-3xl font-medium font-['Inter'] md:text-[17px]">{option.type}</span>
+                                <span className="text-primary text-3xl font-medium font-['Inter'] md:text-[1.0625rem]">{option.type}</span>
                             </div>
                         </div>
                         <p>{option.title}</p>
@@ -55,7 +55,7 @@ export const MatterCentric: FC<Props> = ({setting}) => {
                 }
             </div>
             <div className="pl-7 pt-12 md:px-19 md:pt-12">
-                <div className="w-full h-[394px] rounded-tl-[10px] rounded-tr-[10px] overflow-hidden flex items-end">
+                <div className="w-full h-[24.625rem] rounded-tl-[0.625rem] rounded-tr-[0.625rem] overflow-hidden flex items-end">
                     <img src={Img.src} alt="matter centric" className="w-full h-full object-cover md:object-contain relative top-0.5"/>
                 </div>
             </div>

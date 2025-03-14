@@ -36,14 +36,14 @@ export default function IntegrationsTemplate({ pageData }: { pageData: PageDataT
                 description={pageBlocks.pageBlocksDescription}
                 heading={pageBlocks.pageBlocksTitle}
                 rows={pageBlocks.pageBlocksItems.map((item) => ({
-                    className: "rounded-[15px] md:rounded-[30px] overflow-hidden bg-[#D7EFFA] md:!gap-0",
+                    className: "rounded-[0.9375rem] md:rounded-[1.875rem] overflow-hidden bg-[#D7EFFA] md:!gap-0",
                     leftContent: <div className="bg-[#D7EFFA] flex flex-col items-center justify-center w-full md:h-full">
-                        <div className="px-5 py-5 md:px-[92px]">
-                            <div className="text-primary-dark text-3xl font-semibold leading-[38px] mb-3">{item.title}</div>
-                            <div className="text-primary-dark text-[22px] font-normal leading-9" dangerouslySetInnerHTML={{ __html: item.description || '' }} />
+                        <div className="px-5 py-5 md:px-[5.75rem]">
+                            <div className="text-primary-dark text-3xl font-semibold leading-[2.375rem] mb-3">{item.title}</div>
+                            <div className="text-primary-dark text-[1.375rem] font-normal leading-9" dangerouslySetInnerHTML={{ __html: item.description || '' }} />
                         </div>
                     </div>,
-                    rightContent: <div className="w-full relative flex justify-center items-center md:h-[363px] p-2 bg-white">
+                    rightContent: <div className="w-full relative flex justify-center items-center md:h-[22.6875rem] p-2 bg-white">
                         <Image
                             src={item.image?.node?.sourceUrl || ''}
                             alt={item.image?.node?.altText || ''}
@@ -64,17 +64,17 @@ export default function IntegrationsTemplate({ pageData }: { pageData: PageDataT
                     showNavigation
                     theme="light"
                 />
-                <div className="absolute top-0 w-full h-full rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>
+                <div className="absolute top-0 w-full h-full rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] bg-primary"/>
             </div>
 
             {pageData.settings && <div className="relative">
                 <Features pageData={pageData} className="!pt-2" />
-                <div className="absolute top-0 w-full h-[150px] rounded-bl-[50px] md:rounded-bl-[100px] bg-primary"/>
+                <div className="absolute top-0 w-full h-[9.375rem] rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] bg-primary"/>
             </div>}
 
             <div className="relative">
                 <GuideBlock className="relative z-10"/>
-                <div className="absolute bottom-0 w-full h-[100px] rounded-tr-[50px] md:rounded-tr-[100px] bg-white"/>
+                <div className="absolute bottom-0 w-full h-[6.25rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] bg-white"/>
             </div>
             <Faq faqs={faqs} />
             <SimplifyPractice pageData={pageData} className="bg-white"/>

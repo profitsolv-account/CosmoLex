@@ -20,7 +20,7 @@ export const Button: FC<Props> = ({
     return <a href={href || "#"}
         className={
         classNames(
-            "h-[44px] px-5 pt-[10px] pb-3 rounded-[100px] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group",
+            "h-[2.75rem] px-5 pt-[0.625rem] pb-3 rounded-[6.25rem] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group",
             {
                 "bg-white text-white hover:bg-primary": variant === 'primary',
                 "bg-primary text-primary hover:bg-white": variant === 'secondary',

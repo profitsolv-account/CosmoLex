@@ -42,8 +42,8 @@ export const DemoForm: FC<Props> = ({formId, routerName}) => {
         document.body.appendChild(script);
     }, []);
 
-    return <div className="w-full min-h-[549px] bg-white rounded-[30px] shadow-[0px_21px_30px_0px_rgba(0,0,0,0.05)] p-10" >
-        <div className="text-center justify-start text-primary-dark text-[32px] font-semibold leading-loose mb-10">Schedule a Demo</div>
+    return <div className="w-full min-h-[34.3125rem] bg-white rounded-[1.875rem] shadow-[0rem_1.3125rem_1.875rem_0rem_rgba(0,0,0,0.05)] p-10" >
+        <div className="text-center justify-start text-primary-dark text-[2rem] font-semibold leading-loose mb-10">Schedule a Demo</div>
         <div id="hubspotFormContainer"></div>
         <ChiliPiperForm routerName={routerName} />
     </div>;

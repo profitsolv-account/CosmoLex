@@ -16,11 +16,11 @@ export default function DemoPageTemplate({ pageData }: { pageData: PageDataType 
         <Layout pageData={pageData}>
 
             <PageHeader pageData={pageData} />
-            <RatingBlock className="bg-primary pb-[57px]" />
+            <RatingBlock className="bg-primary pb-[3.5625rem]" />
            {/* <DemoForm />*/}
             <div className="relative">
                 <HubSpotForm />
-                <div className="bg-primary absolute z-0 w-full h-[190px] left-0 rounded-bl-[100px] top-0" />
+                <div className="bg-primary absolute z-0 w-full h-[11.875rem] left-0 rounded-bl-[6.25rem] top-0" />
             </div>
 
             <Partners/>

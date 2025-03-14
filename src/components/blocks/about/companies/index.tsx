@@ -78,9 +78,9 @@ const companies = [
 
 export const Companies = () => {
     return <div className="px-2 z-10 relative">
-        <div className="max-w-[1118px] mx-auto bg-white rounded-[30px] min-h-[400px]">
-            <div className="flex items-center justify-center w-full border-bottom border-primary-dark border-b-[2px] py-10 px-4">
-                <CompaniesLogo className="max-w-[450px]" />
+        <div className="max-w-[69.875rem] mx-auto bg-white rounded-[1.875rem] min-h-[25rem]">
+            <div className="flex items-center justify-center w-full border-bottom border-primary-dark border-b-[0.125rem] py-10 px-4">
+                <CompaniesLogo className="max-w-[28.125rem]" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-10 md:pl-10">

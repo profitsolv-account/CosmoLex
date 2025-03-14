@@ -19,26 +19,26 @@ export const CompareHeader = ({pageData, className}:Props) => {
     const heroImage = get(pageData, 'heroImage', null);
 
     return <div className={classNames("pt-10 mb-10 relative pb-15", className)}>
-        <div className="px-5 mx-auto max-w-[1100px] justify-center items-center grid md:grid-cols-2 gap-10 relative z-2 md:items-start md:flex-row md:gap-14">
+        <div className="px-5 mx-auto max-w-[68.75rem] justify-center items-center grid md:grid-cols-2 gap-10 relative z-2 md:items-start md:flex-row md:gap-14">
             <div className="">
 
                 {subheading &&
                     <div className="relative text-left justify-start text-green text-base font-normal uppercase tracking-wider">{subheading}</div>
                 }
                 <div className="pt-6 mb-6">
-                    <h1 className="text-left home-title text-white text-[46px] font-medium leading-[46px] md:text-[52px] md:leading-[52px] md:font-normal lg:block"
+                    <h1 className="text-left home-title text-white text-[2.875rem] font-medium leading-[2.875rem] md:text-[3.25rem] md:leading-[3.25rem] md:font-normal lg:block"
                         dangerouslySetInnerHTML={{__html: title}}
                     />
                 </div>
-                <div className="min-h-[61px] text-left text-white text-base font-normal leading-relaxed mb-10"
+                <div className="min-h-[3.8125rem] text-left text-white text-base font-normal leading-relaxed mb-10"
                      dangerouslySetInnerHTML={{__html: description}}
                 />
                 <div className="flex justify-start items-center gap-4 pb-10">
                     <div
-                        className="h-[54px] px-[15px] md:px-[30px] pt-5 pb-[22px] rounded-[100px] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">
+                        className="h-[3.375rem] px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] rounded-[6.25rem] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">
                         <a href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</a>
                     </div>
-                    <div className="h-[54px]  px-[15px] md:px-[30px] pt-5 pb-[22px] bg-white rounded-[100px] border justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-primary hover:text-white">
+                    <div className="h-[3.375rem]  px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] bg-white rounded-[6.25rem] border justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-primary hover:text-white">
                         <a href={pageData.settings?.freeTrialLink || ""} className="text-center text-primary-dark text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-white">{ctaTrial}</a>
                     </div>
                 </div>
@@ -49,6 +49,6 @@ export const CompareHeader = ({pageData, className}:Props) => {
             </div>
         </div>
 
-        <div className="bg-primary absolute z-0 w-full h-full left-0 rounded-bl-[100px] bottom-[0px]"/>
+        <div className="bg-primary absolute z-0 w-full h-full left-0 rounded-bl-[6.25rem] bottom-[0rem]"/>
     </div>
 }

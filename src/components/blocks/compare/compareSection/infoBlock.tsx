@@ -11,10 +11,10 @@ type Props = {
 
 export const InfoBlock:FC<Props> = ({title, details, label, type, className}) => {
 
-    return <div className={classNames("px-[28px]", className)}>
+    return <div className={classNames("px-[1.75rem]", className)}>
 
         <div className="flex justify-center mb-5">
-            <div className={classNames("px-5 py-0.5 rounded-[10px] inline-flex justify-center items-center", {
+            <div className={classNames("px-5 py-0.5 rounded-[0.625rem] inline-flex justify-center items-center", {
                 'bg-green': type === 'info',
                 'bg-salmon': type === 'warning'
             })}>
@@ -25,7 +25,7 @@ export const InfoBlock:FC<Props> = ({title, details, label, type, className}) =>
         </div>
 
         <div className="text-center justify-start">
-            <div className="text-[#151c2d] text-[22px] font-semibold leading-[26px] mb-1">{title}</div>
+            <div className="text-[#151c2d] text-[1.375rem] font-semibold leading-[1.625rem] mb-1">{title}</div>
             <div className="text-[#151c2d] text-base font-normal leading-relaxed">{details}</div>
         </div>
     </div>

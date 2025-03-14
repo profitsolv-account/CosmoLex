@@ -15,7 +15,7 @@ type Props = {
 
 export const Leaders:FC<Props> = ({logos, className}) => {
     return <div className="my-10 mb-14">
-        <div className={classNames('max-w-[1066px] mx-auto', className)}>
+        <div className={classNames('max-w-[66.625rem] mx-auto', className)}>
             <Swiper
                 slidesPerView={'auto'}
                 spaceBetween={10}
@@ -30,7 +30,7 @@ export const Leaders:FC<Props> = ({logos, className}) => {
                 }}
             >
                 {logos.map((lr, index) => (
-                    <SwiperSlide key={index} style={{ width: '203px' }}>
+                    <SwiperSlide key={index} style={{ width: '12.6875rem' }}>
                         <a href={lr.link} className="flex justify-center items-center overflow-hidden">
                             <img className="object-contain" src={lr.src} alt={lr.alt} />
                         </a>

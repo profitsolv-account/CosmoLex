@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const BlockColumn: FC<Props> = ({ className, content, media, contentCLassName, position = 'left' }) => {
-    return <div className={classNames("max-w-[840px] mb-5 mx-auto grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-[85px] md:mb-25", className)}>
+    return <div className={classNames("max-w-[52.5rem] mb-5 mx-auto grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-[5.3125rem] md:mb-25", className)}>
         <div className={classNames({
             "md:order-last": position === 'right'
         })}>

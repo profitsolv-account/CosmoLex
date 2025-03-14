@@ -3,17 +3,17 @@
         height: auto;
     }
     .swiper-pagination-bullet {
-        width: 14px;
-        height: 14px;
+        width: 0.875rem;
+        height: 0.875rem;
         text-align: center;
-        line-height: 20px;
-        font-size: 12px;
+        line-height: 1.25rem;
+        font-size: 0.75rem;
         opacity: 1;
         background: #fff;
-        border: 1px solid #151C2D;
+        border: 0.0625rem solid #151C2D;
     }
     .swiper-pagination-bullet-active {
-        border: 1px solid #151C2D;
+        border: 0.0625rem solid #151C2D;
         background: #151C2D;
     }
 
@@ -23,7 +23,7 @@
             background: transparent;
         }
         .swiper-pagination-bullet-active {
-            border: 1px solid #fff;
+            border: 0.0625rem solid #fff;
             background: #fff;
         }
     }

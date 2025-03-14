@@ -13,14 +13,14 @@ export default function AboutCosmolexTemplate({pageData}: { pageData: PageDataTy
            <div className="relative">
                <PageHeader
                    pageData={pageData}
-                   className="mb-0 pb-20 bg-primary relative z-10 rounded-bl-[50px] md:rounded-bl-[100px] md:pb-40"
-                   containerClassName="!max-w-[745px]"
+                   className="mb-0 pb-20 bg-primary relative z-10 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] md:pb-40"
+                   containerClassName="!max-w-[46.5625rem]"
                    hideContent
                />
            </div>
             <div className="px-2 mb-10">
                 <div
-                    className="min-h-[300px] max-w-[994px] mx-auto wp-content mt-15 md:mt-30"
+                    className="min-h-[18.75rem] max-w-[62.125rem] mx-auto wp-content mt-15 md:mt-30"
                     dangerouslySetInnerHTML={{__html: pageData.content || ''}}
                 />
             </div>
@@ -29,8 +29,8 @@ export default function AboutCosmolexTemplate({pageData}: { pageData: PageDataTy
                 <BarAssociations data={pageData.bar} />
             </div>
 
-           <div className="pb-50 max-w-[1512px] mx-auto">
-               <h3 className="text-center justify-start text-primary-dark text-[46px] font-bold leading-[60px] mb-20">Recognized by industry leaders.</h3>
+           <div className="pb-50 max-w-[94.5rem] mx-auto">
+               <h3 className="text-center justify-start text-primary-dark text-[2.875rem] font-bold leading-[3.75rem] mb-20">Recognized by industry leaders.</h3>
                {pageData.leaderLogos &&
                    <Leaders
                        logos={[...pageData.leaderLogos, ...pageData.leaderLogos]}

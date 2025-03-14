@@ -32,10 +32,10 @@ export const ColumnsSection: FC<Props> = ({subheading, heading, description, ite
        <div className={classNames("flex justify-center", {
            "mb-20": hasSubheading
        })}>
-           <div className="max-w-[867px] inline-flex flex-col justify-start items-center gap-[27px] mx-auto">
+           <div className="max-w-[54.1875rem] inline-flex flex-col justify-start items-center gap-[1.6875rem] mx-auto">
                {subheading && <div className="relative text-center justify-start text-primary text-base font-normal uppercase tracking-wider">{subheading}</div>}
-               {heading && <div className="relative text-center justify-start text-primary text-[46px] font-bold leading-[60px]">{heading}</div>}
-               {description && <div className="relative text-center justify-start text-primary-dark text-base font-normal leading-[30px]" dangerouslySetInnerHTML={{ __html: description || '' }} />}
+               {heading && <div className="relative text-center justify-start text-primary text-[2.875rem] font-bold leading-[3.75rem]">{heading}</div>}
+               {description && <div className="relative text-center justify-start text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{ __html: description || '' }} />}
            </div>
        </div>
 
@@ -46,8 +46,8 @@ export const ColumnsSection: FC<Props> = ({subheading, heading, description, ite
                 className={item.className}
                 content={<>
                     <div className="relative justify-start">
-                        <div className="text-primary-dark text-[46px] font-bold leading-[55px] mb-2">{item.title}</div>
-                        <div className="text-primary-dark text-base font-normal leading-[30px]" dangerouslySetInnerHTML={{ __html: item.description || '' }} />
+                        <div className="text-primary-dark text-[2.875rem] font-bold leading-[3.4375rem] mb-2">{item.title}</div>
+                        <div className="text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{ __html: item.description || '' }} />
                     </div>
                 </>}
                media={item.media}

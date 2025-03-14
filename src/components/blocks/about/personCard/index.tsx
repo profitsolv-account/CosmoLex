@@ -12,10 +12,10 @@ type Props = {
 export const PersonCard:FC<Props> = ({member, className}) => {
 
     return <div className="px-2">
-        <div className="max-w-[1124px] mx-auto flex items-center justify-center w-full">
-            <div className={classNames("self-stretch inline-flex flex-col justify-start items-center gap-[50px] lg:flex-row", className)}>
+        <div className="max-w-[70.25rem] mx-auto flex items-center justify-center w-full">
+            <div className={classNames("self-stretch inline-flex flex-col justify-start items-center gap-[3.125rem] lg:flex-row", className)}>
                 <Image
-                    className="rounded-[30px]"
+                    className="rounded-[1.875rem]"
                     src={member.image.node.sourceUrl}
                     width={member.image.node.mediaDetails.width}
                     height={member.image.node.mediaDetails.height}
@@ -23,8 +23,8 @@ export const PersonCard:FC<Props> = ({member, className}) => {
                 />
                 <div className="flex-1 inline-flex flex-col justify-start items-start gap-5">
                     <div className="self-stretch justify-start text-[#151c2d] text-base font-normal uppercase tracking-wider">{member.position}</div>
-                    <div className="self-stretch justify-start text-[#151c2d] text-[46px] font-bold leading-[55px]">{member.name}</div>
-                    <div className="self-stretch justify-start text-primary-dark text-base font-normal leading-[30px]" dangerouslySetInnerHTML={{__html: member.description || ''}}/>
+                    <div className="self-stretch justify-start text-[#151c2d] text-[2.875rem] font-bold leading-[3.4375rem]">{member.name}</div>
+                    <div className="self-stretch justify-start text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{__html: member.description || ''}}/>
                     <a href={member.linkedin} className="" target="_blank">
                         <Linkedin />
                     </a>

@@ -39,19 +39,19 @@ export const ComplianceManagement = () => {
     const items = [...dataSliders, ...dataSliders].map((t, index) => (
         <Fragment key={index}>
             <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
-                <div className="grow max-h-[280px] rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center">
+                <div className="grow max-h-[17.5rem] rounded-br-[0.9375rem] rounded-bl-[0.9375rem] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0rem] lg:rounded-tl-[1.875rem] lg:rounded-bl-[1.875rem] lg:flex lg:items-center lg:justify-center">
                     <img
                         src={t.image.src}
                         alt={t.title}
                         className="object-cover w-full h-full aspect-square"
                     />
                 </div>
-                <div className={classNames("grow rounded-tl-[15px] rounded-tr-[15px] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[30px] lg:rounded-tr-[30px] lg:rounded-tl-[0px] overflow-hidden", t.className)}>
-                    <div className="lg:w-[442px] flex-col justify-start items-start gap-5 inline-flex">
-                        <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[55px] lg:text-[46px]">{t.title}</div>
-                        <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[30px] max-w-[350px] lg:mb-7">{t.description}</div>
+                <div className={classNames("grow rounded-tl-[0.9375rem] rounded-tr-[0.9375rem] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[1.875rem] lg:rounded-tr-[1.875rem] lg:rounded-tl-[0rem] overflow-hidden", t.className)}>
+                    <div className="lg:w-[27.625rem] flex-col justify-start items-start gap-5 inline-flex">
+                        <div className=" text-primary-dark text-[2.25rem] font-bold leading-[2.8125rem] font-['Inter'] lg:leading-[3.4375rem] lg:text-[2.875rem]">{t.title}</div>
+                        <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem] max-w-[21.875rem] lg:mb-7">{t.description}</div>
                         <a href={t.link}
-                           className="w-full block text-center lg:inline-block rounded-[100px] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[30px] py-[15px] lg:w-auto">
+                           className="w-full block text-center lg:inline-block rounded-[6.25rem] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[1.875rem] py-[0.9375rem] lg:w-auto">
                             Explore features
                         </a>
                     </div>
@@ -75,7 +75,7 @@ export const ComplianceManagement = () => {
                 tabs={tabs}
                 items={items}
             />
-            <div className="absolute w-full  bg-primary z-0 h-[400px] bottom-0 rounded-tr-[50px] md:rounded-tr-[100px]" />
+            <div className="absolute w-full  bg-primary z-0 h-[25rem] bottom-0 rounded-tr-[3.125rem] md:rounded-tr-[6.25rem]" />
         </div>
 
         <AccountingTools />
@@ -84,25 +84,25 @@ export const ComplianceManagement = () => {
 
 const AccountingTools = () => {
 
-    return (<div className="flex justify-center items-center pb-20 md:py-5 relative md:pb-[200px]">
-            <div className="flex-none w-full px-2 flex flex-col max-w-[350px] md:flex-row md:max-w-[1046px] md:items-start relative z-20">
+    return (<div className="flex justify-center items-center pb-20 md:py-5 relative md:pb-[12.5rem]">
+            <div className="flex-none w-full px-2 flex flex-col max-w-[21.875rem] md:flex-row md:max-w-[65.375rem] md:items-start relative z-20">
 
                 <div className="md:w-1/2  md:flex-none md:pb-18 md:pr-20">
-                    <div className="text-yellow text-[15px] tracking-[1.2px] font-normal font-['Inter'] uppercase mb-3 md:text-base md:tracking-[1.26px] md:mb-4">Compliance management simplified</div>
-                    <h3 className="text-white text-4xl font-bold font-['Inter'] leading-[50px] mb-5 md:text-[46px] md:leading-[55px] md:w-full md:mb-8">Keep your firm compliant with built-in accounting tools.</h3>
+                    <div className="text-yellow text-[0.9375rem] tracking-[0.075rem] font-normal font-['Inter'] uppercase mb-3 md:text-base md:tracking-[0.0788rem] md:mb-4">Compliance management simplified</div>
+                    <h3 className="text-white text-4xl font-bold font-['Inter'] leading-[3.125rem] mb-5 md:text-[2.875rem] md:leading-[3.4375rem] md:w-full md:mb-8">Keep your firm compliant with built-in accounting tools.</h3>
                     <a
                         href="/"
-                        className="flex items-center justify-center text-center h-[54px] px-[30px] bg-white rounded-[100px] border text-primary-dark text-base font-normal font-['Inter'] transition duration-300 hover:bg-primary-dark hover:text-white md:inline-flex">
+                        className="flex items-center justify-center text-center h-[3.375rem] px-[1.875rem] bg-white rounded-[6.25rem] border text-primary-dark text-base font-normal font-['Inter'] transition duration-300 hover:bg-primary-dark hover:text-white md:inline-flex">
                         Learn more
                     </a>
                 </div>
 
-                <div className="md:w-1/2 relative md:top-[-20px]">
+                <div className="md:w-1/2 relative md:top-[-1.25rem]">
                     <img src={BalanceImg.src} alt="balance image"/>
                 </div>
             </div>
 
-            <div className="absolute w-full h-full left-0 bg-primary z-0 rounded-bl-[50px] md:rounded-bl-[100px] top-[-20%]" />
+            <div className="absolute w-full h-full left-0 bg-primary z-0 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] top-[-20%]" />
 
         </div>
     )}

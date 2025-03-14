@@ -30,7 +30,7 @@ export default function CompareChildTemplate({ pageData }: { pageData: PageDataT
 
             <div className="relative">
                 <SimplifyPractice pageData={pageData} className=""/>
-                <div className="absolute bottom-0 w-full h-[150px] rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>
+                <div className="absolute bottom-0 w-full h-[9.375rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] bg-primary"/>
             </div>
 
             <div className="relative bg-primary pt-10">
@@ -45,15 +45,15 @@ export default function CompareChildTemplate({ pageData }: { pageData: PageDataT
 
             {pageData.settings && <div className="relative">
                 <Features pageData={pageData} className="!pt-2" />
-                <div className="absolute top-0 w-full h-[150px] rounded-bl-[50px] md:rounded-bl-[100px] bg-primary"/>
+                <div className="absolute top-0 w-full h-[9.375rem] rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] bg-primary"/>
             </div>}
 
             <div className="pb-10 mt-10 md:mt-25">
-                <div className="self-stretch text-center justify-start text-primary-dark text-[46px] font-bold leading-[60px] mb-4">Ready to get started?</div>
+                <div className="self-stretch text-center justify-start text-primary-dark text-[2.875rem] font-bold leading-[3.75rem] mb-4">Ready to get started?</div>
                 <div className="self-stretch text-center justify-start text-primary-dark text-xl font-normal leading-loose">Schedule a personal one-on-one demo with our team.</div>
             </div>
 
-            <HubSpotForm className="shadow-[0px_21px_30px_0px_rgba(0,0,0,0.05)]" />
+            <HubSpotForm className="shadow-[0rem_1.3125rem_1.875rem_0rem_rgba(0,0,0,0.05)]" />
 
         </Layout>
     )

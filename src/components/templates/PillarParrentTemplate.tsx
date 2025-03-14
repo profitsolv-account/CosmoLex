@@ -26,7 +26,7 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
 
             <div className="relative">
                 {pageData.tools && pageData.tools.items && <ToolsSection tools={pageData.tools} />}
-                <div className="absolute bottom-0 w-full h-[300px] rounded-tr-[50px] md:rounded-tr-[100px] bg-primary"/>
+                <div className="absolute bottom-0 w-full h-[18.75rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] bg-primary"/>
             </div>
             <div className="relative bg-primary">
                 <Testimonials
@@ -40,12 +40,12 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
 
             {pageData.settings && <div className="relative">
                 <Features pageData={pageData} className="!pt-2" />
-                <div className="absolute top-0 w-full h-[150px] rounded-bl-[50px] md:rounded-bl-[100px] bg-primary"/>
+                <div className="absolute top-0 w-full h-[9.375rem] rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] bg-primary"/>
             </div>}
 
             <div className="relative">
                 <GuideBlock className="relative z-10"/>
-                <div className="absolute bottom-0 w-full h-[100px] rounded-tr-[50px] md:rounded-tr-[100px] bg-white"/>
+                <div className="absolute bottom-0 w-full h-[6.25rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] bg-white"/>
             </div>
 
             <SimplifyPractice pageData={pageData} className="bg-white"/>
@@ -60,7 +60,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
     const items = [...tools.items, ...tools.items].map((t, index) => (
     <Fragment key={index}>
         <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
-            <div className={classNames("grow rounded-br-[15px] rounded-bl-[15px] relative bg-cover bg-center overflow-hidden aspect-3/2 md:aspect-auto lg:max-h-full lg:rounded-br-[0px] lg:rounded-tl-[30px] lg:rounded-bl-[30px] lg:flex lg:items-center lg:justify-center", t.classname)}>
+            <div className={classNames("grow rounded-br-[0.9375rem] rounded-bl-[0.9375rem] relative bg-cover bg-center overflow-hidden aspect-3/2 md:aspect-auto lg:max-h-full lg:rounded-br-[0rem] lg:rounded-tl-[1.875rem] lg:rounded-bl-[1.875rem] lg:flex lg:items-center lg:justify-center", t.classname)}>
                 <Image
                     src={t.image.node.sourceUrl}
                     alt={t.image.node.altText}
@@ -70,8 +70,8 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                 />
                 <div className="absolute z-0 top-0 left-0 w-full h-full bg-white/30"/>
             </div>
-            <div className={classNames("rounded-tl-[15px] rounded-tr-[15px] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[30px] lg:rounded-tr-[30px] lg:rounded-tl-[0px] overflow-hidden", t.classname)}>
-                <div className="lg:w-[442px] flex-col justify-start items-start gap-5 inline-flex">
+            <div className={classNames("rounded-tl-[0.9375rem] rounded-tr-[0.9375rem] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[1.875rem] lg:rounded-tr-[1.875rem] lg:rounded-tl-[0rem] overflow-hidden", t.classname)}>
+                <div className="lg:w-[27.625rem] flex-col justify-start items-start gap-5 inline-flex">
                     <div>
                         {t.icon?.node && <Image
                             src={t.icon.node.sourceUrl}
@@ -80,10 +80,10 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                             height={t.icon.node.mediaDetails.height}
                         />}
                     </div>
-                    <div className=" text-primary-dark text-[36px] font-bold leading-[45px] font-['Inter'] lg:leading-[38px] lg:text-[30px]">{t.title}</div>
-                    <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[30px] max-w-[350px] lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
+                    <div className=" text-primary-dark text-[2.25rem] font-bold leading-[2.8125rem] font-['Inter'] lg:leading-[2.375rem] lg:text-[1.875rem]">{t.title}</div>
+                    <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem] max-w-[21.875rem] lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
                     <a href={'/'}
-                       className="w-full block text-center lg:inline-block rounded-[100px] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[30px] py-[15px] lg:w-auto">
+                       className="w-full block text-center lg:inline-block rounded-[6.25rem] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[1.875rem] py-[0.9375rem] lg:w-auto">
                         Explore features
                     </a>
                 </div>
@@ -104,7 +104,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
             description={tools.toolsDescription}
             tabs={tabs}
             items={items}
-            height={"500px"}
+            height={"31.25rem"}
         />
     </div>
 }

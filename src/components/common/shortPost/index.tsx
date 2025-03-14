@@ -8,7 +8,7 @@ type Props = {
 export const ShortPost: FC<Props> = ({post}) => {
 
     return <div className="mb-12">
-        <h2 className="mb-5 text-primary-dark text-[34px] font-bold font-['Inter'] leading-[55px] md:text-[46px] transition duration-300 hover:text-primary">
+        <h2 className="mb-5 text-primary-dark text-[2.125rem] font-bold font-['Inter'] leading-[3.4375rem] md:text-[2.875rem] transition duration-300 hover:text-primary">
             <a href={`/blog/${post.slug}`} dangerouslySetInnerHTML={{__html: post.title || ""}}/>
         </h2>
 
@@ -23,7 +23,7 @@ export const ShortPost: FC<Props> = ({post}) => {
                             alt={post.altText}
                             width={800}
                             height={400}
-                           /* className="max-w-[600px]"*/
+                           /* className="max-w-[37.5rem]"*/
                         />
                     </a>
                 </div>

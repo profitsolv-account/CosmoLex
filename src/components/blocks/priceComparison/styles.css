@@ -3,8 +3,8 @@
     background: url("../../../assets/img/icons/check.svg") no-repeat;
     background-size: contain;
     background-position: center center;
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
 .highlighted-row {
@@ -17,27 +17,27 @@
     table {
         width: 100%;
         th {
-            padding: 10px;
+            padding: 0.625rem;
             text-align: left;
             font-size: 1.25rem;
-            @media (max-width: 640px) {
+            @media (max-width: 40rem) {
                 font-size: 1rem;
             }
         }
         tbody {
             td {
-                padding: 15px 10px;
+                padding: 0.9375rem 0.625rem;
                 font-size: 1.25rem;
-                @media (max-width: 640px) {
+                @media (max-width: 40rem) {
                     font-size: 1rem;
                     img {
-                        width: 20px!important;
-                        height: 20px!important;
+                        width: 1.25rem!important;
+                        height: 1.25rem!important;
                     }
                 }
                 img {
-                    width: 40px;
-                    height: 40px;
+                    width: 2.5rem;
+                    height: 2.5rem;
                     display: inline-block;
                 }
 

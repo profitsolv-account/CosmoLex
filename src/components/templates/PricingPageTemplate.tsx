@@ -25,7 +25,7 @@ export default function PricingPageTemplate({ pageData }: { pageData: PageDataTy
                     plans={pageData.pricingPlans || []}
                     title='Get the right plan for your firm’s needs.'
                 />
-                <div className="bg-primary absolute w-full h-[50%] left-0 bottom-0 rounded-tr-[50px] md:rounded-tr-[100px]" />
+                <div className="bg-primary absolute w-full h-[50%] left-0 bottom-0 rounded-tr-[3.125rem] md:rounded-tr-[6.25rem]" />
             </div>
 
             {pageData.settings && <AddonsBlock features={features} settings={pageData.settings} />}

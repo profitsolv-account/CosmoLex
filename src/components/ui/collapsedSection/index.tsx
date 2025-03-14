@@ -11,7 +11,7 @@ type Props = {
 
 export const CollapsedSection: FC<Props> = ({ children, title, className, open = false }) => {
     const [isOpen, setIsOpen] = useState(open);
-    const [maxHeight, setMaxHeight] = useState(open ? "auto" : "0px");
+    const [maxHeight, setMaxHeight] = useState(open ? "auto" : "0rem");
     const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export const CollapsedSection: FC<Props> = ({ children, title, className, open =
         if (!isOpen && contentRef.current) {
             setMaxHeight(`${contentRef.current.scrollHeight + 20}px`);
         } else {
-            setMaxHeight("0px");
+            setMaxHeight("0rem");
         }
         setIsOpen((prev) => !prev);
     };
@@ -38,7 +38,7 @@ export const CollapsedSection: FC<Props> = ({ children, title, className, open =
                 >
                    {title}
                     <OpenSectionIcon
-                        className={classNames("w-[20px] h-[14px] flex-none transition-transform duration-300", {
+                        className={classNames("w-[1.25rem] h-[0.875rem] flex-none transition-transform duration-300", {
                             "rotate-180": isOpen,
                         })}
                     />
