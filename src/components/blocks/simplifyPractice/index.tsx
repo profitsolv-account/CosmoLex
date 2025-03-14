@@ -61,7 +61,7 @@ export const SimplifyPractice:FC<Props> = ({pageData, className}) => {
                             </div>
 
                             <div className="h-[10.125rem] rounded-tl-[0.625rem] rounded-tr-[0.625rem] md:h-[15.3125rem] flex items-end justify-center">
-                                <img src={DemoScreen.src} alt="demo-screen" className="relative top-0.5"/>
+                                <img src={DemoScreen.src} alt="demo-screen" className="max-w-full max-h-full relative top-0.5"/>
                             </div>
                         </div>
                     </div>
