@@ -20,7 +20,7 @@ export const getSEOData = async (pageSlug: string) => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
         variables: { pageSlug },
     })
 
@@ -54,7 +54,7 @@ export const getPostSEOData = async (pageSlug: string) => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
         variables: { pageSlug },
     })
 

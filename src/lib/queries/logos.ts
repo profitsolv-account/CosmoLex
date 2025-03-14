@@ -25,7 +25,7 @@ export const getLeadersLogos = async (): Promise<LeaderLogos[]> => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
         variables: {},
     })
 

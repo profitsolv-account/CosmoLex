@@ -37,7 +37,7 @@ export const getTestimonialsList = async () => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
         variables: {},
     })
     const testimonials = get(data, 'testimonials.edges', []).map((testimonial: any) => ({

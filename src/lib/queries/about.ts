@@ -33,7 +33,7 @@ export const getMembersData = async (slug: string): Promise<Member[]> => {
     const { data } = await client.query({
         query,
         variables: { id: slug },
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
     });
 
     if (!data.page) {
@@ -73,7 +73,7 @@ export const getBarsData = async (slug: string): Promise<BarType> => {
     const { data } = await client.query({
         query,
         variables: { id: slug },
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
     });
 
     if (!data.page) {

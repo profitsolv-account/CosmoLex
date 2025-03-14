@@ -34,7 +34,7 @@ export const getHomePageData = async () => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first"
     });
      return {
         ...get(data, 'page', {}),
@@ -78,7 +78,7 @@ export const getLatestPosts = async (postsCount = 1): Promise<FeaturedPostType[]
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first"
     });
 
     return get(data, 'posts.nodes', []).map((postData: any) => ({
@@ -139,7 +139,7 @@ export const getPageData = async (
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first"
     });
 
     if (!data.page) {
@@ -200,7 +200,7 @@ export const getPricingPlans = async (pageSlug: string): Promise<PricingPlan[]> 
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first"
     });
 
     return get(data, 'page.pricingSection.pricingPlans', []);

@@ -31,7 +31,7 @@ export const getSiteSettings = async (): Promise<SettingsType> => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
         variables: {},
     })
 
@@ -57,7 +57,7 @@ export const generalSettings = async (): Promise<any> => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
         variables: {},
     });
 
@@ -74,7 +74,7 @@ export const getRedirections = async () => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
         variables: {},
     });
 

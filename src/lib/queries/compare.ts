@@ -27,7 +27,7 @@ export const getComparePageData = async (): Promise<CompareSelectorType> => {
     const { data } = await client.query({
         query,
         variables: { id: 'compare' },
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
     });
 
     if (!data.page) {
@@ -61,7 +61,7 @@ export const getCompareChildPageData = async (slug: string): Promise<CompareSect
     const { data } = await client.query({
         query,
         variables: { id: slug },
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
     });
 
     if (!data.page) {
@@ -90,7 +90,7 @@ export const getFeatureData = async (slug: string): Promise<Feature[]> => {
     const { data } = await client.query({
         query,
         variables: { id: slug },
-        fetchPolicy: "no-cache",
+        fetchPolicy: "cache-first",
     });
 
     if (!data.page) {
