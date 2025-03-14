@@ -7,7 +7,6 @@ import {getSiteSettings} from "@/lib/queries/settings";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {PAGE_BLOCKS_FRAGMENT, PAGE_SETTINGS_FRAGMENT, TOOLS_FRAGMENT} from "@/lib/queries/fragments/page";
 import {PostDataType} from "@/types/post";
-import {CompareSelectorType} from "@/types/compare";
 
 export const getHomePageData = async () => {
     const { data } = await client.query({
@@ -244,6 +243,7 @@ export const getPostData = async (pageSlug: string): Promise<PostDataType> => {
     }
 
     const post = get(data, 'post', {});
+
 
     const latestPosts = await getLatestPosts(5);
     return {

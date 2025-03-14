@@ -1,4 +1,5 @@
 import {FeaturedPostType, MenusList, SettingsType} from "@/types/index";
+import React from "react";
 
 export type PostDataType = {
     title: string;
@@ -18,5 +19,6 @@ export type PostDataType = {
                 height: number;
             }
         }
-    }
+    },
+    renderedContent?: React.ReactNode;
 }

@@ -3,6 +3,7 @@ import {LeaderLogos} from "@/types/logos";
 import {PageBlocksType, ToolsType} from "@/types/tools";
 import {CompareSectionType, CompareSelectorType} from "@/types/compare";
 import {BarType} from "@/types/about";
+import React from "react";
 
 export type ImageType = {
     node: {
@@ -124,4 +125,5 @@ export type PageDataType = {
     compareSection?: CompareSectionType;
     members?: Member[];
     bar?: BarType;
+    renderedContent?: React.ReactNode;
 }
