@@ -64,7 +64,9 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                 <Image
                     src={t.image.node.sourceUrl}
                     alt={t.image.node.altText}
-                    className={classNames("relative z-4", t.mediaClassname)}
+                    className={classNames("relative z-4", t.mediaClassname, {
+                        "max-w-[23rem]": !t.mediaClassname.includes('aspect-square')
+                    })}
                     width={t.image.node.mediaDetails.width}
                     height={t.image.node.mediaDetails.height}
                 />
