@@ -44,20 +44,22 @@ const cache = new InMemoryCache({
     },
 });
 
-(async () => {
-    await persistCache({
+if (typeof window !== "undefined") {
+    persistCache({
         cache,
         storage: new LocalStorageWrapper(window.localStorage),
+    }).catch((err) => {
+        console.error("Error persisting cache:", err);
     });
-})();
+}
 
 const client = new ApolloClient({
     link: from([errorLink, retryLink, httpLink]),
     cache,
+    ssrMode: typeof window === "undefined",
     defaultOptions: {
         watchQuery: {
             fetchPolicy: "cache-first",
-            nextFetchPolicy: "cache-first",
         },
         query: {
             fetchPolicy: "cache-first",
