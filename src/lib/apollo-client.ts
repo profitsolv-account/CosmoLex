@@ -6,6 +6,7 @@ import {
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { RetryLink } from '@apollo/client/link/retry';
+import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
 
 const errorLink = onError(({ networkError }) => {
     if (networkError) console.error(networkError);
@@ -28,9 +29,40 @@ const httpLink = new HttpLink({
     fetch: customFetch,
 });
 
+const cache = new InMemoryCache({
+    typePolicies: {
+        Query: {
+            fields: {
+                page: {
+                    keyArgs: ["id"],
+                    merge(existing, incoming) {
+                        return incoming;
+                    },
+                },
+            },
+        },
+    },
+});
+
+(async () => {
+    await persistCache({
+        cache,
+        storage: new LocalStorageWrapper(window.localStorage),
+    });
+})();
+
 const client = new ApolloClient({
     link: from([errorLink, retryLink, httpLink]),
-    cache: new InMemoryCache(),
+    cache,
+    defaultOptions: {
+        watchQuery: {
+            fetchPolicy: "cache-first",
+            nextFetchPolicy: "cache-first",
+        },
+        query: {
+            fetchPolicy: "cache-first",
+        },
+    },
 });
 
 export default client;
