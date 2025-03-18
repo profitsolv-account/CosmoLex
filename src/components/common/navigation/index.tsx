@@ -39,6 +39,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
         return () => window.removeEventListener('resize', updatePosition); // Cleanup on unmount
     }, []);
 
+    console.log(menus);
     const menuContent: {[index: string]: ReactNode} = {
         "solutions": <PageMegaMenu
             content={menus['header-menu-solutions']}

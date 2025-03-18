@@ -8,7 +8,7 @@ export const getAllMenus = async (): Promise<MenusList> => {
      const menu = getFromCache('menu');
      if (menu) {
          console.log('load menu from cache');
-         return menu;
+         return Promise.resolve(menu);
      }
 
     const menusList: MenusList = {};
