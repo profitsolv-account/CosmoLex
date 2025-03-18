@@ -18,6 +18,7 @@ export const getAllMenus = async (): Promise<MenusList> => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Cache-Control': 'max-age=3600',
             },
         });
 
@@ -33,9 +34,11 @@ export const getAllMenus = async (): Promise<MenusList> => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Cache-Control': 'max-age=3600',
                     },
                 });
                 if (!itemsResponse.ok) {
+                    console.log(itemsResponse);
                     console.error(`Failed to fetch items for menu ${menu.ID}`);
                     return {
                         ...menu,
@@ -60,7 +63,7 @@ export const getAllMenus = async (): Promise<MenusList> => {
             })
         );
 
-         saveToCache('menu', menusList);
+        saveToCache('menu', menusList);
 
         return menusList;
     } catch (error) {

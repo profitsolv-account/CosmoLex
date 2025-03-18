@@ -4,6 +4,7 @@ import {PageBlocksType, ToolsType} from "@/types/tools";
 import {CompareSectionType, CompareSelectorType} from "@/types/compare";
 import {BarType} from "@/types/about";
 import React from "react";
+import {Resource} from "@/types/resources";
 
 export type ImageType = {
     node: {
@@ -126,4 +127,5 @@ export type PageDataType = {
     members?: Member[];
     bar?: BarType;
     renderedContent?: React.ReactNode;
+    resources?: Resource[]
 }
