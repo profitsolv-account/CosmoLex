@@ -255,3 +255,51 @@ export const getPostData = async (pageSlug: string): Promise<PostDataType> => {
     };
 }
 
+export const getKBPostData = async (pageSlug: string): Promise<PostDataType> => {
+
+   /* const posts = getFromCache("posts")
+    const pageData = posts.find((post: any) => post.slug === pageSlug);
+    if (pageData) return pageData;*/
+
+    const { data } = await client.query({
+        query: gql`
+            query GetPage {
+                knowledgeBaseArticle(id: "${pageSlug}", idType: URI) {
+                    id
+                    title
+                    date
+                    content
+                    featuredImage {
+                        node {
+                            sourceUrl
+                            altText
+                            mediaDetails {
+                                width
+                                height
+                            }
+                        }
+                    }
+                }
+            }
+        `,
+        fetchPolicy: "no-cache",
+        variables: { pageSlug },
+    });
+
+
+    if (!data.knowledgeBaseArticle) {
+        throw new Error("Post not found");
+    }
+
+    const post = get(data, 'knowledgeBaseArticle', {});
+
+    const latestPosts = await getLatestPosts(5);
+    return {
+        ...post,
+        featuredPost: latestPosts[0],
+        menus: await getAllMenus(),
+        settings: await getSiteSettings(),
+        latestPosts
+    };
+}
+

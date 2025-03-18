@@ -6,9 +6,11 @@ import classNames from "classnames";
 type Props = {
     pageData: PageDataType;
     className?: string;
+    hideCta?: boolean;
+    contentClassName?: string;
 }
 
-export const CompareHeader = ({pageData, className}:Props) => {
+export const CompareHeader = ({pageData, className, hideCta, contentClassName}:Props) => {
 
     const title = get(pageData, 'title', '');
     const description  = get(pageData, 'description', '');
@@ -19,7 +21,7 @@ export const CompareHeader = ({pageData, className}:Props) => {
     const heroImage = get(pageData, 'heroImage', null);
 
     return <div className={classNames("pt-10 mb-10 relative pb-15", className)}>
-        <div className="px-5 mx-auto max-w-[68.75rem] justify-center items-center grid md:grid-cols-2 gap-10 relative z-2 md:items-start md:flex-row md:gap-14">
+        <div className={classNames("px-5 mx-auto max-w-[68.75rem] justify-center items-center grid md:grid-cols-2 gap-10 relative z-2 md:items-start md:flex-row md:gap-14", contentClassName)}>
             <div className="">
 
                 {subheading &&
@@ -33,7 +35,7 @@ export const CompareHeader = ({pageData, className}:Props) => {
                 <div className="min-h-[3.8125rem] text-left text-white text-base font-normal leading-relaxed mb-10"
                      dangerouslySetInnerHTML={{__html: description}}
                 />
-                <div className="flex justify-start items-center gap-4 pb-10">
+                {!hideCta && <div className="flex justify-start items-center gap-4 pb-10">
                     <div
                         className="h-[3.375rem] px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] rounded-[6.25rem] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">
                         <a href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</a>
@@ -41,7 +43,7 @@ export const CompareHeader = ({pageData, className}:Props) => {
                     <div className="h-[3.375rem]  px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] bg-white rounded-[6.25rem] border justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-primary hover:text-white">
                         <a href={pageData.settings?.freeTrialLink || ""} className="text-center text-primary-dark text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-white">{ctaTrial}</a>
                     </div>
-                </div>
+                </div>}
 
             </div>
             <div className="flex justify-center md:pl-10 md:pt-13">

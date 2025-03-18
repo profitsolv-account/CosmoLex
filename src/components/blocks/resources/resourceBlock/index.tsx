@@ -9,7 +9,7 @@ export const ResourceBlock: FC<Props> = ({resource}) => {
 
     const renderTags = (tags: string) => {
         return tags.split(',').map((tag, index) => {
-            return <div key={index} className="text-xs text-white bg-primary rounded-[0.25rem] px-1">{tag}</div>
+            return <div key={index} className="text-xs rounded-[0.25rem] px-1 bg-white text-primary text-[1rem] font-semibold">{tag}</div>
         })
     }
     return <div className="w-full relative p-1 rounded-[0.25rem] border border-[#c7c7cc] group">
@@ -21,10 +21,14 @@ export const ResourceBlock: FC<Props> = ({resource}) => {
                     height={resource.node.featuredImage.node.mediaDetails.height}
                     className="w-full relative z-2"
                 />
-                <div className="w-full h-full hidden bg-primary  group-hover:block absolute top-0 left-0 opacity-100 z-10">
-                    <div>{renderTags(resource.node.webinarFields.tags)}</div>
-                    <div>{resource.node.title}</div>
-                    <div dangerouslySetInnerHTML={{__html: resource.node.content}}/>
+                <div className="w-full h-full hidden bg-primary  group-hover:flex absolute top-0 left-0 opacity-100 z-10  justify-center items-center">
+                    <div className="px-10 text-center">
+                        <div className="flex justify-center mb-5 gap-5">{renderTags(resource.node.webinarFields.tags)}</div>
+                        <div className="text-white uppercase text-2xl font-semibold mb-5">{resource.node.title}</div>
+                        <div  className="text-white uppercase text-[1rem] leading-[1.5rem]" dangerouslySetInnerHTML={{__html: resource.node.content}}/>
+                    </div>
+
+                    <a href={resource.node.webinarFields.ctaLink} className="absolute bottom-10 text-white">Register</a>
                 </div>
             </div>
 

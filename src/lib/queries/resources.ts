@@ -1,7 +1,7 @@
 import client from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
-import {Resource} from "@/types/resources";
+import {KnowledgeBaseCategory, Resource} from "@/types/resources";
 export const getResourcesData = async (): Promise<Resource[]> => {
 
     const { data } = await client.query({
@@ -82,6 +82,7 @@ export const getResourcesData = async (): Promise<Resource[]> => {
                         }
                     }
                 }
+                
             }
         `,
         fetchPolicy: "cache-first"
@@ -94,4 +95,33 @@ export const getResourcesData = async (): Promise<Resource[]> => {
 
     ].sort((a: Resource, b: Resource) => new Date(b.node.date).getTime() - new Date(a.node.date).getTime());
 
+}
+
+export const getKBData = async (): Promise<KnowledgeBaseCategory[]> => {
+    const { data } = await client.query({
+        query: gql`
+            query GetKBData {
+                knowledgeBaseCategories {
+                    edges {
+                        node {
+                            name
+                            slug
+                            uri
+                            knowledgeBaseArticles(first: 10000) {
+                                nodes {
+                                    id
+                                    date
+                                    slug
+                                    title
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        `,
+        fetchPolicy: "cache-first",
+        variables: {},
+    })
+    return get(data, 'knowledgeBaseCategories.edges', []);
 }
