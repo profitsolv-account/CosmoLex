@@ -3,6 +3,7 @@ import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
 import PageTemplate from "@/components/templates/PageTemplate";
 import {notFound} from "next/navigation";
+import "./wordpress-blocks.css";
 
 type Params = {
     params: Promise<{slug: string}>;
