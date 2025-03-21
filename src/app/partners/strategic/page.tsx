@@ -15,7 +15,6 @@ export default async function AffinityBarPartnersPage() {
     try {
         const pageData = await getPageData(slug);
        const affinityBarLogos = await getAffinityBarlogos();
-       console.log(pageData)
        return <PartnersStrategicPageTemplate pageData={{
             ...pageData,
             partnerLogos: affinityBarLogos,
