@@ -9,7 +9,7 @@ export const getLeadersLogos = async (): Promise<LeaderLogos[]> => {
         query: gql`
             query LeadersLogos {
                 softwareLogos {
-                    images {
+                    images2 {
                         leaders {
                             image {
                                 node {
@@ -29,7 +29,7 @@ export const getLeadersLogos = async (): Promise<LeaderLogos[]> => {
         variables: {},
     })
 
-    const logos = get(data, 'softwareLogos.images.leaders', []);
+    const logos = get(data, 'softwareLogos.images2.leaders', []);
     return logos.map((item: any) => ({
         alt: item.image.node.altText,
         src: item.image.node.sourceUrl,
