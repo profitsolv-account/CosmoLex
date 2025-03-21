@@ -3,11 +3,13 @@ import {FC} from "react";
 import classNames from "classnames";
 
 type Props = {
-    logos: AffinityBarLogos[];
+    logos?: AffinityBarLogos[];
     className?: string;
 }
 
 export const PartnersStrategic:FC<Props> = ({logos, className}) => {
+    if (!logos) return null;
+
     return(  
         <>
             <div className="container-s relative pt-20 overflow-hidden mb-[7.5625rem] px-4">

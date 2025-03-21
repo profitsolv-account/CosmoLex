@@ -5,6 +5,7 @@ import {CompareSectionType, CompareSelectorType} from "@/types/compare";
 import {BarType} from "@/types/about";
 import React from "react";
 import {KnowledgeBaseCategory, Resource} from "@/types/resources";
+import {AffinityBarLogos} from "@/types/affinity-bar-partners";
 
 export type ImageType = {
     node: {
@@ -128,5 +129,6 @@ export type PageDataType = {
     bar?: BarType;
     renderedContent?: React.ReactNode;
     resources?: Resource[];
-    knowledgeBaseCategories?: KnowledgeBaseCategory[]
+    knowledgeBaseCategories?: KnowledgeBaseCategory[];
+    partnerLogos?: AffinityBarLogos[];
 }
