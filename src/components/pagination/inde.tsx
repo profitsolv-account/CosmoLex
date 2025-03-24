@@ -1,22 +1,17 @@
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import classNames from 'classnames';
+import Link from 'next/link';
 
 type PaginationProps = {
     pageCount: number;
     currentPage: number;
+    baseLink?: string;
 };
 
-const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage }) => {
-    const router = useRouter();
-
-    const handlePageChange = (pageNumber: number) => {
-        if (pageNumber >= 1 && pageNumber <= pageCount) {
-            router.push(`/blog/page/${pageNumber}`);
-        }
-    };
-
+const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, baseLink }) => {
+    const base = baseLink || '/blog/page';
     const renderPageNumbers = () => {
         const pages = [];
 
@@ -37,44 +32,56 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage }) => {
         return pages.map((page, index) => {
             if (page === '...') {
                 return (
-                    <span key={index} className="px-3 py-1 text-gray-500 cursor-pointer">
-            {page}
-          </span>
+                    <span key={index} className="px-3 py-1 text-gray-500">
+                        {page}
+                    </span>
                 );
             }
 
             return (
-                <button
+                <Link
                     key={index}
-                    onClick={() => handlePageChange(Number(page))}
-                    className={`mx-1 px-3 py-1 rounded-full cursor-pointer ${
-                        currentPage === page
-                            ? 'bg-black text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
+                    href={`${base}/${page}`}
+                    className={classNames("mx-1 px-4 py-2 border border-primary cursor-pointer", {
+                        'bg-primary text-white': currentPage === page,
+                        'text-primary hover:bg-primary hover:text-white': currentPage !== page,
+                    })}
                 >
                     {page}
-                </button>
+                </Link>
             );
         });
     };
+
     return (
         <div className="flex items-center justify-center space-x-2 p-4">
-            <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 cursor-pointer"
-                disabled={currentPage === 1}
-            >
-                ←
-            </button>
+            {currentPage > 1 ? (
+                <Link
+                    href={`${base}/${currentPage - 1}`}
+                    className="px-4 py-2 border border-primary cursor-pointer hover:bg-primary hover:text-white"
+                >
+                    ←
+                </Link>
+            ) : (
+                <span className="px-4 py-2 border border-gray-300 text-gray-400 cursor-not-allowed">
+                    ←
+                </span>
+            )}
+
             {renderPageNumbers()}
-            <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                className="px-3 py-1 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 cursor-pointer"
-                disabled={currentPage === pageCount}
-            >
-                →
-            </button>
+
+            {currentPage < pageCount ? (
+                <Link
+                    href={`${base}/${currentPage + 1}`}
+                    className="px-4 py-2 border border-primary cursor-pointer hover:bg-primary hover:text-white"
+                >
+                    →
+                </Link>
+            ) : (
+                <span className="px-4 py-2 border border-gray-300 text-gray-400 cursor-not-allowed">
+                    →
+                </span>
+            )}
         </div>
     );
 };

@@ -8,6 +8,8 @@ import { onError } from '@apollo/client/link/error';
 import { RetryLink } from '@apollo/client/link/retry';
 import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
 
+const API = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
+
 const errorLink = onError(({ networkError }) => {
     if (networkError) console.error(networkError);
 });
@@ -25,7 +27,7 @@ const customFetch = (uri: RequestInfo | URL, options: RequestInit = {}) => {
 };
 
 const httpLink = new HttpLink({
-    uri: 'https://cosmonew1.wpenginepowered.com/graphql',
+    uri: `${API}/graphql`,
     fetch: customFetch,
 });
 

@@ -17,11 +17,8 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 
 export default async function SinglePost({ params }: any) {
    try {
-       const { slug, category, post } = await params;
-
-       console.log({ slug, category, post });
+       const { post } = await params;
        const data = await getKBPostData(post);
-       console.log(data);
 
        return <PostTemplate pageData={{
            ...data,

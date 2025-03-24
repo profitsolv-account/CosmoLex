@@ -131,4 +131,5 @@ export type PageDataType = {
     resources?: Resource[];
     knowledgeBaseCategories?: KnowledgeBaseCategory[];
     partnerLogos?: AffinityBarLogos[];
+    total?: number;
 }

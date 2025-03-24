@@ -3,19 +3,21 @@ import {ShortPostType} from "@/types";
 import Image from 'next/image';
 
 type Props = {
-    post: ShortPostType
+    post: ShortPostType;
+    url?: string;
 }
-export const ShortPost: FC<Props> = ({post}) => {
+export const ShortPost: FC<Props> = ({post, url}) => {
+    const pageUrl = url ? url : `/blog/${post.slug}`;
 
     return <div className="mb-12">
         <h2 className="mb-5 text-primary-dark text-[2.125rem] font-bold font-['Inter'] leading-[3.4375rem] md:text-[2.875rem] transition duration-300 hover:text-primary">
-            <a href={`/blog/${post.slug}`} dangerouslySetInnerHTML={{__html: post.title || ""}}/>
+            <a href={pageUrl} dangerouslySetInnerHTML={{__html: post.title || ""}}/>
         </h2>
 
         {!!post.featuredImage.length && <>
             <div className="flex mb-5 text-justify">
                     <a
-                        href={`/blog/${post.slug}`}
+                        href={pageUrl}
                         className="inline-block p-1 border border-primary"
                     >
                         <Image

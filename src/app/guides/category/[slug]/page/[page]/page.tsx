@@ -4,9 +4,12 @@ import {getSEOData} from "@/lib/queries/seo";
 import BlogTemplate from "@/components/templates/BlogTemplate";
 import {generalSettings} from "@/lib/queries/settings";
 import {notFound} from "next/navigation";
+import {getKBCategoryData} from "@/lib/queries/knowledgeBase";
+import KBCategoryTemplate from "@/components/templates/KBCategoryTemplate";
+import React from "react";
 
 type Params = {
-    params: Promise<{ page: string }>
+    params: Promise<{ page: string, slug: string }>
 };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
@@ -21,14 +24,22 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 
-export default async function BlogSinglePage({ params }: Params) {
-   try {
-       const {page} = await params;
-       const pageData = await getBlogData(+page);
-       return <BlogTemplate pageData={pageData} page={+page} />
-   } catch(error) {
-       notFound();
-   }
+export default async function KBCategoryPage({ params }: Params) {
+
+    try {
+        const { slug } = await params;
+        const {page} = await params;
+
+        const pageData = await getKBCategoryData(slug, +page);
+        if (!pageData) {
+            notFound();
+        }
+        return <KBCategoryTemplate pageData={pageData} page={+page} slug={slug} />
+    } catch(error) {
+        notFound();
+    }
+
+
 }
 
 /*

@@ -145,7 +145,7 @@ export const getKBData = async (): Promise<KnowledgeBaseCategory[]> => {
     const { data } = await client.query({
         query: gql`
             query GetKBData {
-                knowledgeBaseCategories {
+                knowledgeBaseCategories(first: 10000) {
                     edges {
                         node {
                             name
@@ -166,6 +166,36 @@ export const getKBData = async (): Promise<KnowledgeBaseCategory[]> => {
         `,
         fetchPolicy: "cache-first",
         variables: {},
+    })
+    return get(data, 'knowledgeBaseCategories.edges', []);
+}
+
+
+export const getKBCategoryData = async (pageSlug: string): Promise<KnowledgeBaseCategory[]> => {
+    const { data } = await client.query({
+        query: gql`
+            query GetKBData {
+                knowledgeBaseCategory(id: "${pageSlug}", idType: SLUG) {
+                    edges {
+                        node {
+                            name
+                            slug
+                            uri
+                            knowledgeBaseArticles(first: 10000) {
+                                nodes {
+                                    id
+                                    date
+                                    slug
+                                    title
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        `,
+        fetchPolicy: "cache-first",
+        variables: { pageSlug },
     })
     return get(data, 'knowledgeBaseCategories.edges', []);
 }

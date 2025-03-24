@@ -6,7 +6,8 @@ import {getLatestPosts} from "@/lib/queries/wordpress";
 import {PageDataType, ShortPostType} from "@/types";
 
 const POSTS_PER_PAGE = 10;
-const BASE_URL = 'https://cosmonew1.wpenginepowered.com/wp-json/wp/v2';
+const API = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
+const BASE_URL = `${API}/wp-json/wp/v2`;
 
 export const getBlogData = async (page: number): Promise<PageDataType> => {
     const res = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`);
@@ -15,6 +16,8 @@ export const getBlogData = async (page: number): Promise<PageDataType> => {
     if (!data) {
         throw new Error("Failed to fetch blog data");
     }
+
+    const totalPosts = +(res.headers.get('X-WP-Total') || 0);
 
     const posts:ShortPostType[] = data.map((post: any) => ({
         id: post.id,
@@ -36,7 +39,8 @@ export const getBlogData = async (page: number): Promise<PageDataType> => {
         title: "Blog",
         content: "",
         id: "",
-        date: ""
+        date: "",
+        total: totalPosts
     };
 };
 
