@@ -48,7 +48,7 @@ const DropdownCheckbox: React.FC<DropdownCheckboxProps> = ({ options, onChange, 
             </button>
 
             {isOpen && (
-                <div className="absolute mt-2 py-2 bg-white border border-gray-200 shadow-lg rounded z-10 w-56">
+                <div className="absolute mt-2 py-2 bg-white border border-gray-200 shadow-lg rounded z-12 w-56">
                     {options.map(option => (
                         <label
                             key={option.id}

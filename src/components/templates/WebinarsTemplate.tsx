@@ -8,7 +8,7 @@ import {CompareHeader} from "@/components/blocks/compare/compareHeader";
 import {Resource} from "@/types/resources";
 import DropdownCheckbox from "@/components/blocks/resources/dropdown";
 
-export default function ResourceHubTemplate({ pageData }: { pageData: PageDataType }) {
+export default function WebinarsTemplate({ pageData }: { pageData: PageDataType }) {
 
    const resources = pageData.resources || [];
     const [precessedResources, setProcessedResources] = useState(resources);
@@ -100,11 +100,16 @@ type SearchProps = {
 }
 
 const Search: FC<SearchProps> = ({resources, onAction}) => {
-    const types = new Set(resources.map(resource => resource.type));
-    const [selectedTypes, setSelectedTypes] = useState([...types].map(type => ({
-        id: type, label: type, checked: false
-    })));
 
+    const [selectedTypes, setSelectedTypes] = useState([
+        {
+            id: 'ondemand', label: 'On-Demand', checked: false
+        },
+        {
+            id: 'upcoming', label: 'Upcoming', checked: false
+        }
+    ]);
+    
     const [query, setQuery] = useState("");
 
     const onSearch = (e:ChangeEvent<HTMLInputElement>) => {
@@ -118,8 +123,12 @@ const Search: FC<SearchProps> = ({resources, onAction}) => {
 
         //Filtering by type
         const types = selectedTypes.filter(type => type.checked).map(type => type.id);
-        if (types.length) {
-            filteredResources = filteredResources.filter(resource => types.includes(resource.type));
+        if (types.length === 1) {
+            if (types[0] === 'ondemand') {
+                filteredResources = filteredResources.filter(resource => !resource.node.fields.ctaText.toLowerCase().includes('register'));
+            } else {
+                filteredResources = filteredResources.filter(resource => resource.node.fields.ctaText.toLowerCase().includes('register'));
+            }
         }
 
         onAction(filteredResources);
@@ -135,10 +144,11 @@ const Search: FC<SearchProps> = ({resources, onAction}) => {
             value={query}
             onChange={onSearch}
         />
+
         <DropdownCheckbox
             options={selectedTypes}
             onChange={setSelectedTypes}
-            label="Asset type"
+            label="Webinar type"
         />
 
     </div>

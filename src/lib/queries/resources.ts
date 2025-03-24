@@ -2,6 +2,7 @@ import client from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {KnowledgeBaseCategory, Resource} from "@/types/resources";
+
 export const getResourcesData = async (): Promise<Resource[]> => {
 
     const { data } = await client.query({
@@ -58,6 +59,41 @@ export const getResourcesData = async (): Promise<Resource[]> => {
                         }
                     }
                 }
+                
+            }
+        `,
+        fetchPolicy: "cache-first"
+    });
+
+    const formattedData = [
+        ...get(data, 'guides.edges', []).map((r: any) => ({
+            ...r,
+            type: 'Guide',
+            node: {
+                ...r.node,
+                fields: r.node.guidesFields
+            }
+        })),
+
+        ...get(data, 'infographics.edges', []).map((r: any) => ({
+            ...r,
+            type: r.node.infographicsFields.isItAnInfographicOrChecklist,
+            node: {
+                ...r.node,
+                fields: r.node.infographicsFields
+            }
+        })),
+    ]
+
+    return formattedData.sort((a: Resource, b: Resource) => new Date(b.node.date).getTime() - new Date(a.node.date).getTime());
+
+}
+
+export const getWebinarsData = async (): Promise<Resource[]> => {
+
+    const { data } = await client.query({
+        query: gql`
+            query GetResources {
                 webinars(first: 1000) {
                     edges {
                         node {
@@ -84,31 +120,13 @@ export const getResourcesData = async (): Promise<Resource[]> => {
                         }
                     }
                 }
-                
+
             }
         `,
         fetchPolicy: "cache-first"
     });
 
     const formattedData = [
-        ...get(data, 'guides.edges', []).map((r: any) => ({
-            ...r,
-            type: 'Guide',
-            node: {
-                ...r.node,
-                fields: r.node.guidesFields
-            }
-        })),
-
-        ...get(data, 'infographics.edges', []).map((r: any) => ({
-            ...r,
-            type: r.node.infographicsFields.isItAnInfographicOrChecklist,
-            node: {
-                ...r.node,
-                fields: r.node.infographicsFields
-            }
-        })),
-
         ...get(data, 'webinars.edges', []).map((r: any) => ({
             ...r,
             type: 'Webinar',
