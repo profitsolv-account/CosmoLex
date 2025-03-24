@@ -24,7 +24,7 @@ export const getResourcesData = async (): Promise<Resource[]> => {
                                     }
                                 }
                             }
-                            webinarFields {
+                            guidesFields {
                                 ctaLink
                                 tags
                             }
@@ -49,9 +49,10 @@ export const getResourcesData = async (): Promise<Resource[]> => {
                                     }
                                 }
                             }
-                            webinarFields {
+                            infographicsFields {
                                 ctaLink
                                 tags
+                                isItAnInfographicOrChecklist
                             }
                             content
                         }
@@ -77,6 +78,7 @@ export const getResourcesData = async (): Promise<Resource[]> => {
                             webinarFields {
                                 ctaLink
                                 tags
+                                ctaText
                             }
                             content
                         }
@@ -88,12 +90,36 @@ export const getResourcesData = async (): Promise<Resource[]> => {
         fetchPolicy: "cache-first"
     });
 
-    return [
-        ...get(data, 'guides.edges', []).map((r: Resource) => ({...r, type: 'guide'})),
-        ...get(data, 'infographics.edges', []).map((r: Resource) => ({...r, type: 'infographic'})),
-        ...get(data, 'webinars.edges', []).map((r: Resource) => ({...r, type: 'webinar'})),
+    const formattedData = [
+        ...get(data, 'guides.edges', []).map((r: any) => ({
+            ...r,
+            type: 'Guide',
+            node: {
+                ...r.node,
+                fields: r.node.guidesFields
+            }
+        })),
 
-    ].sort((a: Resource, b: Resource) => new Date(b.node.date).getTime() - new Date(a.node.date).getTime());
+        ...get(data, 'infographics.edges', []).map((r: any) => ({
+            ...r,
+            type: r.node.infographicsFields.isItAnInfographicOrChecklist,
+            node: {
+                ...r.node,
+                fields: r.node.infographicsFields
+            }
+        })),
+
+        ...get(data, 'webinars.edges', []).map((r: any) => ({
+            ...r,
+            type: 'Webinar',
+            node: {
+                ...r.node,
+                fields: r.node.webinarFields
+            }
+        })),
+    ]
+
+    return formattedData.sort((a: Resource, b: Resource) => new Date(b.node.date).getTime() - new Date(a.node.date).getTime());
 
 }
 

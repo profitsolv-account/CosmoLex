@@ -7,13 +7,15 @@ export type Resource = {
        uri: string;
        status: string
        featuredImage: ImageType,
-       webinarFields: {
+       fields: {
            ctaLink: string;
            tags: string;
+           ctaText: string;
        },
        content: string;
        type: string;
-   }
+   },
+    type: string;
 };
 
 export interface KnowledgeBaseArticle {
@@ -31,5 +33,5 @@ export interface KnowledgeBaseCategory {
         knowledgeBaseArticles: {
             nodes: KnowledgeBaseArticle[];
         };
-    }
+    },
 }
