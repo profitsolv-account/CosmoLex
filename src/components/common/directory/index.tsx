@@ -7,7 +7,7 @@ type Props = {
 
 export const Directory: FC<Props> = ({ data }) => {
     return (
-        <div className="max-w-sm bg-white rounded-xl shadow-md overflow-hidden p-6 h-full">
+        <div className=" bg-white rounded-xl shadow-md overflow-hidden p-6 h-full">
             <img
                 className="w-full h-32 object-contain mb-4"
                 src={data.featuredImage}
