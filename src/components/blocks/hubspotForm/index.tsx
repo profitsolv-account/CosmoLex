@@ -183,7 +183,7 @@ const HubSpotForm = ({className}: Props) => {
                 }}
             />
             <div className="relative">
-                <div className={classNames("max-w-[27.3125rem] min-h-[31.25rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]", className)}>
+                <div className={classNames("max-w-[40rem] min-h-[31.25rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]", className)}>
                     <FormContent />
                 </div>
             </div>
