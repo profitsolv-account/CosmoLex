@@ -6,25 +6,39 @@ import {PartnersStrategic} from "@/components/blocks/partners/strategic";
 import {PageDataType} from "@/types";
 import Pagination from "@/components/pagination/inde";
 import {Directory} from "@/components/common/directory";
+import SearchComponent from "@/components/common/directory/search";
 
-export default function DirectoriesTemplate({ pageData, page }: { pageData: PageDataType, page: number  }) {
+type Props = {
+    pageData: PageDataType,
+    page: number,
+    locations: { id: number, name: string}[],
+    categories: {id: number, name: string}[]
+}
+
+export default function DirectoriesTemplate({ pageData, page, locations, categories }: Props) {
     const totalPages = Math.ceil((pageData.total || 0) / 10);
     const items = pageData.directories || [];
     return (
         <Layout pageData={pageData}>
             <PageHeader pageData={pageData} />
 
-            <div className="mt-40 container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {
-                    items.map((item, index) => {
-                        return (
-                            <div key={index} className="grow">
-                                <Directory data={item} />
-                            </div>
-                        )
-                    })
-                }
-            </div>
+           <div className="px-2 mt-40 container">
+
+
+               <SearchComponent categories={categories} locations={locations}/>
+
+               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                   {
+                       items.map((item, index) => {
+                           return (
+                               <div key={index} className="grow">
+                                   <Directory data={item} />
+                               </div>
+                           )
+                       })
+                   }
+               </div>
+           </div>
 
             <section className="mx-auto py-16 text-center">
                 <Pagination
