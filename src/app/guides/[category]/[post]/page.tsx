@@ -22,7 +22,6 @@ export default async function SinglePost({ params }: any) {
 
        return <PostTemplate pageData={{
            ...data,
-          /* content: formatText(pageData.content, replace),*/
        }} />;
        
    } catch(error) {

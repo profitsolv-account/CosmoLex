@@ -4,9 +4,10 @@ import { KnowledgeBaseCategory } from "@/types/resources";
 
 type GuidesTemplateProps = {
     data: KnowledgeBaseCategory;
+    icon?: React.ReactNode;
 };
 
-export const GuideBlock: React.FC<GuidesTemplateProps> = ({ data }) => {
+export const GuideBlock: React.FC<GuidesTemplateProps> = ({ data, icon }) => {
     const [isOpen, setIsOpen] = useState(false);
     const articles = data.node.knowledgeBaseArticles.nodes;
     const visibleArticles = isOpen ? articles : articles.slice(0, 8);
@@ -14,12 +15,12 @@ export const GuideBlock: React.FC<GuidesTemplateProps> = ({ data }) => {
     return (
         <div className=" p-4 text-primary-dark">
             <a href={`/guides/category/${data.node.slug}`} className="text-2xl font-semibold mb-4 border-b border-gray-300 border-b-2.5 pb-2 block">
-                {data.node.name}
+                {icon && icon } {data.node.name}
             </a>
             <div className="space-y-2">
                 {visibleArticles.map((article) => (
-                    <div key={article.id} className="hover:underline text-primary-dark">
-                        <a href={`/guides/${data.node.slug}/${article.slug}`}>{article.title}</a>
+                    <div key={article.id} className="hover:underline text-primary-dark mb-4 relative pl-8">
+                       <span className="eckb-article-title__icon ep_font_icon_document absolute left-0 top-2"></span> <a href={`/guides/${data.node.slug}/${article.slug}`}>{article.title}</a>
                     </div>
                 ))}
             </div>

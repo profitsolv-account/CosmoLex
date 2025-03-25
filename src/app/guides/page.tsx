@@ -1,8 +1,7 @@
 import {Metadata} from "next";
 import {getSEOData} from "@/lib/queries/seo";
 import {getPageData} from "@/lib/queries/wordpress";
-import {getKBData, getResourcesData} from "@/lib/queries/resources";
-import ResourceHubTemplate from "@/components/templates/ResourceHubTemplate";
+import {getKBData} from "@/lib/queries/resources";
 import GuidesTemplate from "@/components/templates/GuidesTemplate";
 
 const slug = 'guides';
