@@ -7,19 +7,18 @@ import {Partners} from "@/components/blocks/partners";
 import {Testimonials} from "@/components/blocks/testimonials";
 import {Leaders} from "@/components/blocks/leaders";
 import {Features} from "../blocks/features";
+import HubSpotForm from "@/components/blocks/hubspotForm";
 import {RatingBlock} from "@/components/blocks/ratingBlock";
-import {FreeTrialFormWidget} from "../widgets/freeTrialFormWidget";
 
 export default function DemoPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     return (
         <Layout pageData={pageData}>
+
             <PageHeader pageData={pageData} />
             <RatingBlock className="bg-primary pb-[3.5625rem]" />
             <div className="relative">
-                <div className="relative z-10">
-                    <FreeTrialFormWidget />
-                </div>
+                <HubSpotForm />
                 <div className="bg-primary absolute z-0 w-full h-[11.875rem] left-0 rounded-bl-[6.25rem] top-0" />
             </div>
 
