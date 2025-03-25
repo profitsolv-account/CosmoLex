@@ -1,5 +1,5 @@
 import client from "@/lib/apollo-client";
-import {FeaturedPostType, PageDataType, PricingPlan} from "@/types";
+import {FeaturedPostType, PageDataType, PricingPlan, VideoSection} from "@/types";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {getAllMenus} from "@/lib/queries/menus";
@@ -302,4 +302,44 @@ export const getKBPostData = async (pageSlug: string): Promise<PostDataType> => 
         latestPosts
     };
 }
+
+export const getVideoSection = async (
+    pageSlug: string,
+): Promise<VideoSection> => {
+    const query = gql`
+        query GetPage($id: ID!) {
+            page(id: $id, idType: URI) {
+                videoSection {
+                    videoId
+                    imagePlaceholder {
+                        node {
+                            mediaDetails {
+                                width
+                                height
+                            }
+                            sourceUrl
+                            altText
+                        }
+                    }
+                }
+            }
+        }
+    `;
+
+    const { data } = await client.query({
+        query,
+        variables: { id: pageSlug },
+        fetchPolicy: "cache-first"
+    });
+
+    console.log(data);
+    if (!data.page) {
+        throw new Error("Page not found");
+    }
+
+    return {
+        'videoId': get(data, 'page.videoSection.videoId', ''),
+        'imagePlaceholder': get(data, 'page.videoSection.imagePlaceholder.node', null),
+    };
+};
 

@@ -1,5 +1,5 @@
 "use client"
-import React, {FC, Fragment} from 'react'
+import React, {FC, Fragment, useState} from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
@@ -13,6 +13,7 @@ import {PageBlocksType, ToolsType} from "@/types/tools";
 import {Faq} from "@/components/blocks/faq";
 import {ColumnsSection} from "@/components/blocks/columnsSection";
 import Image from 'next/image';
+import VideoModal from "@/components/blocks/videoModal";
 
 export default function PracticeTypesTemplate({ pageData }: { pageData: PageDataType }) {
 
@@ -21,6 +22,9 @@ export default function PracticeTypesTemplate({ pageData }: { pageData: PageData
     const pageBlocks: PageBlocksType = pageData.pageBlocks || {
         pageBlocksItems: []
     };
+    const videoSection = pageData.videoSection;
+
+    const [openVideo, setOpenVideo] = useState(false);
 
     return (
         <Layout pageData={pageData}>
@@ -31,6 +35,20 @@ export default function PracticeTypesTemplate({ pageData }: { pageData: PageData
                 showCta
                 showFeatureImage
             />
+
+            {videoSection && <div className="my-25 flex justify-center">
+                <Image
+                    src={videoSection.imagePlaceholder.sourceUrl}
+                    alt={videoSection.imagePlaceholder.altText}
+                    width={videoSection.imagePlaceholder.mediaDetails.width}
+                    height={videoSection.imagePlaceholder.mediaDetails.height}
+                    onClick={() => {
+                        setOpenVideo(true);
+                    }}
+                    className="max-w-[55rem] cursor-pointer"
+                />
+                <VideoModal isOpen={openVideo} videoId={videoSection.videoId} onClose={() => setOpenVideo(false)} />
+            </div>}
 
             {pageData.tools &&pageData.tools.showTools && <div className="relative">
                 {pageData.tools && pageData.tools.items && <ToolsSection tools={pageData.tools} />}

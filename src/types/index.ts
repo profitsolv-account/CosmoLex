@@ -99,6 +99,17 @@ export type Member = {
     linkedin: string;
 }
 
+export type VideoSection = {
+    videoId: string;
+    imagePlaceholder: {
+        altText: string;
+        sourceUrl: string;
+        mediaDetails: {
+            width: number;
+            height: number;
+        }
+    }
+}
 export type PageDataType = {
     title: string;
     subheading?: string;
@@ -132,4 +143,5 @@ export type PageDataType = {
     knowledgeBaseCategories?: KnowledgeBaseCategory[];
     partnerLogos?: AffinityBarLogos[];
     total?: number;
+    videoSection?: VideoSection;
 }

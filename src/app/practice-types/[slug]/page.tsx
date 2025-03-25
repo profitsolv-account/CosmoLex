@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
-import { getPageData } from "@/lib/queries/wordpress";
+import {getPageData, getVideoSection} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PracticeTypesTemplate from "@/components/templates//PracticeTypesTemplate";
@@ -20,10 +20,13 @@ export default async function PracticeTypesPage({params}: Params) {
         const {slug} = await params;
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
+        const videoSection = await getVideoSection(slug);
+
         return <PracticeTypesTemplate pageData={{
             ...pageData,
             testimonials,
-            footerExtendedBg: true
+            footerExtendedBg: true,
+            videoSection
         }} />
     } catch (error) {
         console.error(error);
