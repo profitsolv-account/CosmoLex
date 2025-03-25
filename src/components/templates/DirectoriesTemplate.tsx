@@ -14,7 +14,7 @@ export default function DirectoriesTemplate({ pageData, page }: { pageData: Page
         <Layout pageData={pageData}>
             <PageHeader pageData={pageData} />
 
-            <div className="mt-10 container-blog grid grid-cols-3 gap-10">
+            <div className="mt-40 container-blog grid grid-cols-3 gap-10">
                 {
                     items.map((item, index) => {
                         return (
