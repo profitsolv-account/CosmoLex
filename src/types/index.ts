@@ -110,6 +110,18 @@ export type VideoSection = {
         }
     }
 }
+export type DirectoryType = {
+    id: number;
+    title: string;
+    featuredImage: string;
+    altText: string;
+    address: string;
+    email: string;
+    phone: string;
+    website: string;
+    category: string;
+}
+
 export type PageDataType = {
     title: string;
     subheading?: string;
@@ -144,4 +156,5 @@ export type PageDataType = {
     partnerLogos?: AffinityBarLogos[];
     total?: number;
     videoSection?: VideoSection;
+    directories?: DirectoryType[]
 }
