@@ -9,7 +9,7 @@ export const Directory: FC<Props> = ({ data }) => {
     return (
         <div className=" bg-white rounded-xl shadow-md overflow-hidden p-6 h-full">
             <img
-                className="w-full h-32 object-contain mb-4"
+                className="w-full object-contain mb-4"
                 src={data.featuredImage}
                 alt={data.altText}
             />
