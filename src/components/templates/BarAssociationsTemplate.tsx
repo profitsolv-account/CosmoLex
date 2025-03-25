@@ -8,6 +8,7 @@ import classNames from "classnames";
 import Image from 'next/image';
 import {BarAssociationHeader} from "@/components/blocks/barAssociationHeader";
 import {DemoForm} from "@/components/common/demoForm";
+import {FreeTrialFormWidget} from "@/components/widgets/freeTrialFormWidget";
 
 type Props = {
     pageData: PageDataType;
@@ -23,19 +24,16 @@ export default function BarAssociationsTemplate({ pageData, formId, routerName }
                 pageData={pageData}
                 className="mb-10"
                 rightSideContent={<>
-                    <DemoForm
-                        formId={formId}
-                        routerName={routerName}
-                    />
+                    <FreeTrialFormWidget />
                 </>}
             />
             <Testimonials
-                    testimonials={testimonials}
-                    className="!bg-transparent !pt-0 relative z-10"
-                    bgOverlay={false}
-                    showNavigation
-                    theme="dark"
-                />
+                testimonials={testimonials}
+                className="!bg-transparent !pt-0 relative z-10"
+                bgOverlay={false}
+                showNavigation
+                theme="dark"
+            />
             <SimplifyPractice pageData={pageData} />
         </Layout>
     )

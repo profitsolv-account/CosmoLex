@@ -15,11 +15,10 @@ export const BarAssociationHeader = ({pageData, className, rightSideContent}:Pro
     const title = get(pageData, 'title', '');
     const content = get(pageData, 'content', '');
     const heroImage = get(pageData, 'heroImage', null);
+
     return <div className={classNames("pt-10 relative mb-25", className)}>
         <div className="px-5 mx-auto max-w-[76.125rem] justify-center items-center grid md:grid-cols-2 gap-2 lg:items-start relative z-2 lg:flex-row lg:gap-14">
             <div className="lg:pt-[2.5rem]">
-
-                
                 <div className="pt-6 mb-6">
                     <div className="flex justify-center md:pl-10 md:pt-13">
                         {heroImage && (

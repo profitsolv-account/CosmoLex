@@ -1,6 +1,7 @@
+"use client"
 import React, { useEffect, useRef } from 'react';
 
-export const DemoWidget = () => {
+export const FreeTrialFormWidget = () => {
     const iframeContainerRef = useRef(null);
 
     useEffect(() => {
@@ -14,7 +15,7 @@ export const DemoWidget = () => {
             'https://profitsolv-billingplatform-dev.azurewebsites.net/subscription-management/subscription-management.html?businessUnit=cosmolex&productCatalog=CosmoLex&version=v2&showOnlyMainProducts=true&showPreselectedSignUpForm=true&overrideHost=https://internal1.cosmolex.com';
 
         iframe.style.width = '100%';
-        iframe.style.height = '890px';
+        iframe.style.height = '110rem';
         iframe.style.border = 'none';
         iframe.style.background = 'transparent';
 
