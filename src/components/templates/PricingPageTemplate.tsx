@@ -4,11 +4,11 @@ import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
 import {PageHeader} from "@/components/blocks/pageHeader";
-import {PricingBlocks} from "@/components/blocks/pricingBlocks";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {PriceComparison} from "@/components/blocks/priceComparison";
 import {AddonsBlock} from "@/components/blocks/addonsBlock";
 import {Faq} from "@/components/blocks/faq";
+import {PricingWidget} from "@/components/widgets/pricingWidget";
 
 export default function PricingPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
@@ -17,7 +17,12 @@ export default function PricingPageTemplate({ pageData }: { pageData: PageDataTy
     return (
         <Layout pageData={pageData}>
             <PageHeader pageData={pageData} />
-            <PricingBlocks />
+           <div className="relative">
+               <div className="relative z-10">
+                   <PricingWidget />
+               </div>
+                <div className="bg-primary absolute w-full h-[25%] left-0 top-0 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem]" />
+           </div>
 
             <div className="relative">
                 <PriceComparison
