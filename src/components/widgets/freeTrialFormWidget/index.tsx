@@ -24,7 +24,9 @@ export const FreeTrialFormWidget = () => {
 
         iframe.onload = function () {
             // @ts-ignore
-            iframe.contentWindow.postMessage({ action: 'setCookies', data: document.cookie }, '*');
+            if (iframe.contentWindow) {
+                iframe.contentWindow.postMessage({ action: 'setCookies', data: document.cookie }, '*');
+            }
         };
 
         const handleMessage = (event: any) => {
@@ -36,8 +38,7 @@ export const FreeTrialFormWidget = () => {
                 window.location.href = event.data.url;
             }
 
-            if (event.data.action === 'setCookies') {
-                // @ts-ignore
+            if (event.data.action === 'setCookies' && iframe.contentWindow) {
                 iframe.contentWindow.postMessage({ action: 'setCookies', data: document.cookie }, '*');
             }
 

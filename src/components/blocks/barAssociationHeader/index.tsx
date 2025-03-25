@@ -27,15 +27,16 @@ export const BarAssociationHeader = ({pageData, className, rightSideContent}:Pro
                                 alt={heroImage.node.altText}
                                 width={200}
                                 height={200}
+                                className="mb-10"
                             />
                         )}
                     </div>
 
                     <h1 className="text-left home-title text-white text-[2.875rem] font-medium leading-[2.875rem] md:text-[3.25rem] md:leading-[3.25rem] md:font-normal lg:block"
-                        dangerouslySetInnerHTML={{__html: title}}
+                        dangerouslySetInnerHTML={{__html: title || ''}}
                     />
-                    <p className="text-white p-4 sm:p-0 text-base md:text-lg lg:text-md mt-8"
-                     dangerouslySetInnerHTML={{__html: content}}
+                    <div className="text-white p-4 sm:p-0 text-base md:text-lg lg:text-md mt-8"
+                     dangerouslySetInnerHTML={{__html: pageData.content || ''}}
                     />
                 </div>
 

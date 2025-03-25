@@ -4,10 +4,7 @@ import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
-import classNames from "classnames";
-import Image from 'next/image';
 import {BarAssociationHeader} from "@/components/blocks/barAssociationHeader";
-import {DemoForm} from "@/components/common/demoForm";
 import {FreeTrialFormWidget} from "@/components/widgets/freeTrialFormWidget";
 
 type Props = {
