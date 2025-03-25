@@ -18,7 +18,6 @@ const slug = 'certified-consultant';
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);
 }
-
 export default async function CertifiedConsultantPage({ params, searchParams }: any) {
     try {
         const { s, ctas, locs } = await searchParams || {};
