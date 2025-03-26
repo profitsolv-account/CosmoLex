@@ -11,3 +11,18 @@ export type TestimonialType = {
     link: string;
     title: string;
 }
+
+export type CSTestimonial = {
+    content: string;
+    image: {
+        altText: string;
+        mediaDetails: {
+            height: number;
+            width: number;
+        };
+        sourceUrl: string;
+    };
+    location: string;
+    rating: number;
+    title: string;
+}

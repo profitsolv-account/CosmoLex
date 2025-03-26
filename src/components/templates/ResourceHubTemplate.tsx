@@ -7,6 +7,7 @@ import classNames from "classnames";
 import {CompareHeader} from "@/components/blocks/compare/compareHeader";
 import {Resource} from "@/types/resources";
 import DropdownCheckbox from "@/components/blocks/resources/dropdown";
+import {Pagination} from "@/components/common/pagination";
 
 export default function ResourceHubTemplate({ pageData }: { pageData: PageDataType }) {
 
@@ -36,12 +37,6 @@ export default function ResourceHubTemplate({ pageData }: { pageData: PageDataTy
     );
 }
 
-type PaginationProps = {
-    total: number;
-    perPage: number;
-    currentPage: number;
-    setCurrentPage: (page: number) => void;
-};
 
 type Props = {
     resources: Resource[];
@@ -73,26 +68,6 @@ const PaginatedItems: FC<Props> = ({resources}) => {
         />
     </div>
 }
-
-
-const Pagination: FC<PaginationProps> = ({ total, perPage, currentPage, setCurrentPage }) => {
-    const totalPages = Math.ceil(total / perPage);
-    return (
-        <div className="flex justify-center mt-6 space-x-2">
-            {[...Array(totalPages)].map((_, index) => (
-                <button
-                    key={index}
-                    className={classNames("px-4 py-2 border border-primary cursor-pointer", {
-                        'bg-primary text-white': currentPage === index
-                    })}
-                    onClick={() => setCurrentPage(index)}
-                >
-                    {index + 1}
-                </button>
-            ))}
-        </div>
-    );
-};
 
 type SearchProps = {
     resources: Resource[];

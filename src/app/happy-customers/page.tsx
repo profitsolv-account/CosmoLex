@@ -4,6 +4,7 @@ import { getPageData } from "@/lib/queries/wordpress";
 import PageTemplate from "@/components/templates/PageTemplate";
 import {notFound} from "next/navigation";
 import {HappyCustomersTemplate} from "@/components/templates/HappyCustomersTemplate";
+import {getCSTestimonialsList} from "@/lib/queries/testimonials";
 
 type Params = {
     params: Promise<{slug: string}>;
@@ -18,7 +19,12 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 export default async function SinglePage({params}: Params) {
    try {
        const pageData = await getPageData(slug);
-       return <HappyCustomersTemplate pageData={pageData} />
+       const csTestimonials = await getCSTestimonialsList();
+
+       return <HappyCustomersTemplate pageData={{
+           ...pageData,
+           csTestimonials
+       }} />
    } catch (error) {
        notFound();
    }

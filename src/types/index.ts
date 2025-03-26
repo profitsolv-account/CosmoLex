@@ -1,4 +1,4 @@
-import {TestimonialType} from "@/types/testimonials";
+import {CSTestimonial, TestimonialType} from "@/types/testimonials";
 import {LeaderLogos} from "@/types/logos";
 import {PageBlocksType, ToolsType} from "@/types/tools";
 import {CompareSectionType, CompareSelectorType} from "@/types/compare";
@@ -156,7 +156,8 @@ export type PageDataType = {
     partnerLogos?: AffinityBarLogos[];
     total?: number;
     videoSection?: VideoSection;
-    directories?: DirectoryType[]
+    directories?: DirectoryType[];
+    csTestimonials?: CSTestimonial[];
 }
 
 export type LocationItem = {

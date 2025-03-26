@@ -22,9 +22,7 @@ export default function CaseStudyTemplate({ pageData }: { pageData: PageDataType
                 hideContent
             />
 
-            <div className="relative w-full mb-22 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] h-[5rem] bg-primary">
-
-            </div>
+            <div className="relative w-full mb-22 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] h-[5rem] bg-primary" />
 
             {videoSection && videoSection.imagePlaceholder && <div className="my-25 flex justify-center">
                 <Image
