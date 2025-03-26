@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
-import {getPageData} from "@/lib/queries/wordpress";
+import {getPageData, getVideoSection} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import {getCompareChildPageData} from "@/lib/queries/compare";
@@ -23,6 +23,7 @@ export default async function Page({params}: Params) {
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
         const compareSection = await getCompareChildPageData(slug);
+        const videoSection = await getVideoSection(slug);
 
         const members = await getMembersData(slug);
         return <CaseStudyTemplate pageData={{
@@ -31,6 +32,7 @@ export default async function Page({params}: Params) {
             footerExtendedBg: true,
             compareSection,
             members,
+            videoSection
         }} />
 
     } catch (error) {

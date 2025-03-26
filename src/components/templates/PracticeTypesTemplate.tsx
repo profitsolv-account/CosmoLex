@@ -6,7 +6,6 @@ import {Testimonials} from "@/components/blocks/testimonials";
 import {PageHeader} from "@/components/blocks/pageHeader";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {Features} from "@/components/blocks/features";
-import {GuideBlock} from "@/components/blocks/guideBlock";
 import classNames from "classnames";
 import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
 import {PageBlocksType, ToolsType} from "@/types/tools";
@@ -22,8 +21,8 @@ export default function PracticeTypesTemplate({ pageData }: { pageData: PageData
     const pageBlocks: PageBlocksType = pageData.pageBlocks || {
         pageBlocksItems: []
     };
-    const videoSection = pageData.videoSection;
 
+    const videoSection = pageData.videoSection;
     const [openVideo, setOpenVideo] = useState(false);
 
     return (
