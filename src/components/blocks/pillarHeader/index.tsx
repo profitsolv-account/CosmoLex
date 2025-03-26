@@ -13,6 +13,7 @@ export const PillarHeader = ({pageData, className, rightSideContent}:Props) => {
 
     const title = get(pageData, 'title', '');
     const subheading = get(pageData, 'subheading', '');
+    const description  = get(pageData, 'description', '');
 
     return <div className={classNames("pt-10 relative mb-25", className)}>
         <div className="px-5 mx-auto max-w-[76.125rem] justify-center items-center grid md:grid-cols-2 gap-2 lg:items-start relative z-2 lg:flex-row lg:gap-14">
@@ -26,6 +27,11 @@ export const PillarHeader = ({pageData, className, rightSideContent}:Props) => {
                         dangerouslySetInnerHTML={{__html: title}}
                     />
                 </div>
+                {description &&
+                    <div className="min-h-[3.8125rem] text-left text-white text-xl font-normal leading-loose lg:w-full mb-8" dangerouslySetInnerHTML={{__html: description}}
+                     />
+                }
+    
 
             </div>
             <div className="flex justify-center md:pl-10 md:pt-13 relative top-10">
