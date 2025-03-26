@@ -96,7 +96,9 @@ export default function PracticeTypesTemplate({ pageData }: { pageData: PageData
                 </div>
             }
 
-            <Faq faqs={faqs} className="!bg-transparent" />
+            {faqs && faqs.length > 0 && (
+                <Faq faqs={faqs} className="!bg-transparent" />
+            )}
             <SimplifyPractice pageData={pageData} />
         </Layout>
     )
