@@ -17,10 +17,14 @@ export default function CaseStudyTemplate({ pageData }: { pageData: PageDataType
         <Layout pageData={pageData}>
 
             <PageHeader
-                pageData={pageData} className="mb-22"
+                pageData={pageData} className="mb-0"
                 showCta
                 hideContent
             />
+
+            <div className="relative w-full mb-22 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] h-[5rem] bg-primary">
+
+            </div>
 
             {videoSection && videoSection.imagePlaceholder && <div className="my-25 flex justify-center">
                 <Image
@@ -42,7 +46,7 @@ export default function CaseStudyTemplate({ pageData }: { pageData: PageDataType
                </div>
            </div>
 
-            {pageData.settings && <div className="relative">
+            {pageData.settings && <div className="relative bg-primary py-40 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem]">
                 <Features pageData={pageData} className="!pt-2" />
              {/*   <div className="absolute top-0 w-full h-[9.375rem] rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] bg-primary"/>*/}
             </div>}
