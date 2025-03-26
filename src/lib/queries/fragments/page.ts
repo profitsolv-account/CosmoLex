@@ -14,6 +14,7 @@ export const PAGE_SETTINGS_FRAGMENT = gql`
                 }
             }
         }
+        code
     }
 `;
 

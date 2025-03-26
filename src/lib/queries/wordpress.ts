@@ -1,5 +1,5 @@
 import client from "@/lib/apollo-client";
-import {FeaturedPostType, PageDataType, PricingPlan, VideoSection} from "@/types";
+import {Feature, FeaturedPostType, PageDataType, PricingPlan, VideoSection} from "@/types";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {getAllMenus} from "@/lib/queries/menus";
@@ -172,7 +172,8 @@ export const getPageData = async (
         pricingFeatures,
         subheading,
         tools,
-        pageBlocks
+        pageBlocks,
+        code: get(data, 'page.pageSettings.code', ''),
     };
 };
 
@@ -343,3 +344,32 @@ export const getVideoSection = async (
     };
 };
 
+
+export const getPageFeaturesData = async (
+    pageSlug: string,
+): Promise<Feature[]> => {
+    const query = gql`
+        query GetPage($id: ID!) {
+            page(id: $id, idType: URI) {
+                featuresSection {
+                    features {
+                        title
+                        description
+                    }
+                }
+            }
+        }
+    `;
+
+    const { data } = await client.query({
+        query,
+        variables: { id: pageSlug },
+        fetchPolicy: "cache-first"
+    });
+
+    if (!data.page) {
+        throw new Error("Page not found");
+    }
+
+    return get(data, 'page.featuresSection.features', []);
+};

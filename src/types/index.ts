@@ -110,6 +110,7 @@ export type VideoSection = {
         }
     }
 }
+
 export type DirectoryType = {
     id: number;
     title: string;
@@ -120,6 +121,15 @@ export type DirectoryType = {
     phone: string;
     website: string;
     category: string;
+}
+
+export type PodcastType = {
+    id: string;
+    title: string;
+    content: string;
+    heroImage: ImageType;
+    code: string;
+    slug: string;
 }
 
 export type PageDataType = {
@@ -158,6 +168,8 @@ export type PageDataType = {
     videoSection?: VideoSection;
     directories?: DirectoryType[];
     csTestimonials?: CSTestimonial[];
+    code?: string;
+    podcasts?: PodcastType[]
 }
 
 export type LocationItem = {
@@ -165,3 +177,4 @@ export type LocationItem = {
     name: string,
     children: LocationItem[]
 };
+

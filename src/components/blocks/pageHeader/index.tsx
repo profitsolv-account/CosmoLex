@@ -12,9 +12,10 @@ type Props = {
     bgClassName?: string;
     containerClassName?: string;
     hideContent?: boolean;
+    ctaClass?: string;
 }
 
-export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className, bgClassName, containerClassName, hideContent}) => {
+export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className, bgClassName, containerClassName, hideContent, ctaClass}) => {
 
     const title = get(pageData, 'title', '');
     const description  = get(pageData, 'description', '');
@@ -38,7 +39,7 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
                         </div>
                         {!hideContent && <div className="min-h-[3.8125rem] text-center text-white text-xl font-normal leading-loose lg:w-full mb-8" dangerouslySetInnerHTML={{__html: description}} />}
 
-                        {showCta && <div className="flex justify-center items-center gap-4 pb-10">
+                        {showCta && <div className={classNames("flex justify-center items-center gap-4 pb-10", ctaClass)}>
                             <div className="h-[3.375rem] px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] rounded-[6.25rem] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">
                                 <a href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</a>
                             </div>
