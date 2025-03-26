@@ -1,0 +1,47 @@
+.login-banner {
+    h2 {
+        margin-top: 3.4rem;
+        font-size: 2.3rem;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+    }
+    ul {
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        unicode-bidi: isolate;
+        font-size: 1.3rem;
+        font-weight: 600;
+        padding-inline-start: 1em;
+        line-height: 1.8;
+    }
+
+    .wp-block-button {
+        text-align: center;
+        margin-top: 2.5rem;
+    }
+    a {
+        display: inline-block;
+        padding: 14px 30px;
+        background-color: #202B46;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        position: relative;
+        z-index: 3;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        &:hover {
+            background-color: #0c193a;
+            transform: scale(1.05);
+        }
+
+    }
+}
