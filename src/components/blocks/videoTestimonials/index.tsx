@@ -13,7 +13,7 @@ export const VideoTestimonials: FC<TestimonialsProps> = ({testimonials}) => {
 
     if (!testimonials) return null;
 
-    const items = [...testimonials, ...testimonials].map((testimonial, index) => (
+    const items = [...testimonials, ...testimonials, ...testimonials, ...testimonials].map((testimonial, index) => (
         <SingleSlide key={index} slide={testimonial}/>
     ));
 

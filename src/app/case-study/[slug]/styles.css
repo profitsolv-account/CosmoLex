@@ -1,0 +1,21 @@
+.page-content {
+     p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+     }
+    .wp-block-heading {
+        margin: 0;
+        font-size: 2em;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+
+    }
+
+    .wp-block-columns {
+       /* display: flex;
+        flex-wrap: wrap;
+        margin: 0 -1rem;*/
+    }
+}
