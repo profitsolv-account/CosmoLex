@@ -1,0 +1,97 @@
+.wp-block-columns {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+
+.wp-block-columns > .wp-block-column {
+  flex: 1;
+  padding-left: 1em;
+  padding-right: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+}
+
+.wp-block-column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.wp-block-columns.is-layout-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.wp-block-columns.is-layout-flex > .wp-block-column {
+    flex-basis: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
+
+.wp-block-columns.is-layout-flex > .wp-block-column[style*="flex-basis"] {
+    flex-grow: 0;
+}
+
+.wp-block-column.is-layout-flow {
+    display: flex;
+    flex-direction: column;
+}
+
+.wp-block-heading {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.has-text-align-center {
+  text-align: center;
+}
+
+.wp-block-image {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.wp-block-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  min-height: 168px; /* Set a minimum height to match the larger images */
+  object-fit: contain; /* Prevent distortion */
+}
+
+p {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wp-block-columns {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .wp-block-columns > .wp-block-column {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 480px){
+    .wp-block-heading {
+        font-size: 1.5em;
+    }
+}
+
+.wp-block-columns > .wp-block-column > * {
+  width: 100%;
+}
