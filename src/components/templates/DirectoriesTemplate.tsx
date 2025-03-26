@@ -3,7 +3,7 @@ import React from 'react'
 import Layout from "@/components/layout/layout";
 import {PageHeader} from "../blocks/pageHeader";
 import {PartnersStrategic} from "@/components/blocks/partners/strategic";
-import {PageDataType} from "@/types";
+import {LocationItem, PageDataType} from "@/types";
 import Pagination from "@/components/pagination/inde";
 import {Directory} from "@/components/common/directory";
 import SearchComponent from "@/components/common/directory/search";
@@ -11,8 +11,8 @@ import SearchComponent from "@/components/common/directory/search";
 type Props = {
     pageData: PageDataType,
     page: number,
-    locations: { id: number, name: string}[],
-    categories: {id: number, name: string}[]
+    locations: LocationItem[],
+    categories: {id: string, name: string}[]
 }
 
 export default function DirectoriesTemplate({ pageData, page, locations, categories }: Props) {

@@ -158,3 +158,9 @@ export type PageDataType = {
     videoSection?: VideoSection;
     directories?: DirectoryType[]
 }
+
+export type LocationItem = {
+    id: string,
+    name: string,
+    children: LocationItem[]
+};

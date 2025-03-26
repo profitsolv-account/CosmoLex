@@ -23,7 +23,7 @@ export const Directory: FC<Props> = ({ data }) => {
                 </div>
                 <div className="flex items-center gap-2">
                     <span className="epkbfa epkbfa-phone" />
-                    <span>{data.phone}</span>
+                    <a href={`tel:${data.phone}`}>{data.phone}</a>
                 </div>
                 <div className="flex items-center gap-2">
                     <span className="epkbfa epkbfa-globe"/>

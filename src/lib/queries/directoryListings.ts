@@ -30,37 +30,30 @@ export const fetchTaxonomyTerms = async (taxonomy: string, ids: number[]): Promi
 };
 
 export const getDirectoriesData = async (page: number, options: {
-    s?: string; // Search term for title
-    ctas?: string; // Single category ID
-    locs?: string; // Single location ID
+    s?: string;
+    ctas?: string;
+    locs?: string;
 }): Promise<ResponseType> => {
-    // Start constructing the URL
     let url = `${BASE_URL}/directory?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`;
 
-    // Add search query (s)
     if (options.s) {
-        console.log(`Adding search term to URL: s=${options.s}`); // Debugging line
+        console.log(`Adding search term to URL: s=${options.s}`);
         url += `&s=${encodeURIComponent(options.s)}`;
     }
 
-    // Add category filter (ctas) if it's provided
     if (options.ctas) {
         url += `&listing-category=${options.ctas}`;
     }
 
-    // Add location filter (locs) if it's provided
     if (options.locs) {
         url += `&location=${options.locs}`;
     }
 
-    console.log(`Final URL: ${url}`); // Debugging line to check the final URL
-
-    // Fetch data from the API
     const postsResponse = await fetch(url);
     const postsData = await postsResponse.json();
+
     const totalPosts = +(postsResponse.headers.get('X-WP-Total') || 0);
 
-    // Process the post data
     const posts: DirectoryPostType[] = await Promise.all(
         postsData.map(async (post: any) => {
             const categoryIds = post['listing-category'] || [];
@@ -94,8 +87,13 @@ export const getDirectoriesData = async (page: number, options: {
 export const getCategories = async (): Promise<any> => {
     const categories = await fetchTaxonomyTerms('listing-category', []);
     const locations = await fetchTaxonomyTerms('location', []);
+    const parentLocations = locations.filter((l: any) => l.parent === 0).map((l) => ({
+        id: String(l.id),
+        name: l.name,
+        children: locations.filter((loc: any) => loc.parent === l.id).map((loc) => ({id: String(loc.id), name: loc.name}))
+    }));
     return {
-        categories: categories.map((l) => ({id: l.id, name: l.name})),
-        locations: locations.map((l) => ({id: l.id, name: l.name})),
+        categories: categories.map((l) => ({id: String(l.id), name: l.name})),
+        locations: parentLocations,
     }
 }
