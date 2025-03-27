@@ -13,9 +13,10 @@ type Props = {
     containerClassName?: string;
     hideContent?: boolean;
     ctaClass?: string;
+    heroClass?: string;
 }
 
-export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className, bgClassName, containerClassName, hideContent, ctaClass}) => {
+export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, className, bgClassName, containerClassName, hideContent, ctaClass, heroClass}) => {
 
     const title = get(pageData, 'title', '');
     const description  = get(pageData, 'description', '');
@@ -57,6 +58,7 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
                         alt={heroImage?.node.altText}
                         width={heroImage?.node.mediaDetails.width}
                         height={heroImage?.node.mediaDetails.height}
+                        className={classNames(heroClass)}
                     />
                 </div>
                 <div className={classNames("absolute h-1/2 top-0 left-0 w-full bg-primary rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] z-0", bgClassName)}/>
