@@ -46,9 +46,11 @@ type Props = {
     className?: string;
     options: OptionsType;
     title?: string;
+    subtitle?: string;
+    titleClass?: string;
 }
 
-export const HSForm = ({className, options, title}: Props) => {
+export const HSForm = ({className, options, title, subtitle, titleClass}: Props) => {
     const [chiliPiperLoaded, setChiliPiperLoaded] = useState(false);
 
     useEffect(() => {
@@ -64,7 +66,8 @@ export const HSForm = ({className, options, title}: Props) => {
 
             <div className="relative">
                 <div className={classNames("max-w-[40rem] min-h-[31.25rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]", className)}>
-                    {title && <h3 className="text-center text-3xl mb-10">{title}</h3>}
+                    {title && <h3 className={classNames("text-center text-3xl mb-10", titleClass)}>{title}</h3>}
+                    {subtitle && <h4 className={classNames("text-center text-xl mb-10", titleClass)}>{subtitle}</h4>}
                     <FormContent options={options} />
                 </div>
             </div>
