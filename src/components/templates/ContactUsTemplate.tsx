@@ -23,7 +23,7 @@ export default function ContactUsTemplate({ pageData }: { pageData: PageDataType
 
             <div className="px-4 py-10">
                 <div className="container grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div>
+                    <div className="pt-20">
                         <ContactInfo />
                     </div>
                     <div>
