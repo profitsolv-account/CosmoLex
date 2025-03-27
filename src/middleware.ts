@@ -16,7 +16,6 @@ const getRedirections = async () => {
         fetchPolicy: "cache-first",
         variables: {},
     });
-
     return data?.redirections || [];
 }
 
@@ -55,7 +54,6 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
 }
 
-// Apply middleware to all routes
 export const config = {
     matcher: "/:path*",
 };
