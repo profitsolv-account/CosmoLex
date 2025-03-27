@@ -16,7 +16,7 @@ type Props = {
 }
 
 export default function DirectoriesTemplate({ pageData, page, locations, categories }: Props) {
-    const totalPages = Math.ceil((pageData.total || 0) / 10);
+    const totalPages = Math.ceil((pageData.total || 0) / 12);
     const items = pageData.directories || [];
     return (
         <Layout pageData={pageData}>
