@@ -4,15 +4,26 @@ import {getPageData, getVideoSection} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PracticeTypesTemplate from "@/components/templates//PracticeTypesTemplate";
+import {getLanguage} from "@/lib/helpers";
 
-const slug = 'enterprise-grade-security';
 
 export async function generateMetadata(): Promise<Metadata> {
+    const lang = await getLanguage();
+    const slug = lang === 'ca'
+        ? '/features-2/enterprise-grade-security-2/'
+        : '/features/enterprise-grade-security/';
+
     return await getSEOData(slug);
 }
 
 export default async function EnterPriseGradeSecurityPage() {
     try {
+
+        const lang = await getLanguage();
+        const slug = lang === 'ca'
+            ? '/features-2/enterprise-grade-security-2/'
+            : '/features/enterprise-grade-security/';
+
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
         const videoSection = await getVideoSection(slug);
@@ -30,4 +41,4 @@ export default async function EnterPriseGradeSecurityPage() {
 }
 
 export const revalidate = false;
-export const dynamic = "force-static";
+ export const dynamic = "force-dynamic";

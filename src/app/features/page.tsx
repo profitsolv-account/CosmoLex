@@ -20,7 +20,6 @@ export default async function FeaturesPage() {
             'ca': '-2',
             'uk': '-3',
         }
-
         const headersList = headers();
         const hr = await headersList;
 
