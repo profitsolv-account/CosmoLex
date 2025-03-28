@@ -47,6 +47,7 @@ const nextConfig: NextConfig = {
     /*images: {
         unoptimized: true,
     },*/
+    allowedDevOrigins: ['*', 'cl.com']
 };
 
 export default nextConfig;
