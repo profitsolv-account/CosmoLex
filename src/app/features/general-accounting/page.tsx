@@ -43,3 +43,4 @@ export default async function SinglePage() {
 }
 
 export const revalidate = false;
+export const dynamic = 'force-dynamic';

@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 
-const cacheDir = '/tmp/cache';
+const cacheDir = './cache';
 //const cacheDir = path.join(process.cwd(), 'cache');
 
 export const saveToCache = (cacheName: string, data: any) => {
