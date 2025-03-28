@@ -5,7 +5,7 @@ import Layout from "@/components/layout/layout";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {Testimonials} from "@/components/blocks/testimonials";
 
-import {PageHeader} from "@/components/blocks/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 import {FreeTrialFormWidget} from "@/components/widgets/freeTrialFormWidget";
 
 export default function CBAMembersTemplate({ pageData }: { pageData: PageDataType }) {

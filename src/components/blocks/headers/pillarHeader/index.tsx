@@ -31,8 +31,6 @@ export const PillarHeader = ({pageData, className, rightSideContent}:Props) => {
                     <div className="min-h-[3.8125rem] text-left text-white text-xl font-normal leading-loose lg:w-full mb-8" dangerouslySetInnerHTML={{__html: description}}
                      />
                 }
-    
-
             </div>
             <div className="flex justify-center md:pl-10 md:pt-13 relative top-10">
                 {rightSideContent}

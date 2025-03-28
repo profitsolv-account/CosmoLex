@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Layout from "@/components/layout/layout";
-import {HomeHeader} from "../blocks/homeHeader";
+import {HomeHeader} from "../blocks/headers/homeHeader";
 import {Partners} from "@/components/blocks/partners";
 import {ComplianceManagement} from "@/components/blocks/complianceManagement";
 import {MatterCentric} from "@/components/blocks/matterCentric";

@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
-import {PageHeader} from "@/components/blocks/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {CompareSelector} from "@/components/blocks/compare/compareSelector";
 import HubSpotForm from "@/components/blocks/hubspotForm";

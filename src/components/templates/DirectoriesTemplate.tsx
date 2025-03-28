@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Layout from "@/components/layout/layout";
-import {PageHeader} from "../blocks/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 import {PartnersStrategic} from "@/components/blocks/partners/strategic";
 import {LocationItem, PageDataType} from "@/types";
 import Pagination from "@/components/pagination/inde";

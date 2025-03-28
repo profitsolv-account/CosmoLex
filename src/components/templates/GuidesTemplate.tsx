@@ -6,7 +6,7 @@ import { ResourceBlock } from "../blocks/resources/resourceBlock";
 import classNames from "classnames";
 import {CompareHeader} from "@/components/blocks/compare/compareHeader";
 import {GuideBlock} from "@/components/blocks/resources/guideBlock";
-import {PageHeader} from "@/components/blocks/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 
 export default function GuidesTemplate({ pageData }: { pageData: PageDataType }) {
 

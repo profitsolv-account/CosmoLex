@@ -3,7 +3,7 @@ import React, {FC, Fragment} from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
-import {PageHeader} from "@/components/blocks/pageHeader";
+import {PageHeader} from "../../blocks/headers/pageHeader";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {Features} from "@/components/blocks/features";
 import {GuideBlock} from "@/components/blocks/guideBlock";

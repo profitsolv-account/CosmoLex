@@ -2,7 +2,7 @@
 import React from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
-import {PageHeader} from "@/components/blocks/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 import {Leaders} from "@/components/blocks/leaders";
 import {BarAssociations} from "@/components/blocks/about/barAssociations";
 

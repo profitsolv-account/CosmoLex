@@ -2,7 +2,7 @@
 import Layout from "@/components/layout/layout";
 import React, {useEffect, useState} from "react";
 import {PageDataType} from "@/types";
-import {PageHeader} from "@/components/blocks/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 import {LinkBlock} from "../linkBlock";
 import Img1 from '@/assets/img/cs_study/CSTUDY_landing_roth-1.webp';
 import Img2 from '@/assets/img/cs_study/Kraemer LLP.webp';

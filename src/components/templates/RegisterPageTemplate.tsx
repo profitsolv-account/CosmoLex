@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Layout from "@/components/layout/layout";
-import {PageHeader} from "../blocks/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 import {PageDataType} from "@/types";
 import {Partners} from "@/components/blocks/partners";
 import {Testimonials} from "@/components/blocks/testimonials";

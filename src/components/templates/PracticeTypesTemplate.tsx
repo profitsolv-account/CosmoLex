@@ -3,7 +3,7 @@ import React, {FC, Fragment, useState} from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
-import {PageHeader} from "@/components/blocks/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {Features} from "@/components/blocks/features";
 import classNames from "classnames";
@@ -35,7 +35,7 @@ export default function PracticeTypesTemplate({ pageData }: { pageData: PageData
                 showFeatureImage
             />
 
-            {videoSection && <div className="my-25 flex justify-center">
+            {videoSection && videoSection.imagePlaceholder && <div className="my-25 flex justify-center">
                 <Image
                     src={videoSection.imagePlaceholder.sourceUrl}
                     alt={videoSection.imagePlaceholder.altText}

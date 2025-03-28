@@ -12,7 +12,7 @@ import {PageBlocksType, ToolsType} from "@/types/tools";
 import {Faq} from "@/components/blocks/faq";
 import {ColumnsSection} from "@/components/blocks/columnsSection";
 import Image from 'next/image';
-import {PillarHeader} from "@/components/blocks/pillarHeader";
+import {PillarHeader} from "../../blocks/headers/pillarHeader";
 import {DemoForm} from "@/components/common/demoForm";
 
 type Props = {

@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
-import {PageHeader} from "@/components/blocks/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 import {Features} from "@/components/blocks/features";
 import Image from "next/image";
 import VideoModal from "@/components/blocks/videoModal";

@@ -1,26 +1,31 @@
 "use client"
-import React, {FC, Fragment} from 'react'
+import React, {FC, Fragment, useState} from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
-import {PageHeader} from "../../blocks/headers/pageHeader";
+import {PageHeader} from "../blocks/headers/pageHeader";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {Features} from "@/components/blocks/features";
-import {GuideBlock} from "@/components/blocks/guideBlock";
 import classNames from "classnames";
 import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
 import {PageBlocksType, ToolsType} from "@/types/tools";
 import {Faq} from "@/components/blocks/faq";
 import {ColumnsSection} from "@/components/blocks/columnsSection";
 import Image from 'next/image';
+import VideoModal from "@/components/blocks/videoModal";
+import {FreeTrialFormWidget} from "@/components/widgets/freeTrialFormWidget";
+import {Leaders} from "@/components/blocks/leaders";
 
-export default function PillarChildTemplate({ pageData }: { pageData: PageDataType }) {
+export default function FeatureDefaultTemplate({ pageData }: { pageData: PageDataType }) {
 
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     const faqs = pageData.faq || [];
     const pageBlocks: PageBlocksType = pageData.pageBlocks || {
         pageBlocksItems: []
     };
+
+    const videoSection = pageData.videoSection;
+    const [openVideo, setOpenVideo] = useState(false);
 
     return (
         <Layout pageData={pageData}>
@@ -31,6 +36,33 @@ export default function PillarChildTemplate({ pageData }: { pageData: PageDataTy
                 showCta
                 showFeatureImage
             />
+
+            <div className="px-4 mb-20">
+                <div className="container grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div>
+                        {videoSection && videoSection.imagePlaceholder && <div className="my-25 flex justify-center">
+                            <Image
+                                src={videoSection.imagePlaceholder.sourceUrl}
+                                alt={videoSection.imagePlaceholder.altText}
+                                width={videoSection.imagePlaceholder.mediaDetails.width}
+                                height={videoSection.imagePlaceholder.mediaDetails.height}
+                                onClick={() => {
+                                    setOpenVideo(true);
+                                }}
+                                className="max-w-[55rem] cursor-pointer w-full"
+                            />
+                            <VideoModal isOpen={openVideo} videoId={videoSection.videoId} onClose={() => setOpenVideo(false)} />
+                        </div>}
+                    </div>
+                    <div>
+                        <div className="relative">
+                            <div className="max-w-[47.3125rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]">
+                                <FreeTrialFormWidget />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             {pageData.tools &&pageData.tools.showTools && <div className="relative">
                 {pageData.tools && pageData.tools.items && <ToolsSection tools={pageData.tools} />}
@@ -76,14 +108,19 @@ export default function PillarChildTemplate({ pageData }: { pageData: PageDataTy
             {pageData.settings && <div className="relative">
                 <Features pageData={pageData} className="!pt-2" />
                 <div className="absolute top-0 w-full h-[9.375rem] rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] bg-primary"/>
-            </div>}
+                </div>
+            }
 
-            <div className="relative">
-                <GuideBlock className="relative z-10"/>
-                <div className="absolute bottom-0 w-full h-[6.25rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] bg-white"/>
+            <div className="pb-5 max-w-[94.5rem] mx-auto mt-20">
+                <h3 className="text-center justify-start text-primary-dark text-[2.875rem] font-bold leading-[3.75rem] mb-20">Recognized by industry leaders.</h3>
+                {pageData.leaderLogos &&
+                    <Leaders
+                        logos={[...pageData.leaderLogos, ...pageData.leaderLogos]}
+                        className="!max-w-full"
+                    />}
             </div>
-            <Faq faqs={faqs} />
-            <SimplifyPractice pageData={pageData} className="bg-white"/>
+
+            <SimplifyPractice pageData={pageData} />
         </Layout>
     )
 }
