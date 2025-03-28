@@ -5,15 +5,31 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import FeatureDefaultTemplate from "@/components/templates/FeatureDefaultTemplate";
 import {getLeadersLogos} from "@/lib/queries/logos";
-
-const slug = 'secure-file-sharing-electronic-signature';
+import {getLanguage} from "@/lib/helpers";
 
 export async function generateMetadata(): Promise<Metadata> {
+
+    const lang = await getLanguage();
+    let slug = 'features/secure-file-sharing-electronic-signature'
+    switch (lang) {
+        case 'ca':
+            slug = 'features-2/secure-file-sharing-electronic-signature';
+            break;
+    }
+
     return await getSEOData(slug);
 }
 
 export default async function UserManagementPage() {
     try {
+        const lang = await getLanguage();
+        let slug = 'features/secure-file-sharing-electronic-signature'
+        switch (lang) {
+            case 'ca':
+                slug = 'features-2/secure-file-sharing-electronic-signature';
+                break;
+        }
+
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
         const videoSection = await getVideoSection(slug);
@@ -35,4 +51,4 @@ export default async function UserManagementPage() {
 }
 
 export const revalidate = false;
-export const dynamic = "force-static";
+//export const dynamic = "force-static";

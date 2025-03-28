@@ -5,15 +5,14 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import CompareChildTemplate from "@/components/templates/CompareChildTemplate";
 import {getCompareChildPageData, getFeatureData} from "@/lib/queries/compare";
-import CompareChildRestTemplate from "@/components/templates/CompareChildRestTemplate";
 import {getLanguage} from "@/lib/helpers";
 
 export async function generateMetadata(): Promise<Metadata> {
     const lang = await getLanguage();
-    let slug = 'compare/cosmolex-vs-esilaw'
+    let slug = 'compare/cosmolex-vs-pclaw'
     switch (lang) {
         case 'ca':
-            slug = 'compare-2/cosmolex-vs-esilaw';
+            slug = 'compare-2/cosmolex-vs-pclaw';
             break;
     }
 
@@ -23,21 +22,25 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PillarPage() {
     try {
         const lang = await getLanguage();
-        let slug = 'compare/cosmolex-vs-esilaw'
+        let slug = 'compare/cosmolex-vs-pclaw'
         switch (lang) {
             case 'ca':
-                slug = 'compare-2/cosmolex-vs-esilaw';
+                slug = 'compare-2/cosmolex-vs-pclaw';
                 break;
         }
 
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
+        const compareSection = await getCompareChildPageData(slug);
         const features = await getFeatureData('cosmolex-vs-pclaw');
-        return <CompareChildRestTemplate pageData={{
+        const pricingPlans = await getPricingPlans('pricing');
+        return <CompareChildTemplate pageData={{
             ...pageData,
             testimonials,
             footerExtendedBg: true,
+            compareSection,
             features,
+            pricingPlans
         }} />
 
     } catch (error) {

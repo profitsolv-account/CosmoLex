@@ -142,8 +142,6 @@ export const getPageData = async (
         fetchPolicy: "cache-first"
     });
 
-    console.log(pageSlug, data);
-
     if (!data.page) {
         throw new Error("Page not found");
     }

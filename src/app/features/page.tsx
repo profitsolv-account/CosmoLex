@@ -4,36 +4,37 @@ import {getPageData, getVideoSection} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PracticeTypesTemplate from "@/components/templates//PracticeTypesTemplate";
-import { headers } from 'next/headers';
+import {getLanguage} from "@/lib/helpers";
 
-const pageSlug = "features";
+const getSlug = async () => {
+    const lang = await getLanguage();
+    let slug = 'features'
+    switch (lang) {
+        case 'ca':
+            slug = 'features-2';
+            break;
+        case 'uk':
+            slug = 'features-3';
+            break;
+    }
+
+    return slug;
+}
+
 
 export async function generateMetadata(): Promise<Metadata> {
-    return await getSEOData(pageSlug);
+    const slug = await getSlug();
+    return await getSEOData(slug);
 }
 
 export default async function FeaturesPage() {
     try {
 
-        const lg_attrs: {[key: string]: string} = {
-            'eng': '',
-            'ca': '-2',
-            'uk': '-3',
-        }
-        const headersList = headers();
-        const hr = await headersList;
+        const slug = await getSlug();
 
-        const host = hr.get('host') || '';
-
-        const lang = 'eng';
-        /*if (host.includes('.ca')) {
-            lang = 'ca';
-        }*/
-
-
-        const pageData = await getPageData(`${pageSlug}${lg_attrs[lang]}`);
+        const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
-        const videoSection = await getVideoSection(pageSlug);
+        const videoSection = await getVideoSection(slug);
 
         return <PracticeTypesTemplate pageData={{
             ...pageData,
@@ -48,4 +49,3 @@ export default async function FeaturesPage() {
 }
 
 export const revalidate = false;
-//export const dynamic = "force-static";

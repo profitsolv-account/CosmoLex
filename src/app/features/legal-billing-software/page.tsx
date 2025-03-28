@@ -4,14 +4,29 @@ import { getPageData } from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PillarParentTemplate from "@/components/templates/PillarParrentTemplate";
+import {getLanguage} from "@/lib/helpers";
+
+const getSlug = async () => {
+    const lang = await getLanguage();
+    let slug = 'features/legal-billing-software'
+    switch (lang) {
+        case 'uk':
+            slug = 'features-3/legal-billing-software';
+            break;
+    }
+
+    return slug;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
-    return await getSEOData('legal-billing-software');
+    const slug = await getSlug();
+    return await getSEOData(slug);
 }
 
 export default async function PillarPage() {
     try {
-        const pageData = await getPageData("legal-billing-software");
+        const slug = await getSlug();
+        const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
         return <PillarParentTemplate pageData={{
             ...pageData,
@@ -25,4 +40,3 @@ export default async function PillarPage() {
 }
 
 export const revalidate = false;
-export const dynamic = "force-static";
