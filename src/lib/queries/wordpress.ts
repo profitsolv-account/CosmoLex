@@ -333,7 +333,6 @@ export const getVideoSection = async (
         fetchPolicy: "cache-first"
     });
 
-    console.log(data);
     if (!data.page) {
         throw new Error("Page not found");
     }
