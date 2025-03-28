@@ -24,7 +24,6 @@ const nextConfig: NextConfig = {
             },
         )
 
-        // Modify the file loader rule to ignore *.svg, since we have it handled now.
         fileLoaderRule.exclude = /\.svg$/i
 
         return config
