@@ -41,3 +41,4 @@ export default async function PillarPage() {
 }
 
 export const revalidate = false;
+export const dynamic = 'force-dynamic';

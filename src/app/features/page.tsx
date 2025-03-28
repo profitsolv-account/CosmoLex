@@ -48,3 +48,4 @@ export default async function FeaturesPage() {
 }
 
 export const revalidate = false;
+export const dynamic = 'force-dynamic';
