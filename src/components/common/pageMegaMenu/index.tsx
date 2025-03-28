@@ -18,12 +18,12 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
             <div className="container px-4 py-4 flex gap-[3.125rem] items-start">
 
                 <div className="justify-start items-start gap-[3.125rem] grid grid-cols-4">
-                    {content.items.map((submenu) => (
+                    {content?.items.map((submenu) => (
                         <div key={submenu.title} className="">
                             <a href={submenu.url} className="block text-primary-dark text-lg font-semibold leading-7 mb-3 transition duration-300">
                                 {submenu.title}
                             </a>
-                            {submenu.items.map((item) => (
+                            {submenu?.items.map((item) => (
                                 <div key={item.title} className="mb-3">
                                     <a href={item.url} className="relative block text-primary-dark text-base font-medium leading-normal transition duration-300 group">
                                         <div className="relative z-2">
@@ -57,7 +57,7 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
                         </a>
                         <div className="flex gap-[3.125rem]">
                             <div className="justify-start items-start gap-[3.125rem] grid grid-cols-4">
-                                {submenu.items.map((item) => (
+                                {submenu?.items.map((item) => (
                                     <div key={item.title} className="mb-3">
                                         <a href={item.url} className="text-primary-dark text-base font-medium leading-normal transition duration-300 group relative block ">
                                             <div className="relative z-3">
@@ -78,14 +78,14 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
             </div>}
 
             {noFooterLinks && <div className="container px-4 py-1 flex gap-[3.125rem] items-start">
-                {footer.items.map((submenu) => (
+                {footer?.items.map((submenu) => (
                     <div key={submenu.title} className="">
                         <div className="block text-primary-dark text-lg font-semibold leading-7 mb-2.5 transition duration-300 ">
                             {submenu.title}
                         </div>
                         <div className="flex gap-[3.125rem]">
                             <div className="justify-start items-start gap-[3.125rem] grid grid-cols-4">
-                                {submenu.items.map((item) => (
+                                {submenu?.items.map((item) => (
                                     <div key={item.title} className="mb-3">
                                         <div className="text-primary-dark text-base font-medium leading-normal transition duration-300 {/*group*/} relative block ">
                                             <div className="relative z-3">
