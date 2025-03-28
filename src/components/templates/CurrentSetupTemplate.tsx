@@ -90,14 +90,14 @@ export default function CurrentSetupTemplate({ pageData }: { pageData: PageDataT
                 }
             </div>
 
-            {pageData.settings && <div className="relative">
+            {!!pageData.settings && pageData.features?.length && <div className="relative">
                 <Features pageData={pageData} className="!pt-2" />
                 <div className="absolute top-0 w-full h-[9.375rem] rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] bg-primary"/>
             </div>}
 
 
 
-            {faqs.length && <Faq faqs={faqs} />}
+            {!!faqs.length && <Faq faqs={faqs} />}
 
             <SimplifyPractice pageData={pageData} className="bg-white"/>
         </Layout>

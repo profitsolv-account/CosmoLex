@@ -17,7 +17,6 @@ const getSlug = async () => {
             slug = 'features-3';
             break;
     }
-
     return slug;
 }
 
