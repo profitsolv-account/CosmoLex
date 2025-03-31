@@ -251,5 +251,11 @@ body {
     .max-width-26 {
         max-width:26.813rem!important;
     }
+    .max-width-27 {
+        max-width:27rem!important;
+    }
+    .max-width-28 {
+        max-width:28rem!important;
+    }
 
 }
