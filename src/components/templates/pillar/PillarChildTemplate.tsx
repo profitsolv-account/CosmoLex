@@ -143,5 +143,6 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
             items={items}
             height="28.9375rem"
         />
+        <ul className="list-[lower-alpha] list-inside pl-4 marker:text-white"></ul>
     </div>
 }
