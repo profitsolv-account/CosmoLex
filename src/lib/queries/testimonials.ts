@@ -30,7 +30,9 @@ export const getTestimonialsList = async () => {
                                     }
                                 }
                                 flipBackground
-                                link
+                                link {
+                                    url
+                                }
                                 title
                             }
                         }
@@ -45,6 +47,7 @@ export const getTestimonialsList = async () => {
         ...testimonial.node.testimonialFields,
         clientPicture: get(testimonial, 'node.testimonialFields.clientPicture.node.guid', ''),
         background: get(testimonial, 'node.testimonialFields.background.node.guid', ''),
+        link: get(testimonial, 'node.testimonialFields.link.url', ''),
     }));
 
     return [

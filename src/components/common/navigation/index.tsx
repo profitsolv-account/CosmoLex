@@ -95,7 +95,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
             </li>
             <li className="cursor-pointer">
                 <span
-                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold  w-[5.3125rem] text-center flex items-center justify-center", {
+                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold  w-[6.3125rem] text-center flex items-center justify-center", {
                         "!font-bold": menuState.selectedMenu === 'resources' && menuState.open
                     })}
                     onClick={() => {
@@ -111,7 +111,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
             <li className="cursor-pointer">
                 <span
                     ref={triggerRef}
-                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold w-[3.125rem] text-center flex items-center justify-center", {
+                    className={classNames("text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold w-[4.125rem] text-center flex items-center justify-center", {
                         "!font-bold": menuState.selectedMenu === 'about' && menuState.open
                     })}
                     onClick={() => {
