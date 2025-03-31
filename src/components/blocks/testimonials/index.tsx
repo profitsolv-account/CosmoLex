@@ -106,7 +106,7 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                                           {t.content}
                                       </div>
                                       <div className="flex gap-5 items-end md:items-center md:gap-10">
-                                          <div>
+                                          {t.clientPicture && t.clientPicture.mediaDetails && <div>
                                               <Image
                                                   src={t.clientPicture.sourceUrl}
                                                   alt={t.clientPicture.altText}
@@ -114,8 +114,8 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                                                   width={t.clientPicture.mediaDetails.width}
                                                   height={t.clientPicture.mediaDetails.height}
                                               />
-                                          </div>
-                                          <div>
+                                          </div>}
+                                         <div>
                                               <div className={classNames("text-primary-dark text-xl font-semibold font-['Inter'] leading-[0.875rem] mb-3", {
                                                   "text-white": theme === 'light',
                                                   "text-primary-dark": theme === 'dark'
@@ -124,13 +124,13 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                                                   "text-white": theme === 'light',
                                                   "text-primary-dark": theme === 'dark'
                                               })}>{t.position}</div>
-                                              <div
+                                             {t.location && <div
                                                   className={classNames("w-[5.4375rem] h-6 px-[2.3125rem] py-[0.6875rem] bg-[#eef8fd] rounded-[1.25rem] justify-center items-center gap-2.5 inline-flex", {
                                                       "!bg-white" : !bgOverlay
                                                   })}>
                                                   <div
                                                       className="text-center text-black text-sm font-medium font-['Inter']">{t.location}</div>
-                                              </div>
+                                              </div>}
 
                                           </div>
                                       </div>
