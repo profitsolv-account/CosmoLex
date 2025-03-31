@@ -31,11 +31,19 @@ export const getHomePageData = async () => {
                             }
                         }
                     }
+                    faq {
+                        faq {
+                            answer
+                            fieldGroupName
+                            question
+                        }
+                    }
                 }
             }
         `,
         fetchPolicy: "cache-first"
     });
+    const faq = get(data, 'page.faq.faq', []);
      return {
         ...get(data, 'page', {}),
          title: get(data, 'page.pageSettings.title', ''),
@@ -47,6 +55,7 @@ export const getHomePageData = async () => {
          menus: await getAllMenus(),
          settings: await getSiteSettings(),
          testimonials: await getTestimonialsList(),
+         faq
     };
 }
 
