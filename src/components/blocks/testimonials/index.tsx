@@ -46,7 +46,6 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    console.log(testimonials);
     return (
         <section className={classNames("testimonials-section bg-white px-7 pt-25 pb-[3.9375rem] md:pb-24 relative", className, {
             "theme-light": theme === 'light',

@@ -3,7 +3,7 @@ import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {CSTestimonial} from "@/types/testimonials";
 
-export const getTestimonialsList = async () => {
+export const getTestimonialsList = async (pageSlug?: string) => {
 
     const { data } = await client.query({
         query: gql`
@@ -39,6 +39,7 @@ export const getTestimonialsList = async () => {
                                     url
                                 }
                                 title
+                                pageSlugs
                             }
                         }
                     }
@@ -48,16 +49,23 @@ export const getTestimonialsList = async () => {
         fetchPolicy: cacheOption,
         variables: {},
     })
+    //console.log(data);
     const testimonials = get(data, 'testimonials.edges', []).map((testimonial: any) => ({
         ...testimonial.node.testimonialFields,
         clientPicture: get(testimonial, 'node.testimonialFields.clientPicture.node', {}),
         background: get(testimonial, 'node.testimonialFields.background.node.guid', ''),
         link: get(testimonial, 'node.testimonialFields.link.url', ''),
+        slug: get(testimonial, 'node.testimonialFields.pageSlugs', '') || '',
     }));
 
-    return [
-        ...testimonials,
-    ]
+    if (pageSlug) {
+        return testimonials.filter((testimonial: any) => {
+            const slugs = get(testimonial, 'slug', '').split(',');
+            return slugs.includes(pageSlug);
+        });
+    }
+
+    return testimonials.filter((testimonial: any) => !testimonial.slug.length)
 }
 
 export const getCSTestimonialsList = async (): Promise<CSTestimonial[]> => {
