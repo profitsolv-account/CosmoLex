@@ -28,7 +28,7 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
                                     <a href={item.url} className="relative block text-primary-dark text-base font-medium leading-normal transition duration-300 group">
                                         <div className="relative z-2">
                                             {item.title}
-                                            <div className="text-primary-dark text-base font-light leading-normal">
+                                            <div className="text-primary-dark text-sm font-light leading-normal">
                                                 {item.description}
                                             </div>
                                         </div>
@@ -62,7 +62,7 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
                                         <a href={item.url} className="text-primary-dark text-base font-medium leading-normal transition duration-300 group relative block ">
                                             <div className="relative z-3">
                                                 {item.title}
-                                                <div className="text-primary-dark text-base font-light leading-normal">
+                                                <div className="text-primary-dark text-sm font-light leading-normal">
                                                     {item.description}
                                                 </div>
                                             </div>
