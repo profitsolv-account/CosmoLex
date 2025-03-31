@@ -1,10 +1,7 @@
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
-import {PageDataType, PodcastType} from "@/types";
-import {getAllMenus} from "@/lib/queries/menus";
-import {getSiteSettings} from "@/lib/queries/settings";
-import {getLatestPosts} from "@/lib/queries/wordpress";
+import {PodcastType} from "@/types";
 
 
 export const getPodcastsData = async (id: string): Promise<PodcastType[]> => {
@@ -40,7 +37,7 @@ export const getPodcastsData = async (id: string): Promise<PodcastType[]> => {
     const { data } = await client.query({
         query,
         variables: { id },
-        fetchPolicy: "cache-first"
+        fetchPolicy: cacheOption
     });
 
     const pages = get(data, "pages.edges", []);
@@ -85,7 +82,7 @@ export const getPodcastData = async (
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: "cache-first"
+        fetchPolicy: cacheOption
     });
 
     if (!data.page) {

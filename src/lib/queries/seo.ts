@@ -1,4 +1,4 @@
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 
@@ -21,7 +21,7 @@ export const getSEOData = async (pageSlug: string) => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: { pageSlug },
     })
 
@@ -56,7 +56,7 @@ export const getPostSEOData = async (pageSlug: string) => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: { pageSlug },
     })
 

@@ -1,5 +1,5 @@
 import {gql} from "@apollo/client";
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {getAllMenus} from "@/lib/queries/menus";
 import {getSiteSettings} from "@/lib/queries/settings";
 import {getLatestPosts} from "@/lib/queries/wordpress";
@@ -87,7 +87,7 @@ export const getAllPostSlugs = async () => {
                 after,
                 first: 100,
             },
-            fetchPolicy: 'no-cache',
+            fetchPolicy: cacheOption,
         });
 
         const newPosts = data.posts.nodes.map((post: any) => ({

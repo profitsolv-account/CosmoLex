@@ -1,4 +1,4 @@
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {Feature, FeaturedPostType, PageDataType, PricingPlan, VideoSection} from "@/types";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
@@ -139,7 +139,7 @@ export const getPageData = async (
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: "cache-first"
+        fetchPolicy: cacheOption
     });
 
     if (!data.page) {
@@ -201,7 +201,7 @@ export const getPricingPlans = async (pageSlug: string): Promise<PricingPlan[]> 
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: "cache-first"
+        fetchPolicy: cacheOption
     });
 
     return get(data, 'page.pricingSection.pricingPlans', []);
@@ -235,7 +235,7 @@ export const getPostData = async (pageSlug: string): Promise<PostDataType> => {
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: cacheOption,
         variables: { pageSlug },
     });
 
@@ -283,7 +283,7 @@ export const getKBPostData = async (pageSlug: string): Promise<PostDataType> => 
                 }
             }
         `,
-        fetchPolicy: "no-cache",
+        fetchPolicy: cacheOption,
         variables: { pageSlug },
     });
 
@@ -330,7 +330,7 @@ export const getVideoSection = async (
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: "cache-first"
+        fetchPolicy: cacheOption
     });
 
     if (!data.page) {
@@ -363,7 +363,7 @@ export const getPageFeaturesData = async (
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: "cache-first"
+        fetchPolicy: cacheOption
     });
 
     if (!data.page) {

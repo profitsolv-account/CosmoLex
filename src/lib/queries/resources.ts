@@ -1,4 +1,4 @@
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {KnowledgeBaseCategory, Resource} from "@/types/resources";
@@ -62,7 +62,7 @@ export const getResourcesData = async (): Promise<Resource[]> => {
                 
             }
         `,
-        fetchPolicy: "cache-first"
+        fetchPolicy: cacheOption
     });
 
     const formattedData = [
@@ -123,7 +123,7 @@ export const getWebinarsData = async (): Promise<Resource[]> => {
 
             }
         `,
-        fetchPolicy: "cache-first"
+        fetchPolicy: cacheOption
     });
 
     const formattedData = [
@@ -164,7 +164,7 @@ export const getKBData = async (): Promise<KnowledgeBaseCategory[]> => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: {},
     })
     return get(data, 'knowledgeBaseCategories.edges', []);
@@ -194,7 +194,7 @@ export const getKBCategoryData = async (pageSlug: string): Promise<KnowledgeBase
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: { pageSlug },
     })
     return get(data, 'knowledgeBaseCategories.edges', []);

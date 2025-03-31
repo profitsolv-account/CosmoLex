@@ -1,4 +1,4 @@
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {LeaderLogos} from "@/types/logos";
@@ -25,7 +25,7 @@ export const getLeadersLogos = async (): Promise<LeaderLogos[]> => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: {},
     })
 

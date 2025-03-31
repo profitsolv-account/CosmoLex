@@ -32,7 +32,7 @@ export const Leaders:FC<Props> = ({logos, className}) => {
                 {logos.map((lr, index) => (
                     <SwiperSlide key={index} style={{ width: '12.6875rem' }}>
                         <a href={lr.link} className="flex justify-center items-center overflow-hidden">
-                            <img className="object-contain" src={lr.src} alt={lr.alt} />
+                            <img className="object-contain h-[7.875rem]" src={lr.src} alt={lr.alt} />
                         </a>
                     </SwiperSlide>
                 ))}

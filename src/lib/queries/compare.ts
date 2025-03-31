@@ -1,6 +1,6 @@
 import {CompareSectionType, CompareSelectorType} from "@/types/compare";
 import {gql} from "@apollo/client";
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {get} from "lodash";
 import {Feature, Member} from "@/types";
 
@@ -27,7 +27,7 @@ export const getComparePageData = async (): Promise<CompareSelectorType> => {
     const { data } = await client.query({
         query,
         variables: { id: 'compare' },
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
     });
 
     if (!data.page) {
@@ -61,7 +61,7 @@ export const getCompareChildPageData = async (slug: string): Promise<CompareSect
     const { data } = await client.query({
         query,
         variables: { id: slug },
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
     });
 
     if (!data.page) {
@@ -90,7 +90,7 @@ export const getFeatureData = async (slug: string): Promise<Feature[]> => {
     const { data } = await client.query({
         query,
         variables: { id: slug },
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
     });
 
     if (!data.page) {

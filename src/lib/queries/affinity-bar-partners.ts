@@ -1,4 +1,4 @@
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {AffinityBarLogos} from "@/types/affinity-bar-partners";
@@ -25,7 +25,7 @@ export const getAffinityBarlogos = async (): Promise<AffinityBarLogos[]> => {
               }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: {},
     })
 

@@ -1,6 +1,6 @@
 import {Member} from "@/types";
 import {gql} from "@apollo/client";
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {get} from "lodash";
 import {BarType} from "@/types/about";
 
@@ -33,7 +33,7 @@ export const getMembersData = async (slug: string): Promise<Member[]> => {
     const { data } = await client.query({
         query,
         variables: { id: slug },
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
     });
 
     if (!data.page) {
@@ -73,7 +73,7 @@ export const getBarsData = async (slug: string): Promise<BarType> => {
     const { data } = await client.query({
         query,
         variables: { id: slug },
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
     });
 
     if (!data.page) {

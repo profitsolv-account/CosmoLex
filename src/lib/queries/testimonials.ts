@@ -1,4 +1,4 @@
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {CSTestimonial} from "@/types/testimonials";
@@ -45,7 +45,7 @@ export const getTestimonialsList = async () => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: {},
     })
     const testimonials = get(data, 'testimonials.edges', []).map((testimonial: any) => ({
@@ -90,7 +90,7 @@ export const getCSTestimonialsList = async (): Promise<CSTestimonial[]> => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: {},
     });
 

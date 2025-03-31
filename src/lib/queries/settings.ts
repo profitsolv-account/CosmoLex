@@ -1,4 +1,4 @@
-import client from "@/lib/apollo-client";
+import client, {cacheOption} from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {SettingsType} from "@/types";
@@ -31,7 +31,7 @@ export const getSiteSettings = async (): Promise<SettingsType> => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: {},
     })
 
@@ -57,7 +57,7 @@ export const generalSettings = async (): Promise<any> => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: {},
     });
 
@@ -74,7 +74,7 @@ export const getRedirections = async () => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         variables: {},
     });
 
