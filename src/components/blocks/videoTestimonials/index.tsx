@@ -4,6 +4,7 @@ import {TestimonialType} from "@/types/testimonials";
 import {Slider} from "@/components/ui/slider";
 import ArrowRight from '@/assets/img/icons/arrow-right-long.svg';
 import './styles.css';
+import Image from "next/image";
 
 type TestimonialsProps = {
     testimonials: TestimonialType[]
@@ -43,7 +44,14 @@ const SingleSlide: FC<Props> = ({slide}) => {
             <div className="">
                 <div
                     className="w-[19.25rem] h-[6.25rem] bg-white/10 rounded-[6.25rem] backdrop-blur-[3.75rem] flex gap-4 items-center p-1.5">
-                    <img src={slide.clientPicture} alt={slide.client}/>
+                    <Image
+                        src={slide.clientPicture.sourceUrl}
+                        alt={slide.clientPicture.altText}
+                        className="w-[5.563rem] h-[5.563rem]"
+                        width={slide.clientPicture.mediaDetails.width}
+                        height={slide.clientPicture.mediaDetails.height}
+                    />
+
                     <div>
                         <div className="text-white text-xl font-medium leading-none mb-2">{slide.client}</div>
                         <div className="text-white text-base font-light leading-none mb-2">{slide.position}</div>

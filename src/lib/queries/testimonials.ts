@@ -17,7 +17,12 @@ export const getTestimonialsList = async () => {
                                 content
                                 clientPicture {
                                     node {
-                                        guid
+                                        altText
+                                        sourceUrl
+                                        mediaDetails {
+                                            width
+                                            height
+                                        }
                                     }
                                 }
                                 extended
@@ -45,7 +50,7 @@ export const getTestimonialsList = async () => {
     })
     const testimonials = get(data, 'testimonials.edges', []).map((testimonial: any) => ({
         ...testimonial.node.testimonialFields,
-        clientPicture: get(testimonial, 'node.testimonialFields.clientPicture.node.guid', ''),
+        clientPicture: get(testimonial, 'node.testimonialFields.clientPicture.node', {}),
         background: get(testimonial, 'node.testimonialFields.background.node.guid', ''),
         link: get(testimonial, 'node.testimonialFields.link.url', ''),
     }));

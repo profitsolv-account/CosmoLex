@@ -10,7 +10,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './styles.css';
-import userPic from '@/assets/img/testimonials/userpic.png';
+import Image from 'next/image';
+
 
 import Quote from '@/assets/img/quote.svg';
 import {TestimonialType} from "@/types/testimonials";
@@ -45,6 +46,7 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    console.log(testimonials);
     return (
         <section className={classNames("testimonials-section bg-white px-7 pt-25 pb-[3.9375rem] md:pb-24 relative", className, {
             "theme-light": theme === 'light',
@@ -105,7 +107,13 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                                       </div>
                                       <div className="flex gap-5 items-end md:items-center md:gap-10">
                                           <div>
-                                              <img src={userPic.src} alt="user-pic" className="w-[5.875rem] h-[5.875rem] md:w-[7rem] md:h-[7rem]" />
+                                              <Image
+                                                  src={t.clientPicture.sourceUrl}
+                                                  alt={t.clientPicture.altText}
+                                                  className="w-[5.875rem] h-[5.875rem] md:w-[7rem] md:h-[7rem]"
+                                                  width={t.clientPicture.mediaDetails.width}
+                                                  height={t.clientPicture.mediaDetails.height}
+                                              />
                                           </div>
                                           <div>
                                               <div className={classNames("text-primary-dark text-xl font-semibold font-['Inter'] leading-[0.875rem] mb-3", {

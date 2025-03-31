@@ -2,7 +2,14 @@ export type TestimonialType = {
     client: string;
     position: string;
     content: string;
-    clientPicture: string;
+    clientPicture: {
+        altText: string;
+        sourceUrl: string;
+        mediaDetails: {
+            width: number;
+            height: number;
+        }
+    };
     location: string;
     videoUrl: string;
     extended: boolean;
