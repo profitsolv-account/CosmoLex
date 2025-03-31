@@ -30,7 +30,7 @@ export default async function PillarPage() {
         const slug = await getSlug();
         const pageData = await getPageData(slug);
 
-        const testimonials = await getTestimonialsList();
+        const testimonials = await getTestimonialsList('legal-crm-software');
         return <PillarChildWithFormTemplate
             pageData={{
                 ...pageData,
