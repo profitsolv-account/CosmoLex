@@ -5,6 +5,7 @@ import {Navigation} from "../../common/navigation";
 import { Button } from "@/components/ui/button";
 import {MobileMenu} from "@/components/common/mobileMenu";
 import {PageDataType, SettingsType} from "@/types";
+import Image from "next/image";
 
 export const Header = ({pageData}: {pageData: PageDataType}) => {
 
@@ -22,7 +23,12 @@ export const Header = ({pageData}: {pageData: PageDataType}) => {
                <div className="flex gap-0 justify-between w-full items-center">
                    <div className="w-75 pt-2">
                        <Link href="/">
-                           <img src={getSetting('logo')} alt={getSetting('logoAltText')}/>
+                           <Image
+                               src={getSetting('logo')}
+                               alt={getSetting('logoAltText')}
+                               width={140}
+                               height={34}
+                           />
                        </Link>
                    </div>
                    <Navigation className="gap-6 inline-flex" pageData={pageData}/>

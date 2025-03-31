@@ -24,7 +24,7 @@ export const getSiteSettings = async (): Promise<SettingsType> => {
                         headerLogo {
                             node {
                                 altText
-                                guid
+                                sourceUrl
                             }
                         }
                     }
@@ -41,7 +41,7 @@ export const getSiteSettings = async (): Promise<SettingsType> => {
     return {
        ...footerData,
        ...headerData,
-        logo: get(headerData, 'headerLogo.node.guid', ''),
+        logo: get(headerData, 'headerLogo.node.sourceUrl', ''),
         logoAltText: get(headerData, 'headerLogo.node.altText', ''),
     }
 }
