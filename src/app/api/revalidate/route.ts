@@ -9,12 +9,12 @@ const getPagePath = (url: string) => {
 export async function POST(req: Request) {
     try {
 
-
         const body = await req.json();
 
         revalidatePath(getPagePath(body.post_url), 'page');
         revalidatePath(getPagePath(body.post_url));
         revalidatePath(`/compare/[slug]`, "page");
+        revalidatePath(`/features/[slug]`, "page");
 
         revalidateTag('graphql');
 

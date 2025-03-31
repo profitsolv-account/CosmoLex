@@ -103,7 +103,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                         <div>
                             <img src={t.icon.node.sourceUrl} alt={t.icon.node.altText} className="w-[1.875rem] h-[1.875rem]"/>
                         </div>
-                        <div className=" text-primary-dark text-[2.25rem] font-bold leading-[2.8125rem] font-['Inter'] lg:leading-[2.375rem] lg:text-[1.875rem]">{t.title}</div>
+                        <div className=" text-primary-dark text-[2.25rem] font-bold leading-[2.8125rem] font-['Inter'] lg:leading-[2.375rem] lg:text-[1.875rem]" dangerouslySetInnerHTML={{__html: t.title}} />
                         <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem] max-w-[21.875rem] lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
                     </div>
                 </div>
@@ -113,7 +113,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
 
     const tabs: TabType[] = tools.items.map((t, index) => (
         {
-            title: t.title,
+            title: t.title.replace('</br>', ''),
         }
     ));
 
