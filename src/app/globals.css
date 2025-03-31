@@ -258,8 +258,16 @@ body {
         max-width:28rem!important;
     }
 
+    .max-width-30 {
+        max-width:30rem!important;
+    }
+
     .max-width-35 {
         max-width:35rem!important;
+    }
+
+    .bottom-m20 {
+        bottom: -20px!important;
     }
 
 }

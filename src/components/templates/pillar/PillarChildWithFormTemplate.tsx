@@ -127,8 +127,8 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                                 height={t.icon.node.mediaDetails.height}
                             />}
                         </div>
-                        <div className=" text-primary-dark text-[2.25rem] font-bold leading-[2.8125rem] font-['Inter'] lg:leading-[2.375rem] lg:text-[1.875rem]">{t.title}</div>
-                        <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem] max-w-[21.875rem] lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
+                        <div className=" text-primary-dark text-[2.25rem] font-bold leading-[2.8125rem] font-['Inter'] lg:leading-[2.375rem] lg:text-[1.875rem]" dangerouslySetInnerHTML={{__html: t.title}} />
+                        <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem]  lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
                     </div>
                 </div>
             </div>

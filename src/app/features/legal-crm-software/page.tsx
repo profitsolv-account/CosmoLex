@@ -6,30 +6,28 @@ import {notFound} from "next/navigation";
 import PillarChildWithFormTemplate from "@/components/templates/pillar/PillarChildWithFormTemplate";
 import {getLanguage} from "@/lib/helpers";
 
-export async function generateMetadata(): Promise<Metadata> {
-
+const getSlug = async () => {
     const lang = await getLanguage();
-    let slug = 'features/churn-zero-automation-in-app-messaging-and-email/'
+    let slug = 'features/legal-crm-software/'
     switch (lang) {
         case 'uk':
             slug = 'features-3/legal-crm-software';
             break;
     }
+    return slug;
+}
 
+
+export async function generateMetadata(): Promise<Metadata> {
+
+   const slug = await getSlug();
     return await getSEOData(slug);
 }
 
 export default async function PillarPage() {
     try {
 
-        const lang = await getLanguage();
-        let slug = 'features/churn-zero-automation-in-app-messaging-and-email/'
-        switch (lang) {
-            case 'uk':
-                slug = 'features-3/legal-crm-software';
-                break;
-        }
-
+        const slug = await getSlug();
         const pageData = await getPageData(slug);
 
         const testimonials = await getTestimonialsList();
