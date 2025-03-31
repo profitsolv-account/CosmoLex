@@ -19,7 +19,9 @@ export const Footer = ({pageData}: {pageData: PageDataType}) => {
          <div className="w-full relative bg-[#eef8fd] flex items-center justify-center py-5 px-2">
             <div className="container max-w-[79.125rem] flex flex-col justify-between gap-5 items-center lg:flex-row">
                 <div className="text-center text-2xl font-bold pr-10">
-                    <OtherCompaniesIcon className="max-w-[95%] h-10" />
+                    <a href="https://www.profitsolv.com">
+                        <OtherCompaniesIcon className="max-w-[95%] h-10" />
+                    </a>
                 </div>
                 <div className="grid grid-cols-2 lg:flex lg:justify-center">
                     <a href="https://clearviewsocial.com/" className="flex justify-center items-center">
