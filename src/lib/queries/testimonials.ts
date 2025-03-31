@@ -60,7 +60,7 @@ export const getTestimonialsList = async (pageSlug?: string) => {
 
     if (pageSlug) {
         return testimonials.filter((testimonial: any) => {
-            const slugs = get(testimonial, 'slug', '').split(',');
+            const slugs = get(testimonial, 'slug', '');
             return slugs.includes(pageSlug);
         });
     }

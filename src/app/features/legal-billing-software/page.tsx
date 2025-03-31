@@ -27,7 +27,7 @@ export default async function PillarPage() {
     try {
         const slug = await getSlug();
         const pageData = await getPageData(slug);
-        const testimonials = await getTestimonialsList();
+        const testimonials = await getTestimonialsList('legal-billing-software');
         return <PillarParentTemplate pageData={{
             ...pageData,
             testimonials,
