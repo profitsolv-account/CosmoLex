@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
-import {getPageData, getVideoSection} from "@/lib/queries/wordpress";
+import {getPageData, getPageFeaturesData, getVideoSection} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PracticeTypesTemplate from "@/components/templates//PracticeTypesTemplate";
@@ -27,12 +27,14 @@ export default async function EnterPriseGradeSecurityPage() {
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
         const videoSection = await getVideoSection(slug);
+        const features = await getPageFeaturesData('features');
 
         return <PracticeTypesTemplate pageData={{
             ...pageData,
             testimonials,
             footerExtendedBg: true,
-            videoSection
+            videoSection,
+            features
         }} />
     } catch (error) {
         console.error(error);

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
-import { getPageData } from "@/lib/queries/wordpress";
+import {getPageData, getPageFeaturesData} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PillarChildWithFormTemplate from "@/components/templates/pillar/PillarChildWithFormTemplate";
@@ -29,11 +29,13 @@ export default async function PillarPage() {
 
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList('law-firm-website-builder');
+        const features = await getPageFeaturesData('features');
         return <PillarChildWithFormTemplate
             pageData={{
                 ...pageData,
                 testimonials,
                 footerExtendedBg: true,
+                features
             }}
             formId='02586e92-0cc0-43b6-a937-7a42c176de06'
             routerName='cosmolex-websites'
