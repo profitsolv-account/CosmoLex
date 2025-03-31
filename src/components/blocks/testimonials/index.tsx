@@ -114,6 +114,7 @@ export const Testimonials: FC<Props> = ({testimonials, className, showNavigation
                                                   height={t.clientPicture.mediaDetails.height}
                                               />
                                           </div>}
+                                          {t.clientPicture && !t.clientPicture.mediaDetails && <div className="w-25 h-25 rounded-[100rem] bg-gray-100" />}
                                          <div>
                                               <div className={classNames("text-primary-dark text-xl font-semibold font-['Inter'] leading-[0.875rem] mb-3", {
                                                   "text-white": theme === 'light',
