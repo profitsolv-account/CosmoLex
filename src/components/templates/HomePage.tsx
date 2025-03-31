@@ -25,7 +25,10 @@ export default function HomePage({pageData}: { pageData: PageDataType }) {
             {pageData.settings && <MatterCentric setting={pageData.settings}/>}
             <Testimonials testimonials={testimonials} showNavigation/>
             <VideoTestimonials testimonials={extendedTestimonials} />
-            <Faq faqs={faqs} />
+            <div className="relative rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] overflow-hidden bg-white pb-10 mt-20">
+                <Faq faqs={faqs} />
+            </div>
+
             <SimplifyPractice pageData={pageData}/>
             <Partners className="pb-10"/>
         </Layout>
