@@ -42,13 +42,13 @@ export default function PillarChildTemplate({ pageData }: { pageData: PageDataTy
                     title: item.title,
                     description: item.description,
                     media: <div className="w-full relative">
-                        <Image
+                        {item.image?.node && <Image
                             src={item.image?.node?.sourceUrl || '#'}
                             alt={item?.image?.node?.altText || ''}
                             className="w-full"
                             width={item.image?.node.mediaDetails.width}
                             height={item.image?.node.mediaDetails.height}
-                        />
+                        />}
                     </div>,
                     position: !item.reverse ? "right" : "left",
                 }))}
