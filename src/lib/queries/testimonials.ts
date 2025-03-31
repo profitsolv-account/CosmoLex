@@ -8,7 +8,7 @@ export const getTestimonialsList = async (pageSlug?: string) => {
     const { data } = await client.query({
         query: gql`
             query GetTestimonials {
-                testimonials {
+                testimonials(first: 100) {
                     edges {
                         node {
                             id
@@ -49,7 +49,7 @@ export const getTestimonialsList = async (pageSlug?: string) => {
         fetchPolicy: cacheOption,
         variables: {},
     })
-    //console.log(data);
+
     const testimonials = get(data, 'testimonials.edges', []).map((testimonial: any) => ({
         ...testimonial.node.testimonialFields,
         clientPicture: get(testimonial, 'node.testimonialFields.clientPicture.node', {}),
@@ -65,7 +65,7 @@ export const getTestimonialsList = async (pageSlug?: string) => {
         });
     }
 
-    return testimonials.filter((testimonial: any) => !testimonial.slug.length)
+    return testimonials.filter((testimonial: any) => !testimonial.slug.length || testimonial.slug.includes('all') || testimonial.extended);
 }
 
 export const getCSTestimonialsList = async (): Promise<CSTestimonial[]> => {
