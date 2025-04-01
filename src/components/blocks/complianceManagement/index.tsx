@@ -27,7 +27,7 @@ const dataSliders = [{
         description: "CosmoLex is designed to automate many of the time-consuming tasks that law firms traditionally handle manually, allowing them to save time, reduce errors, and improve overall efficiency.",
         image: bg5,
         link: "/features/",
-        className: "bg-green",
+        className: "bg-yellow",
     },
     {
     title: "Billing & Payments",
@@ -48,7 +48,7 @@ export const ComplianceManagement = () => {
     const items = [...dataSliders, ...dataSliders].map((t, index) => (
         <Fragment key={index}>
             <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
-                <div className="bg-green grow max-h-[17.5rem] rounded-br-[0.9375rem] rounded-bl-[0.9375rem] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0rem] lg:rounded-tl-[1.875rem] lg:rounded-bl-[1.875rem] lg:flex lg:items-center lg:justify-center">
+                <div className="bg-yellow grow max-h-[17.5rem] rounded-br-[0.9375rem] rounded-bl-[0.9375rem] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0rem] lg:rounded-tl-[1.875rem] lg:rounded-bl-[1.875rem] lg:flex lg:items-center lg:justify-center">
                     <img
                         src={t.image.src}
                         alt={t.title}
@@ -64,7 +64,7 @@ export const ComplianceManagement = () => {
                         <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem] max-w-[21.875rem] lg:mb-7">{t.description}</div>
                         <a href={t.link}
                            className="w-full block text-center lg:inline-block rounded-[6.25rem] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[1.875rem] py-[0.9375rem] lg:w-auto">
-                            {t.title === 'Legal Automation' ? 'See all Features' : 'Explore features'}
+                            {t.title === 'Legal Automation' ? 'See all features' : 'Explore features'}
                         </a>
                     </div>
                 </div>
