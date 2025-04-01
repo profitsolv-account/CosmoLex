@@ -26,7 +26,7 @@ const dataSliders = [{
         title: "Legal Automation",
         description: "CosmoLex is designed to automate many of the time-consuming tasks that law firms traditionally handle manually, allowing them to save time, reduce errors, and improve overall efficiency.",
         image: bg5,
-        link: "/features/",
+        link: "/features/legal-workflow-automation-software/",
         className: "bg-yellow",
     },
     {
