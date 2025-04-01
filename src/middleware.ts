@@ -10,6 +10,7 @@ const getRedirections = async () => {
                     source
                     target
                     status
+                    type
                 }
             }
         `,
@@ -44,9 +45,16 @@ export async function middleware(req: NextRequest) {
                     });
                 }
 
+                if (redirectRule.type === 'pass') {
+                   return NextResponse.rewrite(new URL(target, req.url));
+                }
+
                 return NextResponse.redirect(new URL(target, req.url));
             }
         } else if (redirectRule.source === pathname) {
+            if (redirectRule.type === 'pass') {
+                return NextResponse.rewrite(new URL(redirectRule.target, req.url));
+            }
             return NextResponse.redirect(new URL(redirectRule.target, req.url));
         }
     }
