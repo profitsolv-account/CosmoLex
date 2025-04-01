@@ -55,8 +55,8 @@ const Tabs = ({tabs, activeIndex, onTabClick}:TabsProps) => {
     const totalItems = tabs.length;
     const aIndex = activeIndex > (totalItems - 1) ? activeIndex - totalItems : activeIndex;
 
-    return <div className="overflow-auto w-full pb-5">
-        <div className="flex gap-2.5 justify-center min-w-[55.625rem]">
+    return <div className="overflow-auto w-full pb-5  pl-20 md:pl-0">
+        <div className="flex gap-2.5 justify-center min-w-[58rem]">
             {tabs.map((tab, index) => (
                 <div
                     className={classNames("h-10 px-[1.875rem] pt-5 pb-[1.375rem] rounded-[6.25rem] justify-center items-center gap-2.5 inline-flex transition duration-300 group  hover:bg-primary-dark", {
@@ -66,7 +66,7 @@ const Tabs = ({tabs, activeIndex, onTabClick}:TabsProps) => {
                     onClick={() => onTabClick(index)}
                     key={index} style={{cursor: 'pointer'}}
                 >
-                    <div className={classNames("text-center text-primary-dark text-base font-normal font-['Inter'] transition duration-300 group-hover:text-white", {
+                    <div className={classNames("text-center text-primary-dark text-base font-normal transition duration-300 group-hover:text-white whitespace-nowrap", {
                         "text-white": aIndex === index
                     })}>{tab.title}</div>
                 </div>

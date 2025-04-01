@@ -75,6 +75,7 @@ export const ComplianceManagement = () => {
     const tabs = [
         {title: "Client Engagement", id: "client-engagement"},
         {title: "Firm Management", id: "firm-management"},
+        {title: "Legal Automation", id: "billing-payments"},
         {title: "Billing & Payments", id: "billing-payments"},
         {title: "Accounting & Finance", id: "accounting-finance"},
     ]
