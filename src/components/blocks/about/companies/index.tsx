@@ -83,7 +83,7 @@ export const Companies = () => {
                 <CompaniesLogo className="max-w-[28.125rem]" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-10 md:pl-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-10">
                 {companies.map((company) => (
                     <a
                         href={company.link}
@@ -96,6 +96,7 @@ export const Companies = () => {
                             alt={company.title}
                             width={company.logo.width}
                             height={company.logo.height}
+                            className="w-[176px]"
                         />
                     </a>
                 ))}
