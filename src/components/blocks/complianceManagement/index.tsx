@@ -104,7 +104,7 @@ const AccountingTools = () => {
                     <div className="text-yellow text-[0.9375rem] tracking-[0.075rem] font-normal font-['Inter'] uppercase mb-3 md:text-base md:tracking-[0.0788rem] md:mb-4">Compliance management simplified</div>
                     <h3 className="text-white text-4xl font-bold font-['Inter'] leading-[3.125rem] mb-5 md:text-[2.875rem] md:leading-[3.4375rem] md:w-full md:mb-8">Keep your firm compliant with built-in accounting tools.</h3>
                     <a
-                        href="/"
+                        href="/features/accounting-finance/"
                         className="flex items-center justify-center text-center h-[3.375rem] px-[1.875rem] bg-white rounded-[6.25rem] border text-primary-dark text-base font-normal font-['Inter'] transition duration-300 hover:bg-primary-dark hover:text-white md:inline-flex">
                         Learn more
                     </a>
