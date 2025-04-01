@@ -28,7 +28,7 @@ export const TabbedSlider: FC<Props> = ({items, tabs, subheading, heading, descr
     }
 
     return <div>
-        <div className="container max-w-[66.625rem] mb-16 px-4">
+        <div className="container max-w-[66.625rem] mb-16">
             {subheading && <div className="text-[0.875rem] text-center text-primary-dark md:text-base font-normal uppercase mb-5 tracking-[0.0788rem]" dangerouslySetInnerHTML={{ __html: subheading }} />}
             {heading && <h3 className="text-[2.25rem] text-center text-primary-dark font-bold leading-[3.75rem] md:px-24 mb-17 md:text-[2.875rem]" dangerouslySetInnerHTML={{ __html: heading }} />}
             {description && <div className="text-[0.875rem] text-center text-primary-dark md:text-base font-normal mb-5 tracking-[0.0788rem] md:mb-20" dangerouslySetInnerHTML={{__html: description}} />}
@@ -36,7 +36,7 @@ export const TabbedSlider: FC<Props> = ({items, tabs, subheading, heading, descr
         </div>
 
         <div className="relative pb-8 md:pb-32">
-            <div className="px-2">
+            <div className="">
                 <Slider items={items} ref={swiperRef} setActiveIndex={setActiveIndex} height={height} />
             </div>
         </div>
