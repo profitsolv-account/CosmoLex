@@ -13,8 +13,8 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
       const title = get(pageData, 'title', '');
       const description  = get(pageData, 'description', '');
       const img = get(pageData, 'hero', heroImg);
-      const ctaTrial = get(pageData, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Try for Free');
-      const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request Demo');
+      const ctaTrial = get(pageData, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Try for free');
+      const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request demo');
 
     return <div className=" px-5 pt-10 mb-10 relative">
 
