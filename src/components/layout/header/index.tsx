@@ -28,6 +28,7 @@ export const Header = ({pageData}: {pageData: PageDataType}) => {
                                alt={getSetting('logoAltText')}
                                width={140}
                                height={34}
+                               unoptimized
                            />
                        </Link>
                    </div>

@@ -27,7 +27,7 @@ export const Navigations: FC<Props> = ({pageData}) => {
                         <Image
                             src={getPageSettings('logo')}
                             alt={getPageSettings('logoAltText')}
-                            className="min-w-[10.25rem]"
+                            unoptimized
                             width={163}
                             height={40}
                         />

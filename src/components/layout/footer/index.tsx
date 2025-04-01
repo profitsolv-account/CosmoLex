@@ -25,19 +25,19 @@ export const Footer = ({pageData}: {pageData: PageDataType}) => {
                 </div>
                 <div className="grid grid-cols-2 lg:flex lg:justify-center">
                     <a href="https://clearviewsocial.com/" className="flex justify-center items-center">
-                        <Image src={slide1} alt="clear-view-social" width={151} height={82} />
+                        <Image src={slide1} alt="clear-view-social" width={151} height={82} unoptimized />
                     </a>
                     <a href="https://orionlaw.com" className="flex justify-center items-center">
-                        <Image src={slide2} alt="orion-law" width={151} height={82} />
+                        <Image src={slide2} alt="orion-law" width={151} height={82} unoptimized />
                     </a>
                     <a href="https://www.rocketmatter.com" className="flex justify-center items-center">
-                        <Image src={slide3} alt="rocket-matter" width={151} height={82} />
+                        <Image src={slide3} alt="rocket-matter" width={151} height={82} unoptimized />
                     </a>
                     <a href="https://www.tabs3.com" className="flex justify-center items-center">
-                        <Image src={slide4} alt="tabs3" width={151} height={82} />
+                        <Image src={slide4} alt="tabs3" width={151} height={82} unoptimized />
                     </a>
                     <a href="https://www.timesolv.com" className="flex justify-center items-center">
-                        <Image src={slide5} alt="timesolv" width={151} height={82} />
+                        <Image src={slide5} alt="timesolv" width={151} height={82} unoptimized />
                     </a>
                 </div>
             </div>

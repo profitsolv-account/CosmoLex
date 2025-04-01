@@ -24,7 +24,7 @@ export const getSiteSettings = async (): Promise<SettingsType> => {
                         headerLogo {
                             node {
                                 altText
-                                sourceUrl
+                                sourceUrl(size: LARGE)
                             }
                         }
                     }
