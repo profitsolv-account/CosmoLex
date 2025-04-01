@@ -11,7 +11,7 @@ export default function PostTemplate({pageData}: { pageData: PostDataType }) {
             <div className="pt-20 b-32 single-entity container-blog flex flex-col-reverse gap-10 items-start lg:flex-row px-4 md:px-0">
                 <div>
                     <section className="pb-20">
-                        <section className="mx-auto py-4 text-left md:py-16">
+                        <section className="mx-auto pb-4 text-left md:pb-16">
                             <h2 className=" text-primary text-[2.125rem] font-bold font-['Inter'] leading-[3.4375rem] md:text-[2.875rem]"
                                 dangerouslySetInnerHTML={{__html: pageData?.title || ""}}/>
                         </section>
