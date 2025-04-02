@@ -6,11 +6,7 @@ import {notFound} from "next/navigation";
 import "./wordpress-blocks.css";
 import {getLanguage} from "@/lib/helpers";
 
-type Params = {
-    params: Promise<{slug: string}>;
-}
 
-//on-demand-demo
 export async function generateMetadata(): Promise<Metadata> {
     const lang = await getLanguage();
     let slug = 'on-demand-demo'

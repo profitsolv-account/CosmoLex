@@ -21,7 +21,6 @@ export const GuideBlock: FC<Props> = ({className, pageData}) => {
             <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="min-h-[12.5rem] bg-primary rounded-tl-[0.9375rem] rounded-tr-[0.9375rem] md:rounded-tr-[0rem] md:rounded-bl-[1.875rem] md:rounded-tl-[1.875rem] overflow-hidden flex flex-col justify-between">
                    <div className="relative w-full aspect-3/2 overflow-hidden">
-                       {/*<img src={featuredPost.featuredImage.sourceUrl} alt={featuredPost.featuredImage.altText} className="w-full h-full scale-150 object-cover absolute md:right-[-6.25rem]"/>*/}
                        <Image
                            src={featuredPost.featuredImage.sourceUrl}
                            alt={featuredPost.featuredImage.altText}
@@ -36,7 +35,7 @@ export const GuideBlock: FC<Props> = ({className, pageData}) => {
                             <div className="relative justify-start text-white text-[1.75rem] font-medium leading-10 mb-12">{featuredPost.title}</div>
                         </div>
 
-                        <a href={featuredPost.slug} className="base-btn text-white border-white hover:bg-white hover:text-primary-dark">Read more</a>
+                        <a href={featuredPost.slug} className="base-btn text-white border-white hover:bg-white hover:text-primary-dark" target="_blank">Read more</a>
                     </div>
                 </div>
                 <div className="min-h-[12.5rem] bg-green rounded-bl-[0.9375rem] rounded-br-[0.9375rem] md:rounded-bl-[0rem] md:rounded-br-[1.875rem] md:rounded-tr-[1.875rem] overflow-hidden">
