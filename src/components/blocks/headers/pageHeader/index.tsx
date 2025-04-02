@@ -35,12 +35,13 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
                             <div className="relative text-center justify-start text-green text-base font-normal uppercase tracking-wider">{subheading}</div>
                         }
 
-                        <div className="pt-6 mb-3">
+                        <div className="pt-6 mb-12">
                             <h1 className="home-title text-white text-[2.875rem] font-medium leading-[3.375rem] lg:text-[3.375rem] xl:text-[3.75rem] xl:leading-[3.75rem] xl:font-normal lg:block" dangerouslySetInnerHTML={{__html: title}} />
                         </div>
-                        {!hideContent && <div className="min-h-[3.8125rem] text-center text-white text-xl font-normal leading-loose lg:w-full mb-8" dangerouslySetInnerHTML={{__html: description}} />}
 
-                        {showCta && <div className={classNames("flex justify-center items-center gap-4 pb-10", ctaClass)}>
+                        {!hideContent && description && <div className="min-h-[3.8125rem] text-center text-white text-xl font-normal leading-loose lg:w-full mb-8" dangerouslySetInnerHTML={{__html: description}} />}
+
+                        {showCta && <div className={classNames("flex justify-center items-center gap-4 pb-2", ctaClass)}>
                             <div className="h-[3.375rem] px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] rounded-[6.25rem] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">
                                 <a href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</a>
                             </div>
@@ -51,7 +52,7 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
                     </div>
                 </div>
             </div>
-            {showFeatureImage && heroImage && <div className="relative pt-10">
+            {showFeatureImage && heroImage && <div className="relative pt-3">
                 <div className="flex justify-center relative z-10 px-2">
                     <Image
                         src={heroImage?.node.sourceUrl}

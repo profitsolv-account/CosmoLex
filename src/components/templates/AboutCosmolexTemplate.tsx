@@ -13,7 +13,7 @@ export default function AboutCosmolexTemplate({pageData}: { pageData: PageDataTy
            <div className="relative">
                <PageHeader
                    pageData={pageData}
-                   className="mb-0 pb-20 bg-primary relative z-10 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] md:pb-40"
+                   className="mb-0 bg-primary relative z-10 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] pb-4 overflow-hidden"
                    containerClassName="!max-w-[46.5625rem]"
                    hideContent
                />
