@@ -13,8 +13,10 @@ export async function POST(req: Request) {
 
         revalidatePath(getPagePath(body.post_url), 'page');
         revalidatePath(getPagePath(body.post_url));
-        revalidatePath(`/compare/[slug]`, "page");
+        revalidatePath(`/compare/`, "layout");
         revalidatePath(`/features/[slug]`, "page");
+        revalidatePath(`/features/`, "layout");
+        revalidatePath(`/`, "layout");
 
         revalidateTag('graphql');
 
