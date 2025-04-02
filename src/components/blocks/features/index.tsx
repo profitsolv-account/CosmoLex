@@ -28,7 +28,7 @@ export const Features = ({pageData, className}: Props) => {
         <div className="max-w-[84.5rem] mx-auto bg-salmon rounded-[1.875rem] px-[2.125rem] py-[4.4375rem]">
             <div className="text-center max-w-[46.875rem] mx-auto">
                 <div className="text-center text-primary text-base font-normal font-['Inter'] uppercase tracking-wider mb-5">ONE END-TO-END solution</div>
-                <h3 className="leading-[2.625rem] text-[2.25rem] text-center text-primary-dark  font-bold font-['Inter'] md:leading-[3.25rem] md:text-[2.875rem] mb-7">All the tools your firm needs to run your business. </h3>
+                <h3 className="leading-[2.625rem] text-[2.25rem] text-center text-primary-dark  font-bold font-['Inter'] md:leading-[3.25rem] md:text-[2.875rem] mb-7">All the tools your firm needs <br/> to run your business.</h3>
                 <p className="text-center text-primary-dark text-base font-normal font-['Inter'] leading-[1.875rem]">
                     Built with the needs of modern small and mid-sized law firms in mind, CosmoLex’s legal practice management software increases efficiency and profitability.
                 </p>
@@ -72,7 +72,7 @@ export const Features = ({pageData, className}: Props) => {
                                 </div>
                                 <div className="">
                                     <div className="">
-                                        <div className="text-primary-dark text-xl font-bold font-['Inter'] leading-normal">{tool.title}</div>
+                                        <div className="text-primary-dark text-xl font-bold font-['Inter'] leading-[1.6rem]">{tool.title}</div>
                                         <div className="text-primary-dark text-base font-normal font-['Inter'] leading-normal"  dangerouslySetInnerHTML={{__html: tool.description || ''}}/>
                                     </div>
                                 </div>
