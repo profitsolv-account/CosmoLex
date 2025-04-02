@@ -84,7 +84,7 @@ export const Testimonials  = ({testimonials}: Props) => {
 
 const Testimonial = ({testimonial}: {testimonial: CSTestimonial}) => {
     return (
-        <div className="bg-primary p-10 rounded-lg">
+        <div className="bg-[#D7EFFA] p-10 rounded-lg">
             <div className="flex gap-10 bg-white p-5 rounded-lg mb-4">
                 <Image
                     src={testimonial.image.sourceUrl}
@@ -97,8 +97,8 @@ const Testimonial = ({testimonial}: {testimonial: CSTestimonial}) => {
             </div>
             <Rating rating={testimonial.rating} />
             <div className="flex flex-col gap-0 mt-4 items-end">
-                <div className="text-white text-xl font-semibold">{testimonial.title}</div>
-                <div className="text-white text-xl font-semibold">{testimonial.location}</div>
+                <div className="text-primary text-xl font-semibold">{testimonial.title}</div>
+                <div className="text-primary text-xl font-semibold">{testimonial.location}</div>
             </div>
         </div>
     )
