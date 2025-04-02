@@ -9,10 +9,10 @@ import {getLanguage} from "@/lib/helpers";
 
 const getSlug = async () => {
     const lang = await getLanguage();
-    let slug = 'compare/cosmolex-vs-pclaw'
+    let slug = 'compare/cosmolex-vs-clio'
     switch (lang) {
         case 'ca':
-            slug = 'compare-2/cosmolex-vs-pclaw';
+            slug = 'compare-2/cosmolex-vs-clio';
             break;
     }
     return slug;

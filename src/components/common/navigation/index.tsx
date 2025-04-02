@@ -90,7 +90,7 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                 </span>
             </li>
             <li className="cursor-pointer">
-                <a className="block  text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold  w-[3.625rem] text-center"
+                <a className="block  text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold  w-[3.625rem] text-center relative top-[1px]"
                    href="/pricing">Pricing</a>
             </li>
             <li className="cursor-pointer">

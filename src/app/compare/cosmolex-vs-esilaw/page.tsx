@@ -8,7 +8,7 @@ import {getCompareChildPageData, getFeatureData} from "@/lib/queries/compare";
 import CompareChildRestTemplate from "@/components/templates/CompareChildRestTemplate";
 import {getLanguage} from "@/lib/helpers";
 
-export async function generateMetadata(): Promise<Metadata> {
+const getSlug = async () => {
     const lang = await getLanguage();
     let slug = 'compare/cosmolex-vs-esilaw'
     switch (lang) {
@@ -16,20 +16,17 @@ export async function generateMetadata(): Promise<Metadata> {
             slug = 'compare-2/cosmolex-vs-esilaw';
             break;
     }
+    return slug;
+}
 
+export async function generateMetadata(): Promise<Metadata> {
+   const slug = await getSlug();
     return await getSEOData(slug);
 }
 
 export default async function PillarPage() {
     try {
-        const lang = await getLanguage();
-        let slug = 'compare/cosmolex-vs-esilaw'
-        switch (lang) {
-            case 'ca':
-                slug = 'compare-2/cosmolex-vs-esilaw';
-                break;
-        }
-
+        const slug = await getSlug();
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
         const features = await getFeatureData('cosmolex-vs-pclaw');
