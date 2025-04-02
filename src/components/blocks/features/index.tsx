@@ -24,7 +24,7 @@ export const Features = ({pageData, className}: Props) => {
     const settings = get(pageData, "settings", {}) as SettingsType;
     const features = get(pageData, "features", []) || [];
 
-    return <div id="features" className={classNames("px-2 relative z-10 pt-10 md:pt-22 features-block", className)}>
+    return <div id="features" className={classNames("px-2 relative z-10 pt-10 md:pt-22 features-block mb-13", className)}>
         <div className="max-w-[84.5rem] mx-auto bg-salmon rounded-[1.875rem] px-[2.125rem] py-[4.4375rem]">
             <div className="text-center max-w-[46.875rem] mx-auto">
                 <div className="text-center text-primary text-base font-normal font-['Inter'] uppercase tracking-wider mb-5">ONE END-TO-END solution</div>
