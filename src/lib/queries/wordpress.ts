@@ -7,6 +7,7 @@ import {getSiteSettings} from "@/lib/queries/settings";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {PAGE_BLOCKS_FRAGMENT, PAGE_SETTINGS_FRAGMENT, TOOLS_FRAGMENT} from "@/lib/queries/fragments/page";
 import {PostDataType} from "@/types/post";
+import {getLatestGuide} from "@/lib/queries/resources";
 
 export const getHomePageData = async () => {
     const { data } = await client.query({
@@ -51,7 +52,7 @@ export const getHomePageData = async () => {
          description: get(data, 'page.content', ''),
          hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
          heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
-         featuredPost: (await getLatestPosts(1))[0],
+         featuredPost: await getLatestGuide(),
          menus: await getAllMenus(),
          settings: await getSiteSettings(),
          testimonials: await getTestimonialsList(),
@@ -169,7 +170,7 @@ export const getPageData = async (
 
     return {
         ...pageData,
-        featuredPost: (await getLatestPosts(1))[0],
+        featuredPost: await getLatestGuide(),
         menus: await getAllMenus(),
         settings: await getSiteSettings(),
         title,
@@ -258,7 +259,7 @@ export const getPostData = async (pageSlug: string): Promise<PostDataType> => {
     const latestPosts = await getLatestPosts(5);
     return {
         ...post,
-        featuredPost: latestPosts[0],
+        featuredPost: await getLatestGuide(),
         menus: await getAllMenus(),
         settings: await getSiteSettings(),
         latestPosts

@@ -69,7 +69,7 @@ export default function CalendarTasksTemplate({ pageData }: { pageData: PageData
             </div>}
 
             <div className="relative">
-                <GuideBlock className="relative z-10"/>
+                <GuideBlock className="relative z-10" pageData={pageData} />
                 <div className="absolute bottom-0 w-full h-[6.25rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] bg-white"/>
             </div>
             <Faq faqs={faqs} />

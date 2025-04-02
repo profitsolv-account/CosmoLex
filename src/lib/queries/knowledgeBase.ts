@@ -2,6 +2,7 @@ import {PageDataType, ShortPostType} from "@/types";
 import {getLatestPosts} from "@/lib/queries/wordpress";
 import {getAllMenus} from "@/lib/queries/menus";
 import {getSiteSettings} from "@/lib/queries/settings";
+import {getLatestGuide} from "@/lib/queries/resources";
 
 const POSTS_PER_PAGE = 10;
 const API = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
@@ -37,7 +38,7 @@ export const getKBCategoryData = async (slug: string, page: number): Promise<Pag
     const latestPosts = await getLatestPosts(5);
     return {
         posts,
-        featuredPost: latestPosts[0],
+        featuredPost: await getLatestGuide(),
         menus: await getAllMenus(),
         settings: await getSiteSettings(),
         latestPosts,

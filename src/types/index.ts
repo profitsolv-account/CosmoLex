@@ -29,6 +29,7 @@ export type FeaturedPostType = {
             height: number;
         }
     }
+
 }
 
 export type ShortPostType = {

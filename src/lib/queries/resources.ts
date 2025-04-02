@@ -2,6 +2,7 @@ import client, {cacheOption} from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {KnowledgeBaseCategory, Resource} from "@/types/resources";
+import {FeaturedPostType} from "@/types";
 
 export const getResourcesData = async (): Promise<Resource[]> => {
 
@@ -198,4 +199,66 @@ export const getKBCategoryData = async (pageSlug: string): Promise<KnowledgeBase
         variables: { pageSlug },
     })
     return get(data, 'knowledgeBaseCategories.edges', []);
+}
+
+export const getLatestGuide = async (): Promise<FeaturedPostType> => {
+    const { data } = await client.query({
+        query: gql`
+            query GetLatestGuide {
+                guides(first: 1000) {
+                    edges {
+                        node {
+                            id
+                            date
+                            title
+                            uri
+                            status
+                            featuredImage {
+                                node {
+                                    sourceUrl(size: LARGE)
+                                    mediaDetails {
+                                        width
+                                        height
+                                    }
+                                }
+                            }
+                            guidesFields {
+                                ctaLink
+                                tags
+                                isFeatured
+                                featuredImage {
+                                    node {
+                                        altText
+                                        sourceUrl
+                                        mediaDetails {
+                                            width
+                                            height
+                                        }
+                                    }
+                                }
+                            }
+                            content
+                        }
+                    }
+                }
+            }
+        `,
+        fetchPolicy: cacheOption,
+    });
+    const guides = get(data, 'guides.edges', []);
+
+    const featuredPost = guides.find((guide: any) => guide.node.guidesFields.isFeatured);
+
+   return {
+       title: get(featuredPost, 'node.title', ''),
+       slug: get(featuredPost, 'node.guidesFields.ctaLink', ''),
+       featuredImage: {
+           altText: get(featuredPost, 'node.guidesFields.featuredImage.node.altText', ''),
+           sourceUrl: get(featuredPost, 'node.guidesFields.featuredImage.node.sourceUrl', ''),
+           mediaDetails: {
+               width: get(featuredPost, 'node.guidesFields.featuredImage.node.mediaDetails.width', 0),
+               height: get(featuredPost, 'node.guidesFields.featuredImage.node.mediaDetails.height', 0),
+           }
+       }
+   }
 }

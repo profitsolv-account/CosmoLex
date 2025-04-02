@@ -2,12 +2,17 @@ import {PageDataType} from "@/types";
 import {FC} from "react";
 import classNames from "classnames";
 import Bg from '@/assets/img/blocks/cosmolex-guide.webp';
+import Image from "next/image";
 
 type Props = {
     className?: string;
-    pageData?: PageDataType;
+    pageData: PageDataType;
 }
-export const GuideBlock: FC<Props> = ({className}) => {
+export const GuideBlock: FC<Props> = ({className, pageData}) => {
+    const featuredPost = pageData.featuredPost;
+
+    if (!featuredPost) return null;
+
     return <div className={classNames("px-2 pt-10", className)}>
         <div className="max-w-[70.25rem] relative mx-auto">
             <h4 className="relative text-center justify-start text-primary text-base font-normal uppercase tracking-[0.08rem] mb-6">LEGAL PRACTICE MANAGEMENT RESOURCES</h4>
@@ -15,16 +20,23 @@ export const GuideBlock: FC<Props> = ({className}) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="min-h-[12.5rem] bg-primary rounded-tl-[0.9375rem] rounded-tr-[0.9375rem] md:rounded-tr-[0rem] md:rounded-bl-[1.875rem] md:rounded-tl-[1.875rem] overflow-hidden flex flex-col justify-between">
-                   <div className="scale-x-[-1] relative w-full aspect-3/2 overflow-hidden">
-                       <img src={Bg.src} alt="cosmolex-guide" className="w-full h-full scale-150 object-cover absolute md:right-[-6.25rem]"/>
+                   <div className="relative w-full aspect-3/2 overflow-hidden">
+                       {/*<img src={featuredPost.featuredImage.sourceUrl} alt={featuredPost.featuredImage.altText} className="w-full h-full scale-150 object-cover absolute md:right-[-6.25rem]"/>*/}
+                       <Image
+                           src={featuredPost.featuredImage.sourceUrl}
+                           alt={featuredPost.featuredImage.altText}
+                           width={featuredPost.featuredImage.mediaDetails.width}
+                           height={featuredPost.featuredImage.mediaDetails.height}
+                           className="w-full absolute top-[-20%]"
+                       />
                    </div>
                     <div className="py-[1.875rem] px-[1.25rem] md:py-[3.75rem] md:px-[3.9375rem] grow flex flex-col justify-between">
                         <div>
                             <div className="relative justify-start text-white text-base font-normal uppercase tracking-wider mb-2">Free Guide</div>
-                            <div className="relative justify-start text-white text-[1.75rem] font-medium leading-10 mb-12">The Legal Firm’s Blueprint: Building a Strong Foundation for Success</div>
+                            <div className="relative justify-start text-white text-[1.75rem] font-medium leading-10 mb-12">{featuredPost.title}</div>
                         </div>
 
-                        <a href="/blog" className="base-btn text-white border-white hover:bg-white hover:text-primary-dark">Read more</a>
+                        <a href={featuredPost.slug} className="base-btn text-white border-white hover:bg-white hover:text-primary-dark">Read more</a>
                     </div>
                 </div>
                 <div className="min-h-[12.5rem] bg-green rounded-bl-[0.9375rem] rounded-br-[0.9375rem] md:rounded-bl-[0rem] md:rounded-br-[1.875rem] md:rounded-tr-[1.875rem] overflow-hidden">

@@ -24,7 +24,7 @@ export const FeaturedPost = ({pageData}: {pageData: any}) => {
                 <div className="text-black text-base font-medium font-['Inter'] leading-[1.4375rem] mb-7">
                     {post.title}
                 </div>
-                <a href={`/blog/${post.slug}`} className="block h-11 px-5 pt-2.5 pb-3 bg-primary-dark border border-primary-dark rounded-[6.25rem] text-center text-white text-base font-normal font-['Inter'] transition duration-300 hover:bg-secondary hover:text-primary-dark">
+                <a href={`${post.slug}`} className="block h-11 px-5 pt-2.5 pb-3 bg-primary-dark border border-primary-dark rounded-[6.25rem] text-center text-white text-base font-normal font-['Inter'] transition duration-300 hover:bg-secondary hover:text-primary-dark">
                     Get Guide
                 </a>
             </div>

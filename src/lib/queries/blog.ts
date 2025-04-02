@@ -4,6 +4,7 @@ import {getAllMenus} from "@/lib/queries/menus";
 import {getSiteSettings} from "@/lib/queries/settings";
 import {getLatestPosts} from "@/lib/queries/wordpress";
 import {PageDataType, ShortPostType} from "@/types";
+import {getLatestGuide} from "@/lib/queries/resources";
 
 const POSTS_PER_PAGE = 10;
 const API = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
@@ -32,7 +33,7 @@ export const getBlogData = async (page: number): Promise<PageDataType> => {
     const latestPosts = await getLatestPosts(5);
     return {
         posts,
-        featuredPost: latestPosts[0],
+        featuredPost: await getLatestGuide(),
         menus: await getAllMenus(),
         settings: await getSiteSettings(),
         latestPosts,
@@ -51,7 +52,7 @@ export const getAllPostSlugs = async () => {
         return cachedPosts;
     }*/
 
-    const featuredPost = (await getLatestPosts(0))[0];
+    const featuredPost = await getLatestGuide();
     const menus =  await getAllMenus();
 
     const fetchAllPosts = async (after: string | null = null, accumulatedPosts: any[] = []) => {

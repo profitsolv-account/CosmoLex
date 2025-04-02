@@ -3,7 +3,6 @@ import React, {ChangeEvent, FC, useEffect, useState} from 'react';
 import Layout from "@/components/layout/layout";
 import { PageDataType } from "@/types";
 import { ResourceBlock } from "../blocks/resources/resourceBlock";
-import classNames from "classnames";
 import {CompareHeader} from "@/components/blocks/compare/compareHeader";
 import {Resource} from "@/types/resources";
 import DropdownCheckbox from "@/components/blocks/resources/dropdown";
@@ -32,7 +31,10 @@ export default function ResourceHubTemplate({ pageData }: { pageData: PageDataTy
             {precessedResources.length === 0 && <div className="text-center text-2xl py-10">
                 No Items for the Selected Filter
             </div>}
-            <PaginatedItems resources={precessedResources} />
+            <div className="max-w-[90%] mx-auto">
+                <PaginatedItems resources={precessedResources} />
+            </div>
+
         </Layout>
     );
 }
