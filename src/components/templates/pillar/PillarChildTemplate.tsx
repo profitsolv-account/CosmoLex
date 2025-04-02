@@ -84,6 +84,7 @@ export default function PillarChildTemplate({ pageData }: { pageData: PageDataTy
             </div>
             <Faq faqs={faqs} />
             <SimplifyPractice pageData={pageData} className="bg-white"/>
+            <span className="list-decimal pl-4"></span>
         </Layout>
     )
 }
