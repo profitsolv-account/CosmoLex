@@ -11,7 +11,7 @@ type Params = {
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
     const {slug} = await params;
-    return await getSEOData(slug || 'home-page');
+    return await getSEOData(slug);
 }
 
 export default async function SinglePage({params}: Params) {

@@ -22,7 +22,6 @@ export default function RootLayout({children}: Readonly<{
         <head>
             <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: light)" />
             <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: dark)" />
-            <title></title>
         </head>
         <body className={inter.variable}>{children}</body>
         </html>
