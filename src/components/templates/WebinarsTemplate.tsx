@@ -31,7 +31,9 @@ export default function WebinarsTemplate({ pageData }: { pageData: PageDataType 
             {precessedResources.length === 0 && <div className="text-center text-2xl py-10">
                 No Items for the Selected Filter
             </div>}
-            <PaginatedItems resources={precessedResources} />
+            <div className="max-w-[90%] mx-auto">
+                <PaginatedItems resources={precessedResources} />
+            </div>
         </Layout>
     );
 }
