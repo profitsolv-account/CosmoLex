@@ -25,7 +25,7 @@ export const InfoBlock:FC<Props> = ({title, details, label, type, className}) =>
         </div>
 
         <div className="text-center justify-start">
-            <div className="text-[#151c2d] text-[1.375rem] font-semibold leading-[1.625rem] mb-1">{title}</div>
+            <div className="text-[#151c2d] text-[1.375rem] font-semibold leading-[1.625rem] mb-1" dangerouslySetInnerHTML={{__html: title}} />
             <div className="text-[#151c2d] text-base font-normal leading-relaxed">{details}</div>
         </div>
     </div>
