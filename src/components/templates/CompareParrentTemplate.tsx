@@ -18,6 +18,7 @@ export default function CompareParentTemplate({ pageData }: { pageData: PageData
                 className="mb-30"
                 showCta
                 showFeatureImage
+                mediaClass="!mt-5"
             />
 
            <div className="relative">

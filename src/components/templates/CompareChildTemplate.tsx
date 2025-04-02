@@ -16,7 +16,10 @@ export default function CompareChildTemplate({ pageData }: { pageData: PageDataT
     return (
         <Layout pageData={pageData}>
 
-            <CompareHeader pageData={pageData} className="mb-22" />
+            <CompareHeader
+                pageData={pageData}
+                className="mb-22"
+            />
 
             {pageData.compareSection?.compareItems && <div className="min-h-100">
                 <CompareSection compareSection={pageData.compareSection} />
