@@ -7,15 +7,17 @@ import {LocationItem, PageDataType} from "@/types";
 import Pagination from "@/components/pagination/inde";
 import {Directory} from "@/components/common/directory";
 import SearchComponent from "@/components/common/directory/search";
+import {SearchParams} from "@/app/partners/certified-consultant/page";
 
 type Props = {
     pageData: PageDataType,
     page: number,
     locations: LocationItem[],
-    categories: {id: string, name: string}[]
+    categories: {id: string, name: string}[];
+    searchParams?: SearchParams;
 }
 
-export default function DirectoriesTemplate({ pageData, page, locations, categories }: Props) {
+export default function DirectoriesTemplate({ pageData, page, locations, categories, searchParams }: Props) {
     const totalPages = Math.ceil((pageData.total || 0) / 12);
     const items = pageData.directories || [];
     return (
@@ -45,6 +47,7 @@ export default function DirectoriesTemplate({ pageData, page, locations, categor
                     pageCount={totalPages}
                     currentPage={page}
                     baseLink={"/partners/certified-consultant/page/"}
+                    searchParams={searchParams}
                 />
             </section>
 

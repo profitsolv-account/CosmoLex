@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
 import { getPageData } from "@/lib/queries/wordpress";
-import {notFound} from "next/navigation";
+import { notFound } from "next/navigation";
 import { getCategories, getDirectoriesData } from "@/lib/queries/directoryListings";
 import DirectoriesTemplate from "@/components/templates/DirectoriesTemplate";
 
@@ -11,12 +11,22 @@ export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);
 }
 
-export default async function CertifiedConsultantPage({ searchParams }: any) {
+export type SearchParams = {
+    s?: string;
+    cats?: string;
+    locs?: string;
+};
+
+interface Props {
+    searchParams: Promise<SearchParams>;
+}
+
+export default async function CertifiedConsultantPage({ searchParams }: Props) {
     try {
-        const { s, ctas, locs } = searchParams || {};
+        const { s, cats, locs } = await searchParams;
 
         const pageData = await getPageData(slug);
-        const data = await getDirectoriesData(1, {s, ctas, locs});
+        const data = await getDirectoriesData(1, { s, cats, locs });
         const dataCats = await getCategories();
 
         return (
@@ -29,6 +39,7 @@ export default async function CertifiedConsultantPage({ searchParams }: any) {
                 page={1}
                 locations={dataCats.locations}
                 categories={dataCats.categories}
+                searchParams={{ s, cats, locs }}
             />
         );
     } catch (error) {
@@ -36,6 +47,4 @@ export default async function CertifiedConsultantPage({ searchParams }: any) {
     }
 }
 
-
 export const revalidate = false;
-// export const dynamic = "force-static";

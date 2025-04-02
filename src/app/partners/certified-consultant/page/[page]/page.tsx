@@ -20,11 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 export default async function CertifiedConsultantPage({ params, searchParams }: any) {
     try {
-        const { s, ctas, locs } = await searchParams || {};
-
+        const { s, cats, locs } = await searchParams;
         const {page} = await params;
         const pageData = await getPageData(slug);
-        const data = await getDirectoriesData(+page, { s, ctas, locs });
+        const data = await getDirectoriesData(+page, { s, cats, locs });
         const dataCats = await getCategories();
         return <DirectoriesTemplate pageData={{
             ...pageData,
@@ -33,6 +32,7 @@ export default async function CertifiedConsultantPage({ params, searchParams }: 
         }} page={+page}
             locations={dataCats.locations}
             categories={dataCats.categories}
+            searchParams={{ s, cats, locs }}
         />
     } catch (error) {
         notFound();
@@ -40,4 +40,3 @@ export default async function CertifiedConsultantPage({ params, searchParams }: 
 }
 
 export const revalidate = false;
-//export const dynamic = "force-static";

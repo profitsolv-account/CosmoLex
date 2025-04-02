@@ -16,10 +16,10 @@ const SearchComponent: FC<Props> = ({ categories, locations }) => {
         const queryParams: { [key: string]: string } = {};
 
         if (searchTerm) queryParams.s = searchTerm;
-        if (category) queryParams.ctas = category;
+        if (category) queryParams.cats = category;
         if (location) queryParams.locs = location;
 
-        const newUrl = `${window.location.pathname}?${new URLSearchParams(queryParams).toString()}`;
+        const newUrl = `/partners/certified-consultant?${new URLSearchParams(queryParams).toString()}`;
         window.history.pushState({}, '', newUrl);
     };
 
@@ -31,7 +31,7 @@ const SearchComponent: FC<Props> = ({ categories, locations }) => {
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         setSearchTerm(params.get('s') || '');
-        setCategory(params.get('ctas') || '');
+        setCategory(params.get('cats') || '');
         setLocation(params.get('locs') || '');
     }, []);
 

@@ -3,15 +3,28 @@
 import React from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
+import {SearchParams} from "@/app/partners/certified-consultant/page";
 
 type PaginationProps = {
     pageCount: number;
     currentPage: number;
     baseLink?: string;
+    searchParams?: SearchParams;
 };
 
-const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, baseLink }) => {
+const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, baseLink, searchParams}) => {
     const base = baseLink || '/blog/page';
+
+    let search = `?`;
+
+    if (searchParams?.cats) {
+        search += `&cats=${searchParams.cats}`;
+    }
+
+    if (searchParams?.locs) {
+        search += `&locs=${searchParams.locs}`;
+    }
+
     const renderPageNumbers = () => {
         const pages = [];
 
@@ -41,7 +54,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, baseLin
             return (
                 <Link
                     key={index}
-                    href={`${base}/${page}`}
+                    href={`${base}${page}${search}`}
                     className={classNames("mx-1 px-4 py-2 border border-primary cursor-pointer", {
                         'bg-primary text-white': currentPage === page,
                         'text-primary hover:bg-primary hover:text-white': currentPage !== page,
@@ -57,7 +70,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, baseLin
         <div className="flex items-center justify-center space-x-2 p-4">
             {currentPage > 1 ? (
                 <Link
-                    href={`${base}/${currentPage - 1}`}
+                    href={`${base}${currentPage - 1}${search}`}
                     className="px-4 py-2 border border-primary cursor-pointer hover:bg-primary hover:text-white"
                 >
                     ←
@@ -72,7 +85,7 @@ const Pagination: React.FC<PaginationProps> = ({ pageCount, currentPage, baseLin
 
             {currentPage < pageCount ? (
                 <Link
-                    href={`${base}/${currentPage + 1}`}
+                    href={`${base}${currentPage + 1}${search}`}
                     className="px-4 py-2 border border-primary cursor-pointer hover:bg-primary hover:text-white"
                 >
                     →

@@ -1,6 +1,6 @@
 import { DirectoryType } from '@/types';
 
-const POSTS_PER_PAGE = 10;
+const POSTS_PER_PAGE = 12;
 const API = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
 const BASE_URL = `${API}/wp-json/wp/v2`;
 
@@ -31,18 +31,17 @@ export const fetchTaxonomyTerms = async (taxonomy: string, ids: number[]): Promi
 
 export const getDirectoriesData = async (page: number, options: {
     s?: string;
-    ctas?: string;
+    cats?: string;
     locs?: string;
 }): Promise<ResponseType> => {
-    let url = `${BASE_URL}/directory?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`;
+    let url = `${BASE_URL}/directory?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true&per`;
 
     if (options.s) {
-        console.log(`Adding search term to URL: s=${options.s}`);
         url += `&s=${encodeURIComponent(options.s)}`;
     }
 
-    if (options.ctas) {
-        url += `&listing-category=${options.ctas}`;
+    if (options.cats) {
+        url += `&listing-category=${options.cats}`;
     }
 
     if (options.locs) {
@@ -71,7 +70,7 @@ export const getDirectoriesData = async (page: number, options: {
                 email: post.acf.email,
                 phone: post.acf.phone,
                 website: post.acf.website,
-                category: categories[0]?.name || '',
+                category: categories.map((category: any) => category.name).join(', '),
                 locations
             };
         })
