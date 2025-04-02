@@ -275,4 +275,8 @@ body {
         height: 90%!important;
     }
 
+    .list-disc {
+        list-style: disc!important;
+    }
+
 }
