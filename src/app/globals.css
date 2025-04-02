@@ -254,8 +254,9 @@ body {
     .max-width-27 {
         max-width:27rem!important;
     }
+
     .max-width-28 {
-        max-width:28rem!important;
+        max-width:28rem !important;
     }
 
     .max-width-30 {
@@ -268,6 +269,10 @@ body {
 
     .bottom-m20 {
         bottom: -20px!important;
+    }
+
+    .height-90 {
+        height: 90%!important;
     }
 
 }
