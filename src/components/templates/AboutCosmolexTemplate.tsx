@@ -14,7 +14,7 @@ export default function AboutCosmolexTemplate({pageData}: { pageData: PageDataTy
                <PageHeader
                    pageData={pageData}
                    className="mb-0 bg-primary relative z-10 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] pb-4 overflow-hidden"
-                   containerClassName="!max-w-[46.5625rem]"
+                   containerClassName="!max-w-[47.5625rem]"
                    hideContent
                />
            </div>
