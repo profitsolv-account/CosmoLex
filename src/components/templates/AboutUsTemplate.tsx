@@ -20,7 +20,7 @@ export default function AboutUsTemplate({pageData}: { pageData: PageDataType }) 
             <PageHeader
                 pageData={pageData}
                 className="mb-0 pb-10 bg-primary"
-                containerClassName="!max-w-[25rem]"
+                containerClassName="!max-w-[28rem]"
             />
 
             <AboutCards />
