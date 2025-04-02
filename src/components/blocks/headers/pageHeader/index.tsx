@@ -22,8 +22,8 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
     const description  = get(pageData, 'description', '');
     const subheading = get(pageData, 'subheading', '');
 
-    const ctaTrial = get(pageData, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Try for Free');
-    const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request Demo');
+    const ctaTrial = get(pageData, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Try for free');
+    const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request demo');
     const heroImage = get(pageData, 'heroImage', null);
 
     return (

@@ -16,8 +16,8 @@ export const CompareHeader = ({pageData, className, hideCta, contentClassName}:P
     const description  = get(pageData, 'description', '');
     const subheading = get(pageData, 'subheading', '');
 
-    const ctaTrial = get(pageData, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Try for Free');
-    const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request Demo');
+    const ctaTrial = get(pageData, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Try for free');
+    const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request demo');
     const heroImage = get(pageData, 'heroImage', null);
 
     return <div className={classNames("pt-10 mb-10 relative pb-15", className)}>
