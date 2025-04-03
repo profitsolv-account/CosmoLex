@@ -43,19 +43,19 @@ export const GuideBlock: FC<Props> = ({className, pageData}) => {
                         <div className="relative justify-start text-primary-dark text-[1.75rem] font-semibold font-['Inter'] leading-10 mb-10">Educational Blogs</div>
                         <ul className="md:pr-[5.3125rem] mb-10">
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/integrated-accounting-software/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[2rem]">Integrated Accounting Software for Law Firms: Features, Benefits & More</a>
+                                <a href="/blog/integrated-accounting-software/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">Integrated Accounting Software for Law Firms: Features, Benefits & More</a>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/5-reasons-law-firms-are-switching-to-cosmolex/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[2rem]">5 Reasons Law Firms are Switching to CosmoLex</a>
+                                <a href="/blog/5-reasons-law-firms-are-switching-to-cosmolex/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">5 Reasons Law Firms are Switching to CosmoLex</a>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/optimizing-law-firm-operations-strategies-for-modern-practices/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[2rem]">Optimizing Law Firm Operations: 5 Strategies for Modern Practices</a>
+                                <a href="/blog/optimizing-law-firm-operations-strategies-for-modern-practices/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">Optimizing Law Firm Operations: 5 Strategies for Modern Practices</a>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/roi-of-switching-to-cosmolexpay/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[2rem]">The ROI of Switching to CosmoLexPay: Cost Savings and Efficiency Gains</a>
+                                <a href="/blog/roi-of-switching-to-cosmolexpay/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">The ROI of Switching to CosmoLexPay: Cost Savings and Efficiency Gains</a>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/high-converting-law-firm-website/" className="text-primary-dark text-xl font-medium font-['Inter'] leading-[2rem]">6 Best Practices for Creating a High-Converting Law Firm Website</a>
+                                <a href="/blog/high-converting-law-firm-website/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">6 Best Practices for Creating a High-Converting Law Firm Website</a>
                             </li>
                         </ul>
                         <a href="/blog" className="base-btn text-white border-primary-dark bg-primary-dark hover:bg-white hover:text-primary-dark hover:border-white">Read all articles</a>
