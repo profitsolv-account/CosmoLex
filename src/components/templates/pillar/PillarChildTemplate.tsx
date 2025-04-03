@@ -45,7 +45,9 @@ export default function PillarChildTemplate({ pageData }: { pageData: PageDataTy
                         {item.image?.node && <Image
                             src={item.image?.node?.sourceUrl || '#'}
                             alt={item?.image?.node?.altText || ''}
-                            className="w-full"
+                            className={classNames("w-full relative", {
+                                "top-[-40px]": item.title.includes('Build trust with transparency')
+                            })}
                             width={item.image?.node.mediaDetails.width}
                             height={item.image?.node.mediaDetails.height}
                         />}
