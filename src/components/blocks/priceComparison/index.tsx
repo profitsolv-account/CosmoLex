@@ -34,8 +34,7 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                             </div>
                             <div className="text-primary-dark text-[1.4375rem] font-bold leading-[3.75rem] md:text-[2.9375rem]">$99
                             </div>
-                            <div className="self-stretch text-center text-primary-dark text-base font-normal">/ Paid
-                                annualy
+                            <div className="self-stretch text-center text-primary-dark text-base font-normal">/ per month
                             </div>
                         </div>
 
@@ -46,8 +45,7 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                             <div
                                 className="text-primary-dark text-[1.4375rem] font-bold leading-[3.75rem] md:text-[2.9375rem]">$129
                             </div>
-                            <div className="self-stretch text-center text-primary-dark text-base font-normal">/ Paid
-                                annualy
+                            <div className="self-stretch text-center text-primary-dark text-base font-normal">/ per month
                             </div>
                         </div>
 
