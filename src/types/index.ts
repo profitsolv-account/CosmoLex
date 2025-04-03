@@ -21,6 +21,7 @@ export type ImageType = {
 export type FeaturedPostType = {
     title: string;
     slug: string;
+    ctaText?: string;
     featuredImage: {
         altText: string;
         sourceUrl: string;

@@ -252,6 +252,7 @@ export const getLatestGuide = async (): Promise<FeaturedPostType> => {
    return {
        title: get(featuredPost, 'node.title', ''),
        slug: get(featuredPost, 'node.guidesFields.ctaLink', ''),
+       ctaText: get(featuredPost, 'node.guidesFields.ctaText', null),
        featuredImage: {
            altText: get(featuredPost, 'node.guidesFields.featuredImage.node.altText', ''),
            sourceUrl: get(featuredPost, 'node.guidesFields.featuredImage.node.sourceUrl', ''),

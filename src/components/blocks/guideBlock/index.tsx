@@ -1,7 +1,6 @@
 import {PageDataType} from "@/types";
 import {FC} from "react";
 import classNames from "classnames";
-import Bg from '@/assets/img/blocks/cosmolex-guide.webp';
 import Image from "next/image";
 
 type Props = {
@@ -35,7 +34,7 @@ export const GuideBlock: FC<Props> = ({className, pageData}) => {
                             <div className="relative justify-start text-white text-[1.75rem] font-medium leading-10 mb-12">{featuredPost.title}</div>
                         </div>
 
-                        <a href={featuredPost.slug} className="base-btn text-white border-white hover:bg-white hover:text-primary-dark" target="_blank">Read more</a>
+                        <a href={featuredPost.slug} className="base-btn text-white border-white hover:bg-white hover:text-primary-dark" target="_blank">{featuredPost.ctaText ?? 'Get Guide'}</a>
                     </div>
                 </div>
                 <div className="min-h-[12.5rem] bg-green rounded-bl-[0.9375rem] rounded-br-[0.9375rem] md:rounded-bl-[0rem] md:rounded-br-[1.875rem] md:rounded-tr-[1.875rem] overflow-hidden">
