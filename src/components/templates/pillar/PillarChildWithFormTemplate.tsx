@@ -107,7 +107,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
     const items = [...tools.items, ...tools.items].map((t, index) => (
         <Fragment key={index}>
             <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
-                <div className={classNames("grow rounded-br-[0.9375rem] rounded-bl-[0.9375rem] relative bg-cover bg-center overflow-hidden aspect-3/2 md:aspect-auto lg:max-h-full lg:rounded-br-[0rem] lg:rounded-tl-[1.875rem] lg:rounded-bl-[1.875rem] lg:flex lg:items-center lg:justify-center", t.classname)}>
+                <div className={classNames("grow rounded-br-[0.9375rem] rounded-bl-[0.9375rem] relative bg-cover bg-center overflow-hidden aspect-3/2 md:aspect-auto lg:max-h-full lg:rounded-br-[0rem] lg:rounded-tl-[1.875rem] lg:rounded-bl-[1.875rem] lg:flex lg:items-center lg:justify-center right-[-1px]", t.classname)}>
                     <Image
                         src={t.image.node.sourceUrl}
                         alt={t.image.node.altText}
