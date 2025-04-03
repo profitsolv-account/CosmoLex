@@ -20,13 +20,13 @@ export const GuideBlock: FC<Props> = ({className, pageData}) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="min-h-[12.5rem] bg-primary rounded-tl-[0.9375rem] rounded-tr-[0.9375rem] md:rounded-tr-[0rem] md:rounded-bl-[1.875rem] md:rounded-tl-[1.875rem] overflow-hidden flex flex-col justify-between">
-                   <div className="relative w-full aspect-square overflow-hidden">
+                   <div className="relative w-full aspect-3/2 overflow-hidden">
                        <Image
                            src={featuredPost.featuredImage.sourceUrl}
                            alt={featuredPost.featuredImage.altText}
                            width={featuredPost.featuredImage.mediaDetails.width}
                            height={featuredPost.featuredImage.mediaDetails.height}
-                           className="w-full absolute"
+                           className="w-full absolute top-[-20%]"
                        />
                    </div>
                     <div className="py-[1.875rem] px-[1.25rem] md:py-[3.75rem] md:px-[3.9375rem] grow flex flex-col justify-between">
