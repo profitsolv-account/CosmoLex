@@ -118,7 +118,7 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                     <div className="absolute z-0 top-0 left-0 w-full h-full bg-white/30"/>
                 </div>
                 <div className={classNames("rounded-tl-[0.9375rem] rounded-tr-[0.9375rem] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[1.875rem] lg:rounded-tr-[1.875rem] lg:rounded-tl-[0rem] overflow-hidden", t.classname)}>
-                    <div className="lg:w-[27.625rem] flex-col justify-start items-start gap-5 inline-flex">
+                    <div className="lg:w-[28rem] flex-col justify-start items-start gap-5 inline-flex">
                         <div>
                             {t.icon?.node && <Image
                                 src={t.icon.node.sourceUrl}
