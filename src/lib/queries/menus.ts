@@ -1,14 +1,14 @@
 import {MenusList} from "@/types";
 import {getFromCache, saveToCache} from "../cache/index";
+import menu from '@/lib/cache/menu.json';
 
 const WORDPRESS_API_URL = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
 
 export const getAllMenus = async (): Promise<MenusList> => {
 
-     const menu = getFromCache('menu');
      if (menu) {
          console.log('load menu from cache');
-         return Promise.resolve(menu);
+         return menu as any;
      }
 
     const menusList: MenusList = {};
