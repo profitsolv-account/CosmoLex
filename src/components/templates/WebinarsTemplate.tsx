@@ -50,7 +50,7 @@ type Props = {
 }
 
 const PaginatedItems: FC<Props> = ({resources}) => {
-    const perPage = 40;
+    const perPage = 32;
     const [precessedResources, setProcessedResources] = useState(resources);
     const [currentPage, setCurrentPage] = useState(0);
 
