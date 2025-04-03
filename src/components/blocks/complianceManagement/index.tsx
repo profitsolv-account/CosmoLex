@@ -48,7 +48,8 @@ export const ComplianceManagement = () => {
     const items = [...dataSliders, ...dataSliders].map((t, index) => (
         <Fragment key={index}>
             <div className="h-full w-full flex flex-col-reverse justify-center lg:grid lg:grid-cols-2 overflow-hidden">
-                <div className="bg-yellow grow max-h-[17.5rem] rounded-br-[0.9375rem] rounded-bl-[0.9375rem] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0rem] lg:rounded-tl-[1.875rem] lg:rounded-bl-[1.875rem] lg:flex lg:items-center lg:justify-center">
+                <div
+                    className="bg-yellow grow max-h-[17.5rem] rounded-br-[0.9375rem] rounded-bl-[0.9375rem] relative bg-cover bg-center overflow-hidden h-full lg:max-h-full lg:rounded-br-[0rem] lg:rounded-tl-[1.875rem] lg:rounded-bl-[1.875rem] lg:flex lg:items-center lg:justify-center right-[-1px]">
                     <img
                         src={t.image.src}
                         alt={t.title}
@@ -57,8 +58,10 @@ export const ComplianceManagement = () => {
                             "object-contain max-w-[80%]": t.title === 'Legal Automation',
                         })}
                     />
+                    <div className="absolute z-0 top-0 left-0 w-full h-full bg-white/30"></div>
                 </div>
-                <div className={classNames("grow rounded-tl-[0.9375rem] rounded-tr-[0.9375rem] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[1.875rem] lg:rounded-tr-[1.875rem] lg:rounded-tl-[0rem] overflow-hidden", t.className)}>
+                <div
+                    className={classNames("grow rounded-tl-[0.9375rem] rounded-tr-[0.9375rem] relative flex items-center justify-center px-9 py-9 pb-16 lg:rounded-br-[1.875rem] lg:rounded-tr-[1.875rem] lg:rounded-tl-[0rem] overflow-hidden", t.className)}>
                     <div className="lg:w-[27.625rem] flex-col justify-start items-start gap-5 inline-flex">
                         <div className=" text-primary-dark text-[2.25rem] font-bold leading-[2.8125rem] font-['Inter'] lg:leading-[3.4375rem] lg:text-[2.875rem]">{t.title}</div>
                         <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem] max-w-[21.875rem] lg:mb-7">{t.description}</div>

@@ -14,9 +14,8 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
 
     if (!content) return null;
     return <>
-        <div className="bg-white pt-5 shadow-lg px-5 max-h-[60vh] overflow-y-auto">
+        <div className="bg-white pt-5 shadow-lg px-5 max-h-[70vh] overflow-y-auto">
             <div className="container px-4 py-4 flex gap-[3.125rem] items-start">
-
                 <div className="justify-start items-start gap-[3.125rem] grid grid-cols-4">
                     {content?.items.map((submenu) => (
                         <div key={submenu.title} className="">
