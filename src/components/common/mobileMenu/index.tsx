@@ -158,8 +158,12 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                                             <Link
                                                 href={menu.url || "#"}
                                                 className="hover:text-secondary transition duration-300 ease-in-out text-2xl font-semibold"
-                                                onClick={(e) =>
-                                                    e.stopPropagation()
+                                                onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        if (menu.name === 'About') {
+                                                            e.preventDefault();
+                                                        }
+                                                    }
                                                 }
                                             >
                                                 {menu.name}
