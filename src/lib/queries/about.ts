@@ -38,7 +38,6 @@ export const getMembersData = async (slug: string): Promise<Member[]> => {
     if (!data.page) {
         throw new Error("Page not found");
     }
-
     return get(data, 'page.teamMembers.members', []);
 }
 

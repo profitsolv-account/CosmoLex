@@ -18,7 +18,6 @@ export async function POST(req: Request) {
         revalidatePath(`/features/[slug]`, "page");
         revalidatePath(`/features/`, "layout");
         revalidatePath(`/`, "layout");
-
         revalidateTag('graphql');
 
         await client.clearStore();
