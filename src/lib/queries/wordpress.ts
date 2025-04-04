@@ -267,7 +267,6 @@ export const getPostData = async (ps: string): Promise<PostDataType> => {
         variables: { pageSlug },
     });
 
-    console.log(data, pageSlug);
     if (!data.post) {
         throw new Error("Post not found");
     }
