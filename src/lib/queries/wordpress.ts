@@ -25,7 +25,7 @@ export const getHomePageData = async () => {
                             node {
                                 altText
                                 sourceUrl(size: LARGE)
-                                mediumImage:sourceUrl(size: MEDIUM)
+                                mediumImage:sourceUrl(size: THUMBNAIL)
                                 mediaDetails {
                                     width
                                     height
