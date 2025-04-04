@@ -23,6 +23,6 @@ export default async function CareersPage() {
 }
 
 export const revalidate = false;
-export const dynamic = "force-static";
+//export const dynamic = "force-static";
 
 
