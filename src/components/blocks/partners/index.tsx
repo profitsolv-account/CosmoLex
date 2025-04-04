@@ -123,7 +123,10 @@ export const Partners: FC<Props> = ({className}) => {
                                     <img
                                         className="object-contain max-h-full"
                                         src={src}
-                                        alt={`Slide ${index}`} />
+                                        alt={`Slide ${index}`}
+                                        width="91"
+                                        height="78"
+                                    />
                                 </div>
                             </SwiperSlide>
                         ))}
