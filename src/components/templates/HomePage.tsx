@@ -21,10 +21,14 @@ export default function HomePage({pageData}: { pageData: PageDataType }) {
     return (
         <Layout pageData={pageData}>
             <HomeHeader pageData={pageData} />
-            <ComplianceManagement/>
+           <div className="px-4 md:px-0">
+               <ComplianceManagement/>
+           </div>
+
             {pageData.settings && <MatterCentric setting={pageData.settings}/>}
             <Testimonials testimonials={testimonials} showNavigation/>
             <VideoTestimonials testimonials={extendedTestimonials} />
+
             <div className="relative rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] rounded-tr-[3.125rem] md:rounded-tr-[6.25rem] overflow-hidden bg-white pb-10 mt-20">
                 <Faq faqs={faqs} />
             </div>
