@@ -14,19 +14,19 @@ type Params = {
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
     const {slug} = await params;
-    return await getSEOData(slug);
+    return await getSEOData(`/case-study/${slug}`);
 }
 
 export default async function Page({params}: Params) {
     try {
         const {slug} = await params;
-        const pageData = await getPageData(slug);
+        const pageData = await getPageData(`/case-study/${slug}`);
         const testimonials = await getTestimonialsList();
-        const compareSection = await getCompareChildPageData(slug);
-        const videoSection = await getVideoSection(slug);
+        const compareSection = await getCompareChildPageData(`/case-study/${slug}`);
+        const videoSection = await getVideoSection(`/case-study/${slug}`);
         const features = await getPageFeaturesData('features');
 
-        const members = await getMembersData(slug);
+        const members = await getMembersData(`/case-study/${slug}`);
         return <CaseStudyTemplate pageData={{
             ...pageData,
             testimonials,
