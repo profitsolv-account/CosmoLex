@@ -90,10 +90,6 @@ export const Partners: FC<Props> = ({className}) => {
         washington.src,
     ];
 
-
-    // Duplicate items multiple times for a smooth infinite loop
-    const slides = [...items, ...items];
-
     return (
         <>
             <div className={classNames("container-s relative pt-20 overflow-hidden mb-[7.5625rem] px-4", className)}>
@@ -114,7 +110,7 @@ export const Partners: FC<Props> = ({className}) => {
                             pauseOnMouseEnter: false,
                         }}
                     >
-                        {slides.map((src, index) => (
+                        {items.map((src, index) => (
                             <SwiperSlide key={index} style={{ width: '12.6875rem' }}>
                                 <div className={classNames("bg-white rounded-[0.625rem] flex justify-center items-center overflow-hidden w-[12.6875rem] h-[7.5625rem] p-3", {
                                     '!p-0': src === connecticut.src,

@@ -23,7 +23,7 @@ export default function RootLayout({children}: Readonly<{
             <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: light)" />
             <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: dark)" />
         </head>
-        <body className={inter.variable}>{children}</body>
+        <body className={`${inter.variable} font-sans`}>{children}</body>
         </html>
     );
 }
