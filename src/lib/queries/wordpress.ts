@@ -149,7 +149,14 @@ export const getPageData = async (
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: cacheOption
+        fetchPolicy: cacheOption,
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: ['graphql'],
+                },
+            },
+        },
     });
 
     if (!data.page) {
