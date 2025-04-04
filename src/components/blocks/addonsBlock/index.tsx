@@ -45,7 +45,7 @@ export const AddonsBlock: FC<Props> = ({features, settings}) => {
 
     return <div className="relative pb-10 pt-10">
         <div className="max-w-[67.8125rem] mx-auto relative z-10 flex flex-col gap-5 px-2">
-            <Heading className="md:max-w-[52.8125rem] text-white">Game-changing add-ons to accelerate your law firms growth.</Heading>
+            <Heading className="md:max-w-[52.8125rem] text-white">Game-changing add-ons to accelerate your law firm’s growth.</Heading>
             {priceAddons.map((data) => ( <Addon addon={data} key={data.type} settings={settings} />))}
         </div>
         <div className="bg-primary h-[25rem] rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] absolute top-0 left-0 w-full" />
