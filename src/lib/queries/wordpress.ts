@@ -236,7 +236,7 @@ export const getPricingPlans = async (pageSlug: string): Promise<PricingPlan[]> 
 
 export const getPostData = async (ps: string): Promise<PostDataType> => {
 
-    const pageSlug = `/blog/${ps}`;
+    const pageSlug = `${ps}`;
 
    /* const posts = getFromCache("posts")
     const pageData = posts.find((post: any) => post.slug === pageSlug);
