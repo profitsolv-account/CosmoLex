@@ -24,7 +24,7 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
                     <h1 className="home-title text-white text-[2.25rem] font-medium font-['Inter'] leading-[3.375rem] sm:text-[2.875rem] lg:text-[3.375rem] xl:text-[4.625rem] xl:leading-[5rem] xl:font-normal lg:block" dangerouslySetInnerHTML={{__html: title}} />
                 </div>
                 <div className="min-h-[3.8125rem] text-white text-lg font-normal font-['Inter'] leading-loose lg:w-full" dangerouslySetInnerHTML={{__html: description}} />
-                <div className="flex justify-center items-center gap-4 max-w-[22.0625rem] lg:justify-start">
+                <div className="w-full flex justify-center items-center gap-4 lg:justify-start">
                     <div className="h-[3.375rem] px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] rounded-[6.25rem] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">
                         <a href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</a>
                     </div>
