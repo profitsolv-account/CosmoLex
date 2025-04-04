@@ -28,7 +28,7 @@ export const SimplifyPractice:FC<Props> = ({pageData, className}) => {
 
                                 <h4 className="text-center text-primary-dark text-3xl font-bold leading-[3.125rem] tracking-[-0.0625rem] mb-3 md:text-[2.5rem] md:mb-7">Book a demo.</h4>
                                 <p className="text-center text-primary-dark text-base font-medium leading-[1.5625rem] mb-6 md:max-w-[23.75rem] md:mx-auto md:text-lg md:mb-8">
-                                    Tell us your needs, and we’ll show you how to personalize CosmoLex for them.
+                                    Book your personalized demo with a CosmoLex specialist.
                                 </p>
                                 <div className="flex justify-center">
                                     <a href={pageData.settings?.demoLink || ""} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Schedule now</a>
