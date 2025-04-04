@@ -57,6 +57,8 @@ export const ComplianceManagement = () => {
                             "object-cover w-full h-full aspect-square": t.title !== 'Legal Automation',
                             "object-contain max-w-[80%]": t.title === 'Legal Automation',
                         })}
+                        width="426"
+                        height="440"
                     />
                     <div className="absolute z-0 top-0 left-0 w-full h-full bg-white/30"></div>
                 </div>
@@ -114,7 +116,12 @@ const AccountingTools = () => {
                 </div>
 
                 <div className="md:w-1/2 relative md:top-[-1.25rem]">
-                    <img src={BalanceImg.src} alt="balance image"/>
+                    <img
+                        src={BalanceImg.src}
+                        alt="balance image"
+                        width="412"
+                        height="320"
+                    />
                 </div>
             </div>
 
