@@ -13,16 +13,16 @@ type Params = {
 export async function generateMetadata({params}: Params): Promise<Metadata> {
     const {slug} = await params;
 
-    return await getSEOData(slug);
+    return await getSEOData(`/compare/${slug}`);
 }
 
 export default async function PillarPage({params}: Params) {
     try {
         const {slug} = await params;
-        const pageData = await getPageData(slug);
+        const pageData = await getPageData(`/compare/${slug}`);
         const testimonials = await getTestimonialsList();
-        const compareSection = await getCompareChildPageData(slug);
-        const features = await getFeatureData('cosmolex-vs-pclaw');
+        const compareSection = await getCompareChildPageData(`/compare/${slug}`);
+        const features = await getFeatureData('/comapre/cosmolex-vs-pclaw/');
         const pricingPlans = await getPricingPlans('pricing');
         return <CompareChildTemplate pageData={{
             ...pageData,

@@ -7,7 +7,7 @@ import CompareChildTemplate from "@/components/templates/CompareChildTemplate";
 import {getCompareChildPageData, getFeatureData} from "@/lib/queries/compare";
 import CompareChildRestTemplate from "@/components/templates/CompareChildRestTemplate";
 
-const slug = "cosmolex-vs-the-rest";
+const slug = "/compare/cosmolex-vs-the-rest/";
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);
@@ -17,7 +17,7 @@ export default async function PillarPage() {
     try {
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
-        const features = await getFeatureData('cosmolex-vs-pclaw');
+        const features = await getFeatureData('/compare/cosmolex-vs-pclaw');
         return <CompareChildRestTemplate pageData={{
             ...pageData,
             testimonials,
