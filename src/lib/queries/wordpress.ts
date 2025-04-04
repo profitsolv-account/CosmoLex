@@ -42,7 +42,14 @@ export const getHomePageData = async () => {
                 }
             }
         `,
-        fetchPolicy: "cache-first"
+        fetchPolicy: "cache-first",
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: ['graphql'],
+                },
+            },
+        },
     });
     const faq = get(data, 'page.faq.faq', []);
      return {
