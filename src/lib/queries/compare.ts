@@ -64,6 +64,7 @@ export const getCompareChildPageData = async (slug: string): Promise<CompareSect
         fetchPolicy: cacheOption,
     });
 
+
     if (!data.page) {
         throw new Error("Page not found");
     }
@@ -93,9 +94,9 @@ export const getFeatureData = async (slug: string): Promise<Feature[]> => {
         fetchPolicy: cacheOption,
     });
 
-    if (!data.page) {
+  /*  if (!data.page) {
         throw new Error("Page not found");
-    }
+    }*/
 
     return get(data, 'page.featuresSection.features', []);
 }
