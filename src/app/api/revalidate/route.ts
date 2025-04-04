@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import {revalidatePath, revalidateTag} from 'next/cache';
+import client from "@/lib/apollo-client";
 
 const baseUrl = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com/';
 const getPagePath = (url: string) => {
@@ -19,6 +20,11 @@ export async function POST(req: Request) {
         revalidatePath(`/`, "layout");
 
         revalidateTag('graphql');
+
+        await client.clearStore();
+        await client.refetchQueries({
+            include: "all",
+        });
 
 
         return NextResponse.json({ revalidated: true});
