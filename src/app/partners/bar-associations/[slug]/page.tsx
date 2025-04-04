@@ -11,13 +11,13 @@ type Params = {
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
     const {slug} = await params;
-    return await getSEOData(slug || 'home-page');
+    return await getSEOData(`/partners/strategic/${slug}` || 'home-page');
 }
 
 export default async function BarAssociationPage({params}: Params) {
     try {
         const {slug} = await params;
-        const pageData = await getPageData(slug);
+        const pageData = await getPageData(`/partners/strategic/${slug}`);
         const testimonials = await getTestimonialsList();
         return <BarAssociationsTemplate
             pageData={{

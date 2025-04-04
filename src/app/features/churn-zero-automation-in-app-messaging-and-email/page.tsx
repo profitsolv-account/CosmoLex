@@ -5,7 +5,7 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PillarChildWithFormTemplate from "@/components/templates/pillar/PillarChildWithFormTemplate";
 
-const slug = 'churn-zero-automation-in-app-messaging-and-email';
+const slug = '/features/churn-zero-automation-in-app-messaging-and-email';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);

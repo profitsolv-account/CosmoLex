@@ -5,7 +5,7 @@ import PartnersStrategicPageTemplate from "@/components/templates/PartnersStrate
 import {getAffinityBarlogos} from "@/lib/queries/affinity-bar-partners";
 import {notFound} from "next/navigation";
 
-const slug = 'strategic';
+const slug = '/partners/strategic';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);

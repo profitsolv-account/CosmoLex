@@ -12,15 +12,15 @@ type Params = {
 export async function generateMetadata({params}: Params): Promise<Metadata> {
     const {slug} = await params;
 
-    return await getSEOData(slug);
+    return await getSEOData(`/practice-types/${slug}`);
 }
 
 export default async function PracticeTypesPage({params}: Params) {
     try {
         const {slug} = await params;
-        const pageData = await getPageData(slug);
+        const pageData = await getPageData(`/practice-types/${slug}`);
         const testimonials = await getTestimonialsList();
-        const videoSection = await getVideoSection(slug);
+        const videoSection = await getVideoSection(`/practice-types/${slug}`);
 
         return <PracticeTypesTemplate pageData={{
             ...pageData,

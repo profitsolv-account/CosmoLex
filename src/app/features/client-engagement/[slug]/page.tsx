@@ -12,13 +12,13 @@ type Params = {
 export async function generateMetadata({params}: Params): Promise<Metadata> {
     const {slug} = await params;
 
-    return await getSEOData(slug);
+    return await getSEOData(`/features/client-engagement/${slug}`);
 }
 
 export default async function PillarPage({params}: Params) {
     try {
         const {slug} = await params;
-        const pageData = await getPageData(slug);
+        const pageData = await getPageData(`/features/client-engagement/${slug}`);
         const testimonials = await getTestimonialsList();
         const features = await getPageFeaturesData('features');
         return <PillarChildTemplate pageData={{

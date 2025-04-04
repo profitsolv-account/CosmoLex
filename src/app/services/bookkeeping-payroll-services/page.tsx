@@ -8,10 +8,10 @@ import {getLanguage} from "@/lib/helpers";
 
 export async function generateMetadata(): Promise<Metadata> {
     const lang = await getLanguage();
-    let slug = 'bookkeeping-payroll-services'
+    let slug = '/service/bookkeeping-payroll-services'
     switch (lang) {
         case 'ca':
-            slug = 'bookkeeping-payroll-services-2';
+            slug = '/service/bookkeeping-payroll-services-2';
             break;
     }
 
@@ -21,10 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PillarPage() {
     try {
         const lang = await getLanguage();
-        let slug = 'bookkeeping-payroll-services'
+        let slug = '/service/bookkeeping-payroll-services'
         switch (lang) {
             case 'ca':
-                slug = 'bookkeeping-payroll-services-2';
+                slug = '/service/bookkeeping-payroll-services-2';
                 break;
         }
 

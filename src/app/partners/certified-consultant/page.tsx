@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { getCategories, getDirectoriesData } from "@/lib/queries/directoryListings";
 import DirectoriesTemplate from "@/components/templates/DirectoriesTemplate";
 
-const slug = 'certified-consultant';
+const slug = '/partners/certified-consultant';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);

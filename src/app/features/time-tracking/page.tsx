@@ -5,7 +5,7 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PillarChildTemplate from "@/components/templates/pillar/PillarChildTemplate";
 
-const slug = "time-tracking";
+const slug = "/features/time-tracking";
 
 export async function generateMetadata(): Promise<Metadata> {
 

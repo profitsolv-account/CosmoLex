@@ -5,7 +5,7 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PracticeTypesTemplate from "@/components/templates//PracticeTypesTemplate";
 
-const slug = 'user-management';
+const slug = '/features/user-management';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);

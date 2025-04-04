@@ -13,7 +13,7 @@ type Params = {
     searchParams: { s: string, ctas: string, locs: string }
 };
 
-const slug = 'certified-consultant';
+const slug = '/partners/certified-consultant';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);

@@ -5,7 +5,7 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import CalendarTasksTemplate from "@/components/templates/pillar/CalendarTasksTemplate";
 
-const pageSlug = 'legal-calendaring-software'
+const pageSlug = '/features/legal-calendaring-software'
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(pageSlug);

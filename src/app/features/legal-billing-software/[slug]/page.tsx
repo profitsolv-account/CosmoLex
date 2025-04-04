@@ -12,7 +12,7 @@ type Params = {
 export async function generateMetadata({params}: Params): Promise<Metadata> {
     const {slug} = await params;
 
-    return await getSEOData(slug);
+    return await getSEOData(`/features/legal-billing-software/${slug}`);
 }
 
 export default async function PillarPage({params}: Params) {

@@ -5,7 +5,7 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PillarChildTemplate from "@/components/templates/pillar/PillarChildTemplate";
 
-const slug = 'legal-client-portal-software';
+const slug = '/features/legal-client-portal-software';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);

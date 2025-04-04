@@ -5,7 +5,7 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import PillarChildTemplate from "@/components/templates/pillar/PillarChildTemplate";
 
-const slug = "billing-invoicing";
+const slug = "/features/billing-invoicing";
 
 export async function generateMetadata(): Promise<Metadata> {
 
