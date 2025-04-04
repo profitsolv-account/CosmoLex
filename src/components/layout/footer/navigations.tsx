@@ -95,6 +95,8 @@ export const Navigations: FC<Props> = ({pageData}) => {
                             <a href="/gdpr" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">GDPR</a>
                             <span className="block h-[1.0625rem] w-[0.0625rem] bg-white"></span>
                             <a href="/subscription-agreement" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Subscription Agreement</a>
+                            <span className="block h-[1.0625rem] w-[0.0625rem] bg-white"></span>
+                            <a href="https://profitsolv-billingplatform.azurewebsites.net/ForgetMeHub/index.html?businessUnit=CosmoLex" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Data Request</a>
                         </div>
                     </div>
                 </div>
