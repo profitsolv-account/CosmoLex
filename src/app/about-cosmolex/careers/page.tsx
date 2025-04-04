@@ -4,7 +4,7 @@ import {getPageData} from "@/lib/queries/wordpress";
 import CareersTemplate from "@/components/templates/CareersTemplate";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 
-const slug = 'careers';
+const slug = '/about-cosmolex/careers/';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);
@@ -23,6 +23,5 @@ export default async function CareersPage() {
 }
 
 export const revalidate = false;
-//export const dynamic = "force-static";
 
 
