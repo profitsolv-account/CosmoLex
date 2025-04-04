@@ -52,9 +52,10 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
                 <img
                     src={mediumImage}
                     alt="alt"
-                    width={250}
-                    height={250}
-                    className="max-w-full sm:hidden"
+                    width={200}
+                    height={200}
+
+                    className="sm:hidden"
                 />
             </div>
         </div>
