@@ -6,18 +6,18 @@ import {notFound} from "next/navigation";
 import "./wordpress-blocks.css";
 
 type Params = {
-    params: Promise<{slug: string}>;
+    params: Promise<{pageSlug: string}>;
 }
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
-    const {slug} = await params;
-    return await getSEOData(slug);
+    const {pageSlug} = await params;
+    return await getSEOData(pageSlug);
 }
 
 export default async function SinglePage({params}: Params) {
    try {
-       const {slug} = await params;
-       const pageData = await getPageData(slug);
+       const {pageSlug} = await params;
+       const pageData = await getPageData(pageSlug);
        return <PageTemplate pageData={pageData} />
    } catch (error) {
        notFound();
