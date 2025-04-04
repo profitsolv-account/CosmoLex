@@ -20,7 +20,7 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
     return <div className=" px-5 pt-10 mb-15 sm:mb-10 relative">
 
         <div className="flex flex-col gap-0 items-center lg:flex-row lg:gap-10 lg:items-end lg:justify-center lg:max-w-[80rem] lg:mx-auto lg:pb-10 relative z-2">
-            <div className="max-w-[40rem] flex flex-col gap-6 lg:max-w-full lg:pb-10">
+            <div className="max-w-[24rem] sm:max-w-[40rem] flex flex-col gap-6 lg:max-w-full lg:pb-10">
                 <div className="">
                     <h1 className="home-title text-white text-[2.25rem] font-medium font-['Inter'] leading-[3.375rem] sm:text-[2.875rem] lg:text-[3.375rem] xl:text-[4.625rem] xl:leading-[5rem] xl:font-normal lg:block" dangerouslySetInnerHTML={{__html: title}} />
                 </div>
