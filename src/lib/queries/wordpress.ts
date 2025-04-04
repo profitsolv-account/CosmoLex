@@ -234,7 +234,9 @@ export const getPricingPlans = async (pageSlug: string): Promise<PricingPlan[]> 
 
 }
 
-export const getPostData = async (pageSlug: string): Promise<PostDataType> => {
+export const getPostData = async (ps: string): Promise<PostDataType> => {
+
+    const pageSlug = `/blog/${ps}`;
 
    /* const posts = getFromCache("posts")
     const pageData = posts.find((post: any) => post.slug === pageSlug);
@@ -265,6 +267,7 @@ export const getPostData = async (pageSlug: string): Promise<PostDataType> => {
         variables: { pageSlug },
     });
 
+    console.log(data, pageSlug);
     if (!data.post) {
         throw new Error("Post not found");
     }
