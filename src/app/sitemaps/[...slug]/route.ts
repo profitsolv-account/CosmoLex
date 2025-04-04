@@ -2,11 +2,15 @@ import { NextRequest } from 'next/server';
 
 export async function GET(
     req: NextRequest,
-    context: any, // Adjust the type as needed
+    context: any
 ) {
     const slugPath = context.params.slug.join('/');
-    const wpUrl = `https://cosmonew1.wpenginepowered.com/${slugPath}`;
 
+    if (!slugPath.endsWith('.xml')) {
+        return new Response('Invalid sitemap path', { status: 404 });
+    }
+
+    const wpUrl = `https://cosmonew1.wpenginepowered.com/${slugPath}`;
     const currentDomain = req.nextUrl.origin;
 
     try {
@@ -15,13 +19,12 @@ export async function GET(
 
         let xml = await wpRes.text();
 
-        // Optional: remove XSL line
         xml = xml.replace(/<\?xml-stylesheet.*?\?>/, '');
 
-        // Replace all <loc> links to point to your own domain
-        xml = xml.replace(/<loc>https:\/\/cosmonew1\.wpenginepowered\.com\/(.*?)<\/loc>/g, (_match, path) => {
-            return `<loc>${currentDomain}/sitemaps/${path}</loc>`;
-        });
+        xml = xml.replace(
+            /<loc>https:\/\/cosmonew1\.wpenginepowered\.com\/(.*?)<\/loc>/g,
+            (_match, path) => `<loc>${currentDomain}/${path}</loc>`
+        );
 
         return new Response(xml, {
             headers: {
@@ -30,7 +33,7 @@ export async function GET(
             },
         });
     } catch (err) {
-        console.error('Sitemap fetch error:', err);
-        return new Response('Not found', { status: 404 });
+        console.error('Sitemap proxy error:', err);
+        return new Response('Failed to load sitemap', { status: 404 });
     }
 }

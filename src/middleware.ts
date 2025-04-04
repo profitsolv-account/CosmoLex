@@ -23,6 +23,13 @@ const getRedirections = async () => {
 export async function middleware(req: NextRequest) {
     const pathname = req.nextUrl.pathname;
 
+
+    if (pathname.endsWith('.xml') && !pathname.startsWith('/sitemaps/')) {
+        const newUrl = req.nextUrl.clone();
+        newUrl.pathname = `/sitemaps${pathname}`;
+        return NextResponse.rewrite(newUrl);
+    }
+
     if (pathname.includes('_next') || pathname.includes('favicon.ico')) {
         return NextResponse.next();
     }
