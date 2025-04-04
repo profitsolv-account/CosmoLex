@@ -22,6 +22,9 @@ export default function PillarParentTemplate({ pageData }: { pageData: PageDataT
                 className="mb-10"
                 showCta
                 showFeatureImage
+                heroClass={classNames({
+                    "max-w-[894px]": pageData.title.includes("Legal billing software")
+                })}
             />
 
             <div className="relative">
