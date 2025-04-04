@@ -9,7 +9,7 @@ import { RetryLink } from '@apollo/client/link/retry';
 import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
 
 //export const cacheOption = 'force-cache';
-export const cacheOption = "no-cache"; //"cache-first";
+export const cacheOption = "cache-first";
 
 
 const API = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
@@ -26,7 +26,7 @@ const customFetch = (uri: RequestInfo | URL, options: RequestInit = {}) => {
     return fetch(uri.toString(), {
         ...options,
         next: { tags: ['graphql'] },
-        cache: "no-cache",
+        cache: "force-cache",
     });
 };
 
@@ -65,10 +65,10 @@ const client = new ApolloClient({
     ssrMode: typeof window === "undefined",
     defaultOptions: {
         watchQuery: {
-            fetchPolicy: "no-cache",
+            fetchPolicy: "cache-first",
         },
         query: {
-            fetchPolicy: "no-cache",
+            fetchPolicy: "cache-first",
         },
     },
 });
