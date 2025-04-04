@@ -4,7 +4,7 @@ import {getPageData} from "@/lib/queries/wordpress";
 import {getWebinarsData} from "@/lib/queries/resources";
 import WebinarsTemplate from "@/components/templates/WebinarsTemplate";
 
-const slug = 'resource-hub';
+const slug = 'webinars';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);
