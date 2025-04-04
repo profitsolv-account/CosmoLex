@@ -63,7 +63,14 @@ export const getResourcesData = async (): Promise<Resource[]> => {
                 
             }
         `,
-        fetchPolicy: cacheOption
+        fetchPolicy: cacheOption,
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: ['graphql'],
+                },
+            },
+        },
     });
 
     const formattedData = [
@@ -124,7 +131,14 @@ export const getWebinarsData = async (): Promise<Resource[]> => {
 
             }
         `,
-        fetchPolicy: cacheOption
+        fetchPolicy: cacheOption,
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: ['graphql'],
+                },
+            },
+        },
     });
 
     const formattedData = [
@@ -244,6 +258,13 @@ export const getLatestGuide = async (): Promise<FeaturedPostType> => {
             }
         `,
         fetchPolicy: cacheOption,
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: ['graphql'],
+                },
+            },
+        },
     });
     const guides = get(data, 'guides.edges', []);
 

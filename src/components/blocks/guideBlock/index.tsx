@@ -25,7 +25,7 @@ export const GuideBlock: FC<Props> = ({className, pageData}) => {
                            alt={featuredPost.featuredImage.altText}
                            width={featuredPost.featuredImage.mediaDetails.width}
                            height={featuredPost.featuredImage.mediaDetails.height}
-                           className="w-full absolute top-[-20%]"
+                           className="w-full"
                        />
                    </div>
                     <div className="py-[1.875rem] px-[1.25rem] md:py-[3.75rem] md:px-[3.9375rem] grow flex flex-col justify-between">
