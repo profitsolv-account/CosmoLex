@@ -39,7 +39,15 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
             </div>
 
             <div className="mt-10 max-w-[40rem] lg:mt-0 lg:max-w-full lg:grow lg:w-[31.4375rem] lg:flex-none xl:w-[43.9375rem] ">
-                <Image src={img} alt="alt" width={700} height={600} className="w-full" />
+                <Image
+                    src={img}
+                    alt="alt"
+                    width={700}
+                    height={600}
+                    className="w-full"
+                    unoptimized
+                    priority={true}
+                />
             </div>
         </div>
         <div className="bg-primary absolute z-0 w-full h-full left-0 rounded-bl-[6.25rem] bottom-[5rem]"/>
