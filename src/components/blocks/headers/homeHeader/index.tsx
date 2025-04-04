@@ -13,11 +13,11 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
       const title = get(pageData, 'title', '');
       const description  = get(pageData, 'description', '');
       const img = get(pageData, 'hero', heroImg);
-      const mediumImage = get(pageData, 'mediumHero', heroImg);
+      const mediumImage: string = get(pageData, 'mediumHero', heroImg.src) ;
       const ctaTrial = get(pageData, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Try for free');
       const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request demo');
 
-    return <div className=" px-5 pt-10 mb-10 relative">
+    return <div className=" px-5 pt-10 mb-15 sm:mb-10 relative">
 
         <div className="flex flex-col gap-0 items-center lg:flex-row lg:gap-10 lg:items-end lg:justify-center lg:max-w-[80rem] lg:mx-auto lg:pb-10 relative z-2">
             <div className="max-w-[40rem] flex flex-col gap-6 lg:max-w-full lg:pb-10">
@@ -49,13 +49,12 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
                     unoptimized
                     priority={true}
                 />
-                <Image
+                <img
                     src={mediumImage}
                     alt="alt"
                     width={100}
                     height={100}
                     className="w-full md:hidden"
-                    unoptimized
                 />
             </div>
         </div>
