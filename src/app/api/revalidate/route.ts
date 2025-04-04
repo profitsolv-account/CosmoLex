@@ -14,6 +14,7 @@ export async function POST(req: Request) {
 
         revalidatePath(getPagePath(body.post_url), 'page');
         revalidatePath(getPagePath(body.post_url));
+
         revalidatePath(`/compare/`, "layout");
         revalidatePath(`/features/[slug]`, "page");
         revalidatePath(`/features/`, "layout");
@@ -22,7 +23,6 @@ export async function POST(req: Request) {
 
         await client.clearStore();
         await client.refetchQueries({ include: "all" });
-
 
         return NextResponse.json({ revalidated: true});
 
