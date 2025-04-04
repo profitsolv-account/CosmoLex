@@ -29,7 +29,6 @@ export const getMembersData = async (slug: string): Promise<Member[]> => {
             }
         }
     `;
-
     const { data } = await client.query({
         query,
         variables: { id: slug },
