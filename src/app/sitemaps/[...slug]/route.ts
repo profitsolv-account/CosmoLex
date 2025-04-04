@@ -19,7 +19,11 @@ export async function GET(
 
         let xml = await wpRes.text();
 
-        xml = xml.replace(/<\?xml-stylesheet.*?\?>/, '');
+        xml = xml.replace(
+            /<\?xml-stylesheet.*?href="(.*?)".*?\?>/,
+            '<?xml-stylesheet type="text/xsl" href="/xsl/main-sitemap.xsl"?>'
+        );
+
 
         xml = xml.replace(
             /<loc>https:\/\/cosmonew1\.wpenginepowered\.com\/(.*?)<\/loc>/g,
