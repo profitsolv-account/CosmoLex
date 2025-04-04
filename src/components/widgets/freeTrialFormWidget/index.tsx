@@ -31,7 +31,7 @@ export const FreeTrialFormWidget = () => {
 
         const handleMessage = (event: any) => {
             if (event.data && event.data.height) {
-                iframe.style.height = event.data.height + 'px';
+                iframe.style.height = (event.data.height - 70) + 'px';
             }
 
             if (event.data.action === 'redirect' && event.data.url) {
