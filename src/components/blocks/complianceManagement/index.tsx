@@ -67,7 +67,7 @@ export const ComplianceManagement = () => {
                         <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem] max-w-[21.875rem] lg:mb-7">{t.description}</div>
                         <a href={t.link}
                            className="w-full block text-center lg:inline-block rounded-[6.25rem] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[1.875rem] py-[0.9375rem] lg:w-auto">
-                            {t.title === 'Legal Automation' ? 'See all features' : 'Explore features'}
+                            {t.title === 'Legal Automation' ? 'Be productive' : 'Explore features'}
                         </a>
                     </div>
                 </div>
