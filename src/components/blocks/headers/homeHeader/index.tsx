@@ -13,6 +13,7 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
       const title = get(pageData, 'title', '');
       const description  = get(pageData, 'description', '');
       const img = get(pageData, 'hero', heroImg);
+      const mediumImage = get(pageData, 'mediumHero', heroImg);
       const ctaTrial = get(pageData, 'page.homePageSections.ctaTextForFreeTrialInHeader', 'Try for free');
       const demo = get(pageData, 'page.homePageSections.ctaTextForDemoInHeader', 'Request demo');
 
@@ -44,7 +45,16 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
                     alt="alt"
                     width={700}
                     height={600}
-                    className="w-full"
+                    className="w-full hidden md:block"
+                    unoptimized
+                    priority={true}
+                />
+                <Image
+                    src={mediumImage}
+                    alt="alt"
+                    width={700}
+                    height={600}
+                    className="w-full md:hidden"
                     unoptimized
                     priority={true}
                 />

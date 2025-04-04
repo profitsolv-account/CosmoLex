@@ -25,6 +25,7 @@ export const getHomePageData = async () => {
                             node {
                                 altText
                                 sourceUrl(size: LARGE)
+                                mediumImage:sourceUrl(size: MEDIUM)
                                 mediaDetails {
                                     width
                                     height
@@ -58,6 +59,7 @@ export const getHomePageData = async () => {
          subheading: get(data, 'page.pageSettings.subheading', ''),
          description: get(data, 'page.content', ''),
          hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
+         mediumHero: get(data, 'page.pageSettings.heroImage.node.mediumImage', ''),
          heroAlt: get(data, 'page.pageSettings.heroImage.node.altText', ''),
          featuredPost: await getLatestGuide(),
          menus: await getAllMenus(),
