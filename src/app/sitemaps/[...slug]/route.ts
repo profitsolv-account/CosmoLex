@@ -30,6 +30,17 @@ export async function GET(
             (_match, path) => `<loc>${currentDomain}/${path}</loc>`
         );
 
+        // add new code here
+        xml = xml.replace(
+            /<url>[\s\S]*?<loc>(.*?)<\/loc>[\s\S]*?<\/url>/g,
+            (match, locValue) => {
+                if (locValue.includes('-2/') || locValue.includes('-3/')) {
+                    return ''; // skip this <url> block
+                }
+                return match;
+            }
+        );
+
         return new Response(xml, {
             headers: {
                 'Content-Type': 'application/xml',
