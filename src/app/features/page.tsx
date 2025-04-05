@@ -47,5 +47,4 @@ export default async function FeaturesPage() {
     }
 }
 
-export const revalidate = false;
-export const dynamic = 'force-dynamic';
+export const revalidate = 36000; // 10 hours

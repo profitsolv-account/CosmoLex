@@ -42,5 +42,6 @@ export default async function SinglePage({params}: Params) {
    }
 }
 
-export const revalidate = false;
+export const revalidate = 36000; // 10 hours
+
 

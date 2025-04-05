@@ -42,5 +42,4 @@ export default async function PillarPage() {
     }
 }
 
-export const revalidate = false;
-export const dynamic = 'force-dynamic';
+export const revalidate = 36000; // 10 hours

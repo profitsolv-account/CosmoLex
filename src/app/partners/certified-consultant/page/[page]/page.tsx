@@ -39,4 +39,4 @@ export default async function CertifiedConsultantPage({ params, searchParams }: 
     }
 }
 
-export const revalidate = false;
+export const revalidate = 36000; // 10 hours

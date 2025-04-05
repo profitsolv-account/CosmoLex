@@ -50,5 +50,4 @@ export default async function UserManagementPage() {
     }
 }
 
-export const revalidate = false;
-export const dynamic = 'force-dynamic';
+export const revalidate = 36000; // 10 hours

@@ -38,4 +38,4 @@ export default async function SinglePage() {
    }
 }
 
-export const revalidate = false;
+export const revalidate = 36000; // 10 hours
