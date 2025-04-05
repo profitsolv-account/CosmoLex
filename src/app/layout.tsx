@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./icons.css";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -22,8 +23,29 @@ export default function RootLayout({children}: Readonly<{
         <head>
             <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: light)" />
             <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: dark)" />
+            {/* GTM Script (head) */}
+            <Script id="gtm-head" strategy="afterInteractive">
+                {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TCFL92Z');
+          `}
+            </Script>
         </head>
-        <body className={`${inter.variable} font-sans`}>{children}</body>
+        <body className={`${inter.variable} font-sans`}>
+            <noscript>
+                <iframe
+                    src="https://www.googletagmanager.com/ns.html?id=GTM-TCFL92Z"
+                    height="0"
+                    width="0"
+                    style={{ display: 'none', visibility: 'hidden' }}
+                ></iframe>
+            </noscript>
+
+            {children}
+        </body>
         </html>
     );
 }

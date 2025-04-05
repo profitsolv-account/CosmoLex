@@ -12,7 +12,7 @@ export const FreeTrialFormWidget = () => {
         const iframe = document.createElement('iframe');
 
         iframe.src =
-            'https://profitsolv-billingplatform-dev.azurewebsites.net/subscription-management/subscription-management.html?businessUnit=cosmolex&productCatalog=CosmoLex&version=v2&showOnlyMainProducts=true&showPreselectedSignUpForm=true&overrideHost=https://internal1.cosmolex.com';
+            'https://profitsolv-billingplatform.azurewebsites.net/subscription-management/subscription-management.html?version=v2&businessUnit=cosmolex&productCatalog=CosmoLex&showOnlyMainProducts=true&showPreselectedSignUpForm=true&overrideHost=https://law.cosmolex.com';
 
         iframe.style.width = '100%';
         iframe.style.height = '110rem';
