@@ -33,7 +33,7 @@ export const Navigations: FC<Props> = ({pageData}) => {
                         />
                     </div>
 
-                    <div className="max-w-[25.5625rem] text-white text-base font-normal font-['Inter'] leading-snug" dangerouslySetInnerHTML={{__html: getPageSettings('companySummary')}} / >
+                    <div className="max-w-[25.5625rem] text-white text-base font-normal font-['Inter'] leading-snug" dangerouslySetInnerHTML={{__html: getPageSettings('companySummary')}} />
 
                         <div>
                             <a href={`tel:${getPageSettings('companyPhone')}`} className="text-white text-base font-bold font-['Inter'] leading-[1.5625rem] tracking-wide ls-07 mb-2">{getPageSettings('companyPhone')}</a>
