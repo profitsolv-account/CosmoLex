@@ -6,7 +6,7 @@ import {getPodcastData} from "@/lib/queries/podcusts";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import PodcastSingleTemplate from "@/components/templates/PodcastSingleTemplate";
 
-const slug = 'software-as-a-partner-in-your-business';
+const slug = 'podcasts/software-as-a-partner-in-your-business';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug || 'home-page');
