@@ -36,9 +36,9 @@ const SearchComponent: FC<Props> = ({ categories, locations }) => {
     }, []);
 
     return (
-        <div className="bg-white rounded-xl shadow-md px-6 py-5 flex items-center gap-4 mb-10">
+        <div className="bg-white rounded-xl shadow-md px-6 py-5 md:flex items-center gap-4 mb-10">
 
-            <div className="relative flex items-center gap-1">
+            <div className="relative flex items-center gap-1 mb-10 md:mb-0">
                 <Dropdown
                     items={categories as any}
                     onChange={(item) => {
@@ -49,9 +49,9 @@ const SearchComponent: FC<Props> = ({ categories, locations }) => {
 
             </div>
 
-            <div className="border-l h-6 border-gray-300" />
+            <div className="border-l h-6 border-gray-300 hidden md:block" />
 
-            <div className="relative flex items-center gap-1">
+            <div className="relative flex items-center gap-1 mb-10 md:mb-0">
                 <Dropdown
                     items={locations as any}
                     onChange={(item) => {

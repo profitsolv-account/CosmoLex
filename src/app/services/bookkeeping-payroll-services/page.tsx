@@ -6,28 +6,25 @@ import {notFound} from "next/navigation";
 import BookKeepingTemplate from "@/components/templates/BookKeepingTemplate";
 import {getLanguage} from "@/lib/helpers";
 
-export async function generateMetadata(): Promise<Metadata> {
+const getSlug = async () => {
     const lang = await getLanguage();
-    let slug = '/service/bookkeeping-payroll-services'
+    let slug = '/bookkeeping-payroll-services';
     switch (lang) {
         case 'ca':
-            slug = '/service/bookkeeping-payroll-services-2';
+            slug = '/en-ca/bookkeeping-payroll-services-2/';
             break;
     }
+    return slug;
+}
+export async function generateMetadata(): Promise<Metadata> {
+   const slug = await getSlug();
 
     return await getSEOData(slug);
 }
 
 export default async function PillarPage() {
     try {
-        const lang = await getLanguage();
-        let slug = '/service/bookkeeping-payroll-services'
-        switch (lang) {
-            case 'ca':
-                slug = '/service/bookkeeping-payroll-services-2';
-                break;
-        }
-
+        const slug = await getSlug();
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
 
