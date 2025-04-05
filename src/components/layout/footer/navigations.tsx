@@ -44,7 +44,7 @@ export const Navigations: FC<Props> = ({pageData}) => {
                                 <span className="block h-[1.6875rem] w-[0.0625rem] bg-white"></span>
                                 <a href="https://www.cosmolex.ca/" className="left-[3.625rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">CA</a>
                                 <span className="block h-[1.6875rem] w-[0.0625rem] bg-white"></span>
-                                <a href="https://cosmolex.co.uk/" className="left-[7.25rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">UK</a>
+                                <a href="https://www.cosmolex.co.uk/" className="left-[7.25rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">UK</a>
                             </div>
                         </div>
                     </div>
