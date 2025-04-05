@@ -18,9 +18,15 @@ export const getSiteSettings = async (): Promise<SettingsType> => {
                     }
                     clSettingsFields {
                         fieldGroupName
-                        freeTrialLink
-                        loginLink
-                        demoLink
+                        freeTrialLink {
+                            url
+                        }
+                        loginLink {
+                            url
+                        }
+                        demoLink {
+                            url
+                        }
                         headerLogo {
                             node {
                                 altText
@@ -43,6 +49,9 @@ export const getSiteSettings = async (): Promise<SettingsType> => {
        ...headerData,
         logo: get(headerData, 'headerLogo.node.sourceUrl', ''),
         logoAltText: get(headerData, 'headerLogo.node.altText', ''),
+        freeTrialLink: get(headerData, 'freeTrialLink.url', ''),
+        loginLink: get(headerData, 'loginLink.url', ''),
+        demoLink: get(headerData, 'demoLink.url', ''),
     }
 }
 
