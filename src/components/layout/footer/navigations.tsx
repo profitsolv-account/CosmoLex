@@ -40,11 +40,11 @@ export const Navigations: FC<Props> = ({pageData}) => {
                             <div className="text-white text-xs font-normal font-['Inter'] leading-[0.9375rem]">{getPageSettings('companyAddress')}</div>
 
                             <div className="relative flex gap-5 mt-5 items-center">
-                                <a href="#" className="left-0 top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">US</a>
+                                <a href="https://www.cosmolex.com/" className="left-0 top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">US</a>
                                 <span className="block h-[1.6875rem] w-[0.0625rem] bg-white"></span>
-                                <a href="#" className="left-[3.625rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">CA</a>
+                                <a href="https://www.cosmolex.ca/" className="left-[3.625rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">CA</a>
                                 <span className="block h-[1.6875rem] w-[0.0625rem] bg-white"></span>
-                                <a href="#" className="left-[7.25rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">UK</a>
+                                <a href="https://cosmolex.co.uk/" className="left-[7.25rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">UK</a>
                             </div>
                         </div>
                     </div>
