@@ -13,7 +13,7 @@ type ChildMenuProps = {
 export const ChildMenu: FC<ChildMenuProps> = ({items, expandedSubMenus, toggleSubMenu}) => {
     return (
         <ul className="pl-4 mt-2">
-            {items.map((item) => (
+            {items.filter((item) => !item.title.includes('The CosmoLex')).map((item) => (
                 <li key={item.title} className="py-2 ">
                     <div
                         className="flex justify-between items-center cursor-pointer"
