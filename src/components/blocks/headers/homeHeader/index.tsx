@@ -46,16 +46,15 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
                     width={700}
                     height={600}
                     className="w-full hidden sm:block"
-                    unoptimized
                     priority={true}
                 />
-                <img
+                <Image
                     src={mediumImage}
                     alt="alt"
                     width={200}
                     height={200}
-
                     className="sm:hidden"
+                    priority
                 />
             </div>
         </div>
