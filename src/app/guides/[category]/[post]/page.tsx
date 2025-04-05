@@ -2,23 +2,24 @@ import PostTemplate from "@/components/templates/PostTemplate";
 import { notFound } from "next/navigation";
 import {getKBPostData, getPostData} from "@/lib/queries/wordpress";
 import {Metadata} from "next";
-import {getPostSEOData} from "@/lib/queries/seo";
+import {getKbSEOData, getPostSEOData} from "@/lib/queries/seo";
 
 import React from "react";
 import {data} from "@/app/blog/[slug]/dataCTA";
 
 type Params = {
-    params: Promise<{slug: string}>;
+    params: Promise<{post: string, category: string}>;
 }
 export async function generateMetadata({params}: Params): Promise<Metadata> {
-    const {slug} = await params;
-    return await getPostSEOData(slug || 'home-page');
+    const {post} = await params;
+    return await getKbSEOData( `/blog/${post}/` || 'home-page');
 }
 
 export default async function SinglePost({ params }: any) {
    try {
        const { post } = await params;
-       const data = await getKBPostData(post);
+
+       const data = await getKBPostData(`/blog/guides/${post}/`);
 
        return <PostTemplate pageData={{
            ...data,

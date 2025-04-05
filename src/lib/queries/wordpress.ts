@@ -315,7 +315,6 @@ export const getKBPostData = async (pageSlug: string): Promise<PostDataType> => 
         variables: { pageSlug },
     });
 
-
     if (!data.knowledgeBaseArticle) {
         throw new Error("Post not found");
     }

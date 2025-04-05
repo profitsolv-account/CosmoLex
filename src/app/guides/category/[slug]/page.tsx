@@ -10,6 +10,7 @@ type Params = {
 }
 export async function generateMetadata({params}: Params): Promise<Metadata> {
     const {slug} = await params;
+
     return await getPostSEOData(slug || 'home-page');
 }
 

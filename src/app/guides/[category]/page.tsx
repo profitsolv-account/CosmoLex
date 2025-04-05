@@ -7,17 +7,17 @@ import {getPostSEOData} from "@/lib/queries/seo";
 import React from "react";
 
 type Params = {
-    params: Promise<{slug: string}>;
+    params: Promise<{category: string}>;
 }
 export async function generateMetadata({params}: Params): Promise<Metadata> {
-    const {slug} = await params;
-    return await getPostSEOData(slug || 'home-page');
+    const {category} = await params;
+    return await getPostSEOData(category || 'home-page');
 }
 
 export default async function SinglePost({ params }: Params) {
    try {
-       const { slug } = await params;
-       const pageData = await getPostData(slug);
+       const { category } = await params;
+       const pageData = await getPostData(`${category}`);
        if (!pageData) {
            notFound();
        }
@@ -32,4 +32,3 @@ export default async function SinglePost({ params }: Params) {
 
 export const revalidate = false;
 export const dynamic = "force-static";
-// export const fetchCache = "default-cache";
