@@ -64,7 +64,6 @@ export const getPostSEOData = async (pageSlug: string) => {
         variables: { pageSlug },
     })
 
-    console.log(data, pageSlug);
     const seo = get(data, 'post.seo', {});
     const title = get(data, 'post.title', '');
 

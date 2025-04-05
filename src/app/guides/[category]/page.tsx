@@ -17,7 +17,7 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 export default async function SinglePost({ params }: Params) {
    try {
        const { category } = await params;
-       const pageData = await getPostData(`${category}`);
+       const pageData = await getPostData(`/guides/${category}`);
        if (!pageData) {
            notFound();
        }
