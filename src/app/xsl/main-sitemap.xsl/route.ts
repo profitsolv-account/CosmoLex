@@ -1,7 +1,8 @@
 import { NextRequest } from 'next/server';
 
 export async function GET(req: NextRequest) {
-    const wpXslUrl = 'https://cosmonew1.wpenginepowered.com/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl';
+    const path = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
+    const wpXslUrl = `${path}/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl`;
     try {
         const res = await fetch(wpXslUrl);
         if (!res.ok) throw new Error(`Failed to fetch XSL: ${res.status}`);
