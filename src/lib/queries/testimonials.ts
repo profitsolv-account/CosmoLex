@@ -59,9 +59,11 @@ export const getTestimonialsList = async (pageSlug?: string) => {
     }));
 
     if (pageSlug) {
+        const slugs = pageSlug.split('/');
+        const slug = slugs[slugs.length - 1];
         return testimonials.filter((testimonial: any) => {
             const slugs = get(testimonial, 'slug', '');
-            return slugs.includes(pageSlug);
+            return slugs.includes(slug);
         });
     }
 
