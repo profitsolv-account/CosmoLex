@@ -7,7 +7,7 @@ import {PageDataType, ShortPostType} from "@/types";
 import {getLatestGuide} from "@/lib/queries/resources";
 
 const POSTS_PER_PAGE = 10;
-const API = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
+const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
 const BASE_URL = `${API}/wp-json/wp/v2`;
 
 export const getBlogData = async (page: number): Promise<PageDataType> => {

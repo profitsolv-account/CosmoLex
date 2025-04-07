@@ -1,7 +1,7 @@
 import { DirectoryType } from '@/types';
 
 const POSTS_PER_PAGE = 12;
-const API = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
+const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
 const BASE_URL = `${API}/wp-json/wp/v2`;
 
 type TaxonomyTerm = {

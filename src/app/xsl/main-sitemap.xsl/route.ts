@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 
 export async function GET(req: NextRequest) {
-    const path = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
+    const path = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
     const wpXslUrl = `${path}/wp-content/plugins/wordpress-seo/css/main-sitemap.xsl`;
     try {
         const res = await fetch(wpXslUrl);
