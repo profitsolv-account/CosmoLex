@@ -1,6 +1,8 @@
 import {FeaturedPost} from "@/components/common/featuredPost";
 import {FC} from "react";
 import {MenuType, PageDataType} from "@/types";
+import {usePathname} from "next/navigation";
+import classNames from "classnames";
 
 type Props = {
     content: MenuType;
@@ -11,6 +13,10 @@ type Props = {
 }
 
 export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLinks, onClose}) => {
+    const pathname = usePathname();
+    const isActive = (url: string) => {
+        return pathname === url || url === pathname.slice(0, -1);
+    };
 
     if (!content) return null;
     return <>
@@ -23,7 +29,9 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
                                 {submenu.title}
                             </div> :  <a href={submenu.url} className="block text-primary-dark text-lg font-semibold leading-7 mb-3 transition duration-300 relative group">
                                 <span className="relative z-10">{submenu.title}</span>
-                                <div className="p-[0.875rem] rounded-[0.625rem] bg-[#eef8fd] absolute w-full h-full z-0 top-[-0.875rem] left-[-0.875rem] box-content transition-all opacity-0 duration-300 group-hover:opacity-90"/>
+                                <div className={classNames("p-[0.875rem] rounded-[0.625rem] bg-[#eef8fd] absolute w-full h-full z-0 top-[-0.875rem] left-[-0.875rem] box-content transition-all opacity-0 duration-300 group-hover:opacity-90", {
+                                    "opacity-100": isActive(submenu.url)
+                                })}/>
                             </a>}
 
                             {submenu?.items.map((item) => (
@@ -36,7 +44,9 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
                                             </div>
                                         </div>
 
-                                        <div className="p-[0.875rem] rounded-[0.625rem] bg-[#eef8fd] absolute w-full h-full z-0 top-[-0.875rem] left-[-0.875rem] box-content transition-all duration-300 opacity-0 group-hover:opacity-100"/>
+                                        <div className={classNames("p-[0.875rem] rounded-[0.625rem] bg-[#eef8fd] absolute w-full h-full z-0 top-[-0.875rem] left-[-0.875rem] box-content transition-all duration-300 opacity-0 group-hover:opacity-100", {
+                                            "opacity-100": isActive(item.url)
+                                        })}/>
                                     </a>
                                 </div>
                             ))}
@@ -69,7 +79,9 @@ export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLink
                                                         {item.description}
                                                     </div>
                                                 </div>
-                                                <div className="p-[0.875rem] rounded-[0.625rem] bg-[#eef8fd] absolute w-full h-full z-0 top-[-0.875rem] left-[-0.875rem] box-content transition-all opacity-0 duration-300 group-hover:opacity-50"/>
+                                                <div className={classNames("p-[0.875rem] rounded-[0.625rem] bg-[#eef8fd] absolute w-full h-full z-0 top-[-0.875rem] left-[-0.875rem] box-content transition-all opacity-0 duration-300 group-hover:opacity-50", {
+                                                    "opacity-100": isActive(item.url)
+                                                })}/>
                                             </a>
                                         </div>
                                     ))}

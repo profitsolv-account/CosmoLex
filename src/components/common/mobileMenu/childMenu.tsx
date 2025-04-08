@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MenuItem } from "@/types";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import classNames from "classnames";
+import {usePathname} from "next/navigation";
 
 type ChildMenuProps = {
     items: MenuItem[];
@@ -11,6 +12,11 @@ type ChildMenuProps = {
 };
 
 export const ChildMenu: FC<ChildMenuProps> = ({items, expandedSubMenus, toggleSubMenu}) => {
+    const pathname = usePathname();
+    const isActive = (url: string) => {
+        return pathname === url || url === pathname.slice(0, -1);
+    };
+
     return (
         <ul className="pl-4 mt-2">
             {items.filter((item) => !item.title.includes('The CosmoLex')).map((item) => (
@@ -23,7 +29,9 @@ export const ChildMenu: FC<ChildMenuProps> = ({items, expandedSubMenus, toggleSu
                     >
                         <Link
                             href={item.url}
-                            className="hover:text-secondary transition duration-400 text-xl font-medium"
+                            className={classNames("hover:text-green transition duration-400 text-xl font-medium", {
+                                "!text-green": isActive(item.url)
+                            })}
                             onClick={(e) => e.stopPropagation()}
                         >
                             {item.title}
