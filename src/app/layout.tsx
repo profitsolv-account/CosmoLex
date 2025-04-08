@@ -20,7 +20,7 @@ export default function RootLayout({children}: Readonly<{
 }>) {
 
     const isProduction =
-        process.env.WORDPRESS_API_URL === "https://cosmonew1.wpenginepowered.com/";
+        process.env.WORDPRESS_API_URL === "https://cosmonew1.wpenginepowered.com";
 
     return (
         <html lang="en">
