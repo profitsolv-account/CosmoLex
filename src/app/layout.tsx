@@ -18,13 +18,17 @@ const inter = Inter({
 export default function RootLayout({children}: Readonly<{
     children: React.ReactNode;
 }>) {
+
+    const isProduction =
+        process.env.WORDPRESS_API_URL === "https://cosmonew1.wpenginepowered.com/";
+
     return (
         <html lang="en">
         <head>
             <link rel="icon" href="/favicon-dark.ico" media="(prefers-color-scheme: light)" />
             <link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: dark)" />
             {/* GTM Script (head) */}
-            <Script id="gtm-head" strategy="afterInteractive">
+            {isProduction && <Script id="gtm-head" strategy="afterInteractive">
                 {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -32,17 +36,17 @@ export default function RootLayout({children}: Readonly<{
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-TCFL92Z');
           `}
-            </Script>
+            </Script>}
         </head>
         <body className={`${inter.variable} font-sans`}>
-            <noscript>
+        {isProduction && <noscript>
                 <iframe
                     src="https://www.googletagmanager.com/ns.html?id=GTM-TCFL92Z"
                     height="0"
                     width="0"
                     style={{ display: 'none', visibility: 'hidden' }}
                 ></iframe>
-            </noscript>
+            </noscript>}
 
             {children}
         </body>

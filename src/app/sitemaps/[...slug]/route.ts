@@ -10,7 +10,8 @@ export async function GET(
         return new Response('Invalid sitemap path', { status: 404 });
     }
 
-    const wpUrl = `https://cosmonew1.wpenginepowered.com/${slugPath}`;
+    const path = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com'
+    const wpUrl = `${path}/${slugPath}`;
     const currentDomain = req.nextUrl.origin;
 
     try {

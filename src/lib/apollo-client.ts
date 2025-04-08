@@ -12,7 +12,7 @@ import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
 export const cacheOption = "cache-first";//"cache-first";
 
 
-const API = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
+const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
 
 const errorLink = onError(({ networkError }) => {
     if (networkError) console.error(networkError);

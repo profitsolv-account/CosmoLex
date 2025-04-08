@@ -32,7 +32,7 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                             <div
                                 className="self-stretch text-center text-primary-dark text-[1.125rem] font-bold md:text-2xl">Standard
                             </div>
-                            <div className="text-primary-dark text-[1.4375rem] font-bold leading-[3.75rem] md:text-[2.9375rem]">$99
+                            <div className="text-primary-dark text-[1.4375rem] font-bold leading-[3.75rem] md:text-[2.9375rem]">$99 <span className="text-[0.7rem] md:text-[1.3rem]">USD</span>
                             </div>
                             <div className="self-stretch text-center text-primary-dark text-base font-normal">/ per month
                             </div>
@@ -43,7 +43,7 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                                 className="self-stretch text-center text-primary-dark text-[1.125rem] font-bold md:text-2xl">Elite
                             </div>
                             <div
-                                className="text-primary-dark text-[1.4375rem] font-bold leading-[3.75rem] md:text-[2.9375rem]">$129
+                                className="text-primary-dark text-[1.4375rem] font-bold leading-[3.75rem] md:text-[2.9375rem]">$129 <span className="text-[0.7rem] md:text-[1.3rem]">USD</span>
                             </div>
                             <div className="self-stretch text-center text-primary-dark text-base font-normal">/ per month
                             </div>

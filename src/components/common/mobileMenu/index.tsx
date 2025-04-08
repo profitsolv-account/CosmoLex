@@ -1,5 +1,6 @@
+"use client"
 import {MenusList, PageDataType, SettingsType} from "@/types";
-import { FC, useEffect, useState } from "react";
+import {FC, useEffect, useMemo, useState} from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Hamburger } from "./hamburger";
@@ -8,6 +9,7 @@ import classNames from "classnames";
 import {ChildMenu} from "@/components/common/mobileMenu/childMenu";
 import Image from "next/image";
 import logo from "@/assets/img/logo.png";
+import {usePathname} from "next/navigation";
 
 type Props = {
     menus: MenusList;
@@ -15,6 +17,7 @@ type Props = {
 };
 
 export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
+    const pathname = usePathname();
     const [openMenu, setOpenMenu] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
     const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>(
@@ -57,13 +60,7 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
         }
     };
 
-    useEffect(() => {
-        if (!menuVisible) {
-            setExpandedMenus({});
-        }
-    }, [menuVisible]);
-
-    const combinedMenus: any = () => {
+    const memoizedCombinedMenus = useMemo(() => {
         try {
             return {
                 solutions: {
@@ -101,16 +98,53 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                     ],
                 },
             };
-
-        } catch(e) {
+        } catch (e) {
             console.log(e);
-            return {}
+            return {};
         }
-    }
+    }, [menus]);
+
     const getSetting = (name: keyof SettingsType) => {
         if (!pageData.settings) return "";
         return pageData.settings[name] ?? "";
     }
+
+    useEffect(() => {
+        if (!menuVisible) return;
+
+        let parentMenu = '';
+
+        const currentMenus = memoizedCombinedMenus;
+
+        for (const key in currentMenus) {
+            // @ts-ignore
+            const menu = currentMenus[key];
+            parentMenu = menu.name;
+            if (menu.items) {
+
+                const isMatch = menu.items.some(
+                    (item: any) => item.url === pathname || item.url === pathname.slice(0, -1)
+                );
+                if (isMatch) {
+                    setExpandedMenus((prev) => ({ ...prev, [key]: true }));
+                    break;
+                } else {
+                    menu.items.forEach((item: any) => {
+                        if (item.items) {
+                            const isMatch = item.items.some(
+                                (item: any) => item.url === pathname || item.url === pathname.slice(0, -1)
+                        );
+                            if (isMatch) {
+                                setExpandedMenus((prev) => ({ ...prev, [key]: true }));
+                                setExpandedSubMenus((prev) => ({ ...prev, [item.title]: true }));
+                                parentMenu = item.title;
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }, [pathname, menuVisible, memoizedCombinedMenus]);
 
     return (
         <div className="bg-primary lg:hidden relative z-50 pb-4">
@@ -139,10 +173,10 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                             <Button variant="primary" href={getSetting('freeTrialLink')}>Try for free</Button>
                         </div>
 
-                        <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-[1.375rem] font-normal font-['Inter']">Login</Link>
+                        <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-[1.375rem] font-normal">Login</Link>
 
                         <ul className="w-full mt-4">
-                            {Object.entries(combinedMenus()).map(
+                            {Object.entries(memoizedCombinedMenus).map(
                                 ([key, menu]: any) => (
                                     <li
                                         key={key}
@@ -157,7 +191,7 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                                         >
                                             <Link
                                                 href={menu.url || "#"}
-                                                className="hover:text-secondary transition duration-300 ease-in-out text-2xl font-semibold"
+                                                className="transition duration-300 ease-in-out text-2xl font-semibold hover:text-green"
                                                 onClick={(e) => {
                                                         e.stopPropagation();
                                                         if (menu.name === 'About') {

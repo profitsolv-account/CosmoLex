@@ -2,7 +2,7 @@ import {MenusList} from "@/types";
 import {getFromCache, saveToCache} from "../cache/index";
 import menu from '@/lib/cache/menu.json';
 
-const WORDPRESS_API_URL = process.env.BASE_URL || 'https://cosmonew1.wpenginepowered.com';
+const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
 
 export const getAllMenus = async (): Promise<MenusList> => {
 
