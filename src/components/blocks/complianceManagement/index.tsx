@@ -53,7 +53,7 @@ export const ComplianceManagement = () => {
                     <img
                         src={t.image.src}
                         alt={t.title}
-                        className={classNames("relative z-10", {
+                        className={classNames("relative z-4", {
                             "object-cover w-full h-full aspect-square": t.title !== 'Legal Automation',
                             "object-contain max-w-[80%]": t.title === 'Legal Automation',
                         })}
