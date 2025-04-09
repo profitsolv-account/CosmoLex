@@ -2,8 +2,24 @@ import { NextRequest, NextResponse } from "next/server";
 import client from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 
+const redirectionCache: {
+    data: any[];
+    lastUpdated: number;
+    ttl: number;
+} = {
+    data: [],
+    lastUpdated: 0,
+    ttl: 60 * 1000 * 1000,
+};
+
 const getRedirections = async () => {
-    const {data} = await client.query({
+    const now = Date.now();
+
+    if (redirectionCache.data && now - redirectionCache.lastUpdated < redirectionCache.ttl) {
+        return redirectionCache.data;
+    }
+
+    const { data } = await client.query({
         query: gql`
             query GetRedirections {
                 redirections {
@@ -17,12 +33,15 @@ const getRedirections = async () => {
         fetchPolicy: "cache-first",
         variables: {},
     });
-    return data?.redirections || [];
-}
+
+    redirectionCache.data = data?.redirections || [];
+    redirectionCache.lastUpdated = now;
+
+    return redirectionCache.data;
+};
 
 export async function middleware(req: NextRequest) {
     const pathname = req.nextUrl.pathname;
-
 
     if (pathname.endsWith('.xml') && !pathname.startsWith('/sitemaps/')) {
         const newUrl = req.nextUrl.clone();
@@ -65,10 +84,9 @@ export async function middleware(req: NextRequest) {
             return NextResponse.redirect(new URL(redirectRule.target, req.url));
         }
     }
-
     return NextResponse.next();
 }
 
 export const config = {
-    matcher: "/:path*",
+    matcher: ["/((?!api|_next|favicon.ico).*)"],
 };
