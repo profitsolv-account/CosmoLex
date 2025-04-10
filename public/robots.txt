@@ -1,2 +1,8 @@
 User-agent: *
-Disallow: /
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /partners/cosmolex-certified-consultants/
+Disallow: /resource-center/tag/
+Disallow: /*/?seq_no*
+
+Sitemap: https://www.cosmolex.com/sitemap.xml
