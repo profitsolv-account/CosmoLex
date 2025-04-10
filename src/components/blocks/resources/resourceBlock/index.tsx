@@ -31,7 +31,7 @@ export const ResourceBlock: FC<Props> = ({resource}) => {
                         <div  className="text-white uppercase text-[1rem] leading-[1.5rem]" dangerouslySetInnerHTML={{__html: resource.node.content}}/>
                     </div>
 
-                    <Button variant="secondary" href={fields.ctaLink} className="absolute bottom-10 ">{fields.ctaText ?? 'Download Now'}</Button>
+                    <Button variant="secondary" href={fields.ctaLink} target="_blank" className="absolute bottom-10 ">{fields.ctaText ?? 'Download Now'}</Button>
                 </div>
             </div>
     </div>

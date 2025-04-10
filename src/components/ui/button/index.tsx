@@ -8,17 +8,20 @@ type Props = {
     variant?: 'primary' | 'secondary';
     type?: 'button' | 'link';
     href?: string;
+    target?: string
 }
 export const Button: FC<Props> = ({
    children,
    className,
    onClick,
     href,
+    target,
    variant = 'primary',
 }) => {
 
     return <a
         href={href || "#"}
+        target={target || ""}
         className={classNames(
             "h-[2.75rem] px-5 pt-[0.625rem] pb-3 rounded-[6.25rem] border border-white flex justify-center items-center gap-2.5 cursor-pointer transition-all duration-300 group",
             variant === 'primary'
