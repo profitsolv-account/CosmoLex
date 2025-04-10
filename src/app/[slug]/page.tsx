@@ -4,7 +4,6 @@ import { getPageData } from "@/lib/queries/wordpress";
 import PageTemplate from "@/components/templates/PageTemplate";
 import {notFound} from "next/navigation";
 import "./wordpress-blocks.css";
-import {getLanguage} from "@/lib/helpers";
 
 export const dynamic = 'force-dynamic';
 
@@ -13,17 +12,7 @@ type Params = {
 }
 
 const getSlug = async (defaultSlug: string) => {
-    const lang = await getLanguage();
-    let slug = defaultSlug
-    switch (lang) {
-        case 'ca':
-            slug = `${defaultSlug}-2`;
-            break;
-        case 'uk':
-            slug = `${defaultSlug}-3`;
-            break;
-    }
-    return slug;
+    return defaultSlug;
 }
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
