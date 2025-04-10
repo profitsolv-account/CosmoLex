@@ -70,6 +70,3 @@ function removeSystemTags(inputString: string) {
     return urls;
 }*/
 
-export const revalidate = false;
-export const dynamic = "force-static";
-// export const fetchCache = "default-cache";

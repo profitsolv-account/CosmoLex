@@ -1,6 +1,12 @@
-import {headers} from "next/headers";
+import {cookies, headers} from "next/headers";
 
 export const getLanguage = async () => {
+    const cookieStore = await cookies();
+    const lang = cookieStore.get('lang')?.value || 'eng';
+    return lang;
+}
+
+export const getLanguageMiddleware = async () => {
 
     const headersList = headers();
     const hr = await headersList;

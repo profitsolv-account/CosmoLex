@@ -5,16 +5,32 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import CompareParentTemplate from "@/components/templates/CompareParrentTemplate";
 import {getComparePageData} from "@/lib/queries/compare";
+import {getLanguage} from "@/lib/helpers";
 
-const pageSlug = "compare";
+
+const getSlug = async () => {
+    const lang = await getLanguage();
+    let slug = 'compare'
+    switch (lang) {
+        case 'ca':
+            slug = 'compare-2';
+            break;
+        case 'uk':
+            slug = 'compare-3';
+            break;
+    }
+    return slug;
+}
 
 export async function generateMetadata(): Promise<Metadata> {
-    return await getSEOData(pageSlug);
+    const slug = await getSlug();
+    return await getSEOData(slug);
 }
 
 export default async function ComparePage() {
     try {
-        const pageData = await getPageData(pageSlug);
+        const slug = await getSlug();
+        const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList();
         const compareSelector = await getComparePageData();
 
@@ -29,6 +45,3 @@ export default async function ComparePage() {
         notFound();
     }
 }
-
-export const revalidate = false;
-export const dynamic = "force-static";
