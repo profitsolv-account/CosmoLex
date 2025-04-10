@@ -15,11 +15,13 @@ export default async function PillarPage() {
     try {
         const pageData = await getPageData(pageSlug);
         const testimonials = await getTestimonialsList();
-        return <IntegrationsTemplate pageData={{
+        return <><IntegrationsTemplate pageData={{
             ...pageData,
             testimonials,
             footerExtendedBg: true
         }} />
+            <p style={{ opacity: 0.5 }}>Rendered at: {new Date().toLocaleString()}</p>
+        </>
     } catch (error) {
         console.error(error);
         notFound();

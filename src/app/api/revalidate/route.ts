@@ -24,12 +24,19 @@ export async function POST(req: Request) {
 
         revalidatePath(getPagePath(body.post_url));
 
-        revalidateTag('graphql');
 
+        revalidateTag('graphql');
         await client.clearStore();
         await client.refetchQueries({ include: "all" });
 
+
         console.log(body, getPagePath(body.post_url));
+
+        await fetch(`https://cosmolex-staging.vercel.app/${getPagePath(body.post_url)}`, {
+            headers: { 'x-revalidate-trigger': '1' },
+            cache: 'no-store'
+        });
+
         return NextResponse.json({ revalidated: true});
 
     } catch (err) {
