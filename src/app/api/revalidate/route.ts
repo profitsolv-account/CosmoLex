@@ -6,7 +6,8 @@ const REVALIDATE_SECRET='rev-token-122'
 
 const baseUrl = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com/';
 const getPagePath = (url: string) => {
-    return new URL(url, baseUrl).pathname;
+    const path = new URL(url, baseUrl).pathname;
+    return path.replace(/\/$/, '');
 }
 
 export async function POST(req: Request) {
@@ -21,20 +22,15 @@ export async function POST(req: Request) {
 
         const body = await req.json();
 
-        revalidatePath(getPagePath(body.post_url), 'page');
         revalidatePath(getPagePath(body.post_url));
 
-        revalidatePath(`/compare/`, "layout");
-        revalidatePath(`/features/[slug]`, "page");
-        revalidatePath(`/features/`, "layout");
-        revalidatePath(`/`, "layout");
         revalidateTag('graphql');
 
         await client.clearStore();
         await client.refetchQueries({ include: "all" });
 
+        console.log(body, getPagePath(body.post_url));
         return NextResponse.json({ revalidated: true});
-
 
     } catch (err) {
         console.error(err);
