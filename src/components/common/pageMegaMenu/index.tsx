@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const PageMegaMenu: FC<Props> = ({content, pageData, footer, noFooterLinks, onClose}) => {
-    const pathname = usePathname();
+    const pathname = usePathname() || '';
     const isActive = (url: string) => {
         return pathname === url || url === pathname.slice(0, -1);
     };
