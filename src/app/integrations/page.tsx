@@ -20,7 +20,6 @@ export default async function PillarPage() {
             testimonials,
             footerExtendedBg: true
         }} />
-            <p style={{ opacity: 0.5 }}>Rendered at: {new Date().toLocaleString()}</p>
         </>
     } catch (error) {
         console.error(error);

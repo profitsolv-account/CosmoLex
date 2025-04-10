@@ -25,7 +25,6 @@ export async function POST(req: Request) {
         await client.clearStore();
         await client.refetchQueries({ include: 'all' });
 
-
         await revalidatePath(path);
 
         return NextResponse.json({
