@@ -11,6 +11,7 @@ export default function PageTemplate({ pageData }: { pageData: any }) {
                 <section className="" dangerouslySetInnerHTML={{__html: pageData && pageData.content ? pageData.content : ""}}>
                 </section>
             </div>
+            <p style={{ opacity: 0.5 }}>Rendered at: {new Date().toLocaleString()}</p>
         </Layout>
 
     )
