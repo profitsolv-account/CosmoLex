@@ -22,3 +22,6 @@ export default async function CareersPage() {
     }} />
 }
 
+export const revalidate = false;
+
+

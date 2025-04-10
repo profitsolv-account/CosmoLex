@@ -15,14 +15,16 @@ export default async function PillarPage() {
     try {
         const pageData = await getPageData(pageSlug);
         const testimonials = await getTestimonialsList();
-        return <><IntegrationsTemplate pageData={{
+        return <IntegrationsTemplate pageData={{
             ...pageData,
             testimonials,
             footerExtendedBg: true
         }} />
-        </>
     } catch (error) {
         console.error(error);
         notFound();
     }
 }
+
+export const revalidate = false;
+export const dynamic = "force-static";

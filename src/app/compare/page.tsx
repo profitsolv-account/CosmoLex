@@ -45,3 +45,6 @@ export default async function ComparePage() {
         notFound();
     }
 }
+
+export const revalidate = false;
+export const dynamic = "force-static";

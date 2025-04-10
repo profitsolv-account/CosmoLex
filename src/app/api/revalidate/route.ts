@@ -20,8 +20,9 @@ export async function POST(req: Request) {
         const body = await req.json();
         const path = getPagePath(body.post_url);
 
-
         revalidateTag('graphql');
+        revalidateTag(path);
+
         await client.clearStore();
         await client.refetchQueries({ include: 'all' });
 

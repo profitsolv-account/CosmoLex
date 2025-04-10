@@ -97,7 +97,14 @@ export const getLatestPosts = async (postsCount = 1): Promise<FeaturedPostType[]
                 }
             }
         `,
-        fetchPolicy: "cache-first"
+        fetchPolicy: "cache-first",
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: ['graphql'],
+                },
+            },
+        },
     });
 
     return get(data, 'posts.nodes', []).map((postData: any) => ({
@@ -162,7 +169,7 @@ export const getPageData = async (
         context: {
             fetchOptions: {
                 next: {
-                    tags: ['graphql'],
+                    tags: [pageSlug],
                 },
             },
         },
@@ -227,7 +234,14 @@ export const getPricingPlans = async (pageSlug: string): Promise<PricingPlan[]> 
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: cacheOption
+        fetchPolicy: cacheOption,
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: [pageSlug],
+                },
+            },
+        },
     });
 
     return get(data, 'page.pricingSection.pricingPlans', []);
@@ -265,6 +279,13 @@ export const getPostData = async (ps: string): Promise<PostDataType> => {
         `,
         fetchPolicy: cacheOption,
         variables: { pageSlug },
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: [pageSlug],
+                },
+            },
+        },
     });
 
     if (!data.post) {
@@ -313,6 +334,13 @@ export const getKBPostData = async (pageSlug: string): Promise<PostDataType> => 
         `,
         fetchPolicy: cacheOption,
         variables: { pageSlug },
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: [pageSlug],
+                },
+            },
+        },
     });
 
     if (!data.knowledgeBaseArticle) {
@@ -357,7 +385,14 @@ export const getVideoSection = async (
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: cacheOption
+        fetchPolicy: cacheOption,
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: [pageSlug],
+                },
+            },
+        },
     });
 
     if (!data.page) {
@@ -390,7 +425,14 @@ export const getPageFeaturesData = async (
     const { data } = await client.query({
         query,
         variables: { id: pageSlug },
-        fetchPolicy: cacheOption
+        fetchPolicy: cacheOption,
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: [pageSlug],
+                },
+            },
+        },
     });
 
     if (!data.page) {
