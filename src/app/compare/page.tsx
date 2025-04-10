@@ -5,32 +5,16 @@ import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import CompareParentTemplate from "@/components/templates/CompareParrentTemplate";
 import {getComparePageData} from "@/lib/queries/compare";
-import {getLanguage} from "@/lib/helpers";
 
-
-const getSlug = async () => {
-    const lang = await getLanguage();
-    let slug = 'compare'
-    switch (lang) {
-        case 'ca':
-            slug = 'compare-2';
-            break;
-        case 'uk':
-            slug = 'compare-3';
-            break;
-    }
-    return slug;
-}
+const pageSlug = "compare";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const slug = await getSlug();
-    return await getSEOData(slug);
+    return await getSEOData(pageSlug);
 }
 
 export default async function ComparePage() {
     try {
-        const slug = await getSlug();
-        const pageData = await getPageData(slug);
+        const pageData = await getPageData(pageSlug);
         const testimonials = await getTestimonialsList();
         const compareSelector = await getComparePageData();
 

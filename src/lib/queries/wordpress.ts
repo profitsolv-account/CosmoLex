@@ -43,11 +43,11 @@ export const getHomePageData = async () => {
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         context: {
             fetchOptions: {
                 next: {
-                    tags: ['graphql'],
+                    tags: ['home'],
                 },
             },
         },
@@ -97,11 +97,11 @@ export const getLatestPosts = async (postsCount = 1): Promise<FeaturedPostType[]
                 }
             }
         `,
-        fetchPolicy: "cache-first",
+        fetchPolicy: cacheOption,
         context: {
             fetchOptions: {
                 next: {
-                    tags: ['graphql'],
+                    //tags: ['graphql'],
                 },
             },
         },

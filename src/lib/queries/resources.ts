@@ -67,7 +67,7 @@ export const getResourcesData = async (): Promise<Resource[]> => {
         context: {
             fetchOptions: {
                 next: {
-                    tags: ['graphql'],
+                    tags: ['resources'],
                 },
             },
         },
@@ -135,7 +135,7 @@ export const getWebinarsData = async (): Promise<Resource[]> => {
         context: {
             fetchOptions: {
                 next: {
-                    tags: ['graphql'],
+                    tags: ['resources'],
                 },
             },
         },
@@ -261,7 +261,7 @@ export const getLatestGuide = async (): Promise<FeaturedPostType> => {
         context: {
             fetchOptions: {
                 next: {
-                    tags: ['graphql'],
+                   tags: ['resources'],
                 },
             },
         },

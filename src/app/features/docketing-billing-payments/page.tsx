@@ -6,6 +6,8 @@ import CurrentSetupTemplate from "@/components/templates/CurrentSetupTemplate";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {getLanguage} from "@/lib/helpers";
 
+export const dynamic = 'force-dynamic';
+
 const getSlug = async () => {
     const lang = await getLanguage();
     let slug = 'features-2/docketing-billing-payments'

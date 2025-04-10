@@ -7,6 +7,8 @@ import PillarChildTemplate from "@/components/templates/pillar/PillarChildTempla
 import {getLanguage} from "@/lib/helpers";
 
 
+export const dynamic = 'force-dynamic';
+
 const getSlug = async () => {
     const lang = await getLanguage();
     let slug = 'features/trust-accounting-software'

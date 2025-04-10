@@ -7,7 +7,6 @@ const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wp
 export const getAllMenus = async (): Promise<MenusList> => {
 
      if (menu) {
-         console.log('load menu from cache');
          return menu as any;
      }
 

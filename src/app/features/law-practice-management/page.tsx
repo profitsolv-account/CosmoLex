@@ -6,6 +6,8 @@ import {notFound} from "next/navigation";
 import PillarParentTemplate from "@/components/templates/PillarParrentTemplate";
 import {getLanguage} from "@/lib/helpers";
 
+export const dynamic = 'force-dynamic';
+
 const getSlug = async () => {
     const lang = await getLanguage();
     let slug = 'features/law-practice-management'

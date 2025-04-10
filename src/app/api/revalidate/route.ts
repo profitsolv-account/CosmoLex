@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
 
 
+
 const REVALIDATE_SECRET = 'rev-token-122';
 const baseUrl = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com/';
 
@@ -20,14 +21,15 @@ export async function POST(req: Request) {
         const body = await req.json();
         const path = getPagePath(body.post_url);
 
-        revalidateTag('graphql');
+        if (path.includes('home')) {
+            revalidateTag('home');
+        } else if (path.includes('resource-hub') || path.includes('webinars')) {
+            revalidateTag('resources');
+        }
+
         revalidateTag(path);
         revalidateTag(path.replace(/^\/+|\/+$/g, ''));
-
-/*        await client.clearStore();
-        await client.refetchQueries({ include: 'all' });*/
-
-        await revalidatePath(path);
+        revalidatePath(path);
 
         return NextResponse.json({
             revalidated: true,

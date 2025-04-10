@@ -6,6 +6,8 @@ import {notFound} from "next/navigation";
 import PracticeTypesTemplate from "@/components/templates//PracticeTypesTemplate";
 import {getLanguage} from "@/lib/helpers";
 
+export const dynamic = 'force-dynamic';
+
 const getSlug = async () => {
     const lang = await getLanguage();
     let slug = 'features'
@@ -19,7 +21,6 @@ const getSlug = async () => {
     }
     return slug;
 }
-
 
 export async function generateMetadata(): Promise<Metadata> {
     const slug = await getSlug();

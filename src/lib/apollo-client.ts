@@ -8,7 +8,6 @@ import { onError } from '@apollo/client/link/error';
 import { RetryLink } from '@apollo/client/link/retry';
 import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
 
-//export const cacheOption = 'force-cache';
 export const cacheOption = "no-cache";//"cache-first";
 
 
@@ -25,7 +24,12 @@ const retryLink = new RetryLink({
 const customFetch = (uri: RequestInfo | URL, options: RequestInit = {}) => {
     return fetch(uri.toString(), {
         ...options,
-        next: { tags: ['graphql'] },
+        next: {
+            tags: Array.from(new Set([
+                ...(options.next?.tags || []),
+                'graphql',
+            ])),
+        },
         cache: "force-cache",
     });
 };

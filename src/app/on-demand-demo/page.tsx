@@ -6,6 +6,7 @@ import {notFound} from "next/navigation";
 import "./wordpress-blocks.css";
 import {getLanguage} from "@/lib/helpers";
 
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(): Promise<Metadata> {
     const lang = await getLanguage();
