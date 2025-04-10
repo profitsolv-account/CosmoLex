@@ -32,5 +32,5 @@ export default async function SinglePage({params}: Params) {
    }
 }
 
-export const revalidate = 0;
+
 
