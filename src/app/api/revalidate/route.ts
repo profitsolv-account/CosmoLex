@@ -20,31 +20,17 @@ export async function POST(req: Request) {
         const body = await req.json();
         const path = getPagePath(body.post_url);
 
-        console.log('Revalidating path:', path);
 
         revalidateTag('graphql');
         await client.clearStore();
         await client.refetchQueries({ include: 'all' });
 
-        // Trigger revalidation
+
         await revalidatePath(path);
-        console.log('Marked for revalidation');
-
-        // Trigger generation
-        const triggerRes = await fetch(`https://cosmolex-staging.vercel.app${path}`, {
-            headers: { 'x-revalidate-trigger': '1' },
-            cache: 'no-store',
-        });
-
-        const xCache = triggerRes.headers.get('x-vercel-cache');
-
-        console.log(`Triggered fetch with cache: ${xCache}`);
 
         return NextResponse.json({
             revalidated: true,
             path,
-            xCache,
-            status: triggerRes.status,
         });
 
     } catch (err: any) {
