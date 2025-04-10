@@ -22,7 +22,6 @@ export async function POST(req: Request) {
 
         console.log('Revalidating path:', path);
 
-        // Optional: clear Apollo client cache
         revalidateTag('graphql');
         await client.clearStore();
         await client.refetchQueries({ include: 'all' });

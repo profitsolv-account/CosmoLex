@@ -9,7 +9,7 @@ import { RetryLink } from '@apollo/client/link/retry';
 import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
 
 //export const cacheOption = 'force-cache';
-export const cacheOption = "cache-first";//"cache-first";
+export const cacheOption = "no-cache";//"cache-first";
 
 
 const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';

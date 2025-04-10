@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import {isProduction} from "@/helpers";
 
 export const PricingWidget = () => {
     const iframeContainerRef = useRef(null);
@@ -10,8 +11,13 @@ export const PricingWidget = () => {
 
         const iframe = document.createElement('iframe');
 
-        iframe.src =
-            'https://profitsolv-billingplatform.azurewebsites.net/subscription-management/subscription-management.html?version=v2&businessUnit=cosmolex&productCatalog=CosmoLex&showOnlyMainProducts=true&overrideHost=https://law.cosmolex.com';
+        if (isProduction()) {
+            iframe.src =
+                'https://profitsolv-billingplatform.azurewebsites.net/subscription-management/subscription-management.html?version=v2&businessUnit=cosmolex&productCatalog=CosmoLex&showOnlyMainProducts=true&overrideHost=https://law.cosmolex.com';
+        } else {
+            iframe.src =
+                'https://profitsolv-billingplatform-dev.azurewebsites.net/subscription-management/subscription-management.html?businessUnit=cosmolex&productCatalog=CosmoLex&version=v2&showOnlyMainProducts=true&overrideHost=https://internal1.cosmolex.com';
+        }
 
         iframe.style.width = '100%';
        /* iframe.style.height = '55.625rem';*/
