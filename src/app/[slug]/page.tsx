@@ -4,14 +4,24 @@ import { getPageData } from "@/lib/queries/wordpress";
 import PageTemplate from "@/components/templates/PageTemplate";
 import {notFound} from "next/navigation";
 import "./wordpress-blocks.css";
-
+import {getLanguage} from "@/lib/helpers";
 
 type Params = {
     params: Promise<{slug: string}>;
 }
 
 const getSlug = async (defaultSlug: string) => {
-    return defaultSlug;
+    const lang = await getLanguage();
+    let slug = defaultSlug
+    switch (lang) {
+        case 'ca':
+            slug = `${defaultSlug}-2`;
+            break;
+        case 'uk':
+            slug = `${defaultSlug}-3`;
+            break;
+    }
+    return slug;
 }
 
 export async function generateMetadata({params}: Params): Promise<Metadata> {
@@ -21,16 +31,15 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 }
 
 export default async function SinglePage({params}: Params) {
-   try {
-       const {slug} = await params;
-       const newSlug = await getSlug(slug);
+    try {
+        const {slug} = await params;
+        const newSlug = await getSlug(slug);
 
-       const pageData = await getPageData(newSlug);
-       return <PageTemplate pageData={pageData} />
-   } catch (error) {
-       notFound();
-   }
+        const pageData = await getPageData(newSlug);
+        return <PageTemplate pageData={pageData} />
+    } catch (error) {
+        notFound();
+    }
 }
 
-export const revalidate = 60; // revalidate every 60 seconds
-
+export const revalidate = 36000; // 10 hours
