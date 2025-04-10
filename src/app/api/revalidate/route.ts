@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
         console.log(body, getPagePath(body.post_url));
 
-        await fetch(`https://cosmolex-staging.vercel.app/${getPagePath(body.post_url)}`, {
+        await fetch(`https://cosmolex-staging.vercel.app${getPagePath(body.post_url)}`, {
             headers: { 'x-revalidate-trigger': '1' },
             cache: 'no-store'
         });
