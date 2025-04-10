@@ -31,15 +31,17 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 }
 
 export default async function SinglePage({params}: Params) {
-    try {
-        const {slug} = await params;
-        const newSlug = await getSlug(slug);
+   try {
+       const {slug} = await params;
+       const newSlug = await getSlug(slug);
 
-        const pageData = await getPageData(newSlug);
-        return <PageTemplate pageData={pageData} />
-    } catch (error) {
-        notFound();
-    }
+       const pageData = await getPageData(newSlug);
+       return <PageTemplate pageData={pageData} />
+   } catch (error) {
+       notFound();
+   }
 }
 
 export const revalidate = 36000; // 10 hours
+
+

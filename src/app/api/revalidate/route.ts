@@ -5,9 +5,9 @@ import client from "@/lib/apollo-client";
 const REVALIDATE_SECRET='rev-token-122'
 
 const baseUrl = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com/';
+
 const getPagePath = (url: string) => {
-    const path = new URL(url, baseUrl).pathname;
-    return path.replace(/\/$/, '');
+    return new URL(url, baseUrl).pathname;
 }
 
 export async function POST(req: Request) {
