@@ -49,5 +49,3 @@ export default async function UserManagementPage() {
         notFound();
     }
 }
-
-export const revalidate = 36000; // 10 hours

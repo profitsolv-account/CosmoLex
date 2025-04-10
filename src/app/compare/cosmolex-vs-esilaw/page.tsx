@@ -42,5 +42,3 @@ export default async function PillarPage() {
         notFound();
     }
 }
-
-export const revalidate = 36000; // 10 hours

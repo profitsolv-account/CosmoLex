@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import client from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
-import {getLanguageMiddleware} from "@/lib/helpers";
 
 const redirectionCache: {
     data: any[];
@@ -85,17 +84,7 @@ export async function middleware(req: NextRequest) {
             return NextResponse.redirect(new URL(redirectRule.target, req.url));
         }
     }
-
-    const lang = await getLanguageMiddleware();
-
-    const response = NextResponse.next();
-    response.cookies.set('lang', lang, {
-        path: '/',
-        httpOnly: false,
-        sameSite: 'lax',
-    });
-
-    return response;
+    return NextResponse.next();
 }
 
 export const config = {

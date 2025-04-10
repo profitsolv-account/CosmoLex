@@ -46,5 +46,3 @@ export default async function FeaturesPage() {
         notFound();
     }
 }
-
-export const revalidate = 36000; // 10 hours

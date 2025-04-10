@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
-import client from "@/lib/apollo-client";
+
 
 const REVALIDATE_SECRET = 'rev-token-122';
 const baseUrl = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com/';
@@ -22,9 +22,10 @@ export async function POST(req: Request) {
 
         revalidateTag('graphql');
         revalidateTag(path);
+        revalidateTag(path.replace(/^\/+|\/+$/g, ''));
 
-        await client.clearStore();
-        await client.refetchQueries({ include: 'all' });
+/*        await client.clearStore();
+        await client.refetchQueries({ include: 'all' });*/
 
         await revalidatePath(path);
 

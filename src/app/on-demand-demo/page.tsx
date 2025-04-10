@@ -34,5 +34,3 @@ export default async function SinglePage() {
        notFound();
    }
 }
-
-export const revalidate = 36000; // 10 hours
