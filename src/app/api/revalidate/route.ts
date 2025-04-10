@@ -21,8 +21,10 @@ export async function POST(req: Request) {
         const body = await req.json();
         const path = getPagePath(body.post_url);
 
-        if (path.includes('home')) {
+        if (path.includes('home') || path === '/') {
             revalidateTag('home');
+            console.log('Home revalidated');
+            return NextResponse.json({revalidated: true, path});
         } else if (path.includes('resource-hub') || path.includes('webinars')) {
             revalidateTag('resources');
         }
@@ -31,10 +33,7 @@ export async function POST(req: Request) {
         revalidateTag(path.replace(/^\/+|\/+$/g, ''));
         revalidatePath(path);
 
-        return NextResponse.json({
-            revalidated: true,
-            path,
-        });
+        return NextResponse.json({revalidated: true, path});
 
     } catch (err: any) {
         console.error('Revalidate error:', err);
