@@ -3,8 +3,8 @@ import { getSEOData } from "@/lib/queries/seo";
 import {getPageData, getPageFeaturesData} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
-import PillarChildTemplate from "@/components/templates/pillar/PillarChildTemplate";
 import {getLanguage} from "@/lib/helpers";
+import OnlinePaymentsTemplate from "@/components/templates/pillar/OnlinePaymentsTemplate";
 
 export const dynamic = 'force-dynamic';
 
@@ -30,12 +30,15 @@ export default async function PillarPage() {
         const pageData = await getPageData(slug);
         const testimonials = await getTestimonialsList('online-payments');
         const features = await getPageFeaturesData('features');
-        return <PillarChildTemplate pageData={{
+        return <OnlinePaymentsTemplate pageData={{
             ...pageData,
             testimonials,
             footerExtendedBg: true,
             features,
-        }} />
+        }}
+            formId="78ca8e05-3721-4d8d-9812-bb6cd71dc1f5"
+            routerName="cosmolex-crm"
+        />
     } catch (error) {
         console.error(error);
         notFound();
