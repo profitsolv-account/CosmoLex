@@ -101,7 +101,7 @@ export const getLatestPosts = async (postsCount = 1): Promise<FeaturedPostType[]
         context: {
             fetchOptions: {
                 next: {
-                    //tags: ['graphql'],
+                    tags: ['blog'],
                 },
             },
         },

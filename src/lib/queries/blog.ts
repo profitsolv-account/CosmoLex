@@ -11,7 +11,13 @@ const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.
 const BASE_URL = `${API}/wp-json/wp/v2`;
 
 export const getBlogData = async (page: number): Promise<PageDataType> => {
-    const res = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`);
+    const res = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`,
+        {
+            next: {
+                tags: ['blog']
+            }
+        });
+
     const data = await res.json();
 
     if (!data) {

@@ -25,6 +25,8 @@ export async function POST(req: Request) {
         if (path.includes('home') || path === '/') {
             revalidateTag('home');
             return NextResponse.json({revalidated: true, path});
+        } else if (path.includes('blog')) {
+            revalidateTag('blog');
         } else if (path.includes('resource-hub') || path.includes('webinars')) {
             revalidateTag('resources');
         }

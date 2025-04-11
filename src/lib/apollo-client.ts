@@ -6,7 +6,6 @@ import {
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { RetryLink } from '@apollo/client/link/retry';
-import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
 
 export const cacheOption = "no-cache";//"cache-first";
 
@@ -53,15 +52,6 @@ const cache = new InMemoryCache({
         },
     },
 });
-
-if (typeof window !== "undefined") {
-    persistCache({
-        cache,
-        storage: new LocalStorageWrapper(window.localStorage),
-    }).catch((err) => {
-        console.error("Error persisting cache:", err);
-    });
-}
 
 const client = new ApolloClient({
     link: from([errorLink, retryLink, httpLink]),
