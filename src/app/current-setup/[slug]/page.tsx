@@ -6,6 +6,7 @@ import CurrentSetupTemplate from "@/components/templates/CurrentSetupTemplate";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {getLanguage} from "@/lib/helpers";
 
+export const dynamic = 'force-dynamic';
 
 type Params = {
     params: Promise<{slug: string}>;
@@ -53,4 +54,3 @@ export default async function SinglePage({params}: Params) {
    }
 }
 
-export const revalidate = 36000; // 10 hours

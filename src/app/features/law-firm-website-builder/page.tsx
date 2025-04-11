@@ -6,6 +6,8 @@ import {notFound} from "next/navigation";
 import PillarChildWithFormTemplate from "@/components/templates/pillar/PillarChildWithFormTemplate";
 import {getLanguage} from "@/lib/helpers";
 
+export const dynamic = 'force-dynamic';
+
 const getSlug = async () => {
     const lang = await getLanguage();
     let slug = 'features/law-firm-website-builder'
@@ -45,5 +47,3 @@ export default async function PillarPage() {
         notFound();
     }
 }
-
-export const revalidate = 36000; // 10 hours

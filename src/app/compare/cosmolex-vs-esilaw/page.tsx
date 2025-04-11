@@ -8,6 +8,8 @@ import {getCompareChildPageData, getFeatureData} from "@/lib/queries/compare";
 import CompareChildRestTemplate from "@/components/templates/CompareChildRestTemplate";
 import {getLanguage} from "@/lib/helpers";
 
+export const dynamic = 'force-dynamic';
+
 const getSlug = async () => {
     const lang = await getLanguage();
     let slug = 'compare/cosmolex-vs-esilaw'
@@ -42,5 +44,3 @@ export default async function PillarPage() {
         notFound();
     }
 }
-
-export const revalidate = 36000; // 10 hours

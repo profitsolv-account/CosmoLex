@@ -12,7 +12,7 @@ type ChildMenuProps = {
 };
 
 export const ChildMenu: FC<ChildMenuProps> = ({items, expandedSubMenus, toggleSubMenu}) => {
-    const pathname = usePathname();
+    const pathname = usePathname() || '';
     const isActive = (url: string) => {
         return pathname === url || url === pathname.slice(0, -1);
     };

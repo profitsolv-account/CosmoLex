@@ -17,7 +17,7 @@ type Props = {
 };
 
 export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
-    const pathname = usePathname();
+    const pathname = usePathname() || '';
     const [openMenu, setOpenMenu] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
     const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>(

@@ -1,43 +1,42 @@
 import { NextResponse } from 'next/server';
-import {revalidatePath, revalidateTag} from 'next/cache';
-import client from "@/lib/apollo-client";
+import { revalidatePath, revalidateTag } from 'next/cache';
 
-const REVALIDATE_SECRET='rev-token-122'
 
+const REVALIDATE_SECRET = 'rev-token-122';
 const baseUrl = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com/';
+
+
 const getPagePath = (url: string) => {
-    return new URL(url, baseUrl).pathname;
-}
+    return new URL(url, baseUrl).pathname.replace(/\/$/, '') || '/';
+};
 
 export async function POST(req: Request) {
-    try {
 
+    try {
         const { searchParams } = new URL(req.url);
         const token = searchParams.get('secret');
-
         if (token !== REVALIDATE_SECRET) {
             return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
         }
 
         const body = await req.json();
+        const path = getPagePath(body.post_url);
 
-        revalidatePath(getPagePath(body.post_url), 'page');
-        revalidatePath(getPagePath(body.post_url));
+        if (path.includes('home') || path === '/') {
+            revalidateTag('home');
+            return NextResponse.json({revalidated: true, path});
+        } else if (path.includes('resource-hub') || path.includes('webinars')) {
+            revalidateTag('resources');
+        }
 
-        revalidatePath(`/compare/`, "layout");
-        revalidatePath(`/features/[slug]`, "page");
-        revalidatePath(`/features/`, "layout");
-        revalidatePath(`/`, "layout");
-        revalidateTag('graphql');
+        revalidateTag(path);
+        revalidateTag(path.replace(/^\/+|\/+$/g, ''));
+        revalidatePath(path);
 
-        await client.clearStore();
-        await client.refetchQueries({ include: "all" });
+        return NextResponse.json({revalidated: true, path});
 
-        return NextResponse.json({ revalidated: true});
-
-
-    } catch (err) {
-        console.error(err);
-        return NextResponse.json({ message: 'Error revalidating' }, { status: 500 });
+    } catch (err: any) {
+        console.error('Revalidate error:', err);
+        return NextResponse.json({ message: 'Error revalidating', error: err.message }, { status: 500 });
     }
 }

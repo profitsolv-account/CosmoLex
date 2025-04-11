@@ -6,6 +6,7 @@ import {notFound} from "next/navigation";
 import PracticeTypesTemplate from "@/components/templates//PracticeTypesTemplate";
 import {getLanguage} from "@/lib/helpers";
 
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(): Promise<Metadata> {
     const lang = await getLanguage();
@@ -41,5 +42,3 @@ export default async function EnterPriseGradeSecurityPage() {
         notFound();
     }
 }
-
-export const revalidate = 36000; // 10 hours

@@ -6,6 +6,8 @@ import {notFound} from "next/navigation";
 import PillarChildTemplate from "@/components/templates/pillar/PillarChildTemplate";
 import {getLanguage} from "@/lib/helpers";
 
+export const dynamic = 'force-dynamic';
+
 const getSlug = async () => {
     const lang = await getLanguage();
     let slug = 'features/legal-accounting-software'
@@ -41,5 +43,3 @@ export default async function PillarPage() {
         notFound();
     }
 }
-
-export const revalidate = 36000; // 10 hours
