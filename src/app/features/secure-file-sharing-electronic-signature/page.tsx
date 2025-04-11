@@ -6,6 +6,7 @@ import {notFound} from "next/navigation";
 import FeatureDefaultTemplate from "@/components/templates/FeatureDefaultTemplate";
 import {getLeadersLogos} from "@/lib/queries/logos";
 import {getLanguage} from "@/lib/helpers";
+import {isProduction} from "@/helpers";
 
 export const dynamic = 'force-dynamic';
 
@@ -45,7 +46,9 @@ export default async function UserManagementPage() {
             videoSection,
             features,
             leaderLogos: logos,
-        }} />
+        }}
+         isProduction={isProduction()}
+        />
     } catch (error) {
         console.error(error);
         notFound();

@@ -7,6 +7,7 @@ import {Testimonials} from "@/components/blocks/testimonials";
 
 import {PageHeader} from "../blocks/headers/pageHeader";
 import {FreeTrialFormWidget} from "@/components/widgets/freeTrialFormWidget";
+import {isProduction} from "@/helpers";
 
 export default function CBAMembersTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
@@ -30,7 +31,7 @@ export default function CBAMembersTemplate({ pageData }: { pageData: PageDataTyp
                     <div>
                         <div className="relative">
                             <div className="max-w-[47.3125rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]">
-                                <FreeTrialFormWidget />
+                                <FreeTrialFormWidget isProduction={isProduction()} />
                             </div>
                         </div>
                     </div>

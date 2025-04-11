@@ -1,8 +1,10 @@
 "use client"
 import React, { useEffect, useRef } from 'react';
-import {isProduction} from "@/helpers";
 
-export const FreeTrialFormWidget = () => {
+type Props = {
+    isProduction: boolean
+}
+export const FreeTrialFormWidget = ({isProduction}:Props) => {
     const iframeContainerRef = useRef(null);
 
     useEffect(() => {
@@ -12,7 +14,7 @@ export const FreeTrialFormWidget = () => {
 
         const iframe = document.createElement('iframe');
 
-        if (isProduction()) {
+        if (isProduction) {
             iframe.src =
                 'https://profitsolv-billingplatform.azurewebsites.net/subscription-management/subscription-management.html?version=v2&businessUnit=cosmolex&productCatalog=CosmoLex&showOnlyMainProducts=true&showPreselectedSignUpForm=true&overrideHost=https://law.cosmolex.com';
         } else {

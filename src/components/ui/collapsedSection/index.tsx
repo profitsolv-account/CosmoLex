@@ -1,3 +1,4 @@
+"use client"
 import React, {FC, useState, useRef, useEffect, ReactNode} from "react";
 import classNames from "classnames";
 import OpenSectionIcon from "@/assets/img/icons/open-section.svg";

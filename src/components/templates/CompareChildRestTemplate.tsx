@@ -17,6 +17,7 @@ import {Globe,
     LineChart,
     DollarSign,
     Package,} from "lucide-react";
+import {isProduction} from "@/helpers";
 
 export default function CompareChildRestTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
@@ -38,7 +39,7 @@ export default function CompareChildRestTemplate({ pageData }: { pageData: PageD
                     <div>
                         <div className="relative">
                             <div className="max-w-[47.3125rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]">
-                                <FreeTrialFormWidget />
+                                <FreeTrialFormWidget isProduction={isProduction()} />
                             </div>
                         </div>
                     </div>

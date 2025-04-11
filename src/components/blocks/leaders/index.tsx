@@ -1,3 +1,4 @@
+"use client";
 import {Autoplay} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {LeaderLogos} from "@/types/logos";

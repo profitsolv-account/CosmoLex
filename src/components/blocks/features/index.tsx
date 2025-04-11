@@ -1,3 +1,4 @@
+"use client"
 import Check from "@/assets/img/icons/check.svg";
 import {PageDataType, SettingsType} from "@/types";
 import {get} from "lodash";

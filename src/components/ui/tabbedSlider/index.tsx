@@ -1,3 +1,4 @@
+"use client"
 import React, {FC, ReactNode, useRef, useState} from "react";
 import classNames from "classnames";
 import {Slider} from "@/components/ui/slider";

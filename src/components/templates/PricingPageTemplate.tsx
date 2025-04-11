@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
@@ -9,17 +8,19 @@ import {PriceComparison} from "@/components/blocks/priceComparison";
 import {AddonsBlock} from "@/components/blocks/addonsBlock";
 import {Faq} from "@/components/blocks/faq";
 import {PricingWidget} from "@/components/widgets/pricingWidget";
+import {isProduction} from "@/helpers";
 
 export default function PricingPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
     const faqs = pageData.faq || [];
     const features = pageData.pricingFeatures || [];
+
     return (
         <Layout pageData={pageData}>
             <PageHeader pageData={pageData} />
            <div className="relative">
                <div className="relative z-10">
-                   <PricingWidget />
+                   <PricingWidget isProduction={isProduction()} />
                </div>
                 <div className="bg-primary absolute w-full h-[25%] left-0 top-0 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem]" />
            </div>

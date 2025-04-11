@@ -9,17 +9,15 @@ import {Features} from "@/components/blocks/features";
 import classNames from "classnames";
 import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
 import {PageBlocksType, ToolsType} from "@/types/tools";
-import {Faq} from "@/components/blocks/faq";
 import {ColumnsSection} from "@/components/blocks/columnsSection";
 import Image from 'next/image';
 import VideoModal from "@/components/blocks/videoModal";
 import {FreeTrialFormWidget} from "@/components/widgets/freeTrialFormWidget";
 import {Leaders} from "@/components/blocks/leaders";
 
-export default function FeatureDefaultTemplate({ pageData }: { pageData: PageDataType }) {
+export default function FeatureDefaultTemplate({ pageData, isProduction }: { pageData: PageDataType, isProduction: boolean }) {
 
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
-    const faqs = pageData.faq || [];
     const pageBlocks: PageBlocksType = pageData.pageBlocks || {
         pageBlocksItems: []
     };
@@ -57,7 +55,7 @@ export default function FeatureDefaultTemplate({ pageData }: { pageData: PageDat
                     <div>
                         <div className="relative">
                             <div className="max-w-[47.3125rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]">
-                                <FreeTrialFormWidget />
+                                <FreeTrialFormWidget isProduction={isProduction} />
                             </div>
                         </div>
                     </div>

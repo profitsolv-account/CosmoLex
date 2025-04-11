@@ -1,18 +1,19 @@
 "use client"
-import React, {FC, Fragment} from 'react'
+import React from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
 import {Testimonials} from "@/components/blocks/testimonials";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {BarAssociationHeader} from "@/components/blocks/barAssociationHeader";
 import {FreeTrialFormWidget} from "@/components/widgets/freeTrialFormWidget";
+import {isProduction} from "@/helpers";
 
 type Props = {
     pageData: PageDataType;
     formId: string;
     routerName: string;
 }
-export default function BarAssociationsTemplate({ pageData, formId, routerName }: Props) {
+export default function BarAssociationsTemplate({ pageData }: Props) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
 
     return (
@@ -21,7 +22,7 @@ export default function BarAssociationsTemplate({ pageData, formId, routerName }
                 pageData={pageData}
                 className="mb-10"
                 rightSideContent={<>
-                    <FreeTrialFormWidget />
+                    <FreeTrialFormWidget isProduction={isProduction()} />
                 </>}
             />
             <Testimonials

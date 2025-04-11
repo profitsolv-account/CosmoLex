@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import Layout from "@/components/layout/layout";
 import {PageHeader} from "../blocks/headers/pageHeader";
@@ -9,6 +8,7 @@ import {Leaders} from "@/components/blocks/leaders";
 import {Features} from "../blocks/features";
 import {RatingBlock} from "@/components/blocks/ratingBlock";
 import {FreeTrialFormWidget} from "@/components/widgets/freeTrialFormWidget";
+import {isProduction} from "@/helpers";
 
 export default function RegisterPageTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
@@ -18,7 +18,7 @@ export default function RegisterPageTemplate({ pageData }: { pageData: PageDataT
             <RatingBlock className="bg-primary pb-[3.5625rem]" />
             <div className="relative">
                 <div className="max-w-[47.3125rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]">
-                    <FreeTrialFormWidget />
+                    <FreeTrialFormWidget isProduction={isProduction()} />
                 </div>
                 <div className="bg-primary absolute z-0 w-full h-[11.875rem] left-0 rounded-bl-[6.25rem] top-0" />
             </div>
