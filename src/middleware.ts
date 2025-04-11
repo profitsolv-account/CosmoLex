@@ -1,43 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
-import client from "@/lib/apollo-client";
-import {gql} from "@apollo/client";
-
-const redirectionCache: {
-    data: any[];
-    lastUpdated: number;
-    ttl: number;
-} = {
-    data: [],
-    lastUpdated: 0,
-    ttl: 60 * 1000 * 1000,
-};
+import {isProduction} from "@/helpers";
 
 const getRedirections = async () => {
-    const now = Date.now();
-
-    if (redirectionCache.data && now - redirectionCache.lastUpdated < redirectionCache.ttl) {
-        return redirectionCache.data;
+    let baseUrl = isProduction() ? 'https://www.cosmolex.com' : 'https://cosmolex-staging.vercel.app';
+    if (process.env.ENVIRONMENT === 'local') {
+        baseUrl = 'http://localhost:3000';
     }
 
-    const { data } = await client.query({
-        query: gql`
-            query GetRedirections {
-                redirections {
-                    source
-                    target
-                    status
-                    type
-                }
-            }
-        `,
-        fetchPolicy: "cache-first",
-        variables: {},
-    });
-
-    redirectionCache.data = data?.redirections || [];
-    redirectionCache.lastUpdated = now;
-
-    return redirectionCache.data;
+    const resp = await fetch(`${baseUrl}/api/redirects?secret=rev-token-122`);
+    const json = await resp.json();
+    if (!json?.redirections) {
+        return [];
+    }
+    return json.redirections;
 };
 
 export async function middleware(req: NextRequest) {

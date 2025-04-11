@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
 
-
 const REVALIDATE_SECRET = 'rev-token-122';
 const baseUrl = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com/';
 
@@ -21,6 +20,12 @@ export async function POST(req: Request) {
 
         const body = await req.json();
         const path = getPagePath(body.post_url);
+
+        if (path.includes('redirects')) {
+            revalidateTag('redirects');
+            console.log('Cleared redirects cache');
+            return NextResponse.json({ revalidated: true, path });
+        }
 
         if (path.includes('home') || path === '/') {
             revalidateTag('home');
