@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PillarPage() {
     try {
         const pageData = await getPageData(pageSlug);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList(pageSlug);
         const features = await getPageFeaturesData('features');
         return <PillarChildTemplate pageData={{

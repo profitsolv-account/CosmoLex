@@ -19,6 +19,9 @@ export default async function PillarPage({params}: Params) {
     try {
         const {slug} = await params;
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const features = await getPageFeaturesData('features');
         return <PillarChildTemplate pageData={{

@@ -3,6 +3,7 @@ import {getSEOData} from "@/lib/queries/seo";
 import {getPageData} from "@/lib/queries/wordpress";
 import {getResourcesData} from "@/lib/queries/resources";
 import ResourceHubTemplate from "@/components/templates/ResourceHubTemplate";
+import {notFound} from "next/navigation";
 
 const slug = 'resource-hub';
 
@@ -11,14 +12,21 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ResourceHubPage() {
-    const resources = await getResourcesData();
+  try {
+      const resources = await getResourcesData();
 
-    const pageData = await getPageData(slug);
-    return <ResourceHubTemplate pageData={{
-        ...pageData,
-        footerExtendedBg: false,
-        resources
-    }} />
+      const pageData = await getPageData(slug);
+      if (!pageData) {
+          notFound();
+      }
+      return <ResourceHubTemplate pageData={{
+          ...pageData,
+          footerExtendedBg: false,
+          resources
+      }} />
+  } catch(e: any) {
+      notFound();
+  }
 }
 
 export const revalidate = false;

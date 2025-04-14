@@ -20,6 +20,9 @@ export default async function PillarPage({params}: Params) {
     try {
         const {slug} = await params;
         const pageData = await getPageData(`/compare/${slug}`);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const compareSection = await getCompareChildPageData(`/compare/${slug}`);
         const features = await getFeatureData('/compare/cosmolex-vs-pclaw/');

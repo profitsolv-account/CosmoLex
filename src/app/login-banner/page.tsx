@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function SinglePage() {
    try {
        const pageData = await getPageData(slug);
+       if (!pageData) {
+           notFound();
+       }
        return <LoginBannerTemplate pageData={pageData} />
    } catch (error) {
        notFound();

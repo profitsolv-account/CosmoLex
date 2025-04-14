@@ -3,6 +3,7 @@ import {getSEOData} from "@/lib/queries/seo";
 import {getPageData} from "@/lib/queries/wordpress";
 import ReferralsTemplate from "@/components/templates/ReferralsTemplate";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
+import {notFound} from "next/navigation";
 
 const slug = 'referrals';
 
@@ -13,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ReferralsPage() {
     
     const pageData = await getPageData(slug);
+    if (!pageData) {
+        notFound();
+    }
     const testimonials = await getTestimonialsList();
     
     return <ReferralsTemplate pageData={{

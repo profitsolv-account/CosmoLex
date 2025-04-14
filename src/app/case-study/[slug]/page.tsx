@@ -21,6 +21,9 @@ export default async function Page({params}: Params) {
     try {
         const {slug} = await params;
         const pageData = await getPageData(`/case-study/${slug}`);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const compareSection = await getCompareChildPageData(`/case-study/${slug}`);
         const videoSection = await getVideoSection(`/case-study/${slug}`);

@@ -31,6 +31,9 @@ export default async function PillarPage() {
 
         const slug = await getSlug();
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
 
         const testimonials = await getTestimonialsList('legal-crm-software');
         const features = await getPageFeaturesData('features');

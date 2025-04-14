@@ -8,13 +8,13 @@ const POSTS_PER_PAGE = 10;
 const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
 const BASE_URL = `${API}/wp-json/wp/v2`;
 
-export const getKBCategoryData = async (slug: string, page: number): Promise<PageDataType> => {
+export const getKBCategoryData = async (slug: string, page: number): Promise<PageDataType | null> => {
     const taxonomy = 'epkb_post_type_1_category';
 
     const response = await fetch(`${BASE_URL}/${taxonomy}?slug=${slug}`);
     const data = await response.json();
     if (!data) {
-        throw new Error("Failed to fetch blog data");
+       return null;
     }
 
     const termId = data[0].id;

@@ -19,6 +19,9 @@ export default async function PracticeTypesPage({params}: Params) {
     try {
         const {slug} = await params;
         const pageData = await getPageData(`/practice-types/${slug}`);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const videoSection = await getVideoSection(`/practice-types/${slug}`);
 

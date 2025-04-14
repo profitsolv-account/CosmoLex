@@ -15,6 +15,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function SinglePage() {
    try {
        const pageData = await getPageData(slug);
+       if (!pageData) {
+           notFound();
+       }
        const podcasts = await getPodcastsData('50597');
        const testimonials = await getTestimonialsList();
        const features = await getPageFeaturesData('features');

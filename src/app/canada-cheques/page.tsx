@@ -18,6 +18,9 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 export default async function SinglePage({params}: Params) {
    try {
        const pageData = await getPageData(slug);
+         if (!pageData) {
+              notFound();
+         }
        return <PageTemplate pageData={pageData} />
    } catch (error) {
        notFound();

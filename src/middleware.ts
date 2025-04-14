@@ -1,18 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import {isProduction} from "@/helpers";
+import {notFound} from "next/navigation";
 
 const getRedirections = async () => {
-    let baseUrl = isProduction() ? 'https://www.cosmolex.com' : 'https://cosmolex-staging.vercel.app';
-    if (process.env.ENVIRONMENT === 'local') {
-        baseUrl = 'http://localhost:3000';
-    }
+  try {
+      let baseUrl = isProduction() ? 'https://www.cosmolex.com' : 'https://cosmolex-staging.vercel.app';
+      if (process.env.ENVIRONMENT === 'local') {
+          baseUrl = 'http://localhost:3000';
+      }
 
-    const resp = await fetch(`${baseUrl}/api/redirects?secret=rev-token-122`);
-    const json = await resp.json();
-    if (!json?.redirections) {
-        return [];
-    }
-    return json.redirections;
+      const resp = await fetch(`${baseUrl}/api/redirects?secret=rev-token-122`);
+      const json = await resp.json();
+      if (!json?.redirections) {
+          return [];
+      }
+      return json.redirections;
+  } catch(e: any) {
+      return []
+  }
 };
 
 export async function middleware(req: NextRequest) {

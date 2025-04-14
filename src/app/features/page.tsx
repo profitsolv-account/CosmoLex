@@ -33,6 +33,9 @@ export default async function FeaturesPage() {
         const slug = await getSlug();
 
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const videoSection = await getVideoSection(slug);
 
