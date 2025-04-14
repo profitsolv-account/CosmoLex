@@ -5,7 +5,8 @@ export async function GET(
     req: NextRequest,
     context: any
 ) {
-    const slugPath = context.params.slug.join('/');
+    const {slug} = await context.params;
+    const slugPath = slug.join('/');
 
     if (!slugPath.endsWith('.xml')) {
         return new Response('Invalid sitemap path', { status: 404 });
