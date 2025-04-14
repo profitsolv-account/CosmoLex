@@ -46,7 +46,7 @@ export const getPostSEOData = async (pageSlug: string) => {
     const { data } = await client.query({
         query: gql`
             query GetHomePageSEO {
-                post(id: "${pageSlug}" , idType: URI) {
+                post(id: "${pageSlug}" , idType: SLUG) {
                     id
                     title
                     seo {
