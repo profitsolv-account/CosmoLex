@@ -174,40 +174,55 @@ export const getPageData = async (
             },
         },
     });
+    try {
+        if (!data.page) {
+            throw new Error("Page not found");
+        }
 
-    if (!data.page) {
-        throw new Error("Page not found");
+        const pageData = get(data, 'page', {});
+        const title = get(data, 'page.pageSettings.title', null) || get(data, 'page.title', '');
+        const subheading = get(data, 'page.pageSettings.subheading', '');
+        const features = get(data, 'page.featuresSection.features', []);
+        const faq = get(data, 'page.faq.faq', []);
+        const pricingFeatures = (get(data, 'page.pricingSection.pricingFeatures', []) || []).map((feature: {
+            type: string[],
+            content: string
+        }) => ({
+            type: feature.type[0],
+            content: feature.content
+        }));
+        const tools = data.page.tools;
+        const pageBlocks = data.page.pageBlocks;
+
+        return {
+            ...pageData,
+            featuredPost: await getLatestGuide(),
+            menus: await getAllMenus(),
+            settings: await getSiteSettings(),
+            title,
+            description: get(data, 'page.content', ''),
+            hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
+            heroImage: get(data, 'page.pageSettings.heroImage', null),
+            features,
+            faq,
+            pricingFeatures,
+            subheading,
+            tools,
+            pageBlocks,
+            code: get(data, 'page.pageSettings.code', ''),
+        };
+    } catch(error: any) {
+        if (
+            error?.networkError?.result === undefined &&
+            error?.message?.includes("Unexpected token '<'")
+        ) {
+            console.error(`Invalid JSON (likely HTML) from GraphQL for slug: ${pageSlug}`);
+        } else {
+            console.error(`GraphQL error for slug: ${pageSlug}`, error);
+        }
+
+        throw error;
     }
-
-    const pageData = get(data, 'page', {});
-    const title = get(data, 'page.pageSettings.title', null) || get(data, 'page.title', '');
-    const subheading = get(data, 'page.pageSettings.subheading', '');
-    const features = get(data, 'page.featuresSection.features', []);
-    const faq = get(data, 'page.faq.faq', []);
-    const pricingFeatures = (get(data, 'page.pricingSection.pricingFeatures', []) || []).map((feature: {type: string[], content: string}) => ({
-        type: feature.type[0],
-        content: feature.content
-    }));
-    const tools = data.page.tools;
-    const pageBlocks = data.page.pageBlocks;
-
-    return {
-        ...pageData,
-        featuredPost: await getLatestGuide(),
-        menus: await getAllMenus(),
-        settings: await getSiteSettings(),
-        title,
-        description: get(data, 'page.content', ''),
-        hero: get(data, 'page.pageSettings.heroImage.node.sourceUrl', ''),
-        heroImage: get(data, 'page.pageSettings.heroImage', null),
-        features,
-        faq,
-        pricingFeatures,
-        subheading,
-        tools,
-        pageBlocks,
-        code: get(data, 'page.pageSettings.code', ''),
-    };
 };
 
 
