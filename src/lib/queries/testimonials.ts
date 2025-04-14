@@ -110,5 +110,5 @@ export const getCSTestimonialsList = async (): Promise<CSTestimonial[]> => {
         content: get(testimonial, 'node.content', ''),
         location: get(testimonial, 'node.csTestimonials.location', ''),
         rating: get(testimonial, 'node.csTestimonials.rating', ''),
-    }));
+    })).sort((a: {rating: number}, b: {rating: number}) => b.rating - a.rating);
 }

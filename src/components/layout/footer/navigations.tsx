@@ -17,6 +17,7 @@ export const Navigations: FC<Props> = ({pageData}) => {
         return pageData.settings[name] ?? '';
     }
 
+    const currentYear = String(new Date().getFullYear());
     return (<>
         <div className="w-full p-10 py-20 pb-9 relative bg-primary rounded-tr-[6.25rem]">
 
@@ -84,7 +85,7 @@ export const Navigations: FC<Props> = ({pageData}) => {
                 <div className="container max-w-[79.125rem] flex flex-col justify-between mx-auto gap-10 lg:flex-row">
                     <div className="block">
                         <div className="text-white text-xs font-normal font-['Inter'] leading-[0.9375rem]">
-                            <p className="mb-3" dangerouslySetInnerHTML={{__html: getPageSettings('copyrightText').replace('©', '<br /><br />©')}} />
+                            <p className="mb-3" dangerouslySetInnerHTML={{__html: getPageSettings('copyrightText').replace('©', '<br /><br />©').replace('{{year}}', currentYear)}} />
                         </div>
 
                         <div className="flex gap-3 mt-7 items-center">
