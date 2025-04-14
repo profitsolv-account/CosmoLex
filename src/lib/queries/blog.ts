@@ -10,7 +10,7 @@ const POSTS_PER_PAGE = 10;
 const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
 const BASE_URL = `${API}/wp-json/wp/v2`;
 
-export const getBlogData = async (page: number): Promise<PageDataType> => {
+export const getBlogData = async (page: number): Promise<PageDataType | null> => {
     const res = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`,
         {
             next: {
@@ -21,7 +21,7 @@ export const getBlogData = async (page: number): Promise<PageDataType> => {
     const data = await res.json();
 
     if (!data) {
-        throw new Error("Failed to fetch blog data");
+        return null;
     }
 
     const totalPosts = +(res.headers.get('X-WP-Total') || 0);

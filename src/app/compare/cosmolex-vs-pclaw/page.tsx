@@ -30,6 +30,9 @@ export default async function PillarPage() {
         const slug = await getSlug();
 
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const compareSection = await getCompareChildPageData(slug);
         const features = await getFeatureData('/compare/cosmolex-vs-pclaw');

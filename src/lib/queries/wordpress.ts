@@ -118,65 +118,66 @@ export const getLatestPosts = async (postsCount = 1): Promise<FeaturedPostType[]
 export const getPageData = async (
     pageSlug: string,
     options: { fetchTools?: boolean; fetchBlocks?: boolean } = {}
-): Promise<PageDataType> => {
-    const query = gql`
-        query GetPage($id: ID!) {
-            page(id: $id, idType: URI) {
-                id
-                title
-                date
-                content
-                pageSettings {
-                    ...PageSettingsFragment
-                }
-                tools {
-                    ...ToolsFragment
-                }
-                pageBlocks {
-                    ...PageBlocksFragment
-                }
-                faq {
+): Promise<PageDataType | null> => {
+    try {
+        const query = gql`
+            query GetPage($id: ID!) {
+                page(id: $id, idType: URI) {
+                    id
+                    title
+                    date
+                    content
+                    pageSettings {
+                        ...PageSettingsFragment
+                    }
+                    tools {
+                        ...ToolsFragment
+                    }
+                    pageBlocks {
+                        ...PageBlocksFragment
+                    }
                     faq {
-                        answer
-                        fieldGroupName
-                        question
+                        faq {
+                            answer
+                            fieldGroupName
+                            question
+                        }
                     }
-                }
-                pricingSection {
-                    pricingOption
-                    pricingFeatures {
-                        type
-                        content
+                    pricingSection {
+                        pricingOption
+                        pricingFeatures {
+                            type
+                            content
+                        }
                     }
-                }
-                featuresSection {
-                    features {
-                        title
-                        description
+                    featuresSection {
+                        features {
+                            title
+                            description
+                        }
                     }
                 }
             }
-        }
-        ${PAGE_SETTINGS_FRAGMENT}
-        ${TOOLS_FRAGMENT}
-        ${PAGE_BLOCKS_FRAGMENT}
-    `;
+            ${PAGE_SETTINGS_FRAGMENT}
+            ${TOOLS_FRAGMENT}
+            ${PAGE_BLOCKS_FRAGMENT}
+        `;
 
-    const { data } = await client.query({
-        query,
-        variables: { id: pageSlug },
-        fetchPolicy: cacheOption,
-        context: {
-            fetchOptions: {
-                next: {
-                    tags: [pageSlug],
+        const { data } = await client.query({
+            query,
+            variables: { id: pageSlug },
+            fetchPolicy: cacheOption,
+            context: {
+                fetchOptions: {
+                    next: {
+                        tags: [pageSlug],
+                    },
                 },
             },
-        },
-    });
-    try {
+        });
+
         if (!data.page) {
-            throw new Error("Page not found");
+            return null;
         }
 
         const pageData = get(data, 'page', {});
@@ -220,8 +221,7 @@ export const getPageData = async (
         } else {
             console.error(`GraphQL error for slug: ${pageSlug}`, error);
         }
-
-        throw error;
+        return null;
     }
 };
 
@@ -263,7 +263,7 @@ export const getPricingPlans = async (pageSlug: string): Promise<PricingPlan[]> 
 
 }
 
-export const getPostData = async (ps: string): Promise<PostDataType> => {
+export const getPostData = async (ps: string): Promise<PostDataType | null> => {
 
     const pageSlug = `/blog/${ps}`;
 
@@ -304,7 +304,7 @@ export const getPostData = async (ps: string): Promise<PostDataType> => {
     });
 
     if (!data.post) {
-        throw new Error("Post not found");
+        return null;
     }
 
     const post = get(data, 'post', {});

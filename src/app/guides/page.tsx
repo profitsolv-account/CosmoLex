@@ -13,6 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ResourceHubPage() {
     const knowledgeBaseCategories = await getKBData();
     const pageData = await getPageData(slug);
+    if (!pageData) {
+        return null;
+    }
 
     return <GuidesTemplate pageData={{
         ...pageData,

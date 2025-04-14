@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AffinityBarPartnersPage() {
     try {
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
        const affinityBarLogos = await getAffinityBarlogos();
        return <PartnersStrategicPageTemplate pageData={{
             ...pageData,

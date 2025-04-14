@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ReportAndReportingPage() {
     try {
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const videoSection = await getVideoSection(slug);
         const features = await getPageFeaturesData('features');

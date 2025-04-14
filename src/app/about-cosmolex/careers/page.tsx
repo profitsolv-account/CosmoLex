@@ -3,6 +3,7 @@ import {getSEOData} from "@/lib/queries/seo";
 import {getPageData} from "@/lib/queries/wordpress";
 import CareersTemplate from "@/components/templates/CareersTemplate";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
+import {notFound} from "next/navigation";
 
 const slug = '/about-cosmolex/careers/';
 
@@ -12,14 +13,22 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function CareersPage() {
     
-    const pageData = await getPageData(slug);
-    const testimonials = await getTestimonialsList();
-    
-    return <CareersTemplate pageData={{
-        ...pageData,
-        testimonials,
-        footerExtendedBg: true,
-    }} />
+  try {
+      const pageData = await getPageData(slug);
+      if (!pageData) {
+          notFound();
+      }
+
+      const testimonials = await getTestimonialsList();
+
+      return <CareersTemplate pageData={{
+          ...pageData,
+          testimonials,
+          footerExtendedBg: true,
+      }} />
+  } catch(e: any) {
+      notFound();
+  }
 }
 
 export const revalidate = false;

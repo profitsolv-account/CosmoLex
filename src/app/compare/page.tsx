@@ -15,6 +15,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ComparePage() {
     try {
         const pageData = await getPageData(pageSlug);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const compareSelector = await getComparePageData();
 

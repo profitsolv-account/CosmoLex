@@ -13,6 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function DemoPage() {
     try {
         const pageData = await getPageData("demo");
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const logos = await getLeadersLogos();
 

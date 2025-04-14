@@ -23,6 +23,9 @@ export default async function CertifiedConsultantPage({ params, searchParams }: 
         const { s, cats, locs } = await searchParams;
         const {page} = await params;
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
         const data = await getDirectoriesData(+page, { s, cats, locs });
         const dataCats = await getCategories();
         return <DirectoriesTemplate pageData={{

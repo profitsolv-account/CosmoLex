@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AboutUsPage() {
     try {
         const pageData = await getPageData(pageSlug);
+        if (!pageData) {
+            notFound();
+        }
         const members = await getMembersData('about-us')
         return <AboutUsTemplate pageData={{
             ...pageData,

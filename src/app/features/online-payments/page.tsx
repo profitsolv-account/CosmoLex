@@ -28,6 +28,9 @@ export default async function PillarPage() {
     try {
         const slug = await getSlug();
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList('online-payments');
         const features = await getPageFeaturesData('features');
         return <OnlinePaymentsTemplate pageData={{

@@ -30,6 +30,9 @@ export default async function SinglePage() {
                break;
        }
        const pageData = await getPageData(slug);
+       if (!pageData) {
+           notFound();
+       }
        return <PageTemplate pageData={pageData} />
    } catch (error) {
        notFound();

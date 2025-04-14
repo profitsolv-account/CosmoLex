@@ -25,6 +25,9 @@ export default async function BlogSinglePage({ params }: Params) {
    try {
        const {page} = await params;
        const pageData = await getBlogData(+page);
+       if (!pageData) {
+           notFound();
+       }
        return <BlogTemplate pageData={pageData} page={+page} />
    } catch(error) {
        notFound();

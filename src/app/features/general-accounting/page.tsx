@@ -29,6 +29,9 @@ export default async function SinglePage() {
    try {
        const pageSlug = await getSlug();
        const pageData = await getPageData(pageSlug);
+       if (!pageData) {
+           notFound();
+       }
        const testimonials = await getTestimonialsList();
        const videoSection = await getVideoSection(pageSlug);
        const features = await getPageFeaturesData('features');

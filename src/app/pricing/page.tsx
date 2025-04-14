@@ -12,6 +12,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PricingPage() {
     try {
         const pageData = await getPageData("pricing");
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const pricingPlans = await getPricingPlans('pricing');
         return <PricingPageTemplate pageData={{

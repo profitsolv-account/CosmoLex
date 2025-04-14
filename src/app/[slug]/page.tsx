@@ -23,10 +23,16 @@ export async function generateMetadata({params}: Params): Promise<Metadata> {
 
 export default async function SinglePage({params}: Params) {
    try {
+       const invalidStaticPaths = ['.php'];
        const {slug} = await params;
        const newSlug = await getSlug(slug);
-
+       if (invalidStaticPaths.some(ext => slug.endsWith(ext))) {
+           notFound();
+       }
        const pageData = await getPageData(newSlug);
+       if (!pageData) {
+           notFound();
+       }
        return <PageTemplate pageData={pageData} />
    } catch (error) {
        notFound();

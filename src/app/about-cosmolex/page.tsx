@@ -16,6 +16,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AboutCosmolexPage() {
     try {
         const pageData = await getPageData(pageSlug);
+        if (!pageData) {
+            notFound();
+        }
         const logos = await getLeadersLogos();
         const bar = await getBarsData(pageSlug);
         return <AboutCosmolexTemplate pageData={{

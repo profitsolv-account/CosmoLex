@@ -39,6 +39,9 @@ export default async function SinglePage({params}: Params) {
        }
 
        const pageData = await getPageData(pageSlug);
+       if (!pageData) {
+           notFound();
+       }
        const testimonials = await getTestimonialsList();
        const videoSection = await getVideoSection(pageSlug);
        return <CurrentSetupTemplate

@@ -26,6 +26,9 @@ export default async function CertifiedConsultantPage({ searchParams }: Props) {
         const { s, cats, locs } = await searchParams;
 
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
         const data = await getDirectoriesData(1, { s, cats, locs });
         const dataCats = await getCategories();
 

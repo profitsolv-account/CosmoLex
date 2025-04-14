@@ -18,6 +18,9 @@ export default async function BarAssociationPage({params}: Params) {
     try {
         const {slug} = await params;
         const pageData = await getPageData(`/partners/strategic/${slug}`);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         return <BarAssociationsTemplate
             pageData={{

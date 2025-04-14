@@ -34,6 +34,9 @@ export default async function UserManagementPage() {
         }
 
         const pageData = await getPageData(slug);
+        if (!pageData) {
+            notFound();
+        }
         const testimonials = await getTestimonialsList();
         const videoSection = await getVideoSection(slug);
         const features = await getPageFeaturesData('features');

@@ -20,7 +20,9 @@ export default async function SinglePage({params}: Params) {
    try {
        const pageData = await getPageData(slug);
        const csTestimonials = await getCSTestimonialsList();
-
+       if (!pageData) {
+           notFound();
+       }
        return <HappyCustomersTemplate pageData={{
            ...pageData,
            csTestimonials
