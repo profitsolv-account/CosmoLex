@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import {isProduction} from "@/helpers";
 
 export async function GET(
     req: NextRequest,
@@ -26,10 +27,18 @@ export async function GET(
         );
 
 
-        xml = xml.replace(
-            /<loc>https:\/\/wordpress-prod\.cosmolex\.com\/(.*?)<\/loc>/g,
-            (_match, path) => `<loc>${currentDomain}/${path}</loc>`
-        );
+        if (isProduction()) {
+            xml = xml.replace(
+                /<loc>https:\/\/wordpress-prod\.cosmolex\.com\/(.*?)<\/loc>/g,
+                (_match, path) => `<loc>${currentDomain}/${path}</loc>`
+            );
+        } else {
+            xml = xml.replace(
+                /<loc>https:\/\/wordpress-staging\.cosmolex\.com\/(.*?)<\/loc>/g,
+                (_match, path) => `<loc>${currentDomain}/${path}</loc>`
+            );
+        }
+
 
         // add new code here
         xml = xml.replace(
