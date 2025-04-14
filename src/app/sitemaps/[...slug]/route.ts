@@ -27,7 +27,7 @@ export async function GET(
 
 
         xml = xml.replace(
-            /<loc>https:\/\/cosmonew1\.wpenginepowered\.com\/(.*?)<\/loc>/g,
+            /<loc>https:\/\/wordpress-prod\.cosmolex\.com\/(.*?)<\/loc>/g,
             (_match, path) => `<loc>${currentDomain}/${path}</loc>`
         );
 
