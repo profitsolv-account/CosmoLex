@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from 'react';
-import Script from 'next/script';
+import { useEffect, useState } from "react";
 import classNames from "classnames";
+import { usePathname } from "next/navigation";
+import Script from "next/script";
 
 declare global {
     interface Window {
@@ -13,152 +14,148 @@ declare global {
 }
 
 const getCrossSellRouting = () => {
-    let crossSellRouting = typeof window !== 'undefined' && window.ppcUrlCookiePart2
-        ? window.ppcUrlCookiePart2('cross_sell_routing')
+    const crossSellRouting = typeof window !== "undefined" && window.ppcUrlCookiePart2
+        ? window.ppcUrlCookiePart2("cross_sell_routing")
         : null;
+    return crossSellRouting && crossSellRouting !== "undefined" ? crossSellRouting : null;
+};
 
-    if (crossSellRouting && crossSellRouting !== "undefined") {
-        console.log(crossSellRouting);
-    } else {
-        crossSellRouting = null;
-    }
+const loadScript = (src: string): Promise<void> => {
+    return new Promise((resolve, reject) => {
+        if (document.querySelector(`script[src="${src}"]`)) {
+            resolve();
+            return;
+        }
 
-    return crossSellRouting;
+        const script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(`Failed to load ${src}`);
+        document.body.appendChild(script);
+    });
 };
 
 const FormContent = () => {
+    const pathname = usePathname();
+
     useEffect(() => {
         const loadHubSpotForm = () => {
-            if (window.hbspt) {
-                window.hbspt.forms.create({
-                    region: "na1",
-                    portalId: "20899921",
-                    formId: "92f180f1-c843-43a1-8ab2-48ffd8302e8f",
-                    inlineMessage: 'Thanks for scheduling a demo!',
-                    target: '#hubspotFormContainer',
-                    translations: {
-                        en: {
-                            submitText: "Request a Demo",
-                        }
+            const container = document.getElementById("hubspotFormContainer");
+            if (container) container.innerHTML = "";
+
+            window.hbspt?.forms.create({
+                region: "na1",
+                portalId: "20899921",
+                formId: "92f180f1-c843-43a1-8ab2-48ffd8302e8f",
+                inlineMessage: "Thanks for scheduling a demo!",
+                target: "#hubspotFormContainer",
+                translations: {
+                    en: {
+                        submitText: "Request a Demo",
                     },
-                    onFormReady: (formElement: HTMLElement) => {
-                        const crossSellRouting = getCrossSellRouting();
-                        const inputField = formElement.querySelector('input[name="cross_sell_routing"]') as HTMLInputElement;
-                        if (inputField) {
-                            inputField.value = crossSellRouting || '';
-                        }
-                    },
-                    onFormSubmit: (formElement: HTMLElement) => {
-                        const formData = {
-                            firstname: encodeURIComponent((formElement.querySelector('input[name="firstname"]') as HTMLInputElement)?.value || ''),
-                            lastname: encodeURIComponent((formElement.querySelector('input[name="lastname"]') as HTMLInputElement)?.value || ''),
-                            company: encodeURIComponent((formElement.querySelector('input[name="company"]') as HTMLInputElement)?.value || ''),
-                            email: encodeURIComponent((formElement.querySelector('input[name="email"]') as HTMLInputElement)?.value || ''),
-                            phone: encodeURIComponent((formElement.querySelector('input[name="phone"]') as HTMLInputElement)?.value || ''),
-                            selectedCountry: encodeURIComponent((formElement.querySelector('select[name="country_list"]') as HTMLSelectElement)?.value || ''),
-                            totalFirmSize: encodeURIComponent((formElement.querySelector('select[name="total_firm_size"]') as HTMLSelectElement)?.value || ''),
-                        };
-                        setTimeout(() => {
-                            window.location.href = `/demo/?email=${formData.email}&firstname=${formData.firstname}&lastname=${formData.lastname}&company=${formData.company}&phone=${formData.phone}&selectedCountry=${formData.selectedCountry}&total_firm_size=${formData.totalFirmSize}`;
-                        }, 250);
+                },
+                onFormReady: (formElement: HTMLElement) => {
+                    const inputField = formElement.querySelector(
+                        'input[name="cross_sell_routing"]'
+                    ) as HTMLInputElement;
+                    if (inputField) {
+                        inputField.value = getCrossSellRouting() || "";
                     }
-                });
+                },
+                onFormSubmit: (formElement: HTMLElement) => {
+                    const getVal = (selector: string) =>
+                        encodeURIComponent(
+                            (formElement.querySelector(selector) as HTMLInputElement | HTMLSelectElement)?.value || ""
+                        );
+                    const formData = {
+                        firstname: getVal('input[name="firstname"]'),
+                        lastname: getVal('input[name="lastname"]'),
+                        company: getVal('input[name="company"]'),
+                        email: getVal('input[name="email"]'),
+                        phone: getVal('input[name="phone"]'),
+                        selectedCountry: getVal('select[name="country_list"]'),
+                        totalFirmSize: getVal('select[name="total_firm_size"]'),
+                    };
+                    setTimeout(() => {
+                        window.location.href = `/demo/?${new URLSearchParams(formData).toString()}`;
+                    }, 250);
+                },
+            });
+        };
+
+        const init = async () => {
+            try {
+                await loadScript("https://js.hsforms.net/forms/v2-legacy.js");
+                await loadScript("https://js.hsforms.net/forms/v2.js");
+
+                if (window.hbspt) {
+                    setTimeout(loadHubSpotForm, 200);
+                }
+            } catch (err) {
+                console.error("Failed to load HubSpot script:", err);
             }
         };
 
-        if (typeof window !== 'undefined' && window.hbspt) {
-            loadHubSpotForm();
-        }
-    }, []);
-
+        init();
+    }, [pathname]);
 
     return <div id="hubspotFormContainer"></div>;
 };
 
 type Props = {
     className?: string;
-}
+};
 
-const HubSpotForm = ({className}: Props) => {
+const HubSpotForm = ({ className }: Props) => {
     const [chiliPiperLoaded, setChiliPiperLoaded] = useState(false);
 
     useEffect(() => {
         const handleChiliPiper = () => {
             if (!window.ChiliPiper) {
-                console.warn("ChiliPiper is not defined. Retrying...");
+                console.warn("ChiliPiper is not defined.");
                 return;
             }
+
             const tenantDomain = "profitsolv";
-            var routerName;
-            var leadValues: any = {};
-            var uri = decodeURIComponent(
-                window.location.href.split("?").length > 1 ? window.location.href.split("?")[1].replace(/\+/g, " ") : ""
-            );
-            var urlParams = new URLSearchParams(uri);
-            var entries = urlParams.entries();
-            var valid = false;
-            for (const [key, value] of entries) {
-                if (key.toLowerCase().includes("email")) {
-                    valid = true;
-                }
+            let routerName = "";
+            const leadValues: Record<string, string> = {};
+            const uri = decodeURIComponent(window.location.search.replace(/^\?/, "").replace(/\+/g, " "));
+            const urlParams = new URLSearchParams(uri);
+            let valid = false;
+
+            for (const [key, value] of urlParams.entries()) {
+                if (key.toLowerCase().includes("email")) valid = true;
                 leadValues[key] = value;
             }
-            if (valid) {
-                const cross_sell_routing = getCrossSellRouting();
-                //checking cross sell routing cookie
-                if(cross_sell_routing != null && cross_sell_routing != "" && cross_sell_routing != "undefined"){
-                    if(cross_sell_routing == "CL Pay"){
-                        routerName = "cosmolexpay";
-                    }else if(cross_sell_routing == "CL CRM"){
-                        routerName = "cosmolex-crm";
-                    }else if(cross_sell_routing == "CL LS"){
-                        routerName = "cosmolex-lex-share";
-                    }else if(cross_sell_routing == "CL Website"){
-                        routerName = "cosmolex-websites";
-                    }else{
-                        //console.log(leadValues['selectedCountry']);
-                        routerName = "lcs-cl-us-consultation-call";
-                    }
 
-                }else{
-                    //setting router name  based on country
-                    if(leadValues['selectedCountry'] == "United States"){
-                        //checking firm size here
-                        if(leadValues['total_firm_size'] != "1-20 employees"){
-                            routerName = "lcs-cl-enterprise-consultation-call";
-                        }else{
-                            routerName = "lcs-cl-us-consultation-call";
-                        }
+            if (!valid) return;
 
-
-                    }else if(leadValues['selectedCountry'] == "Canada") {
-                        //checking firm size here
-                        if(leadValues['total_firm_size'] != "1-20 employees"){
-                            routerName = "lcs-cl-enterprise-consultation-call";
-                        }else{
-                            routerName = "lcs-cl-ca-consultation-call";
-                        }
-
-
-                    }else{
-                        //checking firm size here
-                        if(leadValues['total_firm_size'] != "1-20 employees"){
-                            routerName = "lcs-cl-enterprise-consultation-call";
-
-                        }else{
-                            routerName = "lcs-cl-us-consultation-call";
-                        }
-
-                    }
+            const cross_sell_routing = getCrossSellRouting();
+            if (cross_sell_routing) {
+                routerName = {
+                    "CL Pay": "cosmolexpay",
+                    "CL CRM": "cosmolex-crm",
+                    "CL LS": "cosmolex-lex-share",
+                    "CL Website": "cosmolex-websites",
+                }[cross_sell_routing] || "lcs-cl-us-consultation-call";
+            } else {
+                const isEnterprise = leadValues["total_firm_size"] !== "1-20 employees";
+                const country = leadValues["selectedCountry"];
+                if (country === "United States") {
+                    routerName = isEnterprise ? "lcs-cl-enterprise-consultation-call" : "lcs-cl-us-consultation-call";
+                } else if (country === "Canada") {
+                    routerName = isEnterprise ? "lcs-cl-enterprise-consultation-call" : "lcs-cl-ca-consultation-call";
+                } else {
+                    routerName = isEnterprise ? "lcs-cl-enterprise-consultation-call" : "lcs-cl-us-consultation-call";
                 }
-                console.log(routerName);
-                window.ChiliPiper.submit(tenantDomain, routerName, {
-                    map: true,
-                    lead: leadValues,
-                });
-                console.log(leadValues);
             }
 
+            console.log("ChiliPiper route:", routerName);
+            window.ChiliPiper.submit(tenantDomain, routerName, {
+                map: true,
+                lead: leadValues,
+            });
         };
 
         if (chiliPiperLoaded) {
@@ -169,22 +166,17 @@ const HubSpotForm = ({className}: Props) => {
     return (
         <div>
             <Script
-                src="//js.hsforms.net/forms/v2-legacy.js"
-                strategy="beforeInteractive"
-            />
-            <Script
-                src="//js.hsforms.net/forms/v2.js"
-                strategy="beforeInteractive"
-            />
-            <Script
                 src="//js.chilipiper.com/marketing.js"
                 strategy="lazyOnload"
-                onLoad={() => {
-                    setChiliPiperLoaded(true);
-                }}
+                onLoad={() => setChiliPiperLoaded(true)}
             />
             <div className="relative">
-                <div className={classNames("max-w-[40rem] min-h-[31.25rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]", className)}>
+                <div
+                    className={classNames(
+                        "max-w-[40rem] min-h-[31.25rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]",
+                        className
+                    )}
+                >
                     <FormContent />
                 </div>
             </div>
