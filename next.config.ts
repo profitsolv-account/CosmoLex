@@ -43,6 +43,7 @@ const nextConfig: NextConfig = {
                 pathname: '/wp-content/uploads/**',
             },
         ],
+        minimumCacheTTL: 2678400,
     },
 
     allowedDevOrigins: ['*', 'cl.com'],
