@@ -9,9 +9,20 @@ type Props = {
     target?: string;
     dangerouslySetInnerHTML?: {__html: string};
     rel?: string;
+    useDefault?: boolean
 }
 
-export const CustomLink: FC<Props> = ({href, children, className, onClick, target, dangerouslySetInnerHTML, rel}) => {
+export const CustomLink: FC<Props> = ({href, children, className, onClick, target, dangerouslySetInnerHTML, rel, useDefault}) => {
+    if (useDefault) {
+        return <a
+            href={href}
+            className={className}
+            onClick={onClick}
+            target={target}
+            rel={rel}
+        >{children}</a>
+    }
+
     if (dangerouslySetInnerHTML?.__html) {
         return <Link
             href={href}

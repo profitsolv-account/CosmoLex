@@ -36,8 +36,8 @@ export const Features = ({pageData, className}: Props) => {
                 </p>
 
                 <div className="flex gap-5  items-center flex-col sm:flex-row md:justify-center pt-10">
-                    <CustomLink href={settings["demoLink"] || ''} className="base-btn md:px-7 hover:bg-primary-dark hover:text-white">Request demo</CustomLink>
-                    <CustomLink href={settings["freeTrialLink"] || ''} className="base-btn md:px-7 bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark">Try for free</CustomLink>
+                    <CustomLink useDefault href={settings["demoLink"] || ''} className="base-btn md:px-7 hover:bg-primary-dark hover:text-white">Request demo</CustomLink>
+                    <CustomLink useDefault href={settings["freeTrialLink"] || ''} className="base-btn md:px-7 bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark">Try for free</CustomLink>
                 </div>
             </div>
 

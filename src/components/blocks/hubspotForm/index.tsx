@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import classNames from "classnames";
-import {usePathname} from "next/navigation";
 
 declare global {
     interface Window {
@@ -28,7 +27,6 @@ const getCrossSellRouting = () => {
 };
 
 const FormContent = () => {
-    const pathname = usePathname();
     useEffect(() => {
         const loadHubSpotForm = () => {
             if (window.hbspt) {
@@ -71,7 +69,7 @@ const FormContent = () => {
         if (typeof window !== 'undefined' && window.hbspt) {
             loadHubSpotForm();
         }
-    }, [pathname]);
+    }, []);
 
 
     return <div id="hubspotFormContainer"></div>;

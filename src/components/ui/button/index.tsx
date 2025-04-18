@@ -9,7 +9,8 @@ type Props = {
     variant?: 'primary' | 'secondary';
     type?: 'button' | 'link';
     href?: string;
-    target?: string
+    target?: string;
+    useDefault?: boolean;
 }
 export const Button: FC<Props> = ({
    children,
@@ -17,10 +18,12 @@ export const Button: FC<Props> = ({
    onClick,
     href,
     target,
+    useDefault,
    variant = 'primary',
 }) => {
 
     return <CustomLink
+        useDefault={useDefault}
         href={href || "#"}
         target={target || ""}
         className={classNames(
