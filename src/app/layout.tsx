@@ -5,6 +5,7 @@ import "./globals.css";
 import Script from "next/script";
 import {isProduction} from "@/helpers";
 import {GTMPageView} from "@/components/common/GTMPageView";
+import {RouteProgress} from "@/components/common/RouteProgress";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -46,7 +47,7 @@ export default function RootLayout({children}: Readonly<{
                     style={{ display: 'none', visibility: 'hidden' }}
                 ></iframe>
             </noscript>}
-
+        <RouteProgress />
             {children}
             <GTMPageView />
         </body>
