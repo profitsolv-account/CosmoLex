@@ -4,6 +4,7 @@ import "./icons.css";
 import "./globals.css";
 import Script from "next/script";
 import {isProduction} from "@/helpers";
+import {GTMPageView} from "@/components/common/GTMPageView";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -47,6 +48,7 @@ export default function RootLayout({children}: Readonly<{
             </noscript>}
 
             {children}
+            <GTMPageView />
         </body>
         </html>
     );
