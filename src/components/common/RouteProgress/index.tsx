@@ -13,8 +13,7 @@ export const RouteProgress = () => {
 
         const timeout = setTimeout(() => {
             NProgress.done();
-        }, 300); // трохи затримки, щоб не блимікало
-
+        }, 300);
         return () => {
             clearTimeout(timeout);
             NProgress.done();
