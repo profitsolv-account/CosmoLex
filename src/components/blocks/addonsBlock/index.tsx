@@ -5,6 +5,7 @@ import {FC, ReactNode} from "react";
 import {Heading} from "@/components/ui/heading";
 import "./styles.css";
 import {PricingFeature, SettingsType} from "@/types";
+import {CustomLink} from "@/components/ui/customLink";
 
 type AddonType = {
     type: 'crm' | 'websites';
@@ -79,7 +80,7 @@ export const Addon: FC<AddonProps> = ({addon, settings}) => {
         </div>
         <div className="grow" dangerouslySetInnerHTML={{__html: addon.content}} />
         <div className="w-[12.5rem] flex-none">
-            <a href={settings.demoLink} className="base-btn w-full md:px-7 bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark md:w-auto">Request a demo</a>
+            <CustomLink href={settings.demoLink} className="base-btn w-full md:px-7 bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark md:w-auto">Request a demo</CustomLink>
         </div>
     </div>
 }

@@ -2,6 +2,7 @@ import {PageDataType} from "@/types";
 import {FC} from "react";
 import classNames from "classnames";
 import Image from "next/image";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     className?: string;
@@ -34,7 +35,7 @@ export const GuideBlock: FC<Props> = ({className, pageData}) => {
                             <div className="relative justify-start text-white text-[1.75rem] font-medium leading-10 mb-12">{featuredPost.title}</div>
                         </div>
 
-                        <a href={featuredPost.slug} className="base-btn text-white border-white hover:bg-white hover:text-primary-dark" target="_blank">{featuredPost.ctaText ?? 'Get Guide'}</a>
+                        <CustomLink href={featuredPost.slug} className="base-btn text-white border-white hover:bg-white hover:text-primary-dark" target="_blank">{featuredPost.ctaText ?? 'Get Guide'}</CustomLink>
                     </div>
                 </div>
                 <div className="min-h-[12.5rem] bg-green rounded-bl-[0.9375rem] rounded-br-[0.9375rem] md:rounded-bl-[0rem] md:rounded-br-[1.875rem] md:rounded-tr-[1.875rem] overflow-hidden">
@@ -42,22 +43,22 @@ export const GuideBlock: FC<Props> = ({className, pageData}) => {
                         <div className="relative justify-start text-primary-dark text-[1.75rem] font-semibold font-['Inter'] leading-10 mb-10">Educational Blogs</div>
                         <ul className="md:pr-[5.3125rem] mb-10">
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/integrated-accounting-software/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">Integrated Accounting Software for Law Firms: Features, Benefits & More</a>
+                                <CustomLink href="/blog/integrated-accounting-software/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">Integrated Accounting Software for Law Firms: Features, Benefits & More</CustomLink>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/5-reasons-law-firms-are-switching-to-cosmolex/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">5 Reasons Law Firms are Switching to CosmoLex</a>
+                                <CustomLink href="/blog/5-reasons-law-firms-are-switching-to-cosmolex/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">5 Reasons Law Firms are Switching to CosmoLex</CustomLink>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/optimizing-law-firm-operations-strategies-for-modern-practices/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">Optimizing Law Firm Operations: 5 Strategies for Modern Practices</a>
+                                <CustomLink href="/blog/optimizing-law-firm-operations-strategies-for-modern-practices/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">Optimizing Law Firm Operations: 5 Strategies for Modern Practices</CustomLink>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/roi-of-switching-to-cosmolexpay/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">The ROI of Switching to CosmoLexPay: Cost Savings and Efficiency Gains</a>
+                                <CustomLink href="/blog/roi-of-switching-to-cosmolexpay/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">The ROI of Switching to CosmoLexPay: Cost Savings and Efficiency Gains</CustomLink>
                             </li>
                             <li className="relative justify-start mb-10">
-                                <a href="/blog/high-converting-law-firm-website/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">6 Best Practices for Creating a High-Converting Law Firm Website</a>
+                                <CustomLink href="/blog/high-converting-law-firm-website/" className="text-primary-dark text-[18px] font-medium font-['Inter'] leading-[2rem]">6 Best Practices for Creating a High-Converting Law Firm Website</CustomLink>
                             </li>
                         </ul>
-                        <a href="/blog" className="base-btn text-white border-primary-dark bg-primary-dark hover:bg-white hover:text-primary-dark hover:border-white">Read all articles</a>
+                        <CustomLink href="/blog" className="base-btn text-white border-primary-dark bg-primary-dark hover:bg-white hover:text-primary-dark hover:border-white">Read all articles</CustomLink>
                     </div>
                 </div>
             </div>

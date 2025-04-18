@@ -4,6 +4,7 @@ import heroImg from '@/assets/img/hero.png';
 import {PageDataType} from "@/types";
 import {FC} from "react";
 import {Rating} from "@/components/common/rating";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     pageData: PageDataType
@@ -27,10 +28,10 @@ export const HomeHeader: FC<Props> = ({pageData}) => {
                 <div className="min-h-[3.8125rem] text-white text-lg font-normal font-['Inter'] leading-loose lg:w-full" dangerouslySetInnerHTML={{__html: description}} />
                 <div className="w-full flex justify-center items-center gap-4 lg:justify-start">
                     <div className="h-[3.375rem] px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] rounded-[6.25rem] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">
-                        <a href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</a>
+                        <CustomLink href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</CustomLink>
                     </div>
                     <div className="h-[3.375rem]  px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] bg-white rounded-[6.25rem] border justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-primary hover:text-white">
-                        <a href={pageData.settings?.freeTrialLink || ""} className="text-center text-[#0c193a] text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-white">{ctaTrial}</a>
+                        <CustomLink href={pageData.settings?.freeTrialLink || ""} className="text-center text-[#0c193a] text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-white">{ctaTrial}</CustomLink>
                     </div>
                 </div>
 

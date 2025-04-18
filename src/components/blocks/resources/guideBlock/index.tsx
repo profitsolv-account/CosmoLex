@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { KnowledgeBaseCategory } from "@/types/resources";
+import {CustomLink} from "@/components/ui/customLink";
 
 
 type GuidesTemplateProps = {
@@ -14,9 +15,9 @@ export const GuideBlock: React.FC<GuidesTemplateProps> = ({ data, icon }) => {
 
     return (
         <div className=" p-4 text-primary-dark">
-            <a href={`/guides/category/${data.node.slug}`} className="text-2xl font-semibold mb-4 border-b border-gray-300 border-b-2.5 pb-2 block">
+            <CustomLink href={`/guides/category/${data.node.slug}`} className="text-2xl font-semibold mb-4 border-b border-gray-300 border-b-2.5 pb-2 block">
                 {icon && icon } {data.node.name}
-            </a>
+            </CustomLink>
             <div className="space-y-2">
                 {visibleArticles.map((article) => (
                     <div key={article.id} className="hover:underline text-primary-dark mb-4 relative pl-8">

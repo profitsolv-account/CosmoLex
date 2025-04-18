@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from "@/components/layout/layout";
 import {PageDataType} from "@/types";
+import {CustomLink} from "@/components/ui/customLink";
 
 export default function NotFoundTemplate({ pageData }: { pageData: PageDataType }) {
     return (
@@ -12,7 +13,7 @@ export default function NotFoundTemplate({ pageData }: { pageData: PageDataType 
                     <div className="text-center text-xl">
                         The page you are looking for does not exist. It may have been moved, or removed altogether. Perhaps you can return back to the site&apos;s homepage and see if you can find what you are looking for.
                     </div>
-                    <a href="/" className="base-btn mx-auto mt-8 bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark w-[15.625rem]">BACK TO HOMEPAGE</a>
+                    <CustomLink href="/" className="base-btn mx-auto mt-8 bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark w-[15.625rem]">BACK TO HOMEPAGE</CustomLink>
                 </div>
            </div>
         </Layout>

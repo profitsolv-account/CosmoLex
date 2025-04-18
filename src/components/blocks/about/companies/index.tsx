@@ -12,6 +12,7 @@ import Tabs3 from '@/assets/img/companies/tabs3.webp';
 import TimeSolv from '@/assets/img/companies/timesolve.webp';
 import TitleTap from '@/assets/img/companies/titletap.webp';
 import Orion from '@/assets/img/companies/orion.webp';
+import {CustomLink} from "@/components/ui/customLink";
 
 const companies = [
     {
@@ -85,7 +86,7 @@ export const Companies = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-10">
                 {companies.map((company) => (
-                    <a
+                    <CustomLink
                         href={company.link}
                         key={company.link}
                         target="_blank"
@@ -98,7 +99,7 @@ export const Companies = () => {
                             height={company.logo.height}
                             className="w-[176px]"
                         />
-                    </a>
+                    </CustomLink>
                 ))}
             </div>
         </div>

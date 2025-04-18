@@ -4,6 +4,7 @@ import SixEssential from '@/assets/img/inlineCTA/Six-Essential-Features-in-Your-
 import FiveObstacles from '@/assets/img/inlineCTA/The-Five-Obstacles-of-Legal-Accounting.webp';
 import React from "react";
 import {StaticImageData} from "next/image";
+import {CustomLink} from "@/components/ui/customLink";
 
 type InlineCTaSata = {
     type: string;
@@ -105,12 +106,12 @@ export const PostInlineCTA = async ({shortcode}: Props) => {
                 <div className="py-4 text-[1rem]">
                     {ctaData.content}
                 </div>
-                <a
+                <CustomLink
                     href={ctaData.ctaLink}
                     target="_blank"
                     className="no-underline inline-block h-11 px-5 pt-2.5 pb-3 bg-primary-dark border border-primary-dark rounded-[6.25rem] text-center text-white text-base font-normal transition duration-300 hover:bg-transparent hover:text-primary-dark">
                     {ctaData.ctaText}
-                </a>
+                </CustomLink>
             </div>
         </div>
     </div>

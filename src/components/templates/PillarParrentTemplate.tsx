@@ -11,6 +11,7 @@ import classNames from "classnames";
 import {TabbedSlider, TabType} from "@/components/ui/tabbedSlider";
 import {ToolsType} from "@/types/tools";
 import Image from 'next/image';
+import {CustomLink} from "@/components/ui/customLink";
 
 export default function PillarParentTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
@@ -87,10 +88,10 @@ const ToolsSection: FC<ToolsSectionProps> = ({tools}) => {
                     </div>
                     <div className=" text-primary-dark text-[2.25rem] font-bold leading-[2.8125rem] font-['Inter'] lg:leading-[2.375rem] lg:text-[1.875rem]" dangerouslySetInnerHTML={{__html: t.title}} />
                     <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem] lg:mb-7" dangerouslySetInnerHTML={{ __html: t.description }} />
-                    <a href={t.link?.url || '/'}
+                    <CustomLink href={t.link?.url || '/'}
                        className="w-full block text-center lg:inline-block rounded-[6.25rem] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[1.875rem] py-[0.9375rem] lg:w-auto">
                         Explore features
-                    </a>
+                    </CustomLink>
                 </div>
             </div>
         </div>

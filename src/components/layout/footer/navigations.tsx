@@ -1,6 +1,7 @@
 import {PageDataType, SettingsType} from "@/types";
 import Image from "next/image";
 import {FC} from "react";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     pageData: PageDataType
@@ -37,15 +38,15 @@ export const Navigations: FC<Props> = ({pageData}) => {
                     <div className="max-w-[25.5625rem] text-white text-base font-normal font-['Inter'] leading-snug" dangerouslySetInnerHTML={{__html: getPageSettings('companySummary')}} />
 
                         <div>
-                            <a href={`tel:${getPageSettings('companyPhone')}`} className="text-white text-base font-bold font-['Inter'] leading-[1.5625rem] tracking-wide ls-07 mb-2">{getPageSettings('companyPhone')}</a>
+                            <CustomLink href={`tel:${getPageSettings('companyPhone')}`} className="text-white text-base font-bold font-['Inter'] leading-[1.5625rem] tracking-wide ls-07 mb-2">{getPageSettings('companyPhone')}</CustomLink>
                             <div className="text-white text-xs font-normal font-['Inter'] leading-[0.9375rem]">{getPageSettings('companyAddress')}</div>
 
                             <div className="relative flex gap-5 mt-5 items-center">
-                                <a href="https://www.cosmolex.com/" className="left-0 top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">US</a>
+                                <CustomLink href="https://www.cosmolex.com/" className="left-0 top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">US</CustomLink>
                                 <span className="block h-[1.6875rem] w-[0.0625rem] bg-white"></span>
-                                <a href="https://www.cosmolex.ca/" className="left-[3.625rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">CA</a>
+                                <CustomLink href="https://www.cosmolex.ca/" className="left-[3.625rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">CA</CustomLink>
                                 <span className="block h-[1.6875rem] w-[0.0625rem] bg-white"></span>
-                                <a href="https://www.cosmolex.co.uk/" className="left-[7.25rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">UK</a>
+                                <CustomLink href="https://www.cosmolex.co.uk/" className="left-[7.25rem] top-[0.0625rem] text-white text-base font-normal font-['Inter'] leading-snug">UK</CustomLink>
                             </div>
                         </div>
                     </div>
@@ -56,7 +57,7 @@ export const Navigations: FC<Props> = ({pageData}) => {
                                 <div className="self-stretch text-white text-2xl font-bold font-['Inter'] tracking-tight">Company
                                 </div>
                                 {getMenu('company').items.map((item, index) => (
-                                    <a key={index} href={item.url} className="self-stretch text-white text-base font-normal font-['Inter'] leading-tight">{item.title}</a>
+                                    <CustomLink key={index} href={item.url} className="self-stretch text-white text-base font-normal font-['Inter'] leading-tight">{item.title}</CustomLink>
                                 ))}
 
                             </div>
@@ -65,7 +66,7 @@ export const Navigations: FC<Props> = ({pageData}) => {
                                     Support
                                 </div>
                                 {getMenu('support').items.map((item, index) => (
-                                    <a key={index} href={item.url} className="self-stretch text-white text-base font-normal font-['Inter'] leading-tight">{item.title}</a>
+                                    <CustomLink key={index} href={item.url} className="self-stretch text-white text-base font-normal font-['Inter'] leading-tight">{item.title}</CustomLink>
                                 ))}
 
                             </div>
@@ -74,7 +75,7 @@ export const Navigations: FC<Props> = ({pageData}) => {
                                     Resources
                                 </div>
                                 {getMenu('resources').items.map((item, index) => (
-                                    <a key={index} href={item.url} className="self-stretch text-white text-base font-normal font-['Inter'] leading-tight">{item.title}</a>
+                                    <CustomLink key={index} href={item.url} className="self-stretch text-white text-base font-normal font-['Inter'] leading-tight">{item.title}</CustomLink>
                                 ))}
                             </div>
                         </div>
@@ -89,15 +90,15 @@ export const Navigations: FC<Props> = ({pageData}) => {
                         </div>
 
                         <div className="flex gap-3 mt-7 items-center">
-                            <a href="/legal" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Legal</a>
+                            <CustomLink href="/legal" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Legal</CustomLink>
                             <span className="block h-[1.0625rem] w-[0.0625rem] bg-white"></span>
-                            <a href="/privacy-policy" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Privacy Policy</a>
+                            <CustomLink href="/privacy-policy" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Privacy Policy</CustomLink>
                             <span className="block h-[1.0625rem] w-[0.0625rem] bg-white"></span>
-                            <a href="/gdpr" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">GDPR</a>
+                            <CustomLink href="/gdpr" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">GDPR</CustomLink>
                             <span className="block h-[1.0625rem] w-[0.0625rem] bg-white"></span>
-                            <a href="/subscription-agreement" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Subscription Agreement</a>
+                            <CustomLink href="/subscription-agreement" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Subscription Agreement</CustomLink>
                             <span className="block h-[1.0625rem] w-[0.0625rem] bg-white"></span>
-                            <a href="https://profitsolv-billingplatform.azurewebsites.net/ForgetMeHub/index.html?businessUnit=CosmoLex" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Data Request</a>
+                            <CustomLink href="https://profitsolv-billingplatform.azurewebsites.net/ForgetMeHub/index.html?businessUnit=CosmoLex" className="text-center text-white text-xs font-normal font-['Inter'] leading-snug">Data Request</CustomLink>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import MegaMenu from "@/components/ui/mmenu";
 import {PageMegaMenu} from "@/components/common/pageMegaMenu";
 import {PageDataType} from "@/types";
 import ChevroneIcon from "@/assets/img/icons/chevrone-down.svg"
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     className?: string;
@@ -64,8 +65,8 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
             }}
         />,
         "about": <div className="w-[12.1875rem] bg-white rounded-bl-[1.875rem] rounded-br-[1.875rem] p-6 pr-0">
-            <a href="/about-cosmolex" className="block text-primary-dark text-[1rem] font-medium font-['Inter'] leading-9 mb-2">About CosmoLex</a>
-            <a href="/about-us" className="block text-primary-dark text-[1rem] font-medium font-['Inter'] leading-9">Our Team</a>
+            <CustomLink href="/about-cosmolex" className="block text-primary-dark text-[1rem] font-medium font-['Inter'] leading-9 mb-2">About CosmoLex</CustomLink>
+            <CustomLink href="/about-us" className="block text-primary-dark text-[1rem] font-medium font-['Inter'] leading-9">Our Team</CustomLink>
         </div>
     }
 
@@ -90,8 +91,8 @@ export const Navigation:FC<Props> = ({className, pageData}) => {
                 </span>
             </li>
             <li className="cursor-pointer">
-                <a className="block  text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold  w-[3.625rem] text-center relative top-[1px]"
-                   href="/pricing">Pricing</a>
+                <CustomLink className="block  text-white text-base font-normal font-['Inter'] md:text-[0.9375rem] py-7 transition-all duration-200 hover:font-bold  w-[3.625rem] text-center relative top-[1px]"
+                   href="/pricing">Pricing</CustomLink>
             </li>
             <li className="cursor-pointer">
                 <span

@@ -3,6 +3,7 @@ import {Member} from "@/types";
 import classNames from "classnames";
 import {FC} from "react";
 import Image from "next/image";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     member: Member;
@@ -25,9 +26,9 @@ export const PersonCard:FC<Props> = ({member, className}) => {
                     <div className="self-stretch justify-start text-[#151c2d] text-base font-normal uppercase tracking-wider">{member.position}</div>
                     <div className="self-stretch justify-start text-[#151c2d] text-[2.875rem] font-bold leading-[3.4375rem]">{member.name}</div>
                     <div className="self-stretch justify-start text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{__html: member.description || ''}}/>
-                    <a href={member.linkedin} className="" target="_blank">
+                    <CustomLink href={member.linkedin} className="" target="_blank">
                         <Linkedin />
-                    </a>
+                    </CustomLink>
                 </div>
             </div>
 

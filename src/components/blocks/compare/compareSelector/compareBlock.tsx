@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import {FC} from "react";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     className?: string;
@@ -19,7 +20,7 @@ export const CompareBlock:FC<Props> = ({className, compareWith, link}) => {
         </div>
         <div className="text-center justify-start text-primary-dark text-2xl font-medium mb-5">{compareWith}</div>
         <div className="text-center">
-            <a
+            <CustomLink
                 href={link}
                 className={classNames(
                     "text-center justify-start text-primary-dark text-lg font-medium",
@@ -27,7 +28,7 @@ export const CompareBlock:FC<Props> = ({className, compareWith, link}) => {
                 )}
             >
                 Compare now
-            </a>
+            </CustomLink>
         </div>
     </div>
 }

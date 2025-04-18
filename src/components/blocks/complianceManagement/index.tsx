@@ -8,6 +8,7 @@ import bg5 from "@/assets/img/simple-practice/demo-screen.webp";
 
 import BalanceImg from '@/assets/img/compliance/balances-img.webp';
 import {TabbedSlider} from "@/components/ui/tabbedSlider";
+import {CustomLink} from "@/components/ui/customLink";
 
 const dataSliders = [{
     title: "Client Engagement",
@@ -67,10 +68,10 @@ export const ComplianceManagement = () => {
                     <div className="lg:w-[27.625rem] flex-col justify-start items-start gap-5 inline-flex">
                         <div className=" text-primary-dark text-[2.25rem] font-bold leading-[2.8125rem] font-['Inter'] lg:leading-[3.4375rem] lg:text-[2.875rem]">{t.title}</div>
                         <div className="text-primary-dark text-base font-normal font-['Inter'] mb-2 leading-[1.875rem] max-w-[21.875rem] lg:mb-7">{t.description}</div>
-                        <a href={t.link}
+                        <CustomLink href={t.link}
                            className="w-full block text-center lg:inline-block rounded-[6.25rem] bg-primary-dark justify-center items-center text-white text-base font-normal font-['Inter'] px-[1.875rem] py-[0.9375rem] lg:w-auto">
                             {t.title === 'Legal Automation' ? 'Be productive' : 'Explore features'}
-                        </a>
+                        </CustomLink>
                     </div>
                 </div>
             </div>
@@ -108,11 +109,11 @@ const AccountingTools = () => {
                 <div className="md:w-1/2  md:flex-none md:pb-18 md:pr-20">
                     <div className="text-yellow text-[0.9375rem] tracking-[0.075rem] font-normal font-['Inter'] uppercase mb-3 md:text-base md:tracking-[0.0788rem] md:mb-4">Compliance management simplified</div>
                     <h3 className="text-white text-4xl font-bold font-['Inter'] leading-[3.125rem] mb-5 md:text-[2.875rem] md:leading-[3.4375rem] md:w-full md:mb-8">Keep your firm compliant with built-in accounting tools.</h3>
-                    <a
+                    <CustomLink
                         href="/features/accounting-finance/"
                         className="flex items-center justify-center text-center h-[3.375rem] px-[1.875rem] bg-white rounded-[6.25rem] border text-primary-dark text-base font-normal font-['Inter'] transition duration-300 hover:bg-primary-dark hover:text-white md:inline-flex">
                         Learn more
-                    </a>
+                    </CustomLink>
                 </div>
 
                 <div className="md:w-1/2 relative md:top-[-1.25rem]">

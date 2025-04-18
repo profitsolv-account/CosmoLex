@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import {CustomLink} from "@/components/ui/customLink";
 
 export const CareersApplicantManager = () => {
     const iframeRef = useRef(null);
@@ -47,12 +48,12 @@ export const CareersApplicantManager = () => {
             />
 
             <div className="flex justify-center mt-4">
-                <a href="https://www.glassdoor.com/Overview/Working-at-CosmoLex-EI_IE1289709.11,19.htm">
+                <CustomLink href="https://www.glassdoor.com/Overview/Working-at-CosmoLex-EI_IE1289709.11,19.htm">
                     <img
                         src="https://www.glassdoor.com/pc-app/static/img/partnerCenter/badges/eng_CHECK_US_273x90.png"
                         alt="Glassdoor Check Us Out"
                     />
-                </a>
+                </CustomLink>
             </div>
         </div>
     );

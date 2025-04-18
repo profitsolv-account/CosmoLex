@@ -3,6 +3,7 @@ import {PageDataType} from "@/types";
 import {FC} from "react";
 import classNames from "classnames";
 import Image from 'next/image';
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     pageData: PageDataType;
@@ -44,10 +45,10 @@ export const PageHeader:FC<Props> = ({pageData, showFeatureImage, showCta, class
 
                         {showCta && <div className={classNames("flex justify-center items-center gap-4 pb-2 mt-10", ctaClass)}>
                             <div className="h-[3.375rem] px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] rounded-[6.25rem] border border-white justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-white">
-                                <a href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</a>
+                                <CustomLink href={pageData.settings?.demoLink || ""} className="text-center text-white text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-primary">{demo}</CustomLink>
                             </div>
                             <div className="h-[3.375rem]  px-[0.9375rem] md:px-[1.875rem] pt-5 pb-[1.375rem] bg-white rounded-[6.25rem] border justify-center items-center gap-2.5 inline-flex cursor-pointer transition-all duration-300 group hover:bg-primary hover:text-white">
-                                <a href={pageData.settings?.freeTrialLink || ""} className="text-center text-primary-dark text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-white">{ctaTrial}</a>
+                                <CustomLink href={pageData.settings?.freeTrialLink || ""} className="text-center text-primary-dark text-base font-normal font-['Inter'] transition-all duration-300 group-hover:text-white">{ctaTrial}</CustomLink>
                             </div>
                         </div>}
                     </div>

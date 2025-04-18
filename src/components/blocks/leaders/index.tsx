@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import "./styles.css";
 import classNames from "classnames";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     logos: LeaderLogos[];
@@ -32,9 +33,9 @@ export const Leaders:FC<Props> = ({logos, className}) => {
             >
                 {logos.map((lr, index) => (
                     <SwiperSlide key={index} style={{ width: '12.6875rem' }}>
-                        <a href={lr.link} className="flex justify-center items-center overflow-hidden">
+                        <CustomLink href={lr.link} className="flex justify-center items-center overflow-hidden">
                             <img className="object-contain h-[7.875rem]" src={lr.src} alt={lr.alt} />
-                        </a>
+                        </CustomLink>
                     </SwiperSlide>
                 ))}
             </Swiper>

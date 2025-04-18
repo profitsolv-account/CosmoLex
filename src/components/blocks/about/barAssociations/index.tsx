@@ -1,5 +1,6 @@
 import {BarType} from "@/types/about";
 import {FC} from "react";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     data?: BarType;
@@ -17,7 +18,7 @@ export const BarAssociations: FC<Props> = ({data}) => {
 
            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 pt-10 md:pl-10">
                {data.barItems.map((company) => (
-                   <a
+                   <CustomLink
                        href={company.url.url}
                        key={company.url.url}
                        target="_blank"
@@ -29,7 +30,7 @@ export const BarAssociations: FC<Props> = ({data}) => {
                            background: `url(${company.image.node.sourceUrl}) #eef8fd 50% / contain no-repeat`,
                            backgroundBlendMode: 'multiply',
                        }}/>
-                   </a>
+                   </CustomLink>
                ))}
            </div>
        </div>

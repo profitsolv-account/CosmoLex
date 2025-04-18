@@ -7,6 +7,7 @@ import {Testimonials} from "@/components/blocks/testimonials";
 
 import {PageHeader} from "../blocks/headers/pageHeader";
 import {HSForm} from "@/components/blocks/HSForm";
+import {CustomLink} from "@/components/ui/customLink";
 
 export default function ContactUsTemplate({ pageData }: { pageData: PageDataType }) {
     const testimonials = (pageData.testimonials || []).filter((testimonial) => !testimonial.extended);
@@ -71,7 +72,7 @@ const ContactInfo = () => {
                 <Phone className="text-primary mr-3 h-10 w-10" />
                 <div>
                     <h3 className="font-semibold text-3xl">Phone:</h3>
-                    <a href="tel:+1 866-878-6798" className="text-primary text-xl">+1 866-878-6798</a>
+                    <CustomLink href="tel:+1 866-878-6798" className="text-primary text-xl">+1 866-878-6798</CustomLink>
                 </div>
             </div>
         </div>

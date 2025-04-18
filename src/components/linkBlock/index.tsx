@@ -1,5 +1,6 @@
 import {FC} from "react";
 import Image from "next/image";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     link: string;
@@ -15,7 +16,7 @@ export const LinkBlock: FC<Props> = ({
 }) => {
 
     return (
-        <a href={link} className="block bg-primary p-10 transition duration-300 hover:bg-primary-dark">
+        <CustomLink href={link} className="block bg-primary p-10 transition duration-300 hover:bg-primary-dark">
             <div>
                 <Image
                     src={image}
@@ -27,6 +28,6 @@ export const LinkBlock: FC<Props> = ({
                 <h3 className="text-white text-center text-4xl font-bold mb-5">{title}</h3>
                 <p className="text-white text-center text-xl font-bold">{description}</p>
             </div>
-        </a>
+        </CustomLink>
     )
 }

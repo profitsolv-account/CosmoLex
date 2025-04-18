@@ -1,6 +1,7 @@
 import {SettingsType} from "@/types";
 import {FC} from "react";
 import Img from '@/assets/img/matter-centric.webp';
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     setting: SettingsType
@@ -37,8 +38,8 @@ export const MatterCentric: FC<Props> = ({setting}) => {
             </div>
             <div className="px-5 mb-10 md:mb-15">
                <div className="flex gap-5  items-center flex-col sm:flex-row md:justify-center">
-                   <a href={setting["demoLink"] || ''} className="base-btn hover:bg-primary-dark hover:text-white">Request demo</a>
-                   <a href={setting["freeTrialLink"] || ''} className="base-btn bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark">Try for free</a>
+                   <CustomLink href={setting["demoLink"] || ''} className="base-btn hover:bg-primary-dark hover:text-white">Request demo</CustomLink>
+                   <CustomLink href={setting["freeTrialLink"] || ''} className="base-btn bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark">Try for free</CustomLink>
                </div>
            </div>
             <div className="md:max-w-[43.125rem] md:mx-auto flex flex-col gap-8 md:flex-row md:gap-8 md:justify-center">

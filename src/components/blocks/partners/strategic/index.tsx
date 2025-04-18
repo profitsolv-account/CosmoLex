@@ -1,6 +1,7 @@
 import {AffinityBarLogos} from "@/types/affinity-bar-partners";
 import {FC} from "react";
 import classNames from "classnames";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     logos?: AffinityBarLogos[];
@@ -16,7 +17,7 @@ export const PartnersStrategic:FC<Props> = ({logos, className}) => {
                 <div className="w-full overflow-hidden">
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-12 gap-y-8">
                         {logos.map((lr, index) => (
-                            <a
+                            <CustomLink
                                 key={index}
                                 href={lr.link}
                                 target="_blank"
@@ -24,7 +25,7 @@ export const PartnersStrategic:FC<Props> = ({logos, className}) => {
                                 className="bg-white rounded-[0.625rem] flex justify-center items-center overflow-hidden w-full h-[12rem]" // Increase height
                             >
                                 <img className="object-contain w-full h-full" src={lr.src} alt={lr.alt} />
-                            </a>
+                            </CustomLink>
                         ))}
                     </div>
                 </div>

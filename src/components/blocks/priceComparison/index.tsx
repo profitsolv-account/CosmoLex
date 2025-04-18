@@ -3,6 +3,7 @@ import {CollapsedSection} from "@/components/ui/collapsedSection";
 import "./styles.css";
 import {PricingPlan, SettingsType} from "@/types";
 import {FC} from "react";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     settings?: SettingsType;
@@ -74,12 +75,12 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                     <div className="text-center text-primary-dark text-[1.75rem] font-bold">Ready to dive deeper?</div>
                 </div>
                 <div className="flex gap-5  items-center flex-col sm:flex-row md:justify-center pt-10 mb-2">
-                    <a href={settings?.demoLink || ''}
+                    <CustomLink href={settings?.demoLink || ''}
                        className="base-btn w-full md:px-7 hover:bg-primary-dark hover:text-white md:w-auto">Request
-                        demo</a>
-                    <a href={settings?.freeTrialLink || ''}
+                        demo</CustomLink>
+                    <CustomLink href={settings?.freeTrialLink || ''}
                        className="base-btn w-full md:px-7 bg-primary-dark text-white hover:bg-transparent hover:text-primary-dark md:w-auto">Try
-                        for free</a>
+                        for free</CustomLink>
                 </div>
 
             </div>

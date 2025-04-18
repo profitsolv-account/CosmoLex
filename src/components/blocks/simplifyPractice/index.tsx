@@ -7,6 +7,7 @@ import {PageDataType} from "@/types";
 import {FC} from "react";
 import {Heading} from "@/components/ui/heading";
 import classNames from "classnames";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     pageData: PageDataType;
@@ -31,7 +32,7 @@ export const SimplifyPractice:FC<Props> = ({pageData, className}) => {
                                     Book your personalized demo with a CosmoLex specialist.
                                 </p>
                                 <div className="flex justify-center">
-                                    <a href={pageData.settings?.demoLink || ""} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Schedule now</a>
+                                    <CustomLink href={pageData.settings?.demoLink || ""} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Schedule now</CustomLink>
                                 </div>
                             </div>
 
@@ -56,7 +57,7 @@ export const SimplifyPractice:FC<Props> = ({pageData, className}) => {
                                     No wait. No credit card. Just click to try CosmoLex for 10 days.
                                 </p>
                                 <div className="flex justify-center">
-                                    <a href={pageData.settings?.freeTrialLink || ""} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Get started</a>
+                                    <CustomLink href={pageData.settings?.freeTrialLink || ""} className="base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark">Get started</CustomLink>
                                 </div>
                             </div>
 

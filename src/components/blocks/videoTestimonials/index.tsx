@@ -5,6 +5,7 @@ import {Slider} from "@/components/ui/slider";
 import ArrowRight from '@/assets/img/icons/arrow-right-long.svg';
 import './styles.css';
 import Image from "next/image";
+import {CustomLink} from "@/components/ui/customLink";
 
 type TestimonialsProps = {
     testimonials: TestimonialType[]
@@ -36,10 +37,10 @@ const SingleSlide: FC<Props> = ({slide}) => {
                 {slide.content}
             </div>
             <div className="mb-15">
-                <a href={slide.link}
+                <CustomLink href={slide.link}
                    className="text-[#eef8fd] text-lg font-semibold underline leading-[1.5625rem] flex gap-2 items-center ">
                     {slide.title} <ArrowRight/>
-                </a>
+                </CustomLink>
             </div>
             <div className="">
                 <div

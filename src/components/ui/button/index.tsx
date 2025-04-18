@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import {FC, MouseEventHandler, ReactNode} from 'react';
+import {FC, ReactNode} from 'react';
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     children: ReactNode;
@@ -19,7 +20,7 @@ export const Button: FC<Props> = ({
    variant = 'primary',
 }) => {
 
-    return <a
+    return <CustomLink
         href={href || "#"}
         target={target || ""}
         className={classNames(
@@ -37,5 +38,5 @@ export const Button: FC<Props> = ({
         }}
     >
         {children}
-    </a>
+    </CustomLink>
 }

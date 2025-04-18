@@ -2,6 +2,7 @@ import {Checkbox} from "@/components/ui/checkbox";
 import CheckIcon from "@/assets/img/icons/price-check.svg";
 import {FC} from "react";
 import classNames from "classnames";
+import {CustomLink} from "@/components/ui/customLink";
 
 type PriceType = {
     type: 'standard' | 'elite';
@@ -80,9 +81,9 @@ const Price: FC<PriceProps> = ({price}) => {
                 <div className="text-primary-dark text-[2.375rem] font-bold font-['Inter'] leading-[3rem] mr-2">${price.price}</div>
                 <div className="text-primary-dark text-xl font-normal font-['Inter'] leading-normal"> per user/month</div>
             </div>
-            <a href="" className="block text-white text-center text-lg font-normal bg-primary-dark rounded-[6.25rem] border border-primary-dark py-3.5 justify-center items-center gap-2.5 transition duration-300 hover:bg-transparent hover:text-primary-dark">
+            <CustomLink href="" className="block text-white text-center text-lg font-normal bg-primary-dark rounded-[6.25rem] border border-primary-dark py-3.5 justify-center items-center gap-2.5 transition duration-300 hover:bg-transparent hover:text-primary-dark">
                 Try for free
-            </a>
+            </CustomLink>
         </div>
 
         <div className="bg-white rounded-[0.9375rem] p-[1.875rem] pt-5 md:rounded-[1.875rem]">
