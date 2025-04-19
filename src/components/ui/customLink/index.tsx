@@ -37,9 +37,6 @@ export const CustomLink: FC<Props> = ({href, children, className, onClick, targe
             e.preventDefault();
             NProgress.done();
         }
-        setTimeout(() => {
-            NProgress.done();
-        }, 3000)
     }
     if (dangerouslySetInnerHTML?.__html) {
         return <Link
