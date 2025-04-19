@@ -27,7 +27,7 @@ export const CustomLink: FC<Props> = ({href, children, className, onClick, targe
 
     const onClickHandler = (e: any) => {
         if (onClick) {
-            e.preventDefault();
+           // e.preventDefault();
             onClick(e);
         }
         NProgress.start();

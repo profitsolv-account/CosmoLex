@@ -1,7 +1,6 @@
 "use client"
 import {MenusList, PageDataType, SettingsType} from "@/types";
 import {FC, useEffect, useMemo, useState} from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Hamburger } from "./hamburger";
 import { ChevronDown, ChevronUp } from "lucide-react";
@@ -10,6 +9,7 @@ import {ChildMenu} from "@/components/common/mobileMenu/childMenu";
 import Image from "next/image";
 import logo from "@/assets/img/logo.png";
 import {usePathname} from "next/navigation";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     menus: MenusList;
@@ -150,9 +150,9 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
         <div className="bg-primary lg:hidden relative z-50 pb-4">
             <div className="px-4 py-8 pb-4 flex justify-between">
                 <div>
-                    <Link href="/">
+                    <CustomLink href="/" onClick={() => {setOpenMenu(false)}}>
                         <Image src={logo} alt="logo"/>
-                    </Link>
+                    </CustomLink>
                 </div>
                 <Hamburger onClick={handleMenuToggle} />
             </div>
@@ -173,7 +173,7 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                             <Button useDefault variant="primary" href={getSetting('freeTrialLink')}>Try for free</Button>
                         </div>
 
-                        <Link href={getSetting('loginLink')} className="w-12 text-right text-white text-[1.375rem] font-normal">Login</Link>
+                        <CustomLink href={getSetting('loginLink')} className="w-12 text-right text-white text-[1.375rem] font-normal">Login</CustomLink>
 
                         <ul className="w-full mt-4">
                             {Object.entries(memoizedCombinedMenus).map(
@@ -189,7 +189,7 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                                                 toggleMenu(key)
                                             }
                                         >
-                                            <Link
+                                            <CustomLink
                                                 href={menu.url || "#"}
                                                 className="transition duration-300 ease-in-out text-2xl font-semibold hover:text-green"
                                                 onClick={(e) => {
@@ -201,7 +201,7 @@ export const MobileMenu: FC<Props> = ({ menus, pageData }) => {
                                                 }
                                             >
                                                 {menu.name}
-                                            </Link>
+                                            </CustomLink>
                                             {menu.items && (
                                                 <div className="cursor-pointer">
                                                     {expandedMenus[key] ? (

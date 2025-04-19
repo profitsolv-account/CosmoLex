@@ -1,9 +1,9 @@
 import { FC } from "react";
-import Link from "next/link";
 import { MenuItem } from "@/types";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import classNames from "classnames";
 import {usePathname} from "next/navigation";
+import {CustomLink} from "@/components/ui/customLink";
 
 type ChildMenuProps = {
     items: MenuItem[];
@@ -27,7 +27,7 @@ export const ChildMenu: FC<ChildMenuProps> = ({items, expandedSubMenus, toggleSu
                             item.items && toggleSubMenu(item.title)
                         }
                     >
-                        <Link
+                        <CustomLink
                             href={item.url}
                             className={classNames("hover:text-green transition duration-400 text-xl font-medium", {
                                 "!text-green": isActive(item.url)
@@ -35,7 +35,7 @@ export const ChildMenu: FC<ChildMenuProps> = ({items, expandedSubMenus, toggleSu
                             onClick={(e) => e.stopPropagation()}
                         >
                             {item.title}
-                        </Link>
+                        </CustomLink>
 
                         {item.items && (
                             <div className="cursor-pointer">
