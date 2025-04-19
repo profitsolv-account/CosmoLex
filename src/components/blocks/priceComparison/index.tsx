@@ -58,7 +58,7 @@ export const PriceComparison: FC<Props> = ({settings, plans, title}) => {
                         <CollapsedSection
                             key={groupName}
                             title={
-                                <div className="text-primary-dark text-[1.375rem] font-bold py-4 md:text-2xl">
+                                <div key={index} className="text-primary-dark text-[1.375rem] font-bold py-4 md:text-2xl">
                                     {groupName}
                                 </div>
                             }

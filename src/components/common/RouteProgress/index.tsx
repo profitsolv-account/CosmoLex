@@ -9,7 +9,7 @@ export const RouteProgress = () => {
     const pathname = usePathname();
 
     useEffect(() => {
-        NProgress.start();
+        //NProgress.start();
 
         const timeout = setTimeout(() => {
             NProgress.done();

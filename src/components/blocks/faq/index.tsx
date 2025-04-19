@@ -20,7 +20,7 @@ export const Faq: FC<Props> = ({className, faqs}) => {
                             <CollapsedSection
                                 key={index}
                                 title={
-                                    <div className="text-primary-dark text-2xl font-medium leading-10 pr-20">{faq.question}</div>
+                                    <div key={index} className="text-primary-dark text-2xl font-medium leading-10 pr-20">{faq.question}</div>
                                 }
                                 className="py-[0.5625rem] mb-8 border-b border-b-[#202b46]/20 pb-8"
                                 open={index === 0}

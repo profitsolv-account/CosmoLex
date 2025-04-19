@@ -1,5 +1,7 @@
+"use client";
 import {FC, ReactNode} from "react";
 import Link from "next/link";
+import NProgress from "nprogress";
 
 type Props = {
     href: string;
@@ -13,21 +15,34 @@ type Props = {
 }
 
 export const CustomLink: FC<Props> = ({href, children, className, onClick, target, dangerouslySetInnerHTML, rel, useDefault}) => {
-   /* if (useDefault) {
-        return <a
-            href={href}
-            className={className}
-            onClick={onClick}
-            target={target}
-            rel={rel}
-        >{children}</a>
-    }*/
+    /* if (useDefault) {
+         return <a
+             href={href}
+             className={className}
+             onClick={onClick}
+             target={target}
+             rel={rel}
+         >{children}</a>
+     }*/
 
+    const onClickHandler = (e: any) => {
+        if (onClick) {
+            e.preventDefault();
+            onClick(e);
+        }
+        NProgress.start();
+
+        const currentPath = window.location.pathname.replace(/\/$/, "");
+        if (currentPath === href) {
+            e.preventDefault();
+            NProgress.done();
+        }
+    }
     if (dangerouslySetInnerHTML?.__html) {
         return <Link
             href={href}
             className={className}
-            onClick={onClick}
+            onClick={onClickHandler}
             target={target}
             dangerouslySetInnerHTML={{__html: dangerouslySetInnerHTML?.__html || ""}}
             rel={rel}
@@ -37,7 +52,7 @@ export const CustomLink: FC<Props> = ({href, children, className, onClick, targe
     return <Link
         href={href}
         className={className}
-        onClick={onClick}
+        onClick={onClickHandler}
         target={target}
         rel={rel}
     >{children}</Link>
