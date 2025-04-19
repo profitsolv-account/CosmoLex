@@ -33,12 +33,7 @@ export const Button: FC<Props> = ({
                 : "bg-primary text-white hover:bg-white hover:text-primary",
             className
         )}
-        onClick={(e) => {
-            if (onClick) {
-                e.preventDefault();
-                onClick();
-            }
-        }}
+
     >
         {children}
     </CustomLink>
