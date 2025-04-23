@@ -17,7 +17,7 @@ export default function RegisterPageTemplate({ pageData }: { pageData: PageDataT
             <PageHeader pageData={pageData} />
             <RatingBlock className="bg-primary pb-[3.5625rem]" />
             <div className="relative">
-                <div className="max-w-[47.3125rem] mx-auto relative z-1 bg-white rounded-[1.875rem] p-[3.125rem]">
+                <div className="max-w-[800px] mx-auto relative z-1 bg-white rounded-[1.875rem]">
                     <FreeTrialFormWidget isProduction={isProduction()} />
                 </div>
                 <div className="bg-primary absolute z-0 w-full h-[11.875rem] left-0 rounded-bl-[6.25rem] top-0" />

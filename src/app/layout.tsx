@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./icons.css";
-import "./globals.css";
 import Script from "next/script";
 import {isProduction} from "@/helpers";
 import {GTMPageView} from "@/components/common/GTMPageView";
 import {RouteProgress} from "@/components/common/RouteProgress";
 import {QualifiedSPAHandler} from "@/components/common/QualifiedSPAHandler/QualifiedSPAHandler";
+import { Analytics } from '@vercel/analytics/next';
+import "./icons.css";
+import "./globals.css";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -52,6 +53,7 @@ export default function RootLayout({children}: Readonly<{
             {children}
             <GTMPageView />
             <QualifiedSPAHandler />
+            <Analytics />
         </body>
         </html>
     );
