@@ -23,7 +23,6 @@ export const FreeTrialFormWidget = ({isProduction}:Props) => {
         }
 
         iframe.style.width = '100%';
-        iframe.style.height = '110rem';
         iframe.style.border = 'none';
         iframe.style.background = 'transparent';
 
@@ -39,7 +38,7 @@ export const FreeTrialFormWidget = ({isProduction}:Props) => {
 
         const handleMessage = (event: any) => {
             if (event.data && event.data.height) {
-                iframe.style.height = (event.data.height - 70) + 'px';
+                iframe.style.height = event.data.height + 'px';
             }
 
             if (event.data.action === 'redirect' && event.data.url) {
