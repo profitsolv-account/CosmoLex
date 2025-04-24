@@ -50,5 +50,3 @@ export default async function CertifiedConsultantPage({ searchParams }: Props) {
     }
 }
 
-export const revalidate = false;
-export const dynamic = "force-static";
