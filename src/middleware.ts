@@ -43,6 +43,10 @@ const getRedirections = async () => {
 export async function middleware(req: NextRequest) {
     const pathname = req.nextUrl.pathname;
 
+    if (pathname.includes('/login-banner')) {
+        return NextResponse.next();
+    }
+
     if (pathname.endsWith('.xml') && !pathname.startsWith('/sitemaps/')) {
         const newUrl = req.nextUrl.clone();
         newUrl.pathname = `/sitemaps${pathname}`;
