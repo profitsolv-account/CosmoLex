@@ -47,6 +47,10 @@ export async function middleware(req: NextRequest) {
         return NextResponse.next();
     }
 
+    if (pathname.includes('/login')) {
+        return NextResponse.redirect('https://law.cosmolex.com/login/');
+    }
+
     if (pathname.endsWith('.xml') && !pathname.startsWith('/sitemaps/')) {
         const newUrl = req.nextUrl.clone();
         newUrl.pathname = `/sitemaps${pathname}`;
