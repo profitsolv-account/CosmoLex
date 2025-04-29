@@ -164,7 +164,7 @@ const HubSpotForm = ({ className }: Props) => {
     }, [chiliPiperLoaded]);
 
     return (
-        <div>
+        <div className="page_form">
             <Script
                 src="//js.chilipiper.com/marketing.js"
                 strategy="lazyOnload"

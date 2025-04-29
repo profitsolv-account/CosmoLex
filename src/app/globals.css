@@ -278,5 +278,67 @@ body {
     .list-disc {
         list-style: disc!important;
     }
+}
 
+
+.page_form {
+    /*@apply flex flex-col gap-4 max-w-[400px] mx-auto p-12;*/
+
+    input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+    select {
+        @apply px-[26px] py-3.5 bg-[#f5f5ff]/50 rounded-3xl outline outline-1 outline-offset-[-1px] outline-[#c8c8c8]/75 inline-flex justify-start items-center gap-2.5 w-full mb-1;
+    }
+
+    label {
+        @apply text-primary-dark;
+    }
+
+    [type="submit"] {
+        @apply flex-none items-center justify-center px-4 rounded-[6.25rem] py-3.5 border bg-primary-dark text-white text-base font-normal font-['Inter'] transition duration-300 md:px-7 inline-block hover:bg-transparent hover:text-primary-dark cursor-pointer;
+    }
+
+    .hs-recaptcha {
+        @apply w-full h-[100px] flex items-center justify-center text-sm text-primary-dark;
+    }
+
+    p {
+        @apply text-xs text-[#6b6b80];
+    }
+
+    .inputs-list {
+        @apply mb-5;
+
+        span {
+            @apply text-primary-dark ml-2;
+        }
+    }
+
+    .hs-fieldtype-radio > label {
+        @apply mb-2 inline-block;
+    }
+
+    .field {
+        @apply !w-full mb-5;
+    }
+
+    .hs-error-msgs {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+
+    .hs-richtext {
+        p {
+            @apply justify-start text-[#727272] !text-[0.75rem] font-normal font-['Inter'] leading-[1rem];
+            span {
+                @apply !text-[0.75rem];
+            }
+        }
+    }
+
+    .submitted-message {
+        @apply text-center justify-start text-primary-dark text-[2rem] font-bold font-['Inter'] leading-10 !pt-[6rem]
+    }
 }
