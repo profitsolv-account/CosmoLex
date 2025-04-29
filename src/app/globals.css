@@ -302,6 +302,9 @@ body {
         @apply text-primary-dark;
     }
 
+    .actions {
+        @apply flex items-center justify-center;
+    }
     [type="submit"] {
         @apply flex-none items-center justify-center px-4 rounded-[6.25rem] py-3.5 border bg-primary-dark text-white text-base font-normal font-['Inter'] transition duration-300 md:px-7 inline-block hover:bg-transparent hover:text-primary-dark cursor-pointer;
     }
