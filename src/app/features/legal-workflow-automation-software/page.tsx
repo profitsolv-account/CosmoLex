@@ -3,7 +3,7 @@ import { getSEOData } from "@/lib/queries/seo";
 import {getPageData, getPageFeaturesData} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
-import PillarChildTemplate from "@/components/templates/pillar/PillarChildTemplate";
+import PillarChildTemplateLegal from "@/components/templates/pillar/PillarChildTemplateLegal";
 
 const pageSlug = '/features/legal-workflow-automation-software'
 
@@ -19,7 +19,7 @@ export default async function PillarPage() {
         }
         const testimonials = await getTestimonialsList(pageSlug);
         const features = await getPageFeaturesData('features');
-        return <PillarChildTemplate pageData={{
+        return <PillarChildTemplateLegal pageData={{
             ...pageData,
             testimonials,
             footerExtendedBg: true,
