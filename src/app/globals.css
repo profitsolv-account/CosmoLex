@@ -280,6 +280,15 @@ body {
     }
 }
 
+.hs-error-msg {
+    @apply !text-red-500;
+}
+
+.hs_error_rollup {
+    label {
+        @apply !text-red-500 mb-3 block;
+    }
+}
 
 .page_form {
     /*@apply flex flex-col gap-4 max-w-[400px] mx-auto p-12;*/
