@@ -286,7 +286,7 @@ body {
 
     input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
     select {
-        @apply px-[26px] py-3.5 bg-[#f5f5ff]/50 rounded-3xl outline outline-1 outline-offset-[-1px] outline-[#c8c8c8]/75 inline-flex justify-start items-center gap-2.5 w-full mb-1;
+        @apply px-[26px] py-3.5 bg-[#f5f5ff]/50 rounded-3xl outline outline-1 outline-offset-[-1px] outline-[#c8c8c8]/75 inline-flex justify-start items-center gap-2.5 !w-full mb-1;
     }
 
     label {
@@ -318,7 +318,7 @@ body {
     }
 
     .field {
-        @apply !w-full mb-5;
+        @apply mb-5;
     }
 
     .hs-error-msgs {
