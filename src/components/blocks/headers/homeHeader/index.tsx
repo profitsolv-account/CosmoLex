@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { get } from "lodash";
 import heroImg from "@/assets/img/hero.png";
+import homeheaderg2 from "@/assets/img/home-images/g2.webp";
 import homeheadercapterra from "@/assets/img/home-images/Capterra.png";
+import homeheadergetapp from "@/assets/img/home-images/GetApp.png";
+import homeheadersoftwareadvice from "@/assets/img/home-images/SoftwareAdvice.png";
 import { PageDataType } from "@/types";
 import { FC } from "react";
 import { Rating } from "@/components/common/rating";
@@ -60,36 +63,36 @@ export const HomeHeader: FC<Props> = ({ pageData, hideRating }) => {
 </div>
 </div>
  
-          <div className=" hidden md:block py-13 ">
+          <div className=" hidden md:block py-5 pb-10">
             {hideRating ? <div className='gap-4 flex'><Image
-            src={homeheadercapterra}
-            alt="Capterra"
-            width={50}
+            src={homeheaderg2}
+            alt="G2"
             height={50}
-            className="w-full hidden sm:block"
+            width={75}
+            className="hidden sm:block"
             priority={true}
           />
             <Image
             src={homeheadercapterra}
             alt="Capterra"
-            width={50}
             height={50}
+            width={75}
             className="w-full hidden sm:block"
             priority={true}
           />
             <Image
-            src={homeheadercapterra}
-            alt="Capterra"
-            width={50}
+            src={homeheadergetapp}
+            alt="GetApp"
             height={50}
+            width={75}
             className="w-full hidden sm:block"
             priority={true}
           />
             <Image
-            src={homeheadercapterra}
-            alt="Capterra"
-            width={50}
+            src={homeheadersoftwareadvice}
+            alt="Software Advice"
             height={50}
+            width={75}
             className="w-full hidden sm:block"
             priority={true}
           /> </div> : <Rating />}
