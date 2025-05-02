@@ -30,7 +30,7 @@ export default function HomePage({ pageData }: { pageData: PageDataType }) {
 
     return (
         <Layout pageData={pageData}>
-            <HomeHeader pageData={pageData} />
+            <HomeHeader pageData={pageData} hideRating={pageData.hideRating} />
 
             <div className="px-4 md:px-0">
                 <ComplianceManagement />

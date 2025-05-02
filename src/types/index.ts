@@ -171,7 +171,8 @@ export type PageDataType = {
     directories?: DirectoryType[];
     csTestimonials?: CSTestimonial[];
     code?: string;
-    podcasts?: PodcastType[]
+    podcasts?: PodcastType[];
+    hideRating?: boolean;
 }
 
 export type LocationItem = {
