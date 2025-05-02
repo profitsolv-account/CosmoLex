@@ -24,8 +24,8 @@ export const TableOfContents: FC<Props> = ({ toc }) => {
 
 const TOCList: FC<{ items: TOCItem[]; depth: number }> = ({items, depth}) => {
     return (
-        <ul className="space-y-1 list-none pl-0 ml-0">
-            {items.map(item => (
+        <ul className="space-y-1 list-none pl-0 ml-0 w-full">
+            {items.filter(item => !!item.text.length).map(item => (
                 <li key={item.id} className={classNames(`pl-${depth * 4} py-2`, {
                     'border-b border-[#0a324f]/20 py-2 last:border-0': depth === 0
                 })}>

@@ -8,6 +8,7 @@ import {QualifiedSPAHandler} from "@/components/common/QualifiedSPAHandler/Quali
 import { Analytics } from '@vercel/analytics/next';
 import "./icons.css";
 import "./globals.css";
+import {VWOScript} from "vwo-smartcode-nextjs";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -39,6 +40,7 @@ export default function RootLayout({children}: Readonly<{
             })(window,document,'script','dataLayer','GTM-TCFL92Z');
           `}
             </Script>}
+            {isProduction() &&  <VWOScript accountId="978888" /> }
         </head>
         <body className={`${inter.variable} font-sans`}>
         {isProduction() && <noscript>
