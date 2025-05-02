@@ -31,37 +31,34 @@ export default function PostTemplate({pageData}: { pageData: PostDataType }) {
             flat.push({ id, text, tag: el.tagName });
         });
 
-        // Convert flat TOC into nested hierarchy
         const toc: TOCItem[] = [];
-        const stack: TOCItem[] = [];
+        let lastParent: TOCItem | null = null;
 
         flat.forEach(item => {
-            const level = parseInt(item.tag[1]);
-
-            while (stack.length && parseInt(stack[stack.length - 1].tag[1]) >= level) {
-                stack.pop();
-            }
-
-            if (stack.length === 0) {
+            const level = parseInt(item.tag[1]); // 1–5
+            const startsWithNumber = /^\d+[\.\)]?\s/.test(item.text);
+            if (level <= 2) {
                 toc.push(item);
-                stack.push(item);
+                lastParent = item;
+            }
+            else if (startsWithNumber && lastParent) {
+                if (!lastParent.children) lastParent.children = [];
+                lastParent.children.push(item);
             } else {
-                const parent = stack[stack.length - 1];
-                if (!parent.children) parent.children = [];
-                parent.children.push(item);
-                stack.push(item);
+                toc.push(item);
+                lastParent = item;
             }
         });
 
         return { content: $('body').html() || '', toc };
-    };
+    }
 
     const {content, toc} = parseContentWithHeadings(pageData ? pageData?.content : '');
 
     return (
         <Layout pageData={pageData}>
             <PostHeader pageData={pageData} />
-            <div className="b-32 single-entity container-blog flex flex-col-reverse gap-10 items-start lg:flex-row px-4 md:px-0">
+            <div className="b-32 single-entity container-blog flex flex-col-reverse gap-10 items-start lg:flex-row px-4 lg:px-0">
                 <div>
                     <section className="pb-20">
                         <section className="container py-4"
