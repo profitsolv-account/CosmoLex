@@ -22,7 +22,7 @@ export default function CalculatorPage({ pageData }: { pageData: PageDataType })
                 className="mb-0 pb-1 bg-primary relative z-10 rounded-bl-[3.125rem] md:rounded-bl-[6.25rem] md:pb-20"
             />
 
-            <div className="container-s bg-white rounded-2xl mt-30 py-20">
+            <div className="container-s">
                 <NetGainChart pageData={pageData} />
             </div>
 
