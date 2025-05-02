@@ -103,7 +103,6 @@ const NetGainCalculator: React.FC<Props> = ({pageData, className}) => {
         },
     } as const;
 
-    console.log(plan);
     return (
         <div className={classNames("p-6 max-w-5xl mx-auto", className)}>
 
@@ -139,11 +138,11 @@ const NetGainCalculator: React.FC<Props> = ({pageData, className}) => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 px-10 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 ">
 
                     <div className="md:border-r border-[#ccc] p-4">
                         <h3 className="text-2xl text-center font-semibold mb-2">Users Pricing Plans</h3>
-                        <div className="flex gap-4">
+                        <div className="md:flex gap-4">
                             {(['basic', 'plus', 'pro'] as const).map((p) => (
                                 <div
                                     key={p}
