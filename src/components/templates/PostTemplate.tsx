@@ -66,7 +66,8 @@ export default function PostTemplate({pageData}: { pageData: PostDataType }) {
         return { content: $('body').html() || '', toc };
     }
 
-    const {content, toc} = parseContentWithHeadings(pageData ? pageData?.content : '');
+    const ct = pageData ? pageData?.content : '';
+    const {content, toc} = parseContentWithHeadings(ct || '');
 
     return (
         <Layout pageData={pageData}>
