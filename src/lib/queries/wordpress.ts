@@ -267,10 +267,6 @@ export const getPostData = async (ps: string): Promise<PostDataType | null> => {
 
     const pageSlug = `/blog/${ps}`;
 
-   /* const posts = getFromCache("posts")
-    const pageData = posts.find((post: any) => post.slug === pageSlug);
-    if (pageData) return pageData;*/
-
     const { data } = await client.query({
         query: gql`
             query GetPage {
@@ -287,6 +283,16 @@ export const getPostData = async (ps: string): Promise<PostDataType | null> => {
                                 width
                                 height
                             }
+                        }
+                    }
+                    tags {
+                        nodes {
+                            name
+                        }
+                    }
+                    categories {
+                        nodes {
+                            name
                         }
                     }
                 }
@@ -309,14 +315,15 @@ export const getPostData = async (ps: string): Promise<PostDataType | null> => {
 
     const post = get(data, 'post', {});
 
-
     const latestPosts = await getLatestPosts(5);
     return {
         ...post,
         featuredPost: await getLatestGuide(),
         menus: await getAllMenus(),
         settings: await getSiteSettings(),
-        latestPosts
+        latestPosts,
+        tags: get(post, 'tags.nodes', []).map(({name}: any) => name),
+        categories: get(post, 'categories.nodes', []).map(({name}: any) => name),
     };
 }
 

@@ -70,7 +70,7 @@ body {
     }
 
     .container-blog {
-        @apply max-w-[69.375rem] mx-auto;
+        @apply max-w-[61.688rem] mx-auto;
     }
 
     .base-btn {
