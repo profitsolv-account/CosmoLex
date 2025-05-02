@@ -47,7 +47,7 @@ const NetGainCalculator: React.FC<Props> = ({pageData, className}) => {
     const [hourlyRate, setHourlyRate] = useState(250);
 
     const planPrices = {
-        basic: 35,
+        basic: 45,
         plus: 55,
         pro: 69,
     };
