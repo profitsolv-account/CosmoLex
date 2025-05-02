@@ -85,7 +85,7 @@ const NetGainCalculator: React.FC<Props> = ({pageData, className}) => {
         responsive: true,
         plugins: {
             legend: { position: 'top' as const },
-            title: { display: true, text: 'Net Gain Per Month Year 1' },
+            title: { display: false, text: '' },
         },
         scales: {
             y: {
@@ -183,7 +183,8 @@ const NetGainCalculator: React.FC<Props> = ({pageData, className}) => {
 
             </div>
 
-            <div className="bg-white rounded-2xl mt-5 py-20 px-10">
+            <div className="bg-white rounded-2xl mt-5 py-10 px-10">
+                <h3 className="text-3xl text-center font-semibold mb-2">Net Gain Per Month Year 1</h3>
                 <Chart type='bar' data={chartData} options={chartOptions} />
 
                 <p className="mt-10 italic">
