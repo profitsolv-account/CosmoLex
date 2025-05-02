@@ -4,7 +4,7 @@ import {getPageData, getPageFeaturesData} from "@/lib/queries/wordpress";
 import {getTestimonialsList} from "@/lib/queries/testimonials";
 import {notFound} from "next/navigation";
 import {getLanguage} from "@/lib/helpers";
-import OnlinePaymentsTemplate from "@/components/templates/pillar/OnlinePaymentsTemplate";
+import OnlinePaymentsTemplate from "@/components/templates/pillar/OnlinePaymentsTemplate1";
 
 export const dynamic = 'force-dynamic';
 
