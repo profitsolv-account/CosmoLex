@@ -21,4 +21,6 @@ export type PostDataType = {
         }
     },
     renderedContent?: React.ReactNode;
+    tags?: string[];
+    categories?: string[];
 }
