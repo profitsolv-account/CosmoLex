@@ -167,24 +167,10 @@ body {
             margin: 1.875rem 0;
             font-weight: 700;
         }
-        h3 {
+        h3, h4, h5 {
             @apply self-stretch justify-start text-[#0c193a] text-3xl font-bold leading-loose;
         }
 
-       h4 {
-           color: #0c193a;
-           font-size: 1.25rem;
-           font-style: normal;
-           font-weight: 400;
-           line-height: 2rem;
-       }
-        h5 {
-            color: #0c193a;
-            font-size: 1.125rem;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 1.75rem;
-        }
         p {
             margin-bottom: 0.5rem;
             font-size: 1.25rem;

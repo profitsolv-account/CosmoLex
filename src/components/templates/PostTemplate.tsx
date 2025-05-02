@@ -33,20 +33,33 @@ export default function PostTemplate({pageData}: { pageData: PostDataType }) {
 
         const toc: TOCItem[] = [];
         let lastParent: TOCItem | null = null;
+        let inNumberedSection = false;
+        let numberedParentLevel = 0;
 
         flat.forEach(item => {
-            const level = parseInt(item.tag[1]); // 1–5
+            const level = parseInt(item.tag[1]);
             const startsWithNumber = /^\d+[\.\)]?\s/.test(item.text);
+
             if (level <= 2) {
+                // Always top-level
                 toc.push(item);
                 lastParent = item;
-            }
-            else if (startsWithNumber && lastParent) {
+                inNumberedSection = startsWithNumber;
+                numberedParentLevel = level;
+            } else if (inNumberedSection && level >= numberedParentLevel && lastParent) {
+                // Force nest under numbered parent if same or deeper level
                 if (!lastParent.children) lastParent.children = [];
                 lastParent.children.push(item);
+            } else if (startsWithNumber && lastParent) {
+                // Nest under previous non-numbered parent
+                if (!lastParent.children) lastParent.children = [];
+                lastParent.children.push(item);
+                inNumberedSection = true;
+                numberedParentLevel = level;
             } else {
                 toc.push(item);
                 lastParent = item;
+                inNumberedSection = false;
             }
         });
 
