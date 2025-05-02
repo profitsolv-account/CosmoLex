@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { get } from "lodash";
+import {get} from "lodash";
 import heroImg from "@/assets/img/hero.png";
 import homeheaderg2 from "@/assets/img/home-images/g2.webp";
 import homeheadercapterra from "@/assets/img/home-images/Capterra.png";
@@ -11,8 +11,8 @@ import { Rating } from "@/components/common/rating";
 import { CustomLink } from "@/components/ui/customLink";
  
 type Props = {
-  pageData: PageDataType;
-  hideRating?: boolean;
+    pageData: PageDataType;
+    hideRating?: boolean;
 };
 export const HomeHeader: FC<Props> = ({ pageData, hideRating }) => {
   const title = get(pageData, "title", "");
