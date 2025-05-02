@@ -1,31 +1,75 @@
 import React from 'react'
 import Layout from "@/components/layout/layout";
-import {LatestPosts} from "@/components/widgets/latestPosts";
-import Image from 'next/image';
 import {PostDataType} from "@/types/post";
 import {PostHeader} from "@/components/blocks/headers/postHeader";
+import * as cheerio from 'cheerio';
+import {TOCItem, TableOfContents} from "@/components/widgets/postNavigation";
 
 export default function PostTemplate({pageData}: { pageData: PostDataType }) {
+
+    const parseContentWithHeadings = (html: string): { content: string; toc: TOCItem[] } => {
+        const $ = cheerio.load(html);
+        const flat: TOCItem[] = [];
+
+        $('h1,h2,h3,h4,h5').each((_, el) => {
+            const $el = $(el);
+            $el.addClass('scroll-mt-23');
+            const text = $el.text().trim();
+            let id = $el.attr('id');
+
+            if (!id) {
+                id = text
+                    .toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .replace(/[^\w\-]+/g, '')
+                    .replace(/\-+/g, '-')
+                    .replace(/^\-+|\-+$/g, '');
+                $el.attr('id', id);
+            }
+
+            // @ts-ignore
+            flat.push({ id, text, tag: el.tagName });
+        });
+
+        // Convert flat TOC into nested hierarchy
+        const toc: TOCItem[] = [];
+        const stack: TOCItem[] = [];
+
+        flat.forEach(item => {
+            const level = parseInt(item.tag[1]);
+
+            while (stack.length && parseInt(stack[stack.length - 1].tag[1]) >= level) {
+                stack.pop();
+            }
+
+            if (stack.length === 0) {
+                toc.push(item);
+                stack.push(item);
+            } else {
+                const parent = stack[stack.length - 1];
+                if (!parent.children) parent.children = [];
+                parent.children.push(item);
+                stack.push(item);
+            }
+        });
+
+        return { content: $('body').html() || '', toc };
+    };
+
+    const {content, toc} = parseContentWithHeadings(pageData ? pageData?.content : '');
+
     return (
-
         <Layout pageData={pageData}>
-
             <PostHeader pageData={pageData} />
-
-            <div className="pt-20 b-32 single-entity container-blog flex flex-col-reverse gap-10 items-start lg:flex-row px-4 md:px-0">
+            <div className="b-32 single-entity container-blog flex flex-col-reverse gap-10 items-start lg:flex-row px-4 md:px-0">
                 <div>
                     <section className="pb-20">
-                        <section className="mx-auto pb-4 text-left md:pb-16">
-                            <h2 className=" text-primary text-[2.125rem] font-bold font-['Inter'] leading-[3.4375rem] md:text-[2.875rem]"
-                                dangerouslySetInnerHTML={{__html: pageData?.title || ""}}/>
-                        </section>
-
                         <section className="container py-4"
-                                 dangerouslySetInnerHTML={{__html: pageData ? pageData?.content : ''}}/>
+                                 dangerouslySetInnerHTML={{__html: content}}/>
                     </section>
                 </div>
-                <div className="hidden md:block w-full lg:flex-none lg:w-1/4 lg:sticky lg:top-22 lg:pb-10">
-                    {pageData.latestPosts && <LatestPosts posts={pageData.latestPosts}/>}
+                <div className="hidden md:block w-full lg:flex-none lg:w-1/3 lg:sticky lg:top-22 lg:pb-10">
+                    <TableOfContents toc={toc}/>
                 </div>
             </div>
 

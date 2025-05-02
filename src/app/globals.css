@@ -4,6 +4,7 @@
 /* globals.css */
 html {
     font-size: 12.8px;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -161,7 +162,16 @@ body {
 
     /* Single page, single post, single project */
     .single-entity {
-       h4, h3 {
+        h2 {
+            @apply justify-start text-primary-dark text-[2.875rem] font-bold leading-[3.438rem];
+            margin: 1.875rem 0;
+            font-weight: 700;
+        }
+        h3 {
+            @apply self-stretch justify-start text-[#0c193a] text-3xl font-bold leading-loose;
+        }
+
+       h4 {
            color: #0c193a;
            font-size: 1.25rem;
            font-style: normal;
@@ -176,11 +186,11 @@ body {
             line-height: 1.75rem;
         }
         p {
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
             font-style: normal;
             font-weight: 400;
-            line-height: 1.875rem;
+            line-height: 2rem;
         }
         a {
             text-decoration: underline;
