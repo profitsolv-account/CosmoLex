@@ -65,7 +65,7 @@ const NetGainCalculator: React.FC<Props> = ({pageData, className}) => {
         labels,
         datasets: [
             {
-                label: 'Mango Practice Subscription',
+                label: 'CosmoLex Subscription',
                 type: 'line' as const,
                 data: Array.from({ length: months }, () => annualCost),
                 borderColor: '#0c193a',
