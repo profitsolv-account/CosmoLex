@@ -211,6 +211,7 @@ export const getPageData = async (
             tools,
             pageBlocks,
             code: get(data, 'page.pageSettings.code', ''),
+            testimonials: await getTestimonialsList(),
         };
     } catch(error: any) {
         if (
