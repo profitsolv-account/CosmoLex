@@ -41,16 +41,17 @@ const NetGainCalculator: React.FC<Props> = ({pageData, className}) => {
     const months = 12;
     const labels = Array.from({ length: months }, (_, i) => `Month ${i + 1}`);
 
-    const [plan, setPlan] = useState<'basic' | 'plus' | 'pro'>('basic');
+    const [plan, setPlan] = useState<'standard' | 'elite'>('standard');
     const [numberOfUsers, setNumberOfUsers] = useState(1);
     const [hoursSavedPerWeek, setHoursSavedPerWeek] = useState(8);
     const [hourlyRate, setHourlyRate] = useState(250);
 
-    const planPrices = {
-        basic: 35,
-        plus: 55,
-        pro: 69,
+    const planPrices: {[index: string]: number} = {
+        standard: 99,
+        elite: 129,
     };
+
+    const plans:Array<'standard' | 'elite'> = ['standard', 'elite'];
 
     const monthlySubscriptionPerUser = planPrices[plan];
     const monthlyCost = monthlySubscriptionPerUser * numberOfUsers;
@@ -106,84 +107,106 @@ const NetGainCalculator: React.FC<Props> = ({pageData, className}) => {
     return (
         <div className={classNames("p-6 max-w-5xl mx-auto", className)}>
 
-            <div className="bg-white rounded-2xl pt-10">
+            <div className="bg-white rounded-2xl pt-10 shadow-[0_0_20px_rgba(0,0,0,0.1)]">
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-10 border-b border-[#ccc] pb-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-10 border-b border-[#e5e5e5] pb-5">
                     <div>
-                        <label className="block text-lg font-bold mb-1">Number of Users</label>
+                        <label className="block text-lg font-bold mb-1 text-[18px]">Number of Users</label>
                         <input
                             type="number"
-                            className="w-full border rounded-md p-2 outline-0"
+                            className="w-full border rounded-md p-2 outline-0 border-[#e6e6e6] bg-[#fcfcfc]"
                             value={numberOfUsers}
                             onChange={(e) => setNumberOfUsers(Number(e.target.value))}
                         />
                     </div>
                     <div>
-                        <label className="block text-lg font-bold mb-1">*Hours Saved per Week</label>
+                        <label className="block text-lg font-bold mb-1 text-[18px]">*Hours Saved per Week</label>
                         <input
                             type="number"
-                            className="w-full border rounded-md p-2 outline-0"
+                            className="w-full border rounded-md p-2 outline-0 border-[#e6e6e6] bg-[#fcfcfc]"
                             value={hoursSavedPerWeek}
                             onChange={(e) => setHoursSavedPerWeek(Number(e.target.value))}
                         />
                     </div>
                     <div>
-                        <label className="block text-lg font-bold mb-1">Hourly Rate ($)</label>
-                        <input
-                            type="number"
-                            className="w-full border rounded-md p-2 outline-0"
-                            value={hourlyRate}
-                            onChange={(e) => setHourlyRate(Number(e.target.value))}
-                        />
+                        <label className="block text-lg font-bold mb-1 text-[18px]">Hourly Rate ($)</label>
+                        <div className="flex relative border rounded-md  border-[#e6e6e6] bg-[#fcfcfc]">
+                            <span className="bg-[#eee] flex items-center justify-center px-4 rounded-[4px] border-r border-[#e6e6e6]">$</span>
+                            <input
+                                type="number"
+                                className="w-full outline-0 p-2 "
+                                value={hourlyRate}
+                                onChange={(e) => setHourlyRate(Number(e.target.value))}
+                            />
+                        </div>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 ">
 
-                    <div className="md:border-r border-[#ccc] p-4">
-                        <h3 className="text-2xl text-center font-semibold mb-2">Users Pricing Plans</h3>
-                        <div className="md:flex gap-4">
-                            {(['basic', 'plus', 'pro'] as const).map((p) => (
+                    <div className="md:border-r border-[#e5e5e5] p-4 pt-8">
+                        <h3 className="text-center font-semibold mb-2 text-[25px]">Users Pricing Plans</h3>
+                        <p className="text-center text-[16px] mb-6">Monthly price per users</p>
+                        <div className="md:flex gap-16 justify-center">
+                            {(plans).map((p) => (
                                 <div
                                     key={p}
-                                    className={`py-2 font-semibold text-center`}
+                                    className='py-2 font-semibold text-center flex flex-col'
                                 >
-                                    {p.charAt(0).toUpperCase() + p.slice(1)} (${planPrices[p]}/user/mo)
+                                    <div className="text-center font-semibold mb-2 text-[20px] capitalize">
+                                        {p}
+                                    </div>
+                                    <div className="text-[16px]">
+                                        ${planPrices[p]}
+                                    </div>
                                 </div>
                             ))}
                         </div>
 
                     </div>
 
-                    <div className="rounded-md p-4 pb-20">
+                    <div className="rounded-md p-4 pb-20 pt-8">
 
-                        <div className="border-b border-[#ccc] mb-4">
+                        <div className="border-b border-[#e5e5e5] mb-6 pb-4">
 
-                            <h3 className="text-2xl text-center font-semibold mb-2">Annual Subscription Plan</h3>
+                            <h3 className="text-center font-semibold text-[25px] mb-2">Annual Subscription Plan</h3>
                             <div className="flex gap-4 justify-center">
-                                {(['basic', 'plus', 'pro'] as const).map((p) => (
+                                {(plans).map((p) => (
                                     <div
                                         key={p}
                                         onClick={() => setPlan(p)}
-                                        className={`px-4 py-2 font-bold cursor-pointer text-xl ${
+                                        className={`px-4 py-2 font-bold cursor-pointer text-xl capitalize ${
                                             plan === p ? 'text-primary-dark ' : 'text-gray-500'
                                         }`}
                                     >
-                                        {p.charAt(0).toUpperCase() + p.slice(1)}
+                                        {p}
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <p className="text-xl mb-2"><strong>Mango Practice Annual Cost:</strong> ${annualCost.toLocaleString()}</p>
-                        <p className="text-xl mb-2"><strong>Annual Savings**:</strong> ${annualSavings.toLocaleString()}</p>
-                        <p className="font-bold text-primary-dark text-2xl mt-1"><strong>Net Gain:</strong> ${netGain.toLocaleString()}</p>
+                        <div className="text-xl mb-2">
+                            <div className="font-bold inline-block min-w-[200px] text-[16px]">CosmoLex Annual Cost: </div>
+                            ${annualCost.toLocaleString()}
+                        </div>
+                        <div className="text-xl mb-3">
+                            <div className="font-bold inline-block min-w-[200px] text-[16px]">Annual Savings**: </div>
+                            ${annualSavings.toLocaleString()}
+                        </div>
+
+                        <div className="bg-green py-1.5 text-center">
+                            <div className="text-primary-dark text-[16px] mt-1">
+                                <div className="font-bold inline-block mr-3">Net Gain:</div>
+                                ${netGain.toLocaleString()}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
             </div>
 
-            <div className="bg-white rounded-2xl mt-5 py-10 px-10">
-                <h3 className="text-3xl text-center font-semibold mb-2">Net Gain Per Month Year 1</h3>
+            <div className="bg-white rounded-2xl mt-5 py-10 px-10 shadow-[0_0_20px_rgba(0,0,0,0.1)]">
+                <h3 className="text-3xl text-center font-bold mb-2">Net Gain Per Month Year 1</h3>
                 <Chart type='bar' data={chartData} options={chartOptions} />
 
                 <p className="mt-10 italic">
