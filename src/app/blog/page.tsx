@@ -21,7 +21,10 @@ export default async function BlogPage() {
     if (!pageData) {
         return notFound();
     }
-    return <BlogTemplate pageData={pageData} page={1} />
+    return <BlogTemplate pageData={{
+        ...pageData,
+        footerExtendedBg: true
+    }} page={1} />
 }
 
 export const revalidate = false;

@@ -31,7 +31,7 @@ export const PostHeader = ({pageData, className}:Props) => {
                 {categories.join(', ')}
             </div>
         </div>
-        <div className="mx-auto max-w-[62rem] justify-center items-center grid md:grid-cols-2 gap-2 lg:items-start relative z-2 lg:flex-row lg:gap-14">
+        <div className="mx-auto max-w-[62rem] justify-center items-center grid md:grid-cols-2 gap-2 lg:items-start relative z-2 lg:flex-row lg:gap-9">
             <div>
                 {subheading &&
                     <div
@@ -39,7 +39,9 @@ export const PostHeader = ({pageData, className}:Props) => {
                 }
                 <div className="mb-9">
 
-                    <h1 className="text-left home-title text-white text-[2.875rem] font-medium leading-[2.875rem] md:leading-[100%] md:text-[3.75rem] md:font-normal lg:block [word-spacing:5px] tracking-[1.1px]"
+                    <h1
+                        className="text-left home-title text-white text-[2.875rem] font-medium leading-[2.875rem] md:leading-[100%] md:text-[3.75rem] md:font-normal lg:block tracking-[2.2px]"
+                        style={{ fontFeatureSettings: "'liga' off, 'clig' off" }}
                         dangerouslySetInnerHTML={{__html: formatTitle(title)}}
                     />
                 </div>
@@ -50,7 +52,7 @@ export const PostHeader = ({pageData, className}:Props) => {
                     />
                 }
 
-                <div className="flex justify-start items-center gap-4 pb-10">
+                {!!tags.length && <div className="flex justify-start items-center gap-4 pb-10">
                     <div className="flex gap-2 text-white items-center flex-wrap">
                         <div className="flex items-center gap-1 text-white text-base font-normal leading-loose whitespace-nowrap mr-2">
                             <TagsIcon className="w-[0.938rem] h-[0.813rem]" /> Tags:
@@ -63,18 +65,18 @@ export const PostHeader = ({pageData, className}:Props) => {
                             })
                         }
                     </div>
-                </div>
+                </div>}
             </div>
-            <div className="flex justify-center relative">
+            <div className="flex justify-center relative md:pl-6">
                 {pageData.featuredImage && <>
                     <section className="container text-center">
-                    <div className="inline-block rounded-[1.875rem] overflow-hidden">
-                            <Image
-                                src={pageData.featuredImage?.node.sourceUrl}
-                                alt={pageData.featuredImage?.node.altText}
-                                width={pageData.featuredImage?.node.mediaDetails.width}
-                                height={pageData.featuredImage?.node.mediaDetails.height}
-                            />
+                        <div className="inline-block rounded-[1.875rem] overflow-hidden">
+                                <Image
+                                    src={pageData.featuredImage?.node.sourceUrl}
+                                    alt={pageData.featuredImage?.node.altText}
+                                    width={pageData.featuredImage?.node.mediaDetails.width}
+                                    height={pageData.featuredImage?.node.mediaDetails.height}
+                                />
                         </div>
                     </section>
                 </>}
