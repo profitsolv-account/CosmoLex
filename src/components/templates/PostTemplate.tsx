@@ -88,7 +88,7 @@ export default function PostTemplate({pageData}: { pageData: PostDataType }) {
                 <div className="w-full relative bg-[#b9dfc3] rounded-tl-[3.125rem] rounded-br-[3.125rem] overflow-hidden p-[4.625rem] my-5">
                     <div className="top-[74px] justify-start text-primary-dark text-xl font-bold font-['Inter'] leading-loose"></div>
                     <div className="justify-start text-primary-dark text-[2.875rem] font-bold font-['Inter'] leading-[3.375rem] mb-5"></div>
-                    <div className="justify-start text-primary-dark text-2xl font-normal font-['Inter'] leading-9 mb-5"></div>
+                    <div className="justify-start text-primary-dark text-2xl font-normal font-['Inter'] leading-9 mb-5"> </div>
                     <a href="/" className="no-underline base-btn w-auto mx-auto bg-primary-dark text-white inline-flex px-8 hover:bg-transparent hover:text-primary-dark"></a>
                 </div>
             </section>
