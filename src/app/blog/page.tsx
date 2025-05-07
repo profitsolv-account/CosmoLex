@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
 import BlogTemplate from "@/components/templates/BlogTemplate";
-import {getBlogData} from "@/lib/queries/blog";
+import {getBlogPageData, getPosts} from "@/lib/queries/blog";
 import {generalSettings} from "@/lib/queries/settings";
 import {notFound} from "next/navigation";
 
@@ -17,14 +17,19 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function BlogPage() {
-    const pageData = await getBlogData(1);
+    const pageData = await getBlogPageData();
+    const postsData = await getPosts();
+
     if (!pageData) {
         return notFound();
     }
     return <BlogTemplate pageData={{
-        ...pageData,
-        footerExtendedBg: true
-    }} page={1} />
+            ...pageData,
+            footerExtendedBg: true
+        }}
+        page={1}
+        postsData={postsData}
+    />
 }
 
 export const revalidate = false;

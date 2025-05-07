@@ -180,3 +180,19 @@ export type LocationItem = {
     children: LocationItem[]
 };
 
+
+export type PostsDataResponse = {
+    posts: {
+        id: string;
+        slug: string;
+        title: string;
+        excerpt: string;
+        featuredImage?: {
+            sourceUrl: string;
+        };
+    }[];
+    pageInfo: {
+        endCursor: string;
+        hasNextPage: boolean;
+    };
+};
