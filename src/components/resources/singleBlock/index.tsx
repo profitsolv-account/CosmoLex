@@ -13,12 +13,10 @@ type Props = {
 }
 
 function truncateWords(htmlString: string, wordLimit: number): string {
-    const div = document.createElement("div");
-    div.innerHTML = htmlString;
-    const text = div.textContent || div.innerText || "";
-    const words = text.trim().split(/\s+/);
-    const truncated = words.slice(0, wordLimit).join(" ");
-    return truncated + (words.length > wordLimit ? "..." : "");
+    const textOnly = htmlString.replace(/<[^>]*>/g, ''); // remove all HTML tags
+    const words = textOnly.trim().split(/\s+/);
+    const truncated = words.slice(0, wordLimit).join(' ');
+    return truncated + (words.length > wordLimit ? '...' : '');
 }
 
 export const SingleBlock:FC<Props> = ({
