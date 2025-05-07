@@ -20,8 +20,7 @@ const getSlug = async () => {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-    const slug = await getSlug();
-    return await getSEOData(slug);
+    return await getSEOData('/features/online-payments');
 }
 
 export default async function PillarPage() {
