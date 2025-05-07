@@ -5,6 +5,7 @@ import {getSiteSettings} from "@/lib/queries/settings";
 import {getLatestPosts} from "@/lib/queries/wordpress";
 import {PageDataType, PostsDataResponse, ShortPostType} from "@/types";
 import {getLatestGuide} from "@/lib/queries/resources";
+import {get} from "lodash";
 
 const POSTS_PER_PAGE = 10;
 const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
@@ -27,12 +28,29 @@ export const getBlogPageData = async (): Promise<PageDataType | null> => {
 
 export const getPosts = async (
     afterCursor: string | null = null,
-    first: number = 15
+    first: number = 15,
+    searchQuery: string = '',
+    categoryIn: number[] = [],
+    tagIn: number[] = []
 ): Promise<PostsDataResponse> => {
     try {
         const query = gql`
-            query GetPosts($after: String, $first: Int) {
-                posts(first: $first, after: $after) {
+            query GetPosts(
+                $after: String
+                $first: Int
+                $search: String
+                $categoryIn: [ID]
+                $tagIn: [ID]
+            ) {
+                posts(
+                    first: $first
+                    after: $after
+                    where: {
+                        search: $search
+                        categoryIn: $categoryIn
+                        tagIn: $tagIn
+                    }
+                ) {
                     pageInfo {
                         endCursor
                         hasNextPage
@@ -59,27 +77,91 @@ export const getPosts = async (
             variables: {
                 after: afterCursor,
                 first,
+                search: searchQuery || null,
+                categoryIn: categoryIn.length ? categoryIn : null,
+                tagIn: tagIn.length ? tagIn : null,
             },
         });
-
-       // if (!data?.posts) return null;
 
         return {
             posts: data.posts.edges.map((edge: any) => edge.node),
             pageInfo: {
                 endCursor: data.posts.pageInfo.endCursor,
-                hasNextPage: data.posts.pageInfo.endCursor
+                hasNextPage: data.posts.pageInfo.hasNextPage,
             },
         };
     } catch (e) {
         console.error("Error loading posts:", e);
-
         return {
             posts: [],
             pageInfo: {
                 endCursor: '',
                 hasNextPage: false
             }
+        };
+    }
+};
+
+export const getCategoryIdBySlug = async (slug: string): Promise<{id: number, name: string}> => {
+    const CATEGORY_QUERY = gql`
+        query GetCategoryBySlug($slug: ID!) {
+            category(id: $slug, idType: SLUG) {
+                databaseId
+                name
+            }
+        }
+    `;
+
+    try {
+        const { data } = await client.query({
+            query: CATEGORY_QUERY,
+            variables: { slug },
+        });
+
+        const name = get(data, 'category.name', '');
+        const id = get(data, 'category.databaseId', -1);
+
+        return {
+            id,
+            name
+        }
+    } catch (error) {
+        console.error(`Error fetching category by slug "${slug}":`, error);
+        return {
+            id: -1,
+            name: ''
+        };
+    }
+};
+
+export const getTagIdBySlug = async (slug: string): Promise<{id: number, name: string}> => {
+    const TAG_QUERY = gql`
+        query GetCategoryBySlug($slug: ID!) {
+            tag(id: $slug, idType: SLUG) {
+                databaseId
+                name
+            }
+        }
+    `;
+
+    try {
+        const { data } = await client.query({
+            query: TAG_QUERY,
+            variables: { slug },
+        });
+
+        const name = get(data, 'tag.name', '');
+        const id = get(data, 'tag.databaseId', -1);
+
+        return {
+            id,
+            name
+        }
+    } catch (error) {
+        console.error(`Error fetching tag by slug "${slug}":`, error);
+        return {
+            id: -1,
+            name: ''
         };
     }
 };

@@ -1,6 +1,6 @@
 import {CustomLink} from "@/components/ui/customLink";
 import {FC} from "react";
-
+import Image from "next/image";
 
 type Props = {
     className?: string;
@@ -34,14 +34,23 @@ export const SingleBlock:FC<Props> = ({
                 View All
             </CustomLink>}
         </div>}
-        <div className="w-full">
-            <img className="rounded-[1.25rem] w-full" src="https://placehold.co/267x170" />
+
+        {!!image && <CustomLink href={link} >
+            <div className="w-full">
+                <Image
+                    className="rounded-[1.25rem] w-full"
+                    src={image}
+                    width={400}
+                    height={400}
+                    alt={title}
+                />
         </div>
+        </CustomLink>}
         <div className="flex-1 inline-flex flex-col justify-start items-start gap-4">
-            <div className="self-stretch justify-start text-primary-dark text-xl font-bold leading-[2rem]">{title}</div>
+            <CustomLink href={link} className="self-stretch justify-start text-primary-dark text-xl font-bold leading-[2rem]">{title}</CustomLink>
             <div className="self-stretch justify-start text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{__html: description}} />
             <div className="inline-flex justify-start items-center gap-[0.438rem]">
-                <CustomLink href={link} className="justify-start text-primary-dark text-base font-normal leading-[1.875rem]">Read more</CustomLink>
+                <CustomLink href={link} className="justify-start text-primary-dark text-base font-normal leading-[1.875rem] underline">Read more</CustomLink>
             </div>
         </div>
     </div>

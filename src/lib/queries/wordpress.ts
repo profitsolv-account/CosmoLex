@@ -289,11 +289,13 @@ export const getPostData = async (ps: string): Promise<PostDataType | null> => {
                     tags {
                         nodes {
                             name
+                            slug
                         }
                     }
                     categories {
                         nodes {
                             name
+                            slug
                         }
                     }
                 }
@@ -323,8 +325,8 @@ export const getPostData = async (ps: string): Promise<PostDataType | null> => {
         menus: await getAllMenus(),
         settings: await getSiteSettings(),
         latestPosts,
-        tags: get(post, 'tags.nodes', []).map(({name}: any) => name),
-        categories: get(post, 'categories.nodes', []).map(({name}: any) => name),
+        tags: get(post, 'tags.nodes', []).map(({name, slug}: any) => ({name, slug})),
+        categories: get(post, 'categories.nodes', []).map(({name, slug}: any) => ({name, slug})),
     };
 }
 

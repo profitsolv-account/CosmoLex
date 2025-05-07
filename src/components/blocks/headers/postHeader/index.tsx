@@ -4,6 +4,7 @@ import React, {ReactNode} from "react";
 import {PostDataType} from "@/types/post";
 import Image from "next/image";
 import TagsIcon from "@/assets/img/tagsIcon.svg";
+import {CustomLink} from "@/components/ui/customLink";
 
 type Props = {
     pageData: PostDataType;
@@ -28,7 +29,9 @@ export const PostHeader = ({pageData, className}:Props) => {
 
         <div className="mx-auto max-w-[62rem] justify-start items-center grid md:grid-cols-2 gap-2 lg:items-start relative z-2 lg:flex-row lg:gap-14 pb-6 ">
             <div className="justify-start text-green text-base font-normal uppercase tracking-wider">
-                {categories.join(', ')}
+                {categories.map(({name, slug}) => {
+                    return <CustomLink key={slug} href={`/blog/category/${slug}`} className="mr-4">{name}</CustomLink>
+                })}
             </div>
         </div>
         <div className="mx-auto max-w-[62rem] justify-center items-center grid md:grid-cols-2 gap-2 lg:items-start relative z-2 lg:flex-row lg:gap-9">
@@ -59,9 +62,9 @@ export const PostHeader = ({pageData, className}:Props) => {
                         </div>
                         {
                             tags.map((tag, index) => {
-                                return <div key={index} className="inline-block px-[0.813rem] py-0.5 bg-primary-dark rounded-[1.875rem] text-white text-base font-normal leading-loose whitespace-nowrap">
-                                    {tag}
-                                </div>
+                                return <CustomLink href={`/blog/tag/${tag.slug}`} key={index} className="inline-block px-[0.813rem] py-0.5 bg-primary-dark rounded-[1.875rem] text-white text-base font-normal leading-loose whitespace-nowrap">
+                                    {tag.name}
+                                </CustomLink>
                             })
                         }
                     </div>

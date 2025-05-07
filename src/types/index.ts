@@ -189,7 +189,9 @@ export type PostsDataResponse = {
         title: string;
         excerpt: string;
         featuredImage?: {
-            sourceUrl: string;
+            node: {
+                sourceUrl: string;
+            }
         };
     }[];
     pageInfo: {

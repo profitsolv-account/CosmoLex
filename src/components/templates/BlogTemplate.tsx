@@ -14,10 +14,18 @@ import {getPosts} from "@/lib/queries/blog";
 type Props = {
     pageData: PageDataType;
     page: number;
-    postsData: PostsDataResponse
+    postsData: PostsDataResponse;
+    searchParams?: {
+        s?: string;
+        category?: number;
+        tag?: number;
+        categoryName?: string;
+        tagName?: string;
+    };
 }
 
-export default function BlogTemplate({ pageData, page, postsData }: Props) {
+export default function BlogTemplate({ pageData, page, postsData, searchParams }: Props) {
+
     const firstPosts = postsData.posts.slice(0, 6);
 
     const [posts, setPosts] = useState<any>(postsData.posts.slice(6, postsData.posts.length));
@@ -26,9 +34,10 @@ export default function BlogTemplate({ pageData, page, postsData }: Props) {
 
     const loadMorePosts = async () => {
         if (!pageInfo?.hasNextPage) return;
-
         setLoading(true);
-        const data = await getPosts(pageInfo.endCursor); // pass endCursor as `after`
+        const category = searchParams?.category ? [searchParams?.category] : [];
+        const tag = searchParams?.tag ? [searchParams?.tag] : [];
+        const data = await getPosts(pageInfo.endCursor, 15, searchParams?.s || '', category, tag);
         if (data) {
             setPosts((prev: any) => [...prev, ...data.posts]);
             setPageInfo(data.pageInfo);
@@ -36,8 +45,7 @@ export default function BlogTemplate({ pageData, page, postsData }: Props) {
         setLoading(false);
     };
 
-
-
+    const isEmpty = firstPosts.length === 0;
 
     return (
         <Layout pageData={pageData}>
@@ -45,7 +53,7 @@ export default function BlogTemplate({ pageData, page, postsData }: Props) {
             <div className="bg-white">
 
                 <ResourcesHeader
-                    type="resources"
+                    type={searchParams?.categoryName || searchParams?.tagName || 'resources'}
                     title="Article Library"
                     actions={[{
                         title: 'Articles',
@@ -59,7 +67,7 @@ export default function BlogTemplate({ pageData, page, postsData }: Props) {
                         },
                         {
                             title: 'Infographics',
-                            link: '/infographics',
+                            link: '/resource-hub',
                             active: false
                         },
                         {
@@ -73,10 +81,17 @@ export default function BlogTemplate({ pageData, page, postsData }: Props) {
                     className="!mb-7 pb-5"
                 />
 
+
                 <div className="px-4">
                     <div className="max-w-[66.438rem] mx-auto">
                         <SearchForm />
                     </div>
+
+                    {isEmpty && <div className="max-w-[66.438rem] mx-auto mt-20">
+                        <p className="text-3xl text-center font-bold mb-10">
+                            No articles found.
+                        </p>
+                    </div>}
 
                   <div className="max-w-[66.438rem] mx-auto py-20 grid grid-cols-1 gap-[8.125rem] gap-y-[6rem] md:grid-cols-2 lg:grid-cols-3">
 
@@ -84,12 +99,11 @@ export default function BlogTemplate({ pageData, page, postsData }: Props) {
                           return  <SingleBlock
                               key={post.id}
                               title={post.title}
-                              link={'/'}
+                              link={`/blog/${post.slug}`}
                               description={post.excerpt}
-                              image={post.featuredImage?.sourceUrl || ''}
+                              image={post.featuredImage?.node.sourceUrl || ''}
                           />
                       })}
-
 
                     </div>
 
@@ -99,19 +113,19 @@ export default function BlogTemplate({ pageData, page, postsData }: Props) {
 
                     <div className="max-w-[66.438rem] mx-auto py-20 grid grid-cols-1 gap-[8.125rem] gap-y-[6rem] md:grid-cols-2 lg:grid-cols-3">
                         {posts.map((post: any) => {
-                            return  <SingleBlock
+                            return <SingleBlock
                                 key={post.id}
                                 title={post.title}
-                                link={'/'}
+                                link={`/blog/${post.slug}`}
                                 description={post.excerpt}
-                                image={post.featuredImage?.sourceUrl || ''}
+                                image={post.featuredImage?.node.sourceUrl || ''}
                             />
                         })}
 
                     </div>
 
                     {pageInfo.hasNextPage && (
-                        <button className="max-w-[66.438rem] mx-auto pb-40 flex align-center justify-center" onClick={loadMorePosts} disabled={loading}>
+                        <button className="max-w-[66.438rem] mx-auto pb-40 flex align-center justify-center disabled:opacity-70" onClick={loadMorePosts} disabled={loading}>
                             <div className="border border-primary-dark bg-primary-dark text-white rounded-[6.25rem] cursor-pointer inline-block px-22 py-3.5 text-base transition duration-300 hover:bg-transparent hover:text-primary-dark">
                                     {loading ? "Loading..." : "Load More"}
                             </div>
@@ -120,7 +134,6 @@ export default function BlogTemplate({ pageData, page, postsData }: Props) {
                     )}
 
                 </div>
-
 
             </div>
 
