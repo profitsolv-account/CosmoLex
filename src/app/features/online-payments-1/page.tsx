@@ -20,8 +20,6 @@ const getSlug = async () => {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-    const seoData =  await getSEOData('/features/online-payments-1');
-    console.log(seoData);
     return await getSEOData('/features/online-payments-1');
 }
 
