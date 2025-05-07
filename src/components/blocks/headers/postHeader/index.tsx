@@ -1,6 +1,6 @@
 import {get} from "lodash";
 import classNames from "classnames";
-import React, {ReactNode} from "react";
+import React, {Fragment, ReactNode} from "react";
 import {PostDataType} from "@/types/post";
 import Image from "next/image";
 import TagsIcon from "@/assets/img/tagsIcon.svg";
@@ -29,8 +29,11 @@ export const PostHeader = ({pageData, className}:Props) => {
 
         <div className="mx-auto max-w-[62rem] justify-start items-center grid md:grid-cols-2 gap-2 lg:items-start relative z-2 lg:flex-row lg:gap-14 pb-6 ">
             <div className="justify-start text-green text-base font-normal uppercase tracking-wider">
-                {categories.map(({name, slug}) => {
-                    return <CustomLink key={slug} href={`/blog/category/${slug}`} className="mr-4">{name}</CustomLink>
+                {categories.map(({name, slug}, k) => {
+                    return <Fragment key={slug}>
+                        <CustomLink href={`/blog/category/${slug}`} className="">{name}</CustomLink>
+                        {k < categories.length - 1 && <span className="mr-4">,</span>}
+                    </Fragment>
                 })}
             </div>
         </div>
@@ -62,7 +65,7 @@ export const PostHeader = ({pageData, className}:Props) => {
                         </div>
                         {
                             tags.map((tag, index) => {
-                                return <CustomLink href={`/blog/tag/${tag.slug}`} key={index} className="inline-block px-[0.813rem] py-0.5 bg-primary-dark rounded-[1.875rem] text-white text-base font-normal leading-loose whitespace-nowrap">
+                                return <CustomLink href={`/blog/tag/${tag.slug}`} key={index} className="inline-block px-[0.813rem] py-0.5 bg-primary-dark rounded-[1.875rem] text-white text-base font-normal leading-loose whitespace-nowrap transition-all duration-300 hover:bg-green hover:text-primary-dark">
                                     {tag.name}
                                 </CustomLink>
                             })
