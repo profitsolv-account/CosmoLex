@@ -9,8 +9,7 @@ import { RetryLink } from '@apollo/client/link/retry';
 
 export const cacheOption = "no-cache";//"cache-first";
 
-
-const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
+const API = process.env.WORDPRESS_API_URL || process.env.NEXT_PUBLIC_WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
 
 const errorLink = onError(({ networkError }) => {
     if (networkError) console.error(networkError);

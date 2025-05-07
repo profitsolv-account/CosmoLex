@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
-import BlogTemplate from "@/components/templates/BlogTemplate";
 import {getBlogData} from "@/lib/queries/blog";
 import {generalSettings} from "@/lib/queries/settings";
 import {notFound} from "next/navigation";
+import GuidesBlogTemplate from "@/components/templates/GuidesBlogTemplate";
 
 export async function generateMetadata(): Promise<Metadata> {
     const {title} = await generalSettings();
@@ -21,7 +21,7 @@ export default async function BlogPage() {
     if (!pageData) {
         notFound();
     }
-    return <BlogTemplate pageData={pageData} page={1} />
+    return <GuidesBlogTemplate pageData={pageData} page={1} />
 }
 
 export const revalidate = false;

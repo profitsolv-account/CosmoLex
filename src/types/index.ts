@@ -181,3 +181,21 @@ export type LocationItem = {
     children: LocationItem[]
 };
 
+
+export type PostsDataResponse = {
+    posts: {
+        id: string;
+        slug: string;
+        title: string;
+        excerpt: string;
+        featuredImage?: {
+            node: {
+                sourceUrl: string;
+            }
+        };
+    }[];
+    pageInfo: {
+        endCursor: string;
+        hasNextPage: boolean;
+    };
+};

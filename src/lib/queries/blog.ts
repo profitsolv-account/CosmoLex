@@ -3,12 +3,169 @@ import client, {cacheOption} from "@/lib/apollo-client";
 import {getAllMenus} from "@/lib/queries/menus";
 import {getSiteSettings} from "@/lib/queries/settings";
 import {getLatestPosts} from "@/lib/queries/wordpress";
-import {PageDataType, ShortPostType} from "@/types";
+import {PageDataType, PostsDataResponse, ShortPostType} from "@/types";
 import {getLatestGuide} from "@/lib/queries/resources";
+import {get} from "lodash";
 
 const POSTS_PER_PAGE = 10;
 const API = process.env.WORDPRESS_API_URL || 'https://cosmonew1.wpenginepowered.com';
 const BASE_URL = `${API}/wp-json/wp/v2`;
+
+export const getBlogPageData = async (): Promise<PageDataType | null> => {
+
+    const latestPosts = await getLatestPosts(5);
+    return {
+        featuredPost: await getLatestGuide(),
+        menus: await getAllMenus(),
+        settings: await getSiteSettings(),
+        latestPosts,
+        title: "Blog",
+        content: "",
+        id: "",
+        date: "",
+    };
+};
+
+export const getPosts = async (
+    afterCursor: string | null = null,
+    first: number = 15,
+    searchQuery: string = '',
+    categoryIn: number[] = [],
+    tagIn: number[] = []
+): Promise<PostsDataResponse> => {
+    try {
+        const query = gql`
+            query GetPosts(
+                $after: String
+                $first: Int
+                $search: String
+                $categoryIn: [ID]
+                $tagIn: [ID]
+            ) {
+                posts(
+                    first: $first
+                    after: $after
+                    where: {
+                        search: $search
+                        categoryIn: $categoryIn
+                        tagIn: $tagIn
+                    }
+                ) {
+                    pageInfo {
+                        endCursor
+                        hasNextPage
+                    }
+                    edges {
+                        node {
+                            id
+                            slug
+                            title
+                            excerpt(format: RENDERED)
+                            featuredImage {
+                                node {
+                                    sourceUrl(size: MEDIUM)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        `;
+
+        const { data } = await client.query({
+            query,
+            variables: {
+                after: afterCursor,
+                first,
+                search: searchQuery || null,
+                categoryIn: categoryIn.length ? categoryIn : null,
+                tagIn: tagIn.length ? tagIn : null,
+            },
+        });
+
+        return {
+            posts: data.posts.edges.map((edge: any) => edge.node),
+            pageInfo: {
+                endCursor: data.posts.pageInfo.endCursor,
+                hasNextPage: data.posts.pageInfo.hasNextPage,
+            },
+        };
+    } catch (e) {
+        console.error("Error loading posts:", e);
+        return {
+            posts: [],
+            pageInfo: {
+                endCursor: '',
+                hasNextPage: false
+            }
+        };
+    }
+};
+
+export const getCategoryIdBySlug = async (slug: string): Promise<{id: number, name: string}> => {
+    const CATEGORY_QUERY = gql`
+        query GetCategoryBySlug($slug: ID!) {
+            category(id: $slug, idType: SLUG) {
+                databaseId
+                name
+            }
+        }
+    `;
+
+    try {
+        const { data } = await client.query({
+            query: CATEGORY_QUERY,
+            variables: { slug },
+        });
+
+        const name = get(data, 'category.name', '');
+        const id = get(data, 'category.databaseId', -1);
+
+        return {
+            id,
+            name
+        }
+    } catch (error) {
+        console.error(`Error fetching category by slug "${slug}":`, error);
+        return {
+            id: -1,
+            name: ''
+        };
+    }
+};
+
+export const getTagIdBySlug = async (slug: string): Promise<{id: number, name: string}> => {
+    const TAG_QUERY = gql`
+        query GetCategoryBySlug($slug: ID!) {
+            tag(id: $slug, idType: SLUG) {
+                databaseId
+                name
+            }
+        }
+    `;
+
+    try {
+        const { data } = await client.query({
+            query: TAG_QUERY,
+            variables: { slug },
+        });
+
+        const name = get(data, 'tag.name', '');
+        const id = get(data, 'tag.databaseId', -1);
+
+        return {
+            id,
+            name
+        }
+    } catch (error) {
+        console.error(`Error fetching tag by slug "${slug}":`, error);
+        return {
+            id: -1,
+            name: ''
+        };
+    }
+};
+
 
 export const getBlogData = async (page: number): Promise<PageDataType | null> => {
     const res = await fetch(`${BASE_URL}/posts?page=${page}&per_page=${POSTS_PER_PAGE}&_embed=true`,
@@ -49,74 +206,4 @@ export const getBlogData = async (page: number): Promise<PageDataType | null> =>
         date: "",
         total: totalPosts
     };
-};
-
-
-export const getAllPostSlugs = async () => {
-   /* const cachedPosts = getFromCache('posts');
-    if (cachedPosts) {
-        return cachedPosts;
-    }*/
-
-    const featuredPost = await getLatestGuide();
-    const menus =  await getAllMenus();
-
-    const fetchAllPosts = async (after: string | null = null, accumulatedPosts: any[] = []) => {
-        const { data } = await client.query({
-            query: gql`
-                query GetAllPosts($after: String, $first: Int) {
-                    posts(first: $first, after: $after) {
-                        nodes {
-                            slug
-                            id
-                            title
-                            date
-                            content
-                            featuredImage {
-                                node {
-                                    sourceUrl
-                                    altText
-                                    mediaDetails {
-                                        width
-                                        height
-                                    }
-                                }
-                            }
-                        }
-                        pageInfo {
-                            hasNextPage
-                            endCursor
-                        }
-                    }
-                }
-            `,
-            variables: {
-                after,
-                first: 100,
-            },
-            fetchPolicy: cacheOption,
-        });
-
-        const newPosts = data.posts.nodes.map((post: any) => ({
-            ...post,
-            slug: post.slug,
-            featuredImage: post.featuredImage?.node?.sourceUrl || "",
-            altText: post.featuredImage?.node?.altText || "",
-            featuredPost,
-            menus
-        }));
-
-        const allPosts = [...accumulatedPosts, ...newPosts];
-
-        if (data.posts.pageInfo.hasNextPage) {
-            return await fetchAllPosts(data.posts.pageInfo.endCursor, allPosts);
-        }
-
-        return allPosts;
-    };
-
-    const allPosts = await fetchAllPosts();
-   // saveToCache('posts', allPosts);
-
-    return allPosts;
 };

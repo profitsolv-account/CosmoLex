@@ -1,8 +1,5 @@
-import {getBlogData} from "@/lib/queries/blog";
 import {Metadata} from "next";
 import {getSEOData} from "@/lib/queries/seo";
-import BlogTemplate from "@/components/templates/BlogTemplate";
-import {generalSettings} from "@/lib/queries/settings";
 import {notFound} from "next/navigation";
 import {getPageData} from "@/lib/queries/wordpress";
 import {getCategories, getDirectoriesData} from "@/lib/queries/directoryListings";

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getSEOData } from "@/lib/queries/seo";
 import BlogTemplate from "@/components/templates/BlogTemplate";
-import {getBlogPageData, getPosts} from "@/lib/queries/blog";
+import {getBlogPageData, getCategoryIdBySlug, getPosts, getTagIdBySlug} from "@/lib/queries/blog";
 import {generalSettings} from "@/lib/queries/settings";
 import {notFound} from "next/navigation";
 
@@ -16,13 +16,16 @@ export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData('page');
 }
 
-export default async function BlogPage(data: {searchParams: Promise<{s: string}>}) {
+export default async function BlogPage(data: {searchParams: Promise<{s: string}>, params: Promise<{slug: string}>}) {
     const pageData = await getBlogPageData();
 
+    const {slug} = await data.params;
     const {s} = await data.searchParams;
     const search = s || '';
 
-    const postsData = await getPosts(null, 15, search);
+    const tag = await getTagIdBySlug(slug) || 0;
+
+    const postsData = await getPosts(null, 15, search, [], [tag.id]);
 
     if (!pageData) {
         return notFound();
@@ -33,6 +36,11 @@ export default async function BlogPage(data: {searchParams: Promise<{s: string}>
         }}
         page={1}
         postsData={postsData}
+        searchParams={{
+            tagName: tag.name,
+            tag: tag.id,
+            s
+        }}
     />
 }
 
