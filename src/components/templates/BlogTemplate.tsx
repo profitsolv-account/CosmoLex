@@ -93,7 +93,7 @@ export default function BlogTemplate({ pageData, page, postsData, searchParams }
                         </p>
                     </div>}
 
-                  <div className="max-w-[66.438rem] mx-auto py-20 grid grid-cols-1 gap-[8.125rem] gap-y-[6rem] md:grid-cols-2 lg:grid-cols-3">
+                    {firstPosts.length && <div className="max-w-[66.438rem] mx-auto py-20 grid grid-cols-1 gap-[8.125rem] gap-y-[6rem] md:grid-cols-2 lg:grid-cols-3">
 
                       {firstPosts.map((post) => {
                           return  <SingleBlock
@@ -105,13 +105,13 @@ export default function BlogTemplate({ pageData, page, postsData, searchParams }
                           />
                       })}
 
-                    </div>
+                    </div>}
 
                    <div className="max-w-[66.438rem] mx-auto">
                         <TestimonialBlock />
                     </div>
 
-                    <div className="max-w-[66.438rem] mx-auto py-20 grid grid-cols-1 gap-[8.125rem] gap-y-[6rem] md:grid-cols-2 lg:grid-cols-3">
+                    {!!posts.length && <div className="max-w-[66.438rem] mx-auto py-20 grid grid-cols-1 gap-[8.125rem] gap-y-[6rem] md:grid-cols-2 lg:grid-cols-3">
                         {posts.map((post: any) => {
                             return <SingleBlock
                                 key={post.id}
@@ -122,10 +122,10 @@ export default function BlogTemplate({ pageData, page, postsData, searchParams }
                             />
                         })}
 
-                    </div>
+                    </div>}
 
                     {pageInfo.hasNextPage && (
-                        <button className="max-w-[66.438rem] mx-auto pb-40 flex align-center justify-center disabled:opacity-70" onClick={loadMorePosts} disabled={loading}>
+                        <button className="max-w-[66.438rem] mx-auto flex align-center justify-center disabled:opacity-70" onClick={loadMorePosts} disabled={loading}>
                             <div className="border border-primary-dark bg-primary-dark text-white rounded-[6.25rem] cursor-pointer inline-block px-22 py-3.5 text-base transition duration-300 hover:bg-transparent hover:text-primary-dark">
                                     {loading ? "Loading..." : "Load More"}
                             </div>

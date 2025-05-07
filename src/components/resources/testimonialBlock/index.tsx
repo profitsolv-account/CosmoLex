@@ -1,6 +1,8 @@
 import Rating from "../rating";
 import {CustomLink} from "@/components/ui/customLink";
 import TestimonialIcon from './testimonial.svg';
+import Img from '@/assets/img/testimonials/userpic.png';
+import Image from 'next/image';
 
 export const TestimonialBlock = () => {
     return <div>
@@ -13,7 +15,13 @@ export const TestimonialBlock = () => {
 
                 <div className="sm:flex gap-6 items-center mt-7 md:pl-9">
                     <div className="mb-4">
-                        <img className="w-28 h-28 rounded-full border-2 border-primary-dark" src="https://placehold.co/112x112" />
+                        <Image
+                            width={Img.width}
+                            height={Img.height}
+                            className="w-28 h-28 rounded-full "
+                            src={Img.src}
+                            alt="Jonathan Roth"
+                        />
                     </div>
                     <div>
                         <div className="justify-start">
@@ -32,14 +40,14 @@ export const TestimonialBlock = () => {
                     Customer Centric Messaging
                 </div>
                 <div className="self-stretch justify-start text-primary-dark text-base font-normal leading-[1.875rem] mb-5">
-                    Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.
+                    Cosmolex provides a familiar and simple user interface that allows our firm to quickly and efficiently manage billing and times.
                 </div>
                 <div className="mb-8">
                     <Rating rating={5} />
                 </div>
                 <div>
                     <CustomLink
-                        href="/"
+                        href="/demo"
                         className="bg-[#A4E1FF] text-primary-dark rounded-full px-6 py-3.5 font-normal text-base w-[10rem] cursor-pointer transition duration-300 hover:bg-primary-dark hover:text-white"
                     >
                         Try For Free

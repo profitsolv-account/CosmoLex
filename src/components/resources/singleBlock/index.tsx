@@ -12,6 +12,15 @@ type Props = {
     image: string;
 }
 
+function truncateWords(htmlString: string, wordLimit: number): string {
+    const div = document.createElement("div");
+    div.innerHTML = htmlString;
+    const text = div.textContent || div.innerText || "";
+    const words = text.trim().split(/\s+/);
+    const truncated = words.slice(0, wordLimit).join(" ");
+    return truncated + (words.length > wordLimit ? "..." : "");
+}
+
 export const SingleBlock:FC<Props> = ({
     className,
     type,
@@ -48,7 +57,7 @@ export const SingleBlock:FC<Props> = ({
         </CustomLink>}
         <div className="flex-1 inline-flex flex-col justify-start items-start gap-4">
             <CustomLink href={link} className="self-stretch justify-start text-primary-dark text-xl font-bold leading-[2rem]">{title}</CustomLink>
-            <div className="self-stretch justify-start text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{__html: description}} />
+            <div className="self-stretch justify-start text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{__html: truncateWords(description, 21)}} />
             <div className="inline-flex justify-start items-center gap-[0.438rem]">
                 <CustomLink href={link} className="justify-start text-primary-dark text-base font-normal leading-[1.875rem] underline">Read more</CustomLink>
             </div>
