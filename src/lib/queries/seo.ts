@@ -30,7 +30,7 @@ export const getSEOData = async (pageSlug: string) => {
     })
 
     if (pageSlug === '/features/online-payments-1') {
-        console.log(data);
+        console.log(data, pageSlug);
     }
 
     const seo = get(data, 'page.seo', {});
