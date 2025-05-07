@@ -21,6 +21,8 @@ const getSlug = async () => {
 
 export async function generateMetadata(): Promise<Metadata> {
     const slug = await getSlug();
+    const test = await getSEOData(slug);
+    console.log(test);
     return await getSEOData(slug);
 }
 
