@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react'
 import Layout from "@/components/layout/layout";
-import {PageDataType, PostsDataResponse} from "@/types";
+import {PageDataType, PagedItemsResponse, PostType} from "@/types";
 import {ResourcesHeader} from "@/components/blocks/headers/resourcesHeader";
 import {SearchForm} from "@/components/resources/searchForm";
 import {SingleBlock} from "@/components/resources/singleBlock";
@@ -14,7 +14,7 @@ import {getPosts} from "@/lib/queries/blog";
 type Props = {
     pageData: PageDataType;
     page: number;
-    postsData: PostsDataResponse;
+    postsData: PagedItemsResponse<PostType>;
     searchParams?: {
         s?: string;
         category?: number;
@@ -24,11 +24,11 @@ type Props = {
     };
 }
 
-export default function BlogTemplate({ pageData, page, postsData, searchParams }: Props) {
+export default function BlogTemplate({ pageData, postsData, searchParams }: Props) {
 
-    const firstPosts = postsData.posts.slice(0, 6);
+    const firstPosts = postsData.items.slice(0, 6);
 
-    const [posts, setPosts] = useState<any>(postsData.posts.slice(6, postsData.posts.length));
+    const [posts, setPosts] = useState<any>(postsData.items.slice(6, postsData.items.length));
     const [pageInfo, setPageInfo] = useState<any>(postsData.pageInfo);
     const [loading, setLoading] = useState(false);
 
@@ -39,7 +39,7 @@ export default function BlogTemplate({ pageData, page, postsData, searchParams }
         const tag = searchParams?.tag ? [searchParams?.tag] : [];
         const data = await getPosts(pageInfo.endCursor, 15, searchParams?.s || '', category, tag);
         if (data) {
-            setPosts((prev: any) => [...prev, ...data.posts]);
+            setPosts((prev: any) => [...prev, ...data.items]);
             setPageInfo(data.pageInfo);
         }
         setLoading(false);
@@ -67,12 +67,12 @@ export default function BlogTemplate({ pageData, page, postsData, searchParams }
                         },
                         {
                             title: 'Infographics',
-                            link: '/resource-hub',
+                            link: '/guides-infographics/',
                             active: false
                         },
                         {
-                            title: 'Guides',
-                            link: '/guides',
+                            title: 'Resource hub',
+                            link: '/resource-hub',
                             active: false,
                             className: "min-w-[8.75rem]"
                         }

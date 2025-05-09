@@ -181,19 +181,20 @@ export type LocationItem = {
     children: LocationItem[]
 };
 
+export type PostType = {
+    id: string;
+    slug: string;
+    title: string;
+    excerpt: string;
+    featuredImage?: {
+        node: {
+            sourceUrl: string;
+        }
+    };
+}
 
-export type PostsDataResponse = {
-    posts: {
-        id: string;
-        slug: string;
-        title: string;
-        excerpt: string;
-        featuredImage?: {
-            node: {
-                sourceUrl: string;
-            }
-        };
-    }[];
+export type PagedItemsResponse<T> = {
+    items: T[];
     pageInfo: {
         endCursor: string;
         hasNextPage: boolean;

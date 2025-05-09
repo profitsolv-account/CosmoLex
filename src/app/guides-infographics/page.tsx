@@ -1,11 +1,11 @@
 import {Metadata} from "next";
 import {getSEOData} from "@/lib/queries/seo";
 import {getPageData} from "@/lib/queries/wordpress";
-import {getWebinarsData} from "@/lib/queries/resources";
-import WebinarsTemplate from "@/components/templates/WebinarsTemplate";
+import {getResourcesUnionData} from "@/lib/queries/resources";
 import {notFound} from "next/navigation";
+import GuidesInfographicsTemplate from "@/components/templates/GuidesInfographicsTemplate";
 
-const slug = 'webinars';
+const slug = 'resource-hub';
 
 export async function generateMetadata(): Promise<Metadata> {
     return await getSEOData(slug);
@@ -16,14 +16,14 @@ export default async function ResourceHubPage(data: {searchParams: Promise<{s: s
         const {s} = await data.searchParams;
         const search = s || '';
 
-        const resources = await getWebinarsData(null, 15, search);
+        const resources = await getResourcesUnionData(null, 15, search);
         const pageData = await getPageData(slug);
 
         if (!pageData) {
             notFound();
         }
 
-        return <WebinarsTemplate
+        return <GuidesInfographicsTemplate
             pageData={{
                 ...pageData,
                 footerExtendedBg: true,

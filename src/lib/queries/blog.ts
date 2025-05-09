@@ -1,9 +1,9 @@
 import {gql} from "@apollo/client";
-import client, {cacheOption} from "@/lib/apollo-client";
+import client from "@/lib/apollo-client";
 import {getAllMenus} from "@/lib/queries/menus";
 import {getSiteSettings} from "@/lib/queries/settings";
 import {getLatestPosts} from "@/lib/queries/wordpress";
-import {PageDataType, PostsDataResponse, ShortPostType} from "@/types";
+import {PageDataType, PagedItemsResponse, PostType, ShortPostType} from "@/types";
 import {getLatestGuide} from "@/lib/queries/resources";
 import {get} from "lodash";
 
@@ -32,7 +32,7 @@ export const getPosts = async (
     searchQuery: string = '',
     categoryIn: number[] = [],
     tagIn: number[] = []
-): Promise<PostsDataResponse> => {
+): Promise<PagedItemsResponse<PostType>> => {
     try {
         const query = gql`
             query GetPosts(
@@ -84,7 +84,7 @@ export const getPosts = async (
         });
 
         return {
-            posts: data.posts.edges.map((edge: any) => edge.node),
+            items: data.posts.edges.map((edge: any) => edge.node),
             pageInfo: {
                 endCursor: data.posts.pageInfo.endCursor,
                 hasNextPage: data.posts.pageInfo.hasNextPage,
@@ -93,7 +93,7 @@ export const getPosts = async (
     } catch (e) {
         console.error("Error loading posts:", e);
         return {
-            posts: [],
+            items: [],
             pageInfo: {
                 endCursor: '',
                 hasNextPage: false
