@@ -9,9 +9,8 @@ import {SingleBlock} from "@/components/resources/singleBlock";
 import {SubscribeForm} from "@/components/resources/subscribeForm";
 import {SimplifyPractice} from "@/components/blocks/simplifyPractice";
 import {TestimonialBlock} from "@/components/resources/testimonialBlock";
-import {TopArticles} from "@/components/resources/topArticles";
 import {Resource} from "@/types/resources";
-import {getWebinarsData} from "@/lib/queries/resources";
+import {getResourcesUnionData} from "@/lib/queries/resources";
 
 type Props = {
     pageData: PageDataType;
@@ -25,7 +24,7 @@ type Props = {
     };
 }
 
-export default function WebinarsTemplate({ pageData, postsData, searchParams }: Props) {
+export default function GuidesInfographicsTemplate({ pageData, postsData, searchParams }: Props) {
 
     const firstPosts = postsData.items.slice(0, 6);
 
@@ -36,7 +35,7 @@ export default function WebinarsTemplate({ pageData, postsData, searchParams }: 
     const loadMorePosts = async () => {
         if (!pageInfo?.hasNextPage) return;
         setLoading(true);
-        const data = await getWebinarsData(pageInfo.endCursor, 15, searchParams?.s || '');
+        const data = await getResourcesUnionData(pageInfo.endCursor, 15, searchParams?.s || '');
         if (data) {
             setPosts((prev: any) => [...prev, ...data.items]);
             setPageInfo(data.pageInfo);
@@ -53,7 +52,7 @@ export default function WebinarsTemplate({ pageData, postsData, searchParams }: 
 
                 <ResourcesHeader
                     type={searchParams?.categoryName || searchParams?.tagName || 'resources'}
-                    title="Webinars Library"
+                    title="Infographics Library"
                     actions={[{
                         title: 'Articles',
                         link: '/blog',
@@ -62,12 +61,12 @@ export default function WebinarsTemplate({ pageData, postsData, searchParams }: 
                         {
                             title: 'Webinars',
                             link: '/webinars',
-                            active: true
+                            active: false
                         },
                         {
                             title: 'Infographics',
                             link: '/guides-infographics/',
-                            active: false
+                            active: true
                         },
                         {
                             title: 'Resource hub',
@@ -83,7 +82,7 @@ export default function WebinarsTemplate({ pageData, postsData, searchParams }: 
 
                 <div className="px-4">
                     <div className="max-w-[66.438rem] mx-auto">
-                        <SearchForm placeholder="Search Webinars Library"/>
+                        <SearchForm placeholder="Search Infographics Library"/>
                     </div>
 
                     {isEmpty && <div className="max-w-[66.438rem] mx-auto mt-20">

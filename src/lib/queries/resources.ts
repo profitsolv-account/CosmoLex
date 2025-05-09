@@ -2,7 +2,7 @@ import client, {cacheOption} from "@/lib/apollo-client";
 import {gql} from "@apollo/client";
 import {get} from "lodash";
 import {KnowledgeBaseCategory, Resource} from "@/types/resources";
-import {FeaturedPostType} from "@/types";
+import {FeaturedPostType, PagedItemsResponse} from "@/types";
 
 export const getResourcesData = async (): Promise<Resource[]> => {
 
@@ -92,24 +92,37 @@ export const getResourcesData = async (): Promise<Resource[]> => {
             }
         })),
     ]
-
     return formattedData.sort((a: Resource, b: Resource) => new Date(b.node.date).getTime() - new Date(a.node.date).getTime());
-
 }
 
-export const getWebinarsData = async (): Promise<Resource[]> => {
-
-    const { data } = await client.query({
-        query: gql`
-            query GetResources {
-                webinars(first: 1000) {
-                    edges {
-                        node {
-                            id,
-                            date,
+export const getResourcesUnionData = async (
+    afterCursor: string | null = null,
+    first: number = 15,
+    searchQuery: string = ''
+): Promise<PagedItemsResponse<Resource>> => {
+    const query = gql`
+        query GetResources($after: String, $first: Int, $search: String) {
+            contentNodes(
+                first: $first
+                after: $after
+                where: {
+                    contentTypes: [GUIDE, INFOGRAPHIC]
+                    orderby: { field: DATE, order: DESC }
+                    search: $search
+                }
+            ) {
+                pageInfo {
+                    endCursor
+                    hasNextPage
+                }
+                edges {
+                    node {
+                        __typename
+                        ... on Guide {
+                            id
+                            date
                             title
                             uri
-                            status
                             featuredImage {
                                 node {
                                     sourceUrl(size: LARGE)
@@ -119,18 +132,127 @@ export const getWebinarsData = async (): Promise<Resource[]> => {
                                     }
                                 }
                             }
-                            webinarFields {
+                            guidesFields {
                                 ctaLink
                                 tags
-                                ctaText
+                            }
+                            content
+                        }
+                        ... on Infographic {
+                            id
+                            date
+                            title
+                            uri
+                            featuredImage {
+                                node {
+                                    sourceUrl(size: LARGE)
+                                    mediaDetails {
+                                        width
+                                        height
+                                    }
+                                }
+                            }
+                            infographicsFields {
+                                ctaLink
+                                tags
+                                isItAnInfographicOrChecklist
                             }
                             content
                         }
                     }
                 }
-
             }
-        `,
+        }
+    `;
+
+    const { data } = await client.query({
+        query,
+        fetchPolicy: cacheOption,
+        variables: {
+            after: afterCursor,
+            first,
+            search: searchQuery || null,
+        },
+        context: {
+            fetchOptions: {
+                next: {
+                    tags: ['resources'],
+                },
+            },
+        },
+    });
+
+    const items = data.contentNodes.edges.map((r: any) => ({
+        ...r,
+        type: r.node.__typename,
+        node: {
+            ...r.node,
+            fields:
+                r.node.__typename === 'Guide'
+                    ? r.node.guidesFields
+                    : r.node.infographicsFields,
+        },
+    }));
+
+    return {
+        items,
+        pageInfo: data.contentNodes.pageInfo,
+    };
+
+}
+
+export const getWebinarsData = async (
+    afterCursor: string | null = null,
+    first: number = 15,
+     searchQuery: string = ''
+): Promise<PagedItemsResponse<Resource>> => {
+
+    const query = gql`
+                query GetResources(
+                    $after: String
+                    $first: Int
+                    $search: String
+                ) {
+                    webinars( first: $first
+                        after: $after
+                        where: {
+                            search: $search
+                        }) {
+                        pageInfo {
+                            endCursor
+                            hasNextPage
+                        }
+                        edges {
+                            node {
+                                id,
+                                date,
+                                title
+                                uri
+                                status
+                                featuredImage {
+                                    node {
+                                        sourceUrl(size: LARGE)
+                                        mediaDetails {
+                                            width
+                                            height
+                                        }
+                                    }
+                                }
+                                webinarFields {
+                                    ctaLink
+                                    tags
+                                    ctaText
+                                }
+                                content
+                            }
+                        }
+                    }
+
+                }
+        `;
+
+    const { data } = await client.query({
+        query,
         fetchPolicy: cacheOption,
         context: {
             fetchOptions: {
@@ -139,6 +261,11 @@ export const getWebinarsData = async (): Promise<Resource[]> => {
                 },
             },
         },
+            variables: {
+                after: afterCursor,
+                first,
+                search: searchQuery || null,
+            },
     });
 
     const formattedData = [
@@ -152,7 +279,13 @@ export const getWebinarsData = async (): Promise<Resource[]> => {
         })),
     ]
 
-    return formattedData.sort((a: Resource, b: Resource) => new Date(b.node.date).getTime() - new Date(a.node.date).getTime());
+    return {
+        items: formattedData.sort((a: Resource, b: Resource) => new Date(b.node.date).getTime() - new Date(a.node.date).getTime()),
+        pageInfo: {
+            endCursor: data.webinars.pageInfo.endCursor,
+            hasNextPage: data.webinars.pageInfo.hasNextPage,
+        },
+    };
 
 }
 

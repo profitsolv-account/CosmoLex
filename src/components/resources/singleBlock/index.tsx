@@ -10,9 +10,12 @@ type Props = {
     title: string;
     description: string;
     image: string;
+    ctaText?: string;
 }
 
 function truncateWords(htmlString: string, wordLimit: number): string {
+    if (!htmlString) return '';
+
     const textOnly = htmlString.replace(/<[^>]*>/g, ''); // remove all HTML tags
     const words = textOnly.trim().split(/\s+/);
     const truncated = words.slice(0, wordLimit).join(' ');
@@ -26,7 +29,8 @@ export const SingleBlock:FC<Props> = ({
     title,
     description,
     image,
-    linkAll
+    linkAll,
+    ctaText
 }) => {
 
     return <div className="inline-flex justify-start items-start gap-4 flex-wrap content-start flex-col">
@@ -57,7 +61,7 @@ export const SingleBlock:FC<Props> = ({
             <CustomLink href={link} className="self-stretch justify-start text-primary-dark text-xl font-bold leading-[2rem]">{title}</CustomLink>
             <div className="self-stretch justify-start text-primary-dark text-base font-normal leading-[1.875rem]" dangerouslySetInnerHTML={{__html: truncateWords(description, 21)}} />
             <div className="inline-flex justify-start items-center gap-[0.438rem]">
-                <CustomLink href={link} className="justify-start text-primary-dark text-base font-normal leading-[1.875rem] underline">Read more</CustomLink>
+                <CustomLink href={link} className="justify-start text-primary-dark text-base font-normal leading-[1.875rem] underline">{ctaText || 'Read more'}</CustomLink>
             </div>
         </div>
     </div>

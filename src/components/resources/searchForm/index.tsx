@@ -1,12 +1,17 @@
 "use client"
 
-export const SearchForm = () => {
+import {FC} from "react";
+
+type Props = {
+    placeholder?: string;
+}
+export const SearchForm: FC<Props> = ({placeholder}) => {
 
     return <form className="relative z-10 flex gap-4">
         <input
             className="rounded-3xl w-full px-6 bg-[#f5f5ff]/50 border border-[#c8c8c8]/75 outline-none p-4"
             type="text"
-            placeholder="Search Article Library"
+            placeholder={placeholder || "Search Article Library"}
             name={"s"}
         />
         <button

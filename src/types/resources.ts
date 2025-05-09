@@ -2,6 +2,7 @@ import {ImageType} from "@/types/index";
 
 export type Resource = {
    node: {
+       id: string;
        date: string;
        title: string;
        uri: string;
