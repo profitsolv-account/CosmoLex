@@ -8,7 +8,7 @@ import {Resource} from "@/types/resources";
 import DropdownCheckbox from "@/components/blocks/resources/dropdown";
 import {Pagination} from "@/components/common/pagination";
 
-export default function _ResourceHubTemplate({ pageData }: { pageData: PageDataType }) {
+export default function ResourceHubTemplate({ pageData }: { pageData: PageDataType }) {
 
    const resources = pageData.resources || [];
     const [precessedResources, setProcessedResources] = useState(resources);
